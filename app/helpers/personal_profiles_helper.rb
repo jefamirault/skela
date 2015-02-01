@@ -1,0 +1,2 @@
+module PersonalProfilesHelper
+end

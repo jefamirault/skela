@@ -1,0 +1,15 @@
+%h1 Users
+<p>bleh words and shit</p>
+
+%table
+  %thead
+    %tr
+      %th email
+      %th username
+      %th favorite color
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td
+        %td

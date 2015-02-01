@@ -1,0 +1,36 @@
+<div id="curtain">
+
+  <h1>skela</h1>
+
+  <div id="center_form_box">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+      <div class="center_form_field">
+        <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+      </div>
+
+      <div class="center_form_field">
+        <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password' %>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit 'Log in', id: 'login_button' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field left">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= link_to 'Forgot your password?', new_password_path(resource_name), class: 'center_form_link right' %>
+
+
+
+  </div>
+<br>
+  <%= link_to 'Sign up', new_registration_path(resource_name), class: 'center_form_link' %>
+</div>

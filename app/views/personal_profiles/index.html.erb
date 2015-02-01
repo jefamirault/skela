@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Personal Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Favorite color</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_profiles.each do |personal_profile| %>
+      <tr>
+        <td><%= personal_profile.name %></td>
+        <td><%= personal_profile.favorite_color_id %></td>
+        <td><%= link_to 'Show', personal_profile %></td>
+        <td><%= link_to 'Edit', edit_personal_profile_path(personal_profile) %></td>
+        <td><%= link_to 'Destroy', personal_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal profile', new_personal_profile_path %>

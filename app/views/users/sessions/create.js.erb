@@ -1,0 +1,6 @@
+$('#login_button').val('Success!');
+$('.flash.notice').html('<%= notice %>');
+//$('.flash.notice').removeClass('hidden');
+$('#center_form_box').find('input').attr('disabled', true);
+//$('#center_form_box').addClass('wut');
+window.location.replace("<%= welcome_path %>");
