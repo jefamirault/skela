@@ -33,17 +33,17 @@ body {
     height: 96px;
     line-height: 96px;
     text-align: center;
+    position: relative;
     font-weight: bold;
-    transition: height .70s ease-in-out;
+    transition: top .45s ease-in 0s,
+                height .55s ease-out .06s;
 }
 .flash:not(.hidden) {
-    /*padding: 1.5em;*/
 }
 .flash:hover {
     cursor: pointer;
 }
 .flash.hidden {
-    height: 0;
     padding: 0;
 }
 span.vertical_middle {
@@ -52,12 +52,22 @@ span.vertical_middle {
 }
 .notice {
     background-color: #5c5;
+    top: 0;
+}
+.notice.hidden {
+    top: -96px;
+    height: 0;
 }
 .notice:hover {
     background-color: #57b057;
 }
 .alert {
     background-color: #c20;
+    top: 0;
+}
+.alert.hidden {
+    top: -96px;
+    height: 0;
 }
 .alert:hover {
     background-color: rgba(170, 18, 9, 0.73);
