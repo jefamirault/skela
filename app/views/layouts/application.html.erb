@@ -17,14 +17,13 @@
 </div>
 <% unless params[:controller] == 'users/sessions' %>
 <div class="right">
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path %> |
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign up', new_user_registration_path %> |
-    <%= link_to 'Login', new_user_session_path %>
-  <% end %>
+    <strong><%= "Logged in as #{current_user.email}." if current_user %></strong>
+    <%= link_to 'Edit profile', '' %> |
+    <%= link_to 'Logout', logout_path, method: :delete %>
+
+    <%= link_to 'Sign up', signup_path %> |
+    <%= link_to 'Login', login_path %>
+
 </div>
 <% end %>
 
