@@ -36,7 +36,8 @@ body {
     position: relative;
     font-weight: bold;
     transition: top .45s ease-in 0s,
-                height .55s ease-out .06s;
+                height .55s ease-out .06s,
+                background .3s ease-in-out;
 }
 .flash:not(.hidden) {
 }
