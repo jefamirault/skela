@@ -17,14 +17,15 @@
 </div>
 <% unless params[:controller] == 'users/sessions' %>
 <div class="right">
-    <strong><%= "Logged in as #{current_user.email}." if current_user %></strong>
-    <%= link_to 'Edit profile', '' %> |
-    <%= link_to 'Logout', logout_path, method: :delete %>
-
+    <% if current_user  %>
+      <strong><%= "Logged in as #{current_user.email}." if current_user %></strong>
+      <%= link_to 'Logout', logout_path, method: :delete %>
+    <% else %>
     <%= link_to 'Sign up', signup_path %> |
     <%= link_to 'Login', login_path %>
-
+    <% end %>
 </div>
+<br>
 <% end %>
 
 <%= yield %>
