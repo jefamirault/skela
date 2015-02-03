@@ -32,3 +32,26 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
+// define a handler
+function doc_keyUp(e) {
+
+    // this would test for whichever key is 40 and the ctrl key at the same time
+    if (e.ctrlKey && e.keyCode == 40) {
+        // call your function to do the thing
+        $('.developer_pad_wrapper').toggleClass('hidden');
+    }
+}
+// register the handler
+document.addEventListener('keyup', doc_keyUp, false);
+
+
+$(document).on('click', '#trigger_flash_notice', function(event) {
+    $('.flash.notice').html('hahahahahaha');
+    $('.flash.notice').removeClass('hidden');
+    event.preventDefault();
+});
+$(document).on('click', '#trigger_flash_alert', function(event) {
+    $('.flash.alert').html('hahahahahaha');
+    $('.flash.alert').removeClass('hidden');
+    event.preventDefault();
+});

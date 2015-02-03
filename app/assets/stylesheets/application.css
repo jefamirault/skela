@@ -157,3 +157,32 @@ input.disabled {
     background-color: #f4f4f4;
     /*transition: background .1s ease;*/
 }
+
+.center {
+    text-align: center;
+}
+.developer_pad_wrapper {
+    background-color: #ccf;
+    padding: 2em 2em;
+    width: 100%;
+}
+
+#developer_pad {
+    width: 70%;
+    height: 200px;
+    display: inline-block;
+    background-color: #3995ff;
+    margin: 0 auto;
+    position: fixed;
+
+}
+.developer_pad_wrapper.hidden {
+    display: none;
+
+}
+ul.god_buttons {
+    padding: 0;
+}
+ul.god_buttons li {
+    display: inline-block;
+}
