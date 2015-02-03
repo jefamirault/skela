@@ -16,10 +16,10 @@
       <span class="vertical_middle"><%= alert %></span>
     </div>
 
-    <div id="helmet">
-      <%= header_left %>
+    <% unless params[:controller] == 'users/sessions' %>
+      <div id="helmet">
+        <%= header_left %>
 
-      <% unless params[:controller] == 'users/sessions' %>
         <div id="header_right">
           <% if user_signed_in? %>
             <%= logged_in_text %>
@@ -34,10 +34,8 @@
           </nav>
           <% end %>
         </div>
-      <% end %>
-
-    </div>
-
+      </div>
+    <% end %>
     <div id="container">
       <%= yield %>
     </div>
