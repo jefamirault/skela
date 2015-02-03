@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Skela</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Skela</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div class="flash notice<%= ' hidden' if notice.nil? %>">
-  <span class="vertical_middle"><%= notice %></span>
-</div>
+    <div class="flash notice<%= ' hidden' if notice.nil? %>">
+      <span class="vertical_middle"><%= notice %></span>
+    </div>
 
-<div class="flash alert<%= ' hidden' if alert.nil? %>">
-  <span class="vertical_middle"><%= alert %></span>
-</div>
-<% unless params[:controller] == 'users/sessions' %>
-<div class="right">
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path %> |
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign up', new_user_registration_path %> |
-    <%= link_to 'Login', new_user_session_path %>
-  <% end %>
-</div>
-<% end %>
+    <div class="flash alert<%= ' hidden' if alert.nil? %>">
+      <span class="vertical_middle"><%= alert %></span>
+    </div>
 
-<%= yield %>
+    <div id="helmet">
+      <%= header_left %>
 
-</body>
+      <% unless params[:controller] == 'users/sessions' %>
+        <div id="header_right">
+          <% if user_signed_in? %>
+            <%= logged_in_text %>
+            <nav>
+              <%= link_to 'Edit profile', edit_user_registration_path %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            </nav>
+          <% else %>
+          <nav>
+            <%= link_to 'Sign up', new_user_registration_path %>
+            <%= link_to 'Login', new_user_session_path %>
+          </nav>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div id="container">
+      <%= yield %>
+    </div>
+
+  </body>
 </html>

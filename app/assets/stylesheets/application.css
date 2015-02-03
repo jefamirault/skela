@@ -16,7 +16,7 @@
 
 body {
     margin: 0;
-    /*background-color: #88cc88;*/
+    background-color: #fff;
 }
 
 .left {
@@ -156,4 +156,93 @@ div.center_form_field {
 input.disabled {
     background-color: #f4f4f4;
     /*transition: background .1s ease;*/
+}
+
+#header_right {
+    font-size: 1.1em;
+    /*border: 2px solid rgba(0,0,0,.29);*/
+    /*color: rgba(255,255,255,.95);*/
+    color: #37a;
+    /*border-radius: 6px;*/
+    /*box-shadow: 2px 2px 3px rgba(0,0,0,.79);*/
+    /*background-color: #4477aa;*/
+    /*height: 96px;*/
+    /*display: table-cell;*/
+    float: right;
+
+    padding: 0 28px;
+    margin: 0 28px 0 28px;
+
+    vertical-align: bottom;
+    /*bottom: 0px;*/
+    /*position: absolute;*/
+}
+
+#header_right a {
+    color: #48c;
+}
+
+#header_left {
+    font-size: 5em;
+    line-height: 96px;
+    /*border: 1px solid rgba(0,0,0,.69);*/
+    color: #555;
+    font-family: Ubuntu, Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    /*border-radius: 4px;*/
+    /*box-shadow: -0px 2px 3px rgba(0,0,0,.79);*/
+    /*background-color: #4477aa;*/
+    height: 96px;
+    display: inline-block;
+    float: left;
+    /*background-color: #daa;*/
+
+    padding: 0px 28px;
+    margin: 0px 28px 0 28px;
+    /*bottom: 0px;*/
+    /*position: absolute;*/
+    /*vertical-align: middle;*/
+    /*vertical-align: text-bottom;*/
+
+}
+
+#container {
+    /*background-color: #daa;*/
+    display: inline-block;
+    clear: both;
+    padding: 0 15%;
+    max-width: 1000px;
+}
+#helmet {
+    background-color: #f3f7f8;
+    /*height: 72px;*/
+    box-shadow: 0 2px 4px rgba(0,0,0,.29);
+
+    /*font-size: 1.5em;*/
+    color: white;
+    display: block;
+    /*width: 100%;*/
+    height: 96px;
+    /*line-height: 96px;*/
+    /*text-align: center;*/
+    font-weight: bold;
+    transition: height .70s ease-in-out;
+    padding: 0;
+    position: relative;
+}
+#logged_in_text {
+    margin: 0 2em;
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    padding: 1em 2.5em 1em 0;
+    /*vertical-align: middle;*/
+}
+nav {
+    display: inline-block;
+}
+nav a {
+    display: inline-block;
+    padding: 0 1em;
+    vertical-align: bottom;
+
 }
