@@ -36,7 +36,7 @@ function httpGet(theUrl)
 function doc_keyUp(e) {
 
     // this would test for whichever key is 40 and the ctrl key at the same time
-    if (e.ctrlKey && e.keyCode == 40) {
+    if (e.shiftKey && e.keyCode == 40) {
         // call your function to do the thing
         $('.developer_pad_wrapper').toggleClass('hidden');
     }

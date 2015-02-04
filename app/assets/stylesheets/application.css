@@ -138,10 +138,12 @@ span.vertical_middle {
     /*margin-bottom: 1em;*/
 /*}*/
 a.center_form_link {
+    font-size: 1em;
     display: block;
     /*margin-top: 2em;*/
     color: #427fed;
     text-decoration: none;
+    padding: 1em 2em;
 }
 a.center_form_link:hover {
     color: #427fed;
@@ -257,6 +259,7 @@ ul.god_buttons li a:hover {
 }
 
 #container {
+    padding-top: 2qem;
     display: inline-block;
     clear: both;
     text-align: center;
