@@ -47,11 +47,11 @@ document.addEventListener('keyup', doc_keyUp, false);
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
     $('.flash.notice').html('hahahahahaha');
-    $('.flash.notice').removeClass('hidden');
+    $('.flash.notice').toggleClass('hidden');
     event.preventDefault();
 });
 $(document).on('click', '#trigger_flash_alert', function(event) {
     $('.flash.alert').html('hahahahahaha');
-    $('.flash.alert').removeClass('hidden');
+    $('.flash.alert').toggleClass('hidden');
     event.preventDefault();
 });

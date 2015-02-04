@@ -170,31 +170,61 @@ input.disabled {
     text-align: center;
 }
 .developer_pad_wrapper {
-    background-color: #ccf;
-    padding: 2em 2em;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: #295;
+    font-size: 1.1em;
+    background-color: #f3f8f7;
+    box-shadow: 0 -2px 4px rgba(0,0,0,.29);
+    display: block;
+    height: 76px;
+    line-height: 76px;
+    font-weight: bold;
+    transition: height .70s ease-in-out;
+    padding: 0;
 }
-
 #developer_pad {
     width: 70%;
-    height: 200px;
+    height: 76px;
     display: inline-block;
     background-color: #3995ff;
     margin: 0 auto;
     position: fixed;
-
 }
 .developer_pad_wrapper.hidden {
     display: none;
-
+}
+#developer_pad_title {
+    margin: 0;
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    padding: 0em 2.5em 0em 0;
+    line-height: 76px;
 }
 ul.god_buttons {
     padding: 0;
+    display: inline;
+    margin: 0;
 }
 ul.god_buttons li {
     display: inline-block;
 }
-
+ul.god_buttons li a {
+    display: inline-block;
+    padding: 0 1em;
+    margin: 0 1em;
+    color: #2a6;
+    line-height: 68px;
+    font-size: 1.1em;
+    border-top: 4px solid #f4f8f7;
+    border-bottom: 4px solid #f4f8f7;
+}
+ul.god_buttons li a:hover {
+    border-top: 4px solid #4c8;
+    /*border-bottom: 4px solid #fff;*/
+    text-decoration: none;
+}
 #header_right {
     font-size: 1.1em;
     color: #37a;
@@ -222,6 +252,9 @@ ul.god_buttons li {
     padding: 0px 28px;
     margin: 0px 7px 0 56px;
 }
+#header_left:hover {
+    text-decoration: none;
+}
 
 #container {
     display: inline-block;
@@ -236,10 +269,10 @@ ul.god_buttons li {
     background-color: #f3f7f8;
     box-shadow: 0 2px 4px rgba(0,0,0,.29);
 
-    color: white;
+    /*color: white;*/
     display: block;
     height: 76px;
-    line-height: 76px;
+    line-height: 68px;
     font-weight: bold;
     transition: height .70s ease-in-out;
     padding: 0;
@@ -250,7 +283,7 @@ ul.god_buttons li {
     display: inline-block;
     border-right: 1px solid #ccc;
     padding: 0em 2.5em 0em 0;
-    line-height: inherit;
+    line-height: 76px;
     /*border-bottom: 4px solid rgba(0,0,0,.00);*/
 }
 nav {
@@ -261,7 +294,6 @@ nav a {
     display: inline-block;
     padding: 0 1em;
     margin: 0 1em;
-    vertical-align: bottom;
     line-height: 68px;
     border-top: 4px solid rgba(0,0,0,0);
     border-bottom: 4px solid #f3f7f8;
@@ -269,4 +301,7 @@ nav a {
 nav a:hover {
     text-decoration: none;
     border-bottom-color: #48c;
+    border-top-color: #f3f7f8;
+    /*background: linear-gradient(to bottom, rgba(243,247,248,0) 85%,rgba(68,136,204,1) 100%);*/
+    cursor: pointer;
 }

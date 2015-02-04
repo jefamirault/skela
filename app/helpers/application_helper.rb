@@ -5,15 +5,15 @@ module ApplicationHelper
 
 
   def trigger_flash_notice
-    link_to 'flash notice', '', id: 'trigger_flash_notice'
+    link_to 'Flash Notice', '', id: 'trigger_flash_notice'
   end
 
   def trigger_flash_alert
-    link_to 'flash alert', '', id: 'trigger_flash_alert'
+    link_to 'Flash Alert', '', id: 'trigger_flash_alert'
   end
 
   def header_left(title = 'skela')
-    content_tag :div, title, id: 'header_left'
+    link_to title, welcome_path, id: 'header_left'
   end
 
   def logged_in_text

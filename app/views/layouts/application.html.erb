@@ -16,42 +16,51 @@
       <span class="vertical_middle"><%= alert %></span>
     </div>
 
-<div class="developer_pad_wrapper center hidden">
-  <!--<div id="developer_pad" class="hidden">-->
-    yo what up developers
-  <br>
 
-  <ul class="god_buttons">
-    <li>
-      <%= trigger_flash_notice %>
-    </li>
-    <li>
-      <%= trigger_flash_alert %>
-    </li>
-  </ul>
-  <!--</div>-->
-</div>
     <% unless params[:controller] == 'sessions' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'new' %>
       <div id="helmet">
         <%= header_left %>
 
         <div id="header_right">
-          <% if current_user %>
-            <%= logged_in_text %>
-            <nav>
-              <%= link_to 'Logout', logout_path, method: :delete %>
-            </nav>
-          <% else %>
           <nav>
-            <%= link_to 'Sign up', signup_path %>
-            <%= link_to 'Login', login_path %>
+            <% if current_user %>
+              <%= logged_in_text %>
+            <% end %>
+
+            <%= content_tag :a, 'This link will take you nowhere' %>
+            <%= content_tag :a, 'Nowhere' %>
+            <%= content_tag :a, 'Win $$$' %>
+
+            <% if current_user %>
+              <%= link_to 'Logout', logout_path, method: :delete %>
+            <% else %>
+              <%= link_to 'Sign up', signup_path %>
+              <%= link_to 'Login', login_path %>
+            <% end %>
+
           </nav>
-          <% end %>
         </div>
       </div>
     <% end %>
     <div id="container">
       <%= yield %>
+
+      <div class="developer_pad_wrapper center hidden">
+        <!--<div id="developer_pad" class="hidden">-->
+        <div id="developer_pad_title">
+          Developer Tools
+        </div>
+
+        <ul class="god_buttons">
+          <li>
+            <%= trigger_flash_notice %>
+          </li>
+          <li>
+            <%= trigger_flash_alert %>
+          </li>
+        </ul>
+        <!--</div>-->
+      </div>
     </div>
 
   </body>
