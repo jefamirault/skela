@@ -7,9 +7,11 @@ module ApplicationHelper
   def trigger_flash_notice
     link_to 'Flash Notice', '', id: 'trigger_flash_notice'
   end
-
   def trigger_flash_alert
     link_to 'Flash Alert', '', id: 'trigger_flash_alert'
+  end
+  def hide_stuff
+    link_to 'Hide Stuff', '', id: 'hide_stuff'
   end
 
   def header_left(title = 'skela')

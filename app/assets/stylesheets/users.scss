@@ -1,3 +1,59 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#edit_user {
+  display: inline-block;
+  margin: 0 2em;
+  width: 375px;
+  vertical-align: top;
+  transition: color .3s ease;
+  h1 {
+    margin: 0;
+  }
+
+  &.hidden {
+    color: rgba(0,0,0,0);
+  }
+  input {
+    color: inherit
+  }
+}
+
+table#users {
+  display: inline-block;
+  margin: 0 2em;
+  width: 375px;
+
+}
+
+dl {
+  margin: -1em 0 0;
+  text-align: left;
+  dt {
+    font-weight: bold;
+    padding-top: 1em;
+  }
+  dd {
+    padding-top: .25em;
+    margin: 0 0 0 2em;
+    input[type='text'] {
+      padding: .5em 1em;
+      border: 1px solid #ddd;
+
+      outline: none;
+      &:hover {
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset;
+      }
+      &:focus {
+        border-color: #427fed;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset;
+
+      }
+    }
+  }
+}
+
+#delete_user {
+  color: red;
+}

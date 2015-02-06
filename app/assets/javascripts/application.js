@@ -55,3 +55,8 @@ $(document).on('click', '#trigger_flash_alert', function(event) {
     $('.flash.alert').toggleClass('hidden');
     event.preventDefault();
 });
+
+$(document).on('click', '#hide_stuff', function(event) {
+    $('#edit_user').toggleClass('hidden');
+    event.preventDefault();
+});

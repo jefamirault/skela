@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_url if current_user.nil?
   end
+  def authorize_superuser
+    authorize
+    redirect_to welcome_path unless current_user.is_superuser?
+  end
 end

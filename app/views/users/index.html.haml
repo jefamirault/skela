@@ -1,15 +1,16 @@
-%h1 Users
-<p>bleh words and shit</p>
-
-%table
+<br>
+%table#users
   %thead
     %tr
       %th username
-      -#%th email
-      %th favorite color
+      %th actions
   %tbody
     - @users.each do |user|
       %tr
         %td= user.email
-        %td
-        %td
+        %td= link_to 'edit', edit_user_path(user), remote: true, class: 'edit'
+
+
+#edit_user.hidden
+  %h1 Edit User
+  %dl
