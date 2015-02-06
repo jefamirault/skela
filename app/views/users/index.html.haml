@@ -1,16 +1,17 @@
-<br>
-%table#users
-  %thead
-    %tr
-      %th username
-      %th actions
-  %tbody
-    - @users.each do |user|
+#user_select
+  %table#users
+    %thead
       %tr
-        %td= user.email
-        %td= link_to 'edit', edit_user_path(user), remote: true, class: 'edit'
+        %th username
+        %th actions
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.email
+          %td= link_to 'edit', edit_user_path(user), remote: true, class: 'edit_user'
 
+  = link_to 'Create New User', admin_new_user_path, remote: true, class: 'new_user'
 
-#edit_user.hidden
+#user_form.hidden
   %h1 Edit User
   %dl

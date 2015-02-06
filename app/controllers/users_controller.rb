@@ -38,7 +38,22 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to users_path, notice: 'User successfully deleted!'
     end
+  end
 
+  def admin_new
+    @user = User.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def admin_create
+    if @user = User.create(user_params)
+      # session[:user_id] = @user.id
+      redirect_to users_path, notice: 'User created successfully!'
+    else
+      render 'user_path'
+    end
   end
 
 

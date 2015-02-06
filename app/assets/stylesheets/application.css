@@ -257,7 +257,7 @@ ul.god_buttons li a:hover {
 }
 
 #container {
-    padding-top: 2qem;
+    /*padding-top: 2em;*/
     display: inline-block;
     clear: both;
     text-align: center;
@@ -277,6 +277,7 @@ ul.god_buttons li a:hover {
     font-weight: bold;
     transition: height .70s ease-in-out;
     padding: 0;
+    margin: 0 0 1em;
     position: relative;
 }
 #logged_in_text {

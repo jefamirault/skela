@@ -1,0 +1,11 @@
+#user_form
+  %h1 New User
+  %dl
+    %dt Username
+    %dd
+      = form_for @user, url: admin_create_user_path do |f|
+        = f.text_field :email, placeholder: 'Username'
+        = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
+        = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+
+        = f.submit

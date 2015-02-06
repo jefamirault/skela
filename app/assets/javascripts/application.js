@@ -57,6 +57,6 @@ $(document).on('click', '#trigger_flash_alert', function(event) {
 });
 
 $(document).on('click', '#hide_stuff', function(event) {
-    $('#edit_user').toggleClass('hidden');
+    $('#user_form').toggleClass('hidden');
     event.preventDefault();
 });

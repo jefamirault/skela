@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#edit_user {
+#user_form {
   display: inline-block;
   margin: 0 2em;
   width: 375px;
@@ -19,13 +19,18 @@
     color: inherit
   }
 }
+#user_select {
 
-table#users {
   display: inline-block;
   margin: 0 2em;
   width: 375px;
-
 }
+//table#users {
+//  display: inline-block;
+//  margin: 0 2em;
+//  width: 375px;
+//
+//}
 
 dl {
   margin: -1em 0 0;
@@ -37,7 +42,7 @@ dl {
   dd {
     padding-top: .25em;
     margin: 0 0 0 2em;
-    input[type='text'] {
+    input {
       padding: .5em 1em;
       border: 1px solid #ddd;
 
