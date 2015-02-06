@@ -1,8 +1,10 @@
-%dl
-  %dt Username
-  %dd
-    = form_for @user do |f|
-      = f.text_field :email
-      = f.submit
-      %br
-      = destroy_user_link
+#edit_user
+  %h1 Edit User
+  %dl
+    %dt Username
+    %dd
+      = form_for @user do |f|
+        = f.text_field :email
+        = f.submit
+        %br
+        = destroy_user_link
