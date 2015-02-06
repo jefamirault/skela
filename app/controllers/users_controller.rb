@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authorize_superuser
+  before_filter :authenticate, except: [:new, :create]
+  before_filter :authorize_superuser, only: [:update, :destroy, :admin_create]
 
   def index
     @users = User.all
@@ -60,7 +61,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :privelage_level)
   end
 
 end

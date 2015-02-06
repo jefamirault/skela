@@ -12,11 +12,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def authorize
+  def authenticate
     redirect_to login_url if current_user.nil?
   end
   def authorize_superuser
-    authorize
-    redirect_to welcome_path unless current_user.is_superuser?
+    redirect_to welcome_path, alert: 'Only an admin can do that' unless current_user.is_superuser?
   end
 end

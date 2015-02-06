@@ -63,7 +63,7 @@ span.vertical_middle {
     background-color: #57b057;
 }
 .alert {
-    background-color: #c20;
+    background-color: #b31;
     top: 0;
 }
 .alert.hidden {
@@ -71,7 +71,7 @@ span.vertical_middle {
     height: 0;
 }
 .alert:hover {
-    background-color: rgba(170, 18, 9, 0.73);
+    background-color: #a10;
 }
 #curtain {
     text-align: center;

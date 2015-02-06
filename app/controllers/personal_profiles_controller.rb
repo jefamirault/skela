@@ -1,4 +1,5 @@
 class PersonalProfilesController < ApplicationController
+  before_filter :authenticate
   before_action :set_personal_profile, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

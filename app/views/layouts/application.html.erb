@@ -27,7 +27,7 @@
               <%= logged_in_text %>
             <% end %>
 
-            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users'}" if current_user.is_superuser?%>
+            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users'}" %>
             <%= content_tag :a, 'Nowhere' %>
 
             <% if current_user %>

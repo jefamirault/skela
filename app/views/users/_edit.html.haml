@@ -6,5 +6,11 @@
       = form_for @user do |f|
         = f.text_field :email
         = f.submit
-        %br
-        = destroy_user_link
+    %dt Privelage
+    %dd
+      = form_for @user do |f|
+        = f.number_field :privelage_level
+        = f.submit
+
+  %br
+  = destroy_user_link
