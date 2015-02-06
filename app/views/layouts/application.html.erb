@@ -27,9 +27,8 @@
               <%= logged_in_text %>
             <% end %>
 
-            <%= content_tag :a, 'This link will take you nowhere' %>
+            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users'}" if current_user.is_superuser?%>
             <%= content_tag :a, 'Nowhere' %>
-            <%= content_tag :a, 'Win $$$' %>
 
             <% if current_user %>
               <%= link_to 'Logout', logout_path, method: :delete %>
@@ -57,6 +56,9 @@
           </li>
           <li>
             <%= trigger_flash_alert %>
+          </li>
+          <li>
+            <%= hide_stuff %>
           </li>
         </ul>
         <!--</div>-->
