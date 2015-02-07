@@ -5,12 +5,9 @@
 #user_form {
   display: inline-block;
   margin: 0 2em;
-  width: 375px;
+  width: 400px;
   vertical-align: top;
   transition: color .3s ease;
-  h1 {
-    margin: 0;
-  }
 
   &.hidden {
     color: rgba(0,0,0,0);
@@ -23,7 +20,7 @@
 
   display: inline-block;
   margin: 0 2em;
-  width: 375px;
+  max-width: 400px;
 }
 //table#users {
 //  display: inline-block;

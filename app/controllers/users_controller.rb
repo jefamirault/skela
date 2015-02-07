@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate, except: [:new, :create]
-  before_filter :authorize_superuser, only: [:update, :destroy, :admin_create]
+  before_filter :authorize_superuser, only: [:destroy, :admin_create]
 
   def index
     @users = User.all
@@ -9,6 +9,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
+
+    unless current_user.is_superuser?
+      if @user != current_user
+        redirect_to users_path, alert: 'You cannot edit someone else\'s profile.'
+        return
+      end
+    end
+
     if @user.update(user_params)
       redirect_to users_path, notice: 'User updated successfully!'
     end
@@ -57,11 +65,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_profile
+    @user = current_user
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :privelage_level)
+    params.require(:user).permit(:email, :password, :password_confirmation, :privelage_level, :avatar, :favorite_color)
   end
 
 end

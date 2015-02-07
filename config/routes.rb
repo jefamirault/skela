@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'admin_new_user', to: 'users#admin_new', as: 'admin_new_user'
   post 'admin_create_user', to: 'users#admin_create', as: 'admin_create_user'
 
+  get 'my_profile', to: 'users#my_profile', as: 'my_profile'
+
   resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
