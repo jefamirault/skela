@@ -272,13 +272,16 @@ ul.god_buttons li a:hover {
 
     /*color: white;*/
     display: block;
-    height: 76px;
+    /*height: 76px;*/
     line-height: 68px;
     font-weight: bold;
     transition: height .70s ease-in-out;
     padding: 0;
     margin: 0 0 1em;
     position: relative;
+}
+#helmet br {
+    clear: both;
 }
 #logged_in_text {
     margin: 0;
