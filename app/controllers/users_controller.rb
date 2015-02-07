@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
     if @user.update(user_params)
       redirect_to users_path, notice: 'User updated successfully!'
+    else
+      redirect_to welcome_path, alert: 'Something happened'
     end
   end
 
@@ -58,7 +60,6 @@ class UsersController < ApplicationController
 
   def admin_create
     if @user = User.create(user_params)
-      # session[:user_id] = @user.id
       redirect_to users_path, notice: 'User created successfully!'
     else
       render 'user_path'

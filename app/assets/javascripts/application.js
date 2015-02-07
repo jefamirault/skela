@@ -14,36 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on('click', '.flash', function(){
-    jQuery(this).addClass('hidden');
-});
-$(document).on('click', '#dev', function(e){
-    jQuery('#notice').removeClass('hidden');
-    e.preventDefault();
-});
 
-function httpGet(theUrl)
-{
-    var xmlHttp = null;
-
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false );
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-// define a handler
 function doc_keyUp(e) {
-
-    // this would test for whichever key is 40 and the ctrl key at the same time
     if (e.shiftKey && e.keyCode == 40) {
-        // call your function to do the thing
-        $('.developer_pad_wrapper').toggleClass('hidden');
+        $('.developer_pad').toggleClass('hidden');
     }
 }
-// register the handler
 document.addEventListener('keyup', doc_keyUp, false);
-
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
     $('.flash.notice').html('hahahahahaha');

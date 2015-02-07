@@ -25,54 +25,6 @@ body {
 .right {
     float: right;
 }
-.flash {
-    font-size: 1.5em;
-    color: white;
-    display: block;
-    width: 100%;
-    height: 76px;
-    line-height: 68px;
-    text-align: center;
-    position: relative;
-    font-weight: bold;
-    transition: top .55s ease-in-out 0s,
-                height .55s ease-in-out .3s,
-                background .3s ease-in-out;
-}
-.flash:not(.hidden) {
-}
-.flash:hover {
-    cursor: pointer;
-}
-.flash.hidden {
-    padding: 0;
-}
-span.vertical_middle {
-    vertical-align: middle;
-    line-height: normal;
-}
-.notice {
-    background-color: #5c5;
-    top: 0;
-}
-.notice.hidden {
-    top: -96px;
-    height: 0;
-}
-.notice:hover {
-    background-color: #57b057;
-}
-.alert {
-    background-color: #b31;
-    top: 0;
-}
-.alert.hidden {
-    top: -96px;
-    height: 0;
-}
-.alert:hover {
-    background-color: #a10;
-}
 #curtain {
     text-align: center;
     padding-top: 4em;
@@ -101,9 +53,6 @@ span.vertical_middle {
 #center_form_box label {
     color: rgba(0, 0, 0, 0.698039);
 }
-#center_form_box h2 {
-    /*margin-top: 0;*/
-}
 #center_form_box form .center_form_field input {
     font-size: 1.3em;
     line-height: 2.5em;
@@ -122,20 +71,6 @@ span.vertical_middle {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset;
     border: solid 1px #427fed;
 }
-#center_form_box form .center_form_field input:focus {
-
-}
-#center_form_box form input[type="submit"] {
-    /*font-size: 1.3em;*/
-    /*margin-top: 1em;*/
-}
-/*}*/
-/*#center_form_box img {*/
-    /*height: 96px;*/
-    /*width: 96px;*/
-    /*border-radius: 50%;*/
-    /*margin-bottom: 1em;*/
-/*}*/
 a.center_form_link {
     font-size: 1em;
     display: block;
@@ -170,94 +105,7 @@ input.disabled {
 .center {
     text-align: center;
 }
-.developer_pad_wrapper {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    color: #295;
-    font-size: 1.1em;
-    background-color: #f3f8f7;
-    box-shadow: 0 -2px 4px rgba(0,0,0,.29);
-    display: block;
-    height: 76px;
-    line-height: 76px;
-    font-weight: bold;
-    transition: height .70s ease-in-out;
-    padding: 0;
-}
-#developer_pad {
-    width: 70%;
-    height: 76px;
-    display: inline-block;
-    background-color: #3995ff;
-    margin: 0 auto;
-    position: fixed;
-
-}
-.developer_pad_wrapper.hidden {
-    display: none;
-}
-#developer_pad_title {
-    margin: 0;
-    display: inline-block;
-    border-right: 1px solid #ccc;
-    padding: 0em 2.5em 0em 0;
-    line-height: 76px;
-}
-ul.god_buttons {
-    padding: 0;
-    display: inline;
-    margin: 0;
-}
-ul.god_buttons li {
-    display: inline-block;
-}
-ul.god_buttons li a {
-    display: inline-block;
-    padding: 0 1em;
-    margin: 0 1em;
-    color: #2a6;
-    line-height: 68px;
-    font-size: 1.1em;
-    border-top: 4px solid #f4f8f7;
-    border-bottom: 4px solid #f4f8f7;
-    transition: border-color 0.2s ease;
-
-}
-ul.god_buttons li a:hover {
-    border-top: 4px solid #4c8;
-    /*border-bottom: 4px solid #fff;*/
-    text-decoration: none;
-}
-#header_right {
-    font-size: 1.1em;
-    color: #37a;
-    float: right;
-
-    padding: 0 0px;
-    margin: 0;
-
-    vertical-align: bottom;
-}
-
-#header_left {
-    font-size: 5em;
-    line-height: inherit;
-    color: #555;
-    font-family: Ubuntu, Verdana, Geneva, sans-serif;
-    font-weight: bold;
-    height: 76px;
-    display: inline-block;
-    float: left;
-    padding: 0px 28px;
-    margin: 0px 7px 0 56px;
-}
-#header_left:hover {
-    text-decoration: none;
-}
-
 #container {
-    /*padding-top: 2em;*/
     display: inline-block;
     clear: both;
     text-align: center;
@@ -268,49 +116,4 @@ ul.god_buttons li a:hover {
 }
 #container ul {
     display: inline-block;
-}
-#helmet {
-    background-color: #f3f7f8;
-    box-shadow: 0 2px 4px rgba(0,0,0,.29);
-
-    /*color: white;*/
-    display: block;
-    /*height: 76px;*/
-    line-height: 68px;
-    font-weight: bold;
-    transition: height .70s ease-in-out;
-    padding: 0;
-    margin: 0 0 1em;
-    position: relative;
-}
-#helmet br {
-    clear: both;
-}
-/*#logged_in_text {*/
-    /*margin: 0;*/
-    /*display: inline-block;*/
-    /*border-left: 1px solid #ccc;*/
-    /*padding: 0em 0em 0em 0;*/
-    /*line-height: 68px;*/
-    /*color: rgba(68,136,204,1);*/
-/*}*/
-nav {
-    padding: 0 2em;
-    display: inline-block;
-}
-nav a {
-    display: inline-block;
-    padding: 0 .5em;
-    margin: 0 1.5em;
-    line-height: 68px;
-    border-top: 4px solid rgba(0,0,0,0);
-    border-bottom: 4px solid #f3f7f8;
-    color: rgba(68,136,204,1);
-    transition: border-color 0.3s ease;
-}
-nav a:hover, nav a.selected {
-    text-decoration: none;
-    border-bottom-color: #48c;
-    border-top-color: #f3f7f8;
-    cursor: pointer;
 }
