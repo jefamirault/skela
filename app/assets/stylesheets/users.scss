@@ -8,9 +8,6 @@
   width: 375px;
   vertical-align: top;
   transition: color .3s ease;
-  h1 {
-    margin: 0;
-  }
 
   &.hidden {
     color: rgba(0,0,0,0);

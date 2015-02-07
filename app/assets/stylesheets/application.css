@@ -263,6 +263,9 @@ ul.god_buttons li a:hover {
     text-align: center;
     width: 100%;
 }
+#container h1 {
+    margin: 0;
+}
 #container ul {
     display: inline-block;
 }
@@ -280,14 +283,14 @@ ul.god_buttons li a:hover {
     margin: 0 0 1em;
     position: relative;
 }
-#logged_in_text {
-    margin: 0;
-    display: inline-block;
-    border-right: 1px solid #ccc;
-    padding: 0em 2.5em 0em 0;
-    line-height: 76px;
-    color: rgba(68,136,204,1);
-}
+/*#logged_in_text {*/
+    /*margin: 0;*/
+    /*display: inline-block;*/
+    /*border-left: 1px solid #ccc;*/
+    /*padding: 0em 0em 0em 0;*/
+    /*line-height: 68px;*/
+    /*color: rgba(68,136,204,1);*/
+/*}*/
 nav {
     padding: 0 2em;
     display: inline-block;

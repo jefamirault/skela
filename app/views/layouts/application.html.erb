@@ -23,14 +23,12 @@
 
         <div id="header_right">
           <nav>
-            <% if current_user %>
-              <%= logged_in_text %>
-            <% end %>
 
-            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users'}" %>
+            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}" %>
             <%= content_tag :a, 'Nowhere' %>
 
             <% if current_user %>
+              <%= link_to logged_in_text, my_profile_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}" %>
               <%= link_to 'Logout', logout_path, method: :delete %>
             <% else %>
               <%= link_to 'Sign up', signup_path %>
@@ -44,26 +42,26 @@
     <div id="container">
       <%= yield %>
 
-      <div class="developer_pad_wrapper center hidden">
-        <!--<div id="developer_pad" class="hidden">-->
-        <div id="developer_pad_title">
-          Developer Tools
-        </div>
-
-        <ul class="god_buttons">
-          <li>
-            <%= trigger_flash_notice %>
-          </li>
-          <li>
-            <%= trigger_flash_alert %>
-          </li>
-          <li>
-            <%= hide_stuff %>
-          </li>
-        </ul>
-        <!--</div>-->
-      </div>
     </div>
 
+    <div class="developer_pad_wrapper center hidden">
+      <!--<div id="developer_pad" class="hidden">-->
+      <div id="developer_pad_title">
+        Developer Tools
+      </div>
+
+      <ul class="god_buttons">
+        <li>
+          <%= trigger_flash_notice %>
+        </li>
+        <li>
+          <%= trigger_flash_alert %>
+        </li>
+        <li>
+          <%= hide_stuff %>
+        </li>
+      </ul>
+      <!--</div>-->
+    </div>
   </body>
 </html>
