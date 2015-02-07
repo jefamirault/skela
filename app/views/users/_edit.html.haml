@@ -15,8 +15,13 @@
     %dt Avatar
     %dd
       = form_for @user, html: { multipart: true} do |f|
-        = image_tag @user.avatar.url(:thumb)
+        = image_tag(@user.avatar.url(:thumb)) if @user.avatar.present?
         = f.file_field :avatar
+        = f.submit
+    %dt Favorite Color
+    %dd
+      = form_for @user do |f|
+        = f.text_field :favorite_color
         = f.submit
 
   %br

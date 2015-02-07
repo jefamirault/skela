@@ -11,20 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207174243) do
-
-  create_table "favorite_colors", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "personal_profiles", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "favorite_color_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
+ActiveRecord::Schema.define(version: 20150207192643) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150207174243) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "favorite_color"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
