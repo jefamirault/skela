@@ -1,6 +1,14 @@
-$('#login_button').val('Success!');
-$('.flash.notice').html('<%= notice %>');
-//$('.flash.notice').removeClass('hidden');
-$('#center_form_box').find('input').attr('disabled', true);
-//$('#center_form_box').addClass('wut');
-window.location.replace("<%= welcome_path %>");
+<% if current_user %>
+  $('#login_button').val('Success!');
+  $('.flash.notice').html('<%= notice %>');
+  $('#center_form_box').find('input').attr('disabled', true);
+  window.location.replace("<%= welcome_path %>");
+<% else %>
+  $('.flash.alert').html('<%= flash[:alert] %>');
+  $('.flash.alert').removeClass('hidden');
+  setTimeout(function(){
+    $('#login_button').val('Log in');
+    $('.center_form_field input').removeClass('disabled');
+  }, 300);
+
+<% end %>

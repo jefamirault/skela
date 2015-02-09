@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, except: [:new, :create]
+  before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create]
   before_filter :authorize_superuser, only: [:destroy, :admin_create]
 
   def index
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
 
-    unless current_user.is_superuser?
+    unless superuser?
       if @user != current_user
         redirect_to users_path, alert: 'You cannot edit someone else\'s profile.'
         return
@@ -29,11 +29,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.create(user_params)
-      session[:user_id] = @user.id
-      redirect_to root_url, notice: 'Thank you for signing up, welcome to Skela!'
+    if User.find_by_email params[:user][:email]
+      flash[:alert] = 'That username is taken'
     else
-      render 'new'
+      @user = User.create(user_params)
+      if @user.valid?
+        session[:user_id] = @user.id
+        flash[:notice] = 'Thank you for signing up, welcome to Skela!'
+      else
+        flash[:alert] = 'Invalid user details'
+      end
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

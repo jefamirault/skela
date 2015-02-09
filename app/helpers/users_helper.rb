@@ -12,7 +12,7 @@ module UsersHelper
 
   def destroy_user_link
     confirmation = 'Are you sure you want to delete this user?'
-    link_to 'Delete User', user_path(@user), method: :delete, id: 'delete_user', data: { confirm: confirmation }
+    link_to 'Delete User', user_path(@user), method: :delete, id: 'delete_user'#, data: { confirm: confirmation }
   end
 
 end

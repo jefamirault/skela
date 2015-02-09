@@ -4,14 +4,16 @@ class SessionsController < ApplicationController
   end
 
   def create
+    if current_user
+      session[:user_id] = nil
+    end
     user = User.find_by_email params[:email]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = 'Logged in successfully!'
     else
-      # render 'new'
+      flash[:alert] = 'Invalid Login'
     end
-
     respond_to do |format|
       format.js
     end

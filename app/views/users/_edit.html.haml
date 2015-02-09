@@ -6,7 +6,7 @@
       = form_for @user do |f|
         = f.text_field :email
         = f.submit
-    - if current_user.is_superuser?
+    - if superuser?
       %dt Privelage
       %dd
         = form_for @user do |f|

@@ -5,7 +5,7 @@
   <div id="center_form_box">
 
 
-    <%= form_for @user do |f| %>
+    <%= form_for @user, remote: true do |f| %>
 
       <div class="center_form_field">
         <%= f.text_field :email, autofocus: true, placeholder: 'Username' %>
@@ -34,3 +34,16 @@
   <br>
 
 </div>
+
+<script>
+  $('#new_user').submit(function(){
+    $('.flash').addClass('hidden');
+    if ($('#user_password').val() != $('#user_password_confirmation').val()) {
+      $('.flash.alert').html('Password confirmation does not match');
+      $('#user_password').val('');
+      $('#user_password_confirmation').val('');
+      $('.flash.alert').removeClass('hidden');
+      return false;
+    }
+  });
+</script>

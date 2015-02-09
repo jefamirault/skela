@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_filter :authenticate, except: [:index, :show]
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /issues
