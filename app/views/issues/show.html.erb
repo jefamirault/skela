@@ -1,0 +1,14 @@
+<h1>Issue #<%= @issue.id %></h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %>
+</p>
+
+<p>
+  <strong>How to test:</strong>
+  <%= @issue.how_to_test %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

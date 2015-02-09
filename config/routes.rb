@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :issues
+
   # get 'sessions/new'
 
   # get 'users/show'
