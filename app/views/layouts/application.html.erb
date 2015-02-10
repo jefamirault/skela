@@ -18,27 +18,7 @@
 
 
       <div id="helmet" class="<%= 'hidden' if logging_in? or signing_up? %>">
-
-
-        <%= header_left %>
-
-        <div id="header_right">
-          <nav>
-
-            <%= link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}" %>
-            <%= link_to 'Issue Tracker', issues_path %>
-
-            <% if current_user %>
-              <%= link_to logged_in_text, my_profile_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}" %>
-              <%= link_to 'Logout', logout_path, method: :delete %>
-            <% else %>
-              <%= link_to 'Sign up', signup_path %>
-              <%= link_to 'Login', login_path %>
-            <% end %>
-
-          </nav>
-        </div>
-        <br>
+        <%= render partial: 'shared/header' %>
       </div>
     <div id="container">
       <%= yield %>

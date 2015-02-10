@@ -1,22 +1,13 @@
 <% if current_user %>
-//$('#login_button').val('Success!');
-//$('.flash.notice').html('<%= flash[:notice] %>');
-//$('.flash.notice').removeClass('hidden');
-//  setTimeout(function(){ $('#container').addClass('hidden'); }, 500);
-//  setTimeout(function(){
-//    $('#container').html('<%= j render partial: 'welcome/index' %>');
-//    $('#container').removeClass('hidden');
-//  }, 1000);
-//  $('#helmet').removeClass('hidden');
-
-  var notice  = '<%= notice %>';
+  var notice  = 'Thank you for signing up, welcome to Skela!';
   var content = '<%= j render partial: 'welcome/index' %>';
   var header  = '<%= j render partial: 'shared/header' %>';
 
   login_success(notice, content, header);
+  window.history.replaceState( {} , '', '<%= welcome_path %>' );
 
 <% else %>
-  $('.flash.alert').html('<%= flash[:alert] %>');
+  $('.flash.alert').html('Invalid login details');
   $('.flash.alert').removeClass('hidden');
   setTimeout(function(){
     $('#login_button').val('Sign up');

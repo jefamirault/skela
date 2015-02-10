@@ -18,9 +18,16 @@
 function doc_keyUp(e) {
     if (e.shiftKey && e.keyCode == 40) {
         $('.developer_pad').toggleClass('hidden');
+    } else if (e.keyCode == 32) {
+        hideFlash();
     }
 }
 document.addEventListener('keyup', doc_keyUp, false);
+
+function hideFlash() {
+    if ($('input:focus').size == 0)
+        $('.flash').addClass('hidden');
+}
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
     $('.flash.notice').html('hahahahahaha');

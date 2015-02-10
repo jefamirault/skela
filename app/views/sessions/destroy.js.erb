@@ -1,0 +1,6 @@
+setTimeout(function(){
+  $('#container').html('<%= j render partial: 'sessions/new' %>');
+  $('#container').removeClass('hidden');
+  $('#email').focus();
+  window.history.replaceState( {} , '', '<%= login_path %>' );
+}, 800);

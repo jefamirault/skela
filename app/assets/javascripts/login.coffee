@@ -17,9 +17,19 @@ root.login_success = (notice, content, header) ->
   $('#helmet').html header
   $('#helmet').removeClass 'hidden'
 
+
 new_content = (content) ->
   $('#container').html content
   $('#container').removeClass 'hidden'
 
 hide_container = ->
   $('#container').addClass 'hidden'
+
+hide_helmet = ->
+  $('#helmet').addClass 'hidden'
+
+# Log out
+
+$(document).on 'click', '#logout_button', ->
+  setTimeout hide_helmet, 0
+  setTimeout hide_container, 300

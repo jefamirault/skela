@@ -8,7 +8,7 @@
 
     - if current_user
       = link_to logged_in_text, my_profile_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}"
-      = link_to 'Logout', logout_path, method: :delete
+      = link_to 'Logout', logout_path, id: 'logout_button', remote: true, method: :delete
     - else
       = link_to 'Sign up', signup_path
       = link_to 'Login', login_path

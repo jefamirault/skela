@@ -30,14 +30,11 @@ class UsersController < ApplicationController
 
   def create
     if User.find_by_email params[:user][:email]
-      flash[:alert] = 'That username is taken'
+      # flash[:alert] = 'That username is taken'
     else
       @user = User.create(user_params)
       if @user.valid?
         session[:user_id] = @user.id
-        flash[:notice] = 'Thank you for signing up, welcome to Skela!'
-      else
-        flash[:alert] = 'Invalid user details'
       end
     end
 

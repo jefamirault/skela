@@ -12,9 +12,6 @@ class SessionsController < ApplicationController
     user = User.find_by_email params[:email]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = 'Logged in successfully!'
-    else
-      flash[:alert] = 'Invalid Login'
     end
     respond_to do |format|
       format.js
@@ -23,6 +20,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: 'Logged out successfully!'
+
+    respond_to do |format|
+      format.js
+    end
   end
 end
