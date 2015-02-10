@@ -8,17 +8,18 @@
   </head>
   <body>
 
-    <div class="flash notice<%= ' hidden' if notice.nil? %>">
-      <span class="vertical_middle"><%= notice %></span>
-    </div>
+  <div class="flash notice<%= ' hidden' if notice.nil? %>">
+    <span class="vertical_middle"><%= notice %></span>
+  </div>
 
-    <div class="flash alert<%= ' hidden' if alert.nil? %>">
-      <span class="vertical_middle"><%= alert %></span>
-    </div>
+  <div class="flash alert<%= ' hidden' if alert.nil? %>">
+    <span class="vertical_middle"><%= alert %></span>
+  </div>
 
 
-    <% unless params[:controller] == 'sessions' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'new' %>
-      <div id="helmet">
+      <div id="helmet" class="<%= 'hidden' if logging_in? or signing_up? %>">
+
+
         <%= header_left %>
 
         <div id="header_right">
@@ -39,7 +40,6 @@
         </div>
         <br>
       </div>
-    <% end %>
     <div id="container">
       <%= yield %>
 

@@ -1,4 +1,5 @@
 .flash {
+  z-index: 10;
   font-size: 1.5em;
   color: white;
   display: block;
@@ -6,11 +7,11 @@
   height: 76px;
   line-height: 68px;
   text-align: center;
-  position: relative;
+  position: absolute;
   font-weight: bold;
-  transition: top .55s ease-in-out 0s,
-  height .55s ease-in-out .3s,
+  transition: top .70s ease-in-out,
   background .3s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0,0,0,.19);
 
   &:hover {
     cursor: pointer;
@@ -28,7 +29,6 @@ span.vertical_middle {
   top: 0;
   &.hidden {
     top: -96px;
-    height: 0;
   }
   &:hover {
     background-color: #57b057;
@@ -39,7 +39,6 @@ span.vertical_middle {
   top: 0;
   &.hidden {
     top: -96px;
-    height: 0;
   }
   &:hover {
     background-color: #a10;
@@ -52,11 +51,15 @@ span.vertical_middle {
   display: block;
   line-height: 68px;
   font-weight: bold;
-  transition: height .70s ease-in-out;
+  transition: top .70s ease-in-out;
   padding: 0;
   margin: 0 0 1em;
   position: relative;
+  top: 0;
 
+  &.hidden {
+    top: -96px;
+  }
   #header_left {
     font-size: 5em;
     line-height: inherit;
@@ -108,4 +111,3 @@ span.vertical_middle {
     clear: both;
   }
 }
-

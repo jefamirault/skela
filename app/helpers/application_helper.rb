@@ -23,4 +23,13 @@ module ApplicationHelper
       "Logged in as #{content_tag(:strong, current_user.email)}".html_safe
     end
   end
+
+  def logging_in?
+    params[:controller] == 'sessions' && params[:action] == 'new'
+  end
+
+  def signing_up?
+    params[:controller] == 'users' && params[:action] == 'new'
+  end
+
 end

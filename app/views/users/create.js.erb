@@ -1,18 +1,25 @@
 <% if current_user %>
-$('.flash.notice').html('<%= flash[:notice] %>');
-$('.flash.notice').removeClass('hidden');
-$('#login_button').val('Success!');
-setTimeout(function(){ $('#container').addClass('hidden'); }, 500);
-setTimeout(function(){
-  $('#container').html('<%= j render partial: 'welcome/index' %>');
-  $('#container').removeClass('hidden');
-}, 1000);
-console.log('what');
+//$('#login_button').val('Success!');
+//$('.flash.notice').html('<%= flash[:notice] %>');
+//$('.flash.notice').removeClass('hidden');
+//  setTimeout(function(){ $('#container').addClass('hidden'); }, 500);
+//  setTimeout(function(){
+//    $('#container').html('<%= j render partial: 'welcome/index' %>');
+//    $('#container').removeClass('hidden');
+//  }, 1000);
+//  $('#helmet').removeClass('hidden');
+
+  var notice  = '<%= notice %>';
+  var content = '<%= j render partial: 'welcome/index' %>';
+  var header  = '<%= j render partial: 'shared/header' %>';
+
+  login_success(notice, content, header);
+
 <% else %>
-$('.flash.alert').html('<%= flash[:alert] %>');
-$('.flash.alert').removeClass('hidden');
-setTimeout(function(){
-  $('#login_button').val('Sign up');
-  $('.center_form_field input').removeClass('disabled');
-}, 300);
+  $('.flash.alert').html('<%= flash[:alert] %>');
+  $('.flash.alert').removeClass('hidden');
+  setTimeout(function(){
+    $('#login_button').val('Sign up');
+    $('.center_form_field input').removeClass('disabled');
+  }, 300);
 <% end %>
