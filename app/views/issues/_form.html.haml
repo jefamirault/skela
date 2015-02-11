@@ -1,0 +1,16 @@
+#issue_form
+  %dl
+    %dt Description
+    %dd= ajax_text 'description', @issue
+
+    %dt How to Test
+    %dd= ajax_text 'how_to_test', @issue
+
+    %dt Assignee
+    %dd= ajax_user_select 'assignee_id', @issue
+
+    %dt Tester
+    %dd= ajax_user_select 'tester_id', @issue
+
+    %dt Status
+    %dd= ajax_boolean 'completed', @issue

@@ -8,21 +8,21 @@
   </head>
   <body>
 
-  <div class="flash notice<%= ' hidden' if notice.nil? %>">
-    <span class="vertical_middle"><%= notice %></span>
-  </div>
+    <div class="flash notice<%= ' hidden' if notice.nil? %>">
+      <span class="vertical_middle"><%= notice %></span>
+    </div>
 
-  <div class="flash alert<%= ' hidden' if alert.nil? %>">
-    <span class="vertical_middle"><%= alert %></span>
-  </div>
+    <div class="flash alert<%= ' hidden' if alert.nil? %>">
+      <span class="vertical_middle"><%= alert %></span>
+    </div>
 
 
-      <div id="helmet" class="<%= 'hidden' if logging_in? or signing_up? %>">
-        <%= render partial: 'shared/header' %>
-      </div>
+    <div id="helmet" class="<%= 'hidden' if logging_in? or signing_up? %>">
+      <%= render partial: 'shared/header' %>
+    </div>
+
     <div id="container">
       <%= yield %>
-
     </div>
 
     <div class="developer_pad center hidden">

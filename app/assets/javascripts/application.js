@@ -25,7 +25,7 @@ function doc_keyUp(e) {
 document.addEventListener('keyup', doc_keyUp, false);
 
 function hideFlash() {
-    if ($('input:focus').size == 0)
+    if ($('input:focus').size() == 0)
         $('.flash').addClass('hidden');
 }
 
