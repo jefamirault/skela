@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def logged_in_text
     content_tag :div, id: 'logged_in_text' do
-      "Logged in as #{content_tag(:strong, current_user.email)}".html_safe
+      "Logged in as #{content_tag(:strong, content_tag(:span, current_user.email, class: "user_#{current_user.id}_email"))}".html_safe
     end
   end
 

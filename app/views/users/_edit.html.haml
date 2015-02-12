@@ -2,27 +2,21 @@
   %h1 Edit User
   %dl
     %dt Username
-    %dd
-      = form_for @user do |f|
-        = f.text_field :email
-        = f.submit
+    %dd= ajax_string 'email', @user
+
     - if superuser?
       %dt Privelage
-      %dd
-        = form_for @user do |f|
-          = f.number_field :privelage_level
-          = f.submit
+      %dd= ajax_number 'privelage_level', @user
+
     %dt Avatar
     %dd
       = form_for @user, html: { multipart: true} do |f|
         = image_tag(@user.avatar.url(:thumb)) if @user.avatar.present?
         = f.file_field :avatar
         = f.submit
+
     %dt Favorite Color
-    %dd
-      = form_for @user do |f|
-        = f.text_field :favorite_color
-        = f.submit
+    %dd= ajax_string 'favorite_color', @user
 
   %br
   = destroy_user_link

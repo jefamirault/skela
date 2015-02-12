@@ -13,7 +13,7 @@
     color: rgba(0,0,0,0);
   }
   input {
-    color: inherit
+    color: inherit;
   }
 }
 #user_select {
@@ -21,6 +21,9 @@
   display: inline-block;
   margin: 0 2em;
   max-width: 400px;
+  #users {
+    max-width: 400px;
+  }
 }
 //table#users {
 //  display: inline-block;

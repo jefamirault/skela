@@ -6,10 +6,11 @@
         %th actions
     %tbody
       - @users.each do |user|
-        %tr
-          %td= user.email
+        %tr{data: { user_id: user.id }}
+          %td
+            %span{class: "user_#{user.id}_email"}= user.email
           %td= link_to 'edit', edit_user_path(user), remote: true, class: 'edit_user'
-
+  %br
   = link_to 'Create New User', admin_new_user_path, remote: true, class: 'new_user'
 
 #user_form.hidden

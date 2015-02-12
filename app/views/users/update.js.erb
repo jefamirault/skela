@@ -1,1 +1,9 @@
-alert('yay')
+<% if notice %>
+  $('.notice').html('<%= notice %>');
+  $('.notice').removeClass('hidden');
+<% end %>
+<% if alert %>
+  $('.alert').html('<%= alert %>');
+  $('.alert').removeClass('hidden');
+<% end %>
+$('span.user_<%= @user.id %>_email').html('<%= @user.email %>');

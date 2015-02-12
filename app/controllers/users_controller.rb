@@ -12,15 +12,18 @@ class UsersController < ApplicationController
 
     unless superuser?
       if @user != current_user
-        redirect_to users_path, alert: 'You cannot edit someone else\'s profile.'
+        flash[:alert] = 'You cannot edit someone else\'s profile.'
         return
       end
     end
-
     if @user.update(user_params)
-      redirect_to users_path, notice: 'User updated successfully!'
+      flash[:notice] = 'User updated successfully!'
     else
-      redirect_to welcome_path, alert: 'Something happened'
+      flash[:alert] = 'Something happened'
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
