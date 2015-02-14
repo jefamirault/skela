@@ -1,15 +1,15 @@
 class SessionsController < ApplicationController
   def new
-    if current_user
+    if logged_in?
       redirect_to welcome_path
     end
   end
 
   def create
-    if current_user
+    if logged_in?
       session[:user_id] = nil
     end
-    user = User.find_by_email params[:email]
+    user = User.find_by_username params[:username]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
     end

@@ -1,0 +1,10 @@
+%h1
+  Editing
+  = @issue.number
+
+= render 'form'
+
+%br
+= link_to 'Show', @issue
+|
+= link_to 'Back', issues_path

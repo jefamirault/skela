@@ -1,0 +1,15 @@
+#curtain
+  %h1 skela
+  #center_form_box
+    = form_for @user, remote: true do |f|
+      .center_form_field= f.text_field :username, autofocus: true, placeholder: 'Username'
+      .center_form_field= f.password_field :password, autocomplete: 'off', placeholder: 'Password'
+      .center_form_field= f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+      .actions= f.submit 'Sign up', id: 'login_button'
+
+  %br
+  = link_to 'I already have an account', login_path, class: 'center_form_link'
+
+
+:javascript
+  $('#new_user').submit(clientSideValidations);

@@ -93,10 +93,6 @@ a.center_form_link:active {
 input.disabled {
     background-color: #f4f4f4;
 }
-
-.center {
-    text-align: center;
-}
 #container {
     display: inline-block;
     clear: both;

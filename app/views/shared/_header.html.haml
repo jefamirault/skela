@@ -6,7 +6,7 @@
     = link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}"
     = link_to 'Issue Tracker', issues_path, class: "#{'selected' if params[:controller] == 'issues'}"
 
-    - if current_user
+    - if logged_in?
       = link_to logged_in_text, my_profile_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}"
       = link_to 'Logout', logout_path, id: 'logout_button', remote: true, method: :delete
     - else

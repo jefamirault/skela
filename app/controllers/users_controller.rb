@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if User.find_by_email params[:user][:email]
+    if User.find_by_username params[:user][:username]
       # flash[:alert] = 'That username is taken'
     else
       @user = User.create(user_params)
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :avatar, :favorite_color)
+    params.require(:user).permit(:username, :password, :password_confirmation, :avatar, :favorite_color)
   end
 
 end

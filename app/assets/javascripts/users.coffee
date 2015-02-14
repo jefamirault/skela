@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'click', '#user_select a.edit_user', ->
+  $('#user_form h1').html 'Edit User'
   $('#user_form').removeClass 'hidden'
 
 $(document).on 'click', '#user_select a.new_user', ->

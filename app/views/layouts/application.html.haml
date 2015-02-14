@@ -1,0 +1,30 @@
+!!! 5
+%html
+  %head 
+    %title Skela
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .flash.notice{class: "#{' hidden' if notice.nil?}"}
+      %span.vertical_middle= notice
+    .flash.alert{class: "#{ ' hidden' if alert.nil?}"}
+      %span.vertical_middle= alert
+
+    %div#helmet{class: "#{'hidden' if logging_in? || signing_up?}"}
+      = render partial: 'shared/header'
+
+    #container= yield
+
+    .developer_pad.hidden
+      #developer_pad_title
+        Developer Tools
+
+      %ul.god_buttons
+        %li
+          = trigger_flash_notice
+        %li
+          = trigger_flash_alert
+        %li
+          = hide_stuff
