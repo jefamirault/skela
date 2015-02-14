@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211033620) do
+ActiveRecord::Schema.define(version: 20150214201045) do
 
   create_table "issues", force: :cascade do |t|
     t.text     "description"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150211033620) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.integer  "privelage_level"
+    t.integer  "privilege_level"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

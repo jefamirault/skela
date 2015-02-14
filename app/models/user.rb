@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def is_superuser?
-    self.privelage_level == 1
+    self.privilege_level == 1
   end
 
   def favorite_color

@@ -10,16 +10,34 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
 
+    if params[:user].include?(:privilege_level)
+      if superuser?
+        @user.privilege_level = params[:user][:privilege_level]
+      else
+        flash[:alert] = 'Get the fuck out of here.'
+        session[:user_id] = nil
+        return
+      end
+      params[:user].delete :privilege_level
+    end
     unless superuser?
       if @user != current_user
         flash[:alert] = 'You cannot edit someone else\'s profile.'
         return
       end
     end
-    if @user.update(user_params)
-      flash[:notice] = 'User updated successfully!'
+    if params[:user].any?
+      if @user.update(user_params)
+        flash[:notice] = 'User updated successfully!'
+      else
+        flash[:alert] = 'Something happened'
+      end
     else
-      flash[:alert] = 'Something happened'
+      if @user.save
+        flash[:notice] = 'User updated successfully!'
+      else
+        flash[:alert] = 'Something happened'
+      end
     end
 
     respond_to do |format|
@@ -82,7 +100,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :privelage_level, :avatar, :favorite_color)
+    params.require(:user).permit(:email, :password, :password_confirmation, :avatar, :favorite_color)
   end
 
 end
