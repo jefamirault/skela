@@ -55,6 +55,7 @@ span.vertical_middle
   margin: 0 0 1em
   position: relative
   top: 0
+  text-align: center
 
   &.hidden
     top: -96px
@@ -102,6 +103,23 @@ span.vertical_middle
           border-bottom-color: #48c
           border-top-color: #f3f7f8
           cursor: pointer
+  #user_nav
+    display: inline-block
+    background-color: rgba(0,0,0,.10)
+    width: 100px
+    line-height: 76px
+    text-align: left
+    transition: width 1s ease-in-out .1s
+
+    #logged_in_text
+      padding: 0 1em
+
+    &:hover
+      width: 400px
+    a
+      color: #48c
+      text-decoration: none
+
 
   br
     clear: both
