@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
@@ -74,7 +79,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find params[:id]
     if @user.destroy
-      redirect_to users_path, notice: 'User successfully deleted!'
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -87,14 +94,22 @@ class UsersController < ApplicationController
 
   def admin_create
     if @user = User.create(user_params)
-      redirect_to users_path, notice: 'User created successfully!'
+      flash[:notice] = 'User created successfully!'
     else
-      render 'user_path'
+      flash[:alert] = 'No good'
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
   def my_profile
     @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

@@ -1,0 +1,7 @@
+hide('#user_form');
+window.setTimeout(function(){
+  $('tr[data-user-id=<%= @user.id %>]').addClass('invisible');
+  window.setTimeout(function(){
+    $('tr[data-user-id=<%= @user.id %>]').remove();
+  }, 450);
+}, 200);

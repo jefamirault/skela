@@ -1,1 +1,6 @@
-$('#user_form').replaceWith('<%= j render partial: 'edit' %>');
+window.setTimeout(function(){
+  $('#user_form').replaceWith('<%= j render partial: 'edit' %>');
+  window.setTimeout(function(){
+    show('#user_form');
+  }, 0);
+}, 400);
