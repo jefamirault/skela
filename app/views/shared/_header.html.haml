@@ -4,7 +4,7 @@
   %nav
 
     = link_to 'Users', users_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}"
-    = link_to 'Issue Tracker', issues_path, class: "#{'selected' if params[:controller] == 'issues'}"
+    = link_to 'Issue Tracker', issues_path, id: 'issues_index_link', class: "#{'selected' if params[:controller] == 'issues'}", remote: true
 
     - if logged_in?
       = link_to logged_in_text, my_profile_path, class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}"

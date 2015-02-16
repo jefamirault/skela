@@ -44,3 +44,18 @@ $(document).on('click', '#hide_stuff', function(event) {
     $('#user_form').toggleClass('hidden');
     event.preventDefault();
 });
+
+function hide(selector) {
+    jQuery(selector).addClass('hidden');
+}
+function show(selector) {
+    jQuery(selector).removeClass('hidden');
+}
+
+$(document).on('click', '.destroy_issue', function(){
+    var row = $(this).closest('tr');
+    row.addClass('invisible');
+    window.setTimeout(function(){
+        row.addClass('hidden');
+    }, 450);
+});

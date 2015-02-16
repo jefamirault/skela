@@ -15,7 +15,8 @@
     %div#helmet{class: "#{'hidden' if logging_in? || signing_up?}"}
       = render partial: 'shared/header'
 
-    #container= yield
+    #container
+      = yield
 
     .developer_pad.hidden
       #developer_pad_title

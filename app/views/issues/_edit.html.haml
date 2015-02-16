@@ -1,0 +1,8 @@
+%h1
+  Editing
+  = @issue.number
+
+= render 'form'
+
+%br
+= link_to 'Done Editing', issues_path, id: 'issues_index', remote: true

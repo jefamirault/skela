@@ -3,34 +3,37 @@ class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /issues
-  # GET /issues.json
   def index
     @issues = Issue.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /issues/1
-  # GET /issues/1.json
   def show
   end
 
   # GET /issues/new
   def new
-    @issue = Issue.new creator: current_user
+    @issue = Issue.new(creator: current_user)
     respond_to do |format|
       if @issue.save
-        format.html { redirect_to edit_issue_path @issue, notice: 'Issue created successfully!' }
-      else
-        format.html { render issues_path }
+        format.js
       end
     end
   end
 
   # GET /issues/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /issues
-  # POST /issues.json
   def create
     @issue = Issue.new(issue_params)
     @issue.creator = current_user
@@ -46,7 +49,6 @@ class IssuesController < ApplicationController
   end
 
   # PATCH/PUT /issues/1
-  # PATCH/PUT /issues/1.json
   def update
     respond_to do |format|
       if @issue.update(issue_params)
@@ -61,12 +63,11 @@ class IssuesController < ApplicationController
   end
 
   # DELETE /issues/1
-  # DELETE /issues/1.json
   def destroy
     @issue.destroy
     respond_to do |format|
-      format.html { redirect_to issues_url, notice: 'Issue destroyed successfully!' }
-      format.json { head :no_content }
+      # format.html { redirect_to issues_url, notice: 'Issue destroyed successfully!' }
+      format.js
     end
   end
 
