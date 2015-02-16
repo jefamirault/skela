@@ -1,18 +1,1 @@
-#user_select
-  %table#users
-    %thead
-      %tr
-        %th username
-        %th actions
-    %tbody
-      - @users.each do |user|
-        %tr{data: { user_id: user.id }}
-          %td
-            %span{class: "user_#{user.id}_username"}= user.username
-          %td= link_to 'edit', edit_user_path(user), remote: true, class: 'edit_user'
-  %br
-  = link_to 'Create New User', admin_new_user_path, remote: true, class: 'new_user'
-
-#user_form
-  %h1 Select a User
-  %dl
+= render partial: 'index'

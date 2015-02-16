@@ -1,0 +1,16 @@
+$('#users').append('<%= user_select_row @user, hidden: true %>');
+
+var user_row = $('tr[data-user-id=<%= @user.id %>]');
+
+user_row.removeClass('hidden');
+window.setTimeout(function(){
+  user_row.removeClass('invisible');
+}, 50);
+
+$('#user_form').addClass('hidden');
+window.setTimeout(function(){
+  $('#user_form').replaceWith('<%= j render partial: 'edit' %>');
+  window.setTimeout(function(){
+    $('#user_form').removeClass('hidden')
+  }, 0);
+}, 500);
