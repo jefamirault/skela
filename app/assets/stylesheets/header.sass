@@ -1,3 +1,6 @@
+////////////////////
+// Flash Messages //
+////////////////////
 .flash
   z-index: 10
   font-size: 1.5em
@@ -43,6 +46,9 @@ span.vertical_middle
     background-color: #a10
   
 
+///////////////////
+// Header Proper //
+///////////////////
 
 #helmet
   background-color: #f3f7f8
@@ -52,14 +58,16 @@ span.vertical_middle
   font-weight: bold
   transition: top .70s ease-in-out
   padding: 0
-  margin: 0 0 1em
+  margin: 0 0 3em
   position: relative
   top: 0
   text-align: center
 
   &.hidden
     top: -96px
-  
+
+  ///// Skela Logo /////
+
   #header_left
     font-size: 5em
     line-height: inherit
@@ -68,34 +76,34 @@ span.vertical_middle
     font-weight: bold
     height: 76px
     display: inline-block
-    float: left
-    padding: 0px 28px
-    margin: 0px 7px 0 56px
+    vertical-align: middle
+    padding: 0px 28px 0 180px
+    margin: 0
 
     &:hover
       text-decoration: none
     
-  
+  ///// Navigation /////
+
   #header_right
     font-size: 1.1em
-    color: #37a
-    float: right
+    color: #48c
+    display: inline-block
     padding: 0
     margin: 0
     vertical-align: bottom
 
     nav
-      padding: 0 2em
       display: inline-block
 
       a
         display: inline-block
         padding: 0 .5em
-        margin: 0 1.5em
+        margin: 0 1.1em
         line-height: 68px
         border-top: 4px solid rgba(0,0,0,0)
         border-bottom: 4px solid #f3f7f8
-        color: rgba(68,136,204,1)
+        color: #48c
         transition: border-color 0.3s ease
 
         &:hover, &.selected
@@ -105,20 +113,62 @@ span.vertical_middle
           cursor: pointer
   #user_nav
     display: inline-block
-    background-color: rgba(0,0,0,.10)
-    width: 100px
     line-height: 76px
     text-align: left
-    transition: width 1s ease-in-out .1s
+    white-space: nowrap
+
+    padding: 0 1em 0 0
+    color: #48c
 
     #logged_in_text
-      padding: 0 1em
+      display: inline-block
+      border-right: 1px solid rgba(0,0,0,0)
+      padding: 0 3.2em 0 1.6em
+      margin: 0 1.6em 0 0
+      transition: border .5s ease-in-out
+
+      &:hover, &.selected
+        text-decoration: none
 
     &:hover
-      width: 400px
+      a.user_link
+        opacity: 1
+      #logged_in_text
+        border-color: rgba(0,0,0,.19)
+
     a
+      display: inline-block
       color: #48c
       text-decoration: none
+      opacity: 1
+      transition: border-color 0.2s ease
+
+      &.user_link
+        opacity: 0
+
+
+      &.link_1
+        transition: opacity .3s ease-in-out 0s
+      &.link_2
+        transition: opacity .3s ease-in-out .05s
+      &.link_3
+        transition: opacity .3s ease-in-out .1s
+
+
+      display: inline-block
+      padding: 0 .5em
+      margin: 0 1.1em
+      line-height: 68px
+      border-top: 4px solid rgba(0,0,0,0)
+      border-bottom: 4px solid rgba(0,0,0,0)
+
+      &:hover, &.selected
+        text-decoration: none
+        border-bottom-color: #48c
+        border-top-color: rgba(0,0,0,0)
+        cursor: pointer
+
+    vertical-align: bottom
 
 
   br
