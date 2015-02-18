@@ -56,4 +56,3 @@ group :development do
   gem 'pry-remote'
   gem 'pry-nav'
 end
-

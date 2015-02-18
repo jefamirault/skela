@@ -11,10 +11,6 @@ Rails.application.routes.draw do
 
   # get 'users/index'
 
-  resources :favorite_colors
-
-  resources :personal_profiles
-
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
@@ -84,4 +80,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  match "*path", to: redirect('/'), via: :all
+
 end

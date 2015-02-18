@@ -14,8 +14,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-
-    if params[:user].include?(:privilege_level)
+    if params[:user] && params[:user].include?(:privilege_level)
       if superuser?
         @user.privilege_level = params[:user][:privilege_level]
       else
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
         return
       end
     end
-    if params[:user].any?
+    if params[:user] && params[:user].any?
       if @user.update(user_params)
         flash[:notice] = 'User updated successfully!'
       else
