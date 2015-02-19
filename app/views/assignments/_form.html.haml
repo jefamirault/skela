@@ -1,0 +1,10 @@
+%dl
+  %dt Title
+  %dd= ajax_string 'title', @assignment
+
+  %dt Description
+  %dd= ajax_text 'description', @assignment
+
+  %dt Due Date
+  %dd= ajax_datetime 'deadline', @assignment
+

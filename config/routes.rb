@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :courses
+  resources :courses do
+  end
+
+  get 'courses/:course_id/assignments', to: 'assignments#index', as: 'assignments'
+  get 'courses/:course_id/assignments/new', to: 'assignments#new', as: 'new_assignment'
+  resources :assignments, except: [:index, :new]
+
 
   resources :issues
 

@@ -19,13 +19,22 @@ class CoursesController < ApplicationController
   end
 
   def edit
-
+    @course = Course.find params[:id]
   end
 
   def show
   end
 
   def destroy
+    @course = Course.find params[:id]
+    if @course.destroy
+      redirect_to courses_path, notice: 'Course deleted successfully.'
+    end
+
+  end
+
+  def assignments
+    @course = Course.find params[:id]
   end
 
   private

@@ -1,14 +1,3 @@
-%h1 New Course
-
-%dl
-  %dt Course Title
-  %dd= ajax_string 'title', @course
-
-  %dt Description
-  = ajax_text 'description', @course
-
-  %dt Instructor
-  = ajax_string 'instructor', @course
-
-  %dt TA
-  = ajax_string 'assistant_instructor', @course
+#course_form
+  %h1 New Course
+  = render partial: 'form'

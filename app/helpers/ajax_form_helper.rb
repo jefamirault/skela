@@ -19,6 +19,10 @@ module AjaxFormHelper
     ajax_form 'boolean', resource, field
   end
 
+  def ajax_datetime(field, resource = @resource)
+    ajax_form 'datetime', resource, field
+  end
+
   def ajax_form(type, resource, field)
     form_for resource, remote: true do |f|
       if type == 'user_select'
@@ -31,6 +35,8 @@ module AjaxFormHelper
         f.text_area field, class: 'ajax_field'
       elsif type == 'boolean'
         (f.label field) + (f.check_box field, class: 'ajax_field')
+      elsif type == 'datetime'
+        f.datetime_select field, class: 'ajax_field'
       end
     end
   end

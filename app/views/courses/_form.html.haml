@@ -1,0 +1,16 @@
+%dl
+  %dt Course Title
+  %dd= ajax_string 'title', @course
+
+  %dt Description
+  %dd= ajax_text 'description', @course
+
+  %dt Instructor
+  %dd= ajax_string 'instructor', @course
+
+  %dt TA
+  %dd= ajax_string 'assistant_instructor', @course
+
+%br
+%br
+= link_to 'Delete Course', course_path(@course), method: :delete
