@@ -5,6 +5,7 @@
 
     = link_to 'Users', users_path, id: 'users_link', class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}", remote: true
     = link_to 'Issues', issues_path, id: 'issues_link', class: "#{'selected' if params[:controller] == 'issues'}", remote: true
+    = link_to 'Courses', courses_path, id: 'courses_link', class: "#{'selected' if params[:controller] == 'courses'}"
 
     - if logged_in?
       %nav#user_nav

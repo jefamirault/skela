@@ -1,0 +1,22 @@
+#course_select
+  %h1 Courses
+
+  %table
+    %thead
+      %th Student
+      %th Title
+      %th Description
+      %th Instructor
+      %th Assistant Instructor
+
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td= course.user
+          %td= course.title
+          %td= course.description
+          %td= course.instructor
+          %td= course.assistant_instructor
+
+  %br
+  = link_to 'Add a New Course', new_course_path

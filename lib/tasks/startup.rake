@@ -4,7 +4,7 @@ namespace :startup do
     jef = User.find_by_username 'Jef'
 
     if jef.nil?
-      jef = User.new username: 'Jef', password: 'password'
+      jef = User.new username: 'Jef', password: 'password1'
       if jef.save
         puts 'User Jef created.'
       end

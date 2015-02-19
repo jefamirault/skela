@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def is_superuser?
     self.privilege_level == 1
   end
+
+  def to_s
+    self.username
+  end
 end

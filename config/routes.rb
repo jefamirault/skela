@@ -1,26 +1,20 @@
 Rails.application.routes.draw do
+
+  resources :courses
+
   resources :issues
 
-  # get 'sessions/new'
-
-  # get 'users/show'
-  #
-  # get 'users/edit'
-  #
-  # get 'users/destroy'
-
-  # get 'users/index'
-
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :users
 
   get 'admin_new_user', to: 'users#admin_new', as: 'admin_new_user'
   post 'admin_create_user', to: 'users#admin_create', as: 'admin_create_user'
-
   get 'my_profile', to: 'users#my_profile', as: 'my_profile'
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
 
   resources :sessions
 
@@ -81,6 +75,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  match "*path", to: redirect('/'), via: :all
+  match '*path', to: redirect('/'), via: :all
 
 end
