@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   get 'welcome' => 'welcome#index', as: :welcome
 
+  get 'not_allowed' => 'users#not_allowed', as: :not_allowed
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

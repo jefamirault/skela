@@ -28,6 +28,20 @@ function hideFlash() {
     if ($('input:focus').size() == 0)
         $('.flash').addClass('hidden');
 }
+function flashNotice(message) {
+    $('.flash.notice').html(message);
+    $('.flash.notice').removeClass('hidden');
+    window.setTimeout(function(){
+        $('.flash.notice').addClass('hidden');
+    }, 1900);
+}
+function flashAlert(message) {
+    $('.flash.alert').html(message);
+    $('.flash.alert').removeClass('hidden');
+    window.setTimeout(function(){
+        $('.flash.alert').addClass('hidden');
+    }, 1900);
+}
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
     $('.flash.notice').html('hahahahahaha');
