@@ -1,3 +1,9 @@
 window.setTimeout(function(){
-  $('tr[data-issue-id=<%= @issue.id %>]').remove();
-}, 500);
+  $('#container').html('<%= j render partial: 'index' %>');
+  $('#issues').dataTable({
+    "order": [[0, "desc"]],
+    "iDisplayLength": 25
+  });
+  show('#container');
+}, 400);
+window.history.replaceState( {} , '', '<%= issues_path %>' );

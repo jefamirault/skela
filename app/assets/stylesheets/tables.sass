@@ -1,0 +1,28 @@
+#container table
+  background-color: #eff4f3
+  box-shadow: 0px 1px 4px rgba(0,0,0,.59)
+  clear: both
+  display: block
+  margin: 3em 0 1em
+
+  border: none
+  tr
+    cursor: pointer
+
+    td
+      padding: .5em
+      transition: background .3s ease-out
+    &.even
+      td
+        background-color: #eff4f3
+    &.odd
+      td
+        //background-color: #f2f0ee
+    //rgba(0,0,0,.04)
+    &:hover
+      td
+        //background-color: orange
+    th.sorting_asc:after
+      content: ' v'
+    th.sorting_desc:after
+      content: ' ^'

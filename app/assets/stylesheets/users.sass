@@ -15,14 +15,18 @@
   input
     color: inherit
 
-#user_select
-
-  display: inline-block
-  margin: 0 2em
-  max-width: 400px
-  #users
+#container
+  #user_select
+    display: inline-block
+    margin: 0 2em
     max-width: 400px
-
+    #users
+      border-collapse: collapse
+      max-width: 400px
+    td
+      transition: background .3s ease-out
+    tr:hover td
+      background-color: orange
 
 dl
   margin: -1em 0 0

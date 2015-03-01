@@ -14,3 +14,5 @@
 
     %dt Status
     %dd= ajax_boolean 'completed', @issue
+
+  .right= link_to 'Destroy', issue_path(@issue), method: :delete, class: 'destroy_issue', remote: true

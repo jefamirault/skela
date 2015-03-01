@@ -1,9 +1,20 @@
+#column_select
+  %strong Show me...
+  %ul.horizontal
+    - ['User', 'Favorite Color'].each do |column|
+      %li{style: 'padding: .5em 1em'}
+        = label_tag "issue_#{column.downcase}", column
+        = check_box_tag "issue_#{column.downcase}", 1, checked: true
+%br
 #user_select
   %table#users
     %thead
       %tr
-        %th username
-        %th(colspan=2) actions
+        %th{data: {column: 'user_id'}} #
+        %th{data: {column: 'user_username'}} User
+        %th{data: {column: 'user_favorite_color'}} Favorite Color
+        %th{data: {column: 'user_email'}} Email
+        -#%th(colspan=2) actions
     %tbody
       - @users.each do |user|
         = user_select_row user

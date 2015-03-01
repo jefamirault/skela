@@ -1,7 +1,9 @@
 hide('#user_form');
 window.setTimeout(function(){
-  $('tr[data-user-id=<%= @user.id %>]').addClass('invisible');
+  $('tr[data-object-id=<%= @user.id %>]').addClass('invisible');
   window.setTimeout(function(){
-    $('tr[data-user-id=<%= @user.id %>]').remove();
+//    $('tr[data-object-id=<%= @user.id %>]').remove();
+//    $('users').DataTable().row($('tr[data-object-id=<%= @user.id %>]')).remove()
+//    $('users').DataTable().draw();
   }, 450);
 }, 200);

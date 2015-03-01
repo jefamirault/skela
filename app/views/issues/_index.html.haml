@@ -1,25 +1,46 @@
-%h1 Issue Tracker
+-#%h1 Issue Tracker
 
+#column_select
+  %strong Show me...
+  %ul.horizontal
+    - %w(Number Description Assignee Tester Status).each do |column|
+      %li{style: 'padding: .5em 1em'}
+        = label_tag "issue_#{column.downcase}", column
+        = check_box_tag "issue_#{column.downcase}", 1, checked: true
+%br
 %table#issues
   %thead
     %tr
-      %th #
-      %th Issue
-      %th Assignee
-      %th Tester
-      %th Status
-      %th(colspan=3)
-
+      %th{data: {column: 'issue_number'}} Issue
+      %th{data: {column: 'issue_description'}} Description
+      %th{data: {column: 'issue_assignee'}} Assignee
+      %th{data: {column: 'issue_tester'}} Tester
+      %th{data: {column: 'issue_status'}} Status
+      -#%th Actions
+      -#%th Actions
   %tbody
     - @issues.each do |issue|
-      %tr{data: { issue_id: issue.id }}
-        %td= issue.number plain: true
-        %td= issue.description
-        %td= issue.assignee.username if issue.assignee
-        %td= issue.tester.username if issue.tester
-        %td= issue.completed ? 'Resolved' : 'Unresolved'
-        %td= link_to 'Edit', edit_issue_path(issue), class: 'edit_issue_link', remote: true
-        %td= link_to 'Destroy', issue, method: :delete, class: 'destroy_issue', remote: true
+      %tr.show_path{data: { object_id: issue.id }, class: issue.completed ? 'resolved' : 'unresolved'}
+        %td{data: {column: 'issue_number'}}
+          = issue.number plain: true
+
+        %td{data: {column: 'issue_description'}}
+          = issue.description
+
+        %td{data: {column: 'issue_assignee'}}
+          = issue.assignee.username if issue.assignee
+
+        %td{data: {column: 'issue_tester'}}
+          = issue.tester.username if issue.tester
+
+        %td{data: {column: 'issue_status'}, style: "color:#{issue.completed ? 'green' : 'red'}"}
+          = issue.completed ? 'Resolved' : 'Unresolved'
+
+        -#%td{data: {column: 'issue_actions'}}
+        -#  = link_to 'Edit', edit_issue_path(issue), class: 'edit_issue_link', remote: true
+        -#
+        -#%td{data: {column: 'issue_actions'}}
+        -#  = link_to 'Destroy', issue, method: :delete, class: 'destroy_issue', remote: true
 
 %br
 = link_to 'New Issue', new_issue_path, id: 'new_issue', remote: true

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'click', '#user_select a.edit_user', ->
+$(document).on 'click', '#user_select a.edit_user, #user_select tr.show_path', ->
 #  $('#user_form h1').html 'Edit User'
 #  $('#user_form').removeClass 'hidden'
   $('#user_form').addClass 'hidden'

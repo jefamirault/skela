@@ -1,4 +1,8 @@
 window.setTimeout(function(){
   $('#container').html('<%= j render partial: 'index' %>');
+  $('#issues').dataTable({
+    "order": [[0, "desc"]],
+    "iDisplayLength": 25
+  });
   show('#container')
 }, 400);
