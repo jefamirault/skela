@@ -3,9 +3,36 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 table#issues
+  //background-color: orange
   td, th
     padding: 2px 4px
   max-width: 800px
+  th
+    font-weight: bold
+    color: #2d5daf
+  th[data-column=issue_number]
+    min-width: 59px
+  th[data-column=issue_assignee]
+    min-width: 82px
+  th[data-column=issue_tester]
+    min-width: 62px
+
+  td[data-column=issue_number]
+    color: #2d5daf
+  td[data-column=issue_assignee]
+    color: #2d5daf
+  td[data-column=issue_tester]
+    color: #2d5daf
+
+
+  tr.resolved:hover td
+    background-color: #85dd85
+  tr.unresolved:hover td
+    background-color: lightpink
+  //tr.resolved td
+  //  background-color: lightgreen
+  //tr.unresolved td
+    background-color: lightpink
 #issue_form
   display: inline-block
   width: 600px

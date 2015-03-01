@@ -12,20 +12,27 @@ module UsersHelper
   end
 
   def user_select_row(user, options = {})
-    klass = options[:hidden] ? 'hidden invisible' : ''
-    content_tag :tr, data: { user_id: user.id }, class: klass do
-      username_cell = content_tag :td do
+    klass = 'show_path'
+    klass << (options[:hidden] ? 'hidden invisible' : '')
+    content_tag :tr, data: { object_id: user.id }, class: klass do
+
+      user_id_cell = content_tag :td do
+        user.id.to_s
+      end
+      username_cell = content_tag :td, data: { column: 'user_username' } do
         content_tag :span, class: "user_#{user.id}_username" do
           user.username
         end
       end
-      edit_cell = content_tag :td do
-        link_to 'Edit', edit_user_path(user), remote: true, class: 'edit_user'
+      favorite_color_cell = content_tag :td do
+        # link_to 'Edit', edit_user_path(user), remote: true, class: 'edit_user'
+        user.favorite_color
       end
-      destroy_cell = content_tag :td do
-        destroy_user_link user, 'Destroy'
+      email_cell = content_tag :td do
+        'something@what.com'
       end
-      (username_cell + edit_cell + destroy_cell).html_safe
+      (user_id_cell + username_cell + favorite_color_cell + email_cell).html_safe
+      # username_cell.html_safe
     end
   end
 end

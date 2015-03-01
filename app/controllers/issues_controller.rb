@@ -64,7 +64,11 @@ class IssuesController < ApplicationController
 
   # DELETE /issues/1
   def destroy
-    @issue.destroy
+    @issues = Issue.all
+    if @issue.destroy
+      # redirect_to issues_path
+      # return
+    end
     respond_to do |format|
       # format.html { redirect_to issues_url, notice: 'Issue destroyed successfully!' }
       format.js
@@ -74,7 +78,8 @@ class IssuesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_issue
-      @issue = Issue.find(params[:id])
+      @issue = Issue.find(params[:id]) rescue redirect_to(issues_path)
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
