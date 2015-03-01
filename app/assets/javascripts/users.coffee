@@ -23,5 +23,8 @@ $(document).on 'click', '#delete_user', ->
     hide selector
   window.setTimeout hide_row, 450
 
+  window.history.replaceState( {} , '', '/users' );
+
+
 cloak = (selector) ->
   $(selector).addClass('invisible')

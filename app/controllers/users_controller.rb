@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create]
-  before_filter :authorize_superuser, only: [:destroy, :admin_create]
+  before_filter :authorize_superuser, only: [:admin_create]
 
   def index
     @users = User.all
@@ -70,18 +70,22 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+    set_users
     respond_to do |format|
       format.js
+      format.html
     end
   end
 
   def destroy
     @user = User.find params[:id]
-    if @user.destroy
-      respond_to do |format|
-        format.js
-      end
+
+    if current_user == @user || superuser?
+      @user.destroy
+    else
+      flash[:alert] = 'Only an admin can do that.'
     end
+
   end
 
   def admin_new
@@ -118,6 +122,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_users
+    @users = User.all
+  end
 
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :avatar, :favorite_color)

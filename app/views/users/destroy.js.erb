@@ -1,3 +1,10 @@
+<% if notice %>
+  flashNotice('<%= notice %>');
+<% else %>
+  flashAlert('<%= alert %>');
+<% end %>
+
+<% if @user %>
 hide('#user_form');
 window.setTimeout(function(){
   $('tr[data-object-id=<%= @user.id %>]').addClass('invisible');
@@ -7,3 +14,4 @@ window.setTimeout(function(){
 //    $('users').DataTable().draw();
   }, 450);
 }, 200);
+<% end %>

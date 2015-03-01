@@ -53,7 +53,8 @@ class IssuesController < ApplicationController
     respond_to do |format|
       if @issue.update(issue_params)
         format.html { redirect_to edit_issue_path(@issue), notice: 'Issue updated successfully!' }
-        format.js
+        flash[:notice] = 'Issue updated successfully'
+        format.js { }
         format.json { render :show, status: :ok, location: @issue }
       else
         format.html { render :edit }

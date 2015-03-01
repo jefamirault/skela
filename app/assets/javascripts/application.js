@@ -30,27 +30,33 @@ function hideFlash() {
         $('.flash').addClass('hidden');
 }
 function flashNotice(message) {
+    if (message == '')
+        return false;
     $('.flash.notice').html(message);
+    $('.flash.alert').html('');
     $('.flash.notice').removeClass('hidden');
     window.setTimeout(function(){
         $('.flash.notice').addClass('hidden');
-    }, 1900);
+    }, 1800);
 }
 function flashAlert(message) {
+    if (message == '')
+        return false;
     $('.flash.alert').html(message);
+    $('.flash.notice').html('');
     $('.flash.alert').removeClass('hidden');
     window.setTimeout(function(){
         $('.flash.alert').addClass('hidden');
-    }, 1900);
+    }, 1800);
 }
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
-    $('.flash.notice').html('hahahahahaha');
+    //$('.flash.notice').html('hahahahahaha');
     $('.flash.notice').toggleClass('hidden');
     event.preventDefault();
 });
 $(document).on('click', '#trigger_flash_alert', function(event) {
-    $('.flash.alert').html('hahahahahaha');
+    //$('.flash.alert').html('hahahahahaha');
     $('.flash.alert').toggleClass('hidden');
     event.preventDefault();
 });

@@ -7,9 +7,9 @@
     = csrf_meta_tags
 
   %body
-    .flash.notice{class: "#{' hidden' if notice.nil?}"}
+    .flash.notice.hidden
       %span.vertical_middle= notice
-    .flash.alert{class: "#{ ' hidden' if alert.nil?}"}
+    .flash.alert.hidden
       %span.vertical_middle= alert
 
     %div#helmet{class: "#{'hidden' if logging_in? || signing_up?}"}

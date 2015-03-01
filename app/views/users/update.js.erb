@@ -1,9 +1,6 @@
 <% if notice %>
-  $('.notice').html('<%= notice %>');
-  $('.notice').removeClass('hidden');
-<% end %>
-<% if alert %>
-  $('.alert').html('<%= alert %>');
-  $('.alert').removeClass('hidden');
+  flashNotice('<%= notice %>');
+<% else %>
+  flashAlert('<%= alert %>');
 <% end %>
 $('span.user_<%= @user.id %>_username').html('<%= @user.username %>');
