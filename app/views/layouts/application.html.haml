@@ -12,7 +12,11 @@
     .flash.alert.hidden
       %span.vertical_middle= alert
 
-    %div#helmet{class: "#{'hidden' if logging_in? || signing_up?}"}
+    - if current_user && !current_user.show_header
+      - klass = 'hidden'
+    - elsif logging_in? || signing_up?
+      - klass = 'hidden'
+    %div#helmet{class: klass}
       = render partial: 'shared/header'
 
     #container

@@ -56,15 +56,16 @@ span.vertical_middle
   display: block
   line-height: 68px
   font-weight: bold
-  transition: top .70s ease-in-out
+  transition: top .70s ease-in-out, margin .70s ease-in-out
   padding: 0
-  margin: 0 0 3em
+  margin: 0 0 48px
   position: relative
   top: 0
   text-align: center
 
   &.hidden
-    top: -96px
+    top: -80px
+    margin-bottom: -32px
 
   ///// Skela Logo /////
 
@@ -175,3 +176,19 @@ span.vertical_middle
 
   br
     clear: both
+
+
+#toggle_header
+  float: left
+  position: absolute
+  left: 48px
+  top: 64px
+  color: #b7babb
+
+  transition: color .3s ease-in-out
+
+  &:hover
+    text-decoration: none
+    color: #6d6f70
+  &:active
+    color: #222

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302001919) do
+ActiveRecord::Schema.define(version: 20150306190845) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150302001919) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "favorite_color"
+    t.boolean  "show_header",         default: true
   end
 
 end

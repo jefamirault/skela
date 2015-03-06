@@ -1,3 +1,6 @@
+#hide_show_header
+  = link_to 'show/hide', toggle_header_path(id: current_user ? current_user.id : 0), id: 'toggle_header', method: :post, remote: true
+
 = header_left
 
 #header_right

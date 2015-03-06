@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get 'not_allowed' => 'users#not_allowed', as: :not_allowed
 
+  post 'toggle_header', to: 'user_settings#toggle_header', as: 'toggle_header'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

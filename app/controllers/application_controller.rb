@@ -27,9 +27,6 @@ class ApplicationController < ActionController::Base
     redirect_to login_url unless logged_in?
   end
   def authorize_superuser
-    # respond_to do |format|
-    #   format.js
-    # end
     redirect_to not_allowed_path, alert: 'Only an admin can do that' unless superuser?
   end
 end
