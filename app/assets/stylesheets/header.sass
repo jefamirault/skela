@@ -131,21 +131,22 @@ span.vertical_middle
       &:hover, &.selected
         text-decoration: none
 
-    &:hover
-      a.user_link
-        opacity: 1
-      #logged_in_text
-        border-color: rgba(0,0,0,.19)
+
+    a.user_link
+      opacity: 1
+    #logged_in_text
+      border-color: rgba(0,0,0,.19)
+      cursor: default
 
     a
       display: inline-block
       color: #48c
       text-decoration: none
-      opacity: 1
-      transition: border-color 0.2s ease
+      //opacity: 1
+      //transition: border-color 0.2s ease
 
       &.user_link
-        opacity: 0
+        //opacity: 0
 
 
       &.link_1

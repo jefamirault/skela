@@ -3,7 +3,7 @@
 #column_select
   %strong Show me...
   %ul.horizontal
-    - %w(Number Description Assignee Tester Status).each do |column|
+    - %w(Number Description Assignee Tester Category Status).each do |column|
       %li{style: 'padding: .5em 1em'}
         = label_tag "issue_#{column.downcase}", column
         = check_box_tag "issue_#{column.downcase}", 1, checked: true
@@ -15,6 +15,7 @@
       %th{data: {column: 'issue_description'}} Description
       %th{data: {column: 'issue_assignee'}} Assignee
       %th{data: {column: 'issue_tester'}} Tester
+      %th{data: {column: 'issue_category'}} Category
       %th{data: {column: 'issue_status'}} Status
       -#%th Actions
       -#%th Actions
@@ -32,6 +33,9 @@
 
         %td{data: {column: 'issue_tester'}}
           = issue.tester.username if issue.tester
+
+        %td{data: {column: 'issue_category'}}
+          = issue.category
 
         %td{data: {column: 'issue_status'}, style: "color:#{issue.completed ? 'green' : 'red'}"}
           = issue.completed ? 'Resolved' : 'Unresolved'
