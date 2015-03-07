@@ -17,8 +17,6 @@
       %th{data: {column: 'issue_tester'}} Tester
       %th{data: {column: 'issue_category'}} Category
       %th{data: {column: 'issue_status'}} Status
-      -#%th Actions
-      -#%th Actions
   %tbody
     - @issues.each do |issue|
       %tr.show_path{data: { object_id: issue.id }, class: issue.completed ? 'resolved' : 'unresolved'}
@@ -39,12 +37,6 @@
 
         %td{data: {column: 'issue_status'}, style: "color:#{issue.completed ? 'green' : 'red'}"}
           = issue.completed ? 'Resolved' : 'Unresolved'
-
-        -#%td{data: {column: 'issue_actions'}}
-        -#  = link_to 'Edit', edit_issue_path(issue), class: 'edit_issue_link', remote: true
-        -#
-        -#%td{data: {column: 'issue_actions'}}
-        -#  = link_to 'Destroy', issue, method: :delete, class: 'destroy_issue', remote: true
 
 %br
 = link_to 'New Issue', new_issue_path, id: 'new_issue', remote: true
