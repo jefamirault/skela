@@ -1,0 +1,57 @@
+// Place all the styles related to the Games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tic_tac_toe_board
+  height: 600px
+  width: 600px
+  background-color: black
+  line-height: 0px
+
+  margin: 0
+  padding: 0
+
+.tic_tac_toe_square
+  display: inline-block
+  height: 198px
+  width: 198px
+  line-height: 200px
+  float: left
+  background-color: white
+  border: 1px solid black
+  font-size: 10em
+  margin: 0
+  padding: 0
+  color: rgba(0,0,0,0)
+
+  transition: background .2s ease-in-out, color .25s ease-in-out
+
+
+
+
+  &:hover
+    color: #6d4
+    cursor: pointer
+  //&:active
+  //  color: #444
+
+  &.X
+    color: darkred
+    &:after
+      content: 'X'
+  &.O
+    color: blue
+    &:after
+      content: 'O'
+
+.tic_tac_toe_board[data-turn='1']
+  .tic_tac_toe_square:not(.X):not(.O)
+    &:hover
+      &:after
+        content: 'X'
+
+.tic_tac_toe_board[data-turn='0']
+  .tic_tac_toe_square:not(.X):not(.O)
+    &:hover
+      &:after
+        content: 'O'

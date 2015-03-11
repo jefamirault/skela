@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'games/index'
+
+  get 'games/tic_tac_toe'
+  get 'games/hi_lo'
+
   resources :courses do
   end
 
@@ -9,7 +14,6 @@ Rails.application.routes.draw do
 
 
   resources :issues
-
 
   resources :users
 
