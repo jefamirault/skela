@@ -1,6 +1,6 @@
 window.setTimeout(function(){
   $('#user_form').replaceWith('<%= j render partial: 'edit' %>');
   window.setTimeout(function(){
-    show('#user_form');
-  }, 0);
+    decloak('#user_form');
+  }, 25);
 }, 400);

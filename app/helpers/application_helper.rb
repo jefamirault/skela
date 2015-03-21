@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def header_left(title = 'skela')
-    link_to title, welcome_path, id: 'header_left'
+    link_to title, welcome_path, id: 'header_left', remote: true
   end
 
   def logged_in_text

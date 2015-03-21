@@ -1,4 +1,4 @@
-#user_form.hidden
+#user_form.invisible
   %h1 Edit User
   %dl
     %dt Username
@@ -20,3 +20,8 @@
 
   %br
   = destroy_user_link
+
+  -#:javascript
+  -#  $(function(){
+  -#    decloak('#user_form');
+  -#  });

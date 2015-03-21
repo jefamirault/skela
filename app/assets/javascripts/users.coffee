@@ -5,11 +5,11 @@
 $(document).on 'click', '#user_select a.edit_user, #user_select tr.show_path', ->
 #  $('#user_form h1').html 'Edit User'
 #  $('#user_form').removeClass 'hidden'
-  $('#user_form').addClass 'hidden'
+  cloak '#user_form'
 
 $(document).on 'click', '#user_select a.new_user', ->
 #  $('#user_form h1').html 'New User'
-  $('#user_form').addClass 'hidden'
+  cloak '#user_form'
 
 $(document).on 'click', '#delete_user', ->
   user_id = $(this).data('user-id');
@@ -20,7 +20,7 @@ $(document).on 'click', '#delete_user', ->
   cloak_row()
 
   hide_row = ->
-    hide selector
+    cloak selector
   window.setTimeout hide_row, 450
 
   window.history.replaceState( {} , '', '/users' );

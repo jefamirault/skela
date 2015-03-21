@@ -5,9 +5,10 @@ class WelcomeController < ApplicationController
 
   # before_filter :authenticate
 
-  def index
-    respond_to do |format|
-      format.html
-    end
-  end
+  # def index
+  #   respond_to do |format|
+  #     format.html
+  #     format.js
+  #   end
+  # end
 end

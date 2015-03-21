@@ -13,7 +13,7 @@ module UsersHelper
 
   def user_select_row(user, options = {})
     klass = 'show_path'
-    klass << (options[:hidden] ? 'hidden invisible' : '')
+    klass << (options[:hidden] ? ' phased invisible' : '')
     content_tag :tr, data: { object_id: user.id }, class: klass do
 
       user_id_cell = content_tag :td do

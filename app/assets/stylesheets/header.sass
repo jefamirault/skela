@@ -7,12 +7,12 @@
   color: white
   display: block
   width: 100%
-  height: 76px
+  height: 78px
   line-height: 68px
   text-align: center
   position: absolute
   font-weight: bold
-  transition: top .70s ease-in-out, background .3s ease-in-out
+  transition: top .70s ease-in-out, background .3s ease-in-out, box-shadow .35s ease-in-out
   box-shadow: 0 1px 3px rgba(0,0,0,.19)
 
   &:hover
@@ -20,7 +20,7 @@
   
   &.hidden
     padding: 0
-  
+    box-shadow: none
 
 span.vertical_middle
   vertical-align: middle
@@ -30,7 +30,7 @@ span.vertical_middle
   background-color: #5c5
   top: 0
   &.hidden
-    top: -96px
+    top: -78px
   
   &:hover
     background-color: #57b057
@@ -40,7 +40,7 @@ span.vertical_middle
   background-color: #b31
   top: 0
   &.hidden
-    top: -96px
+    top: -78px
   
   &:hover
     background-color: #a10
@@ -56,16 +56,17 @@ span.vertical_middle
   display: block
   line-height: 68px
   font-weight: bold
-  transition: top .70s ease-in-out, margin .70s ease-in-out
-  padding: 0
-  margin: 0 0 48px
+  transition: top .70s ease-in-out, margin .70s ease-in-out, opacity .45s ease-in-out, height .7s ease-in-out
   position: relative
   top: 0
   text-align: center
 
   &.hidden
-    top: -80px
-    margin-bottom: -32px
+    top: -78px
+    margin-bottom: -64px
+  &:not(.hidden)
+    padding: 0
+    margin: 0 0 24px
 
   ///// Skela Logo /////
 

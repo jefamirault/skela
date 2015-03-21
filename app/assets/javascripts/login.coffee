@@ -16,12 +16,12 @@ root.login_success = (notice, content, header) ->
   $('#login_button').val 'Success!'
 #  $('.flash.notice').html notice
 #  $('.flash.notice').removeClass 'hidden'
-  flashNotice(notice);
   $('#center_form_box').find('input').attr 'disabled', true
   setTimeout hide_container, 500
   build_header = ->
     new_content(content);
   setTimeout build_header, 1000
+  flashNotice(notice);
   $('#helmet').html header
   $('#helmet').removeClass 'hidden'
 
