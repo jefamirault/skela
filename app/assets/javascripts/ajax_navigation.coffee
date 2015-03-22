@@ -13,10 +13,15 @@ $(document).on 'click', '#my_profile_link', ->
 $(document).on 'click', '#courses_link', ->
   navigate 'courses'
 
+$(document).on 'click', '#login_link', ->
+  navigate '/'
+
 navigate = (section) ->
-  selector = '#' + section + '_link'
-  $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass('selected');
-  $(selector).addClass 'selected'
+  if section != '/'
+    selector = '#' + section + '_link'
+    $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass('selected');
+    $(selector).addClass 'selected'
+
   cloak '#container'
   window.history.replaceState( {} , '', '/' + section );
 

@@ -23,7 +23,7 @@ root.login_success = (notice, content, header) ->
   setTimeout build_header, 1000
   flashNotice(notice);
   $('#helmet').html header
-  $('#helmet').removeClass 'hidden'
+  showHeader()
 
 new_content = (content) ->
   $('#container').html content

@@ -1,7 +1,17 @@
 a
   text-decoration: none
+body
+  position: fixed
 
 #container
+  overflow-y: scroll
+  transition: all .45s ease-in-out
+  max-height: 100%
+  &.hasHeader
+    max-height: 870px / 969px * 100%
+
+  padding: 2em 0
+
   table, div
     display: inline-block
 
