@@ -24,7 +24,8 @@ module AjaxFormHelper
   end
 
   def ajax_form(type, resource, field)
-    form_for resource, remote: true do |f|
+    klass = type
+    form_for resource, html: { id: "edit_issue_#{field}", class: klass}, remote: true do |f|
       if type == 'user_select'
         user_select f, field
       elsif type == 'number'
@@ -43,5 +44,15 @@ module AjaxFormHelper
 
   def user_select(form_builder, field)
     form_builder.select field, options_for_select(User.all.map { |user| [user.username, user.id.to_s]}, @issue.send(field)), { include_blank: true }, { class: 'ajax_field' }
+  end
+
+  def updated_field_at(field, object, options = {})
+    klass = 'updated_at'
+    klass << ' invisible' if options[:cloaked]
+    content_tag :span, data: { field: field, id: object.id }, class: klass do
+      if object.send field
+      'updated: ' + object.send(field).in_time_zone('Eastern Time (US & Canada)').strftime('%B %e, %Y at %l:%M:%S %p')
+      end
+    end
   end
 end

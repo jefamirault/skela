@@ -50,6 +50,14 @@ class IssuesController < ApplicationController
 
   # PATCH/PUT /issues/1
   def update
+    # if issue_params.include? 'tester_id'
+    #   if issue_params['tester_id'].blank?
+    #     @issue.tested_at = nil
+    #   else
+    #     @issue.tested_at = Time.now
+    #   end
+    # end
+
     respond_to do |format|
       if @issue.update(issue_params)
         format.html { redirect_to edit_issue_path(@issue), notice: 'Issue updated successfully!' }
@@ -85,6 +93,7 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:title, :description, :how_to_test, :completed, :assignee_id, :tester_id, :category)
+      params.require(:issue).permit(:title, :description, :how_to_test, :completed, :assignee_id, :tester_id, :category,
+                                    :target_version, :created_at, :updated_at, :completed_at, :tested_at, :assigned_at)
     end
 end
