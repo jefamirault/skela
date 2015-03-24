@@ -42,3 +42,13 @@ window.setTimeout(function(){
   }, 10);
 }, 250);
 <% end %>
+
+var updated_at = $('#issue_form').find('.updated_at:first');
+cloak(updated_at);
+window.setTimeout(function(){
+  $('#issue_form').find('.updated_at:first').replaceWith('<%= j updated_field_at 'updated_at', @issue, cloaked: true %>');
+  var updated_at = $('#issue_form').find('.updated_at:first');
+  window.setTimeout(function(){
+    decloak(updated_at);
+  }, 10);
+}, 250);

@@ -1,4 +1,6 @@
 #issue_form
+  .right= updated_field_at 'updated_at', @issue
+  %br
   %dl
     %dt Description
     %dd= ajax_text 'description', @issue
