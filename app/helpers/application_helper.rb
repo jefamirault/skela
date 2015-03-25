@@ -37,4 +37,12 @@ module ApplicationHelper
     params[:controller] == controller && params[:action] == action
   end
 
+  ###########
+  ## Sugar ##
+  ###########
+
+  def time_ago(datetime)
+    "#{distance_of_time_in_words(Time.now, datetime)} ago"
+  end
+
 end
