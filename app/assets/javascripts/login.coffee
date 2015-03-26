@@ -49,7 +49,13 @@ root.clientSideValidations = ->
   $('.flash').addClass 'hidden'
   if $('#user_password').val() != $('#user_password_confirmation').val()
     $('.flash.alert').html 'Password confirmation does not match'
-    $('#user_password').val ''
     $('#user_password_confirmation').val ''
+    $('#user_password').val('').focus()
     $('.flash.alert').removeClass 'hidden'
+
     return false
+
+# Prettyness
+
+$(document).on 'click', '.center_form_link', ->
+  cloak('#container')
