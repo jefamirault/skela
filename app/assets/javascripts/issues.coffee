@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'click', '#new_issue, #issues_index, .edit_issue_link, .destroy_issue, #issues .show_path', ->
-  hide '#container'
+  cloak '#container'
 
 $(document).on 'click', '#issues_index', ->
   window.history.replaceState( {} , '', '/issues' );

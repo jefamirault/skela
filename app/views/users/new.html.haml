@@ -12,4 +12,7 @@
 
 
 :javascript
-  $('#new_user').submit(clientSideValidations);
+  $('#new_user').on('submit', clientSideValidations);
+  jQuery(function(){
+      decloak('#container');
+  });

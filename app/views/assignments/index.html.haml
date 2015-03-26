@@ -18,3 +18,8 @@
           %td= link_to 'Delete', assignment_path(assignment), method: :delete
 
   = link_to 'New Assignment', new_assignment_path
+
+:javascript
+  $(function(){
+    decloak('#container');
+  });

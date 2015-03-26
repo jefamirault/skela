@@ -6,3 +6,49 @@ flashAlert('<%= alert %>');
 
 $('.notice').html('Issue updated successfully!');
 $('.notice').removeClass('hidden');
+
+<% if params[:issue][:tester_id] %>
+  var updated_at = $('#edit_issue_tester_id').closest('dd').find('.updated_at');
+  cloak(updated_at);
+  window.setTimeout(function(){
+    $('#edit_issue_tester_id').closest('dd').find('.updated_at').replaceWith('<%= j updated_field_at 'tested_at', @issue, cloaked: true %>');
+    var updated_at = $('#edit_issue_tester_id').closest('dd').find('.updated_at');
+    window.setTimeout(function(){
+      decloak(updated_at);
+    }, 10);
+  }, 250);
+<% end %>
+
+<% if params[:issue][:assignee_id] %>
+var updated_at = $('#edit_issue_assignee_id').closest('dd').find('.updated_at');
+cloak(updated_at);
+window.setTimeout(function(){
+  $('#edit_issue_assignee_id').closest('dd').find('.updated_at').replaceWith('<%= j updated_field_at 'assigned_at', @issue, cloaked: true %>');
+  var updated_at = $('#edit_issue_assignee_id').closest('dd').find('.updated_at');
+  window.setTimeout(function(){
+    decloak(updated_at);
+  }, 10);
+}, 250);
+<% end %>
+
+<% if params[:issue][:completed] %>
+var updated_at = $('#edit_issue_completed').closest('dd').find('.updated_at');
+cloak(updated_at);
+window.setTimeout(function(){
+  $('#edit_issue_completed').closest('dd').find('.updated_at').replaceWith('<%= j updated_field_at 'completed_at', @issue, cloaked: true %>');
+  var updated_at = $('#edit_issue_completed').closest('dd').find('.updated_at');
+  window.setTimeout(function(){
+    decloak(updated_at);
+  }, 10);
+}, 250);
+<% end %>
+
+var updated_at = $('#issue_form').find('.updated_at:first');
+cloak(updated_at);
+window.setTimeout(function(){
+  $('#issue_form').find('.updated_at:first').replaceWith('<%= j updated_field_at 'updated_at', @issue, cloaked: true %>');
+  var updated_at = $('#issue_form').find('.updated_at:first');
+  window.setTimeout(function(){
+    decloak(updated_at);
+  }, 10);
+}, 250);

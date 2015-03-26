@@ -16,14 +16,14 @@ root.login_success = (notice, content, header) ->
   $('#login_button').val 'Success!'
 #  $('.flash.notice').html notice
 #  $('.flash.notice').removeClass 'hidden'
-  flashNotice(notice);
   $('#center_form_box').find('input').attr 'disabled', true
   setTimeout hide_container, 500
   build_header = ->
     new_content(content);
   setTimeout build_header, 1000
+  flashNotice(notice);
   $('#helmet').html header
-  $('#helmet').removeClass 'hidden'
+  showHeader()
 
 new_content = (content) ->
   $('#container').html content
@@ -49,7 +49,13 @@ root.clientSideValidations = ->
   $('.flash').addClass 'hidden'
   if $('#user_password').val() != $('#user_password_confirmation').val()
     $('.flash.alert').html 'Password confirmation does not match'
-    $('#user_password').val ''
     $('#user_password_confirmation').val ''
+    $('#user_password').val('').focus()
     $('.flash.alert').removeClass 'hidden'
+
     return false
+
+# Prettyness
+
+$(document).on 'click', '.center_form_link', ->
+  cloak('#container')

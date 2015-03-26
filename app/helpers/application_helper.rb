@@ -11,8 +11,13 @@ module ApplicationHelper
     link_to 'Hide Stuff', '', id: 'hide_stuff'
   end
 
-  def header_left(title = 'skela')
-    link_to title, welcome_path, id: 'header_left'
+  def header_left(title = nil)
+    logo = title || site_logo
+    link_to logo, welcome_path, id: 'header_left', remote: true
+  end
+
+  def site_logo
+    image_tag('skela_logo.svg', style: 'width:168px; height:64.5px; vertical-align:bottom')
   end
 
   def logged_in_text
@@ -35,6 +40,14 @@ module ApplicationHelper
 
   def controller_action?(controller, action)
     params[:controller] == controller && params[:action] == action
+  end
+
+  ###########
+  ## Sugar ##
+  ###########
+
+  def time_ago(datetime)
+    "#{distance_of_time_in_words(Time.now, datetime)} ago"
   end
 
 end

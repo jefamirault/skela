@@ -13,14 +13,17 @@
       %span.vertical_middle= alert
 
     - if current_user && !current_user.show_header
-      - klass = 'hidden'
+      - helmet_klass = 'hidden'
     - elsif logging_in? || signing_up?
-      - klass = 'hidden'
-    %div#helmet{class: klass}
+      - helmet_klass = 'hidden'
+    - else
+      - container_klass = 'hasHeader'
+    %div#helmet{class: helmet_klass}
       = render partial: 'shared/header'
 
-    #container
+    #container.invisible{class: container_klass}
       = yield
+      %div{style: 'height:24px; width:100%;'}
 
     .developer_pad.hidden
       #developer_pad_title

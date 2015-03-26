@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306190845) do
+ActiveRecord::Schema.define(version: 20150323155510) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -31,13 +31,32 @@ ActiveRecord::Schema.define(version: 20150306190845) do
   create_table "issues", force: :cascade do |t|
     t.text     "description"
     t.text     "how_to_test"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.boolean  "completed"
     t.integer  "creator_id"
     t.integer  "assignee_id"
     t.integer  "tester_id"
     t.string   "category"
+    t.datetime "tested_at"
+    t.datetime "completed_at"
+    t.datetime "assigned_at"
+    t.string   "target_version"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string  "title"
+    t.string  "description"
+    t.boolean "checked"
+    t.integer "creator_id"
+    t.integer "list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string  "title"
+    t.text    "description"
+    t.boolean "active"
+    t.integer "creator_id"
   end
 
   create_table "users", force: :cascade do |t|

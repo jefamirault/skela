@@ -1,4 +1,6 @@
 #issue_form
+  .right= updated_field_at 'updated_at', @issue
+  %br
   %dl
     %dt Description
     %dd= ajax_text 'description', @issue
@@ -7,15 +9,29 @@
     %dd= ajax_text 'how_to_test', @issue
 
     %dt Assignee
-    %dd= ajax_user_select 'assignee_id', @issue
+    %dd
+      = ajax_user_select 'assignee_id', @issue
+      = updated_field_at 'assigned_at', @issue
 
     %dt Tester
-    %dd= ajax_user_select 'tester_id', @issue
+    %dd
+      = ajax_user_select 'tester_id', @issue
+      = updated_field_at 'tested_at', @issue
 
     %dt Category
     %dd= ajax_string 'category', @issue
 
+    %dt Target Version
+    %dd= ajax_string 'target_version', @issue
+
     %dt Status
-    %dd= ajax_boolean 'completed', @issue
+    %dd
+      = ajax_boolean 'completed', @issue
+      = updated_field_at 'completed_at', @issue
+
+
+
+
+
 
   .right= link_to 'Destroy', issue_path(@issue), method: :delete, class: 'destroy_issue', remote: true
