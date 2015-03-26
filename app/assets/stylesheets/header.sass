@@ -50,26 +50,29 @@ span.vertical_middle
 // Header Proper //
 ///////////////////
 
+.flex_box
+  display: flex
+.flex
+  flex: 1
+
 #helmet
   background-color: #f3f7f8
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
-  display: block
+  display: flex
   line-height: 68px
   font-weight: bold
   transition: top .70s ease-in-out, margin .70s ease-in-out, opacity .45s ease-in-out, height .7s ease-in-out
   position: relative
   top: 0
-  text-align: center
+  max-width: 1200px
   z-index: 9
-
+  padding: 0 23px
 
   &.hidden
     top: -78px
-    margin-bottom: -78px
+    margin: 0 auto -78px
   &:not(.hidden)
-    padding: 0
-    margin: 0
-
+    margin: 0 auto
   ///// Skela Logo /////
 
   #header_left
@@ -81,7 +84,7 @@ span.vertical_middle
     height: 76px
     display: inline-block
     vertical-align: middle
-    padding: 0px 28px 0 0
+    padding: 0px 20px
     margin: 0
 
     &:hover
@@ -98,7 +101,7 @@ span.vertical_middle
     vertical-align: bottom
 
     nav
-      display: inline-block
+      //display: inline-block
 
       a
         display: inline-block
@@ -121,7 +124,6 @@ span.vertical_middle
     text-align: left
     white-space: nowrap
 
-    padding: 0 1em 0 0
     color: #48c
 
     #logged_in_text
@@ -129,12 +131,13 @@ span.vertical_middle
       display: inline-block
       border-right: 1px solid rgba(0,0,0,0)
       padding: 0 3.2em 0 1.6em
-      margin: 0 1.6em 0 0
+      margin: 0 1em 0 0
       transition: border .5s ease-in-out
 
       &:hover, &.selected
         text-decoration: none
-
+      &:before
+        content: "Logged in as "
 
     a.user_link
       opacity: 1
@@ -143,10 +146,6 @@ span.vertical_middle
       cursor: default
 
     vertical-align: bottom
-
-
-  br
-    clear: both
 
 
 #toggle_header
