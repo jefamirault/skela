@@ -8,20 +8,15 @@
       %dt Privilege
       %dd= ajax_number 'privilege_level', @user
 
-    %dt Avatar
-    %dd
-      = form_for @user, html: { multipart: true} do |f|
-        = image_tag(@user.avatar.url(:thumb)) if @user.avatar.present?
-        = f.file_field :avatar
-        = f.submit
+    -#%dt Avatar
+    -#%dd
+    -#  = form_for @user, html: { multipart: true} do |f|
+    -#    = image_tag(@user.avatar.url(:thumb)) if @user.avatar.present?
+    -#    = f.file_field :avatar
+    -#    = f.submit
 
     %dt Favorite Color
     %dd= ajax_string 'favorite_color', @user
 
   %br
   = destroy_user_link
-
-  -#:javascript
-  -#  $(function(){
-  -#    decloak('#user_form');
-  -#  });

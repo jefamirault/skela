@@ -4,11 +4,10 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-
   has_many :courses
   has_many :assignments, through: :courses
+
+  # has_one :avatar
 
   def is_superuser?
     self.privilege_level == 1

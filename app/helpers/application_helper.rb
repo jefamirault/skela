@@ -11,8 +11,13 @@ module ApplicationHelper
     link_to 'Hide Stuff', '', id: 'hide_stuff'
   end
 
-  def header_left(title = 'skela')
-    link_to title, welcome_path, id: 'header_left', remote: true
+  def header_left(title = nil)
+    logo = title || site_logo
+    link_to logo, welcome_path, id: 'header_left', remote: true
+  end
+
+  def site_logo
+    image_tag('skela_logo.svg', style: 'width:168px; height:64.5px; vertical-align:bottom')
   end
 
   def logged_in_text
