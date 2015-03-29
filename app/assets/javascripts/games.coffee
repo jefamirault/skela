@@ -2,6 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+root = exports ? this
+
+#################
+## Tic-Tac-Toe ##
+#################
+
 $(document).on 'click', '.tic_tac_toe_square', ->
   if $(this).hasClass 'X' || $(this).hasClass 'O'
     return false
@@ -28,3 +34,22 @@ increment_turn = (board_selector) ->
 
   turn_number = parseInt $(board_selector).attr 'data-turn'
   $(board_selector).attr('data-turn', (turn_number + 1) % 2)
+
+###########
+## Hi-Lo ##
+###########
+
+root.getUserGuess = ->
+  incrementAttempts()
+  parseInt $('#guess').val()
+
+root.generateWinningNumber = (range) ->
+  Math.floor Math.random()*(range+1)
+
+root.clearUserGuess = ->
+  $('#guess').val('').focus()
+
+incrementAttempts = ->
+  attempts = parseInt $('#number_of_attempts').html()
+  $('#number_of_attempts').html(attempts + 1);
+
