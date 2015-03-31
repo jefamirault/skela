@@ -1,0 +1,32 @@
+#hundred_puzzle
+  %h1 100-Puzzle
+
+  %ol#left_rotations
+    - 4.times do |row|
+      %li= content_tag :a, '<-', id: 'rotate_left', data: { row: row }
+
+  %table#hundred_tower
+    - 4.times do |row|
+      %tr
+        - 4.times do |col|
+          %td
+
+  %ol#right_rotations
+    - 4.times do |row|
+      %li= content_tag :a, '->', id: 'rotate_right', data: { row: row }
+
+  .block
+    %table#sums
+      %tr
+        - 4.times do
+          %td
+
+
+
+  :javascript
+    $(function(){
+      setTimeout(function(){
+        initHundredPuzzle();
+        decloak('#container');
+      },25);
+    });

@@ -53,3 +53,77 @@ incrementAttempts = ->
   attempts = parseInt $('#number_of_attempts').html()
   $('#number_of_attempts').html(attempts + 1);
 
+################
+## 100-Puzzle ##
+################
+
+root.columnSum = (index) ->
+  sum = 0
+  for row in [0..3]
+    sum += cell(row, index)
+  Math.round sum
+
+root.cell = (row, col) ->
+  parseFloat getCell(row, col).html()
+
+root.setRow = (index, row) ->
+  for col in [0..3]
+    setCell(index, col, row[col])
+
+getCell = (row, col) ->
+  $('#hundred_tower').find("tr:eq(#{row})").find("td:eq(#{col})")
+
+root.setCell = (row, col, value) ->
+  getCell(row,col).html value
+
+solved = ->
+  columnSums = (columnSum(index) for index in [0..3])
+  for sum in columnSums
+    unless (Math.ceil sum) == 100
+      return false
+  true
+
+root.check = ->
+  if solved()
+    alert 'Each sequence adds up to 100, you win!'
+
+
+root.initHundredPuzzle = ->
+  setRow(0, [44,10,29,17])
+  setRow(1, [16,30,31,23])
+  setRow(2, [21,33, 6,40])
+  setRow(3, [19,27,34,20])
+  updateSums()
+
+  randomizeHundredPuzzle()
+
+root.randomizeHundredPuzzle = ->
+  for row in [0..3]
+    rotateRow(row, Math.floor(Math.random()*4))
+  updateSums()
+
+root.rotateRow = (index, times) ->
+  temp = cell(index, 0)
+  for col in [0..3-1]
+    setCell(index, col, cell(index, col+1))
+  setCell(index, 3, temp)
+  if times > 1
+    rotateRow(index, times-1)
+
+$(document).on 'click', '#rotate_left', ->
+  row = $(this).data 'row'
+  rotateRow row
+  updateSums()
+  check()
+
+$(document).on 'click', '#rotate_right', ->
+  row = $(this).data 'row'
+  for i in [1..3]
+    rotateRow row
+  updateSums()
+  check()
+
+updateSums = ->
+  cells = $('#sums').find 'td'
+  for col in [0..3]
+    $(cells[col]).html(columnSum(col))

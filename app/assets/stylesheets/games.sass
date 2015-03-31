@@ -60,3 +60,56 @@
     &:hover
       &:after
         content: 'O'
+
+
+////////////////
+// 100-Puzzle //
+////////////////
+#hundred_puzzle
+  display: block
+
+  ol
+    display: inline-block
+    margin: 0
+    padding: 0
+    vertical-align: top
+  li
+    display: block
+    line-height: 71px
+
+  a#rotate_left, a#rotate_right
+    display: inline-block
+    width: 71px
+    cursor: pointer
+    font-weight: bold
+    font-size: 1.2em
+    border-radius: 3px
+
+    &:hover
+      color: white
+      background-color: #427fed
+      text-decoration: none
+
+    @extend .no_select
+
+  table#sums
+    @extend #hundred_tower
+
+#hundred_tower
+  width: 600px
+  display: inline-block
+  margin: 0 0 1em
+  @extend .no_select
+
+  td
+    font-size: 2em
+    width: 150px
+    height: 45px
+
+.no_select
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
