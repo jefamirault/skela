@@ -51,13 +51,15 @@ function flashAlert(message) {
 }
 
 $(document).on('click', '#trigger_flash_notice', function(event) {
-    //$('.flash.notice').html('hahahahahaha');
     $('.flash.notice').toggleClass('hidden');
     event.preventDefault();
 });
 $(document).on('click', '#trigger_flash_alert', function(event) {
-    //$('.flash.alert').html('hahahahahaha');
     $('.flash.alert').toggleClass('hidden');
+    event.preventDefault();
+});
+$(document).on('click', '#cloak_container', function(event) {
+    toggleCloak('#container');
     event.preventDefault();
 });
 

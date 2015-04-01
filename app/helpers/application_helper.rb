@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def hide_stuff
-    link_to 'Hide Stuff', '', id: 'hide_stuff'
+    link_to 'Cloak Container', '', id: 'cloak_container'
   end
 
   def header_left(title = nil)

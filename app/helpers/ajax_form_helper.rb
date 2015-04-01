@@ -11,6 +11,10 @@ module AjaxFormHelper
     ajax_form 'number', resource, field
   end
 
+  def ajax_price(field, resource = @resource)
+    ajax_form 'price', resource, field
+  end
+
   def ajax_user_select(field, resource = @resource)
     ajax_form 'user_select', resource, field
   end
@@ -37,7 +41,9 @@ module AjaxFormHelper
       elsif type == 'boolean'
         (f.label field) + (f.check_box field, class: 'ajax_field')
       elsif type == 'datetime'
-        f.datetime_select field, class: 'ajax_field'
+        f.date_select field, class: 'ajax_field'
+      elsif type == 'price'
+        f.text_field field, class: 'ajax_field', value: number_with_precision(resource.send(field), precision: 2)
       end
     end
   end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'games/tic_tac_toe'
   get 'games/hi_lo'
 
+  resources :purchases
+
   resources :courses do
   end
 
