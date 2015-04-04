@@ -1,21 +1,46 @@
 namespace :startup do
-  desc "TODO"
+  desc 'Stuff only needed for startup'
   task create_superuser: :environment do
-    jef = User.find_by_username 'Jef'
+    admin = User.find_by_username 'Admin'
 
-    if jef.nil?
-      jef = User.new username: 'Jef', password: 'password1'
-      if jef.save
-        puts 'User Jef created.'
+    if admin.nil?
+      admin = User.new username: 'Admin', password: 'ChangeMe!'
+      if admin.save
+        puts 'User Admin created.'
       end
     end
 
-    unless jef.is_superuser?
-      jef.privilege_level = 1
-      puts 'Jef now has superuser privileges.' if jef.save
+    unless admin.is_superuser?
+      admin.privilege_level = 1
+      puts 'Admin now has superuser privileges.' if admin.save
     else
-      'Jef already has superuser privileges.'
+      'Admin already exists with superuser privileges.'
     end
   end
+  task skelaplex: :environment do
 
+    APP_DIR = '/home/jef/Sites/skela'
+    PORT = 3000
+
+    `tmux start-server`
+
+    `tmux new-session -d -s skelaplex -n Server`
+      `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}; rails s" C-m`
+
+      `tmux split-window -h -t skelaplex:0`
+        `tmux resize-pane -R -t skelaplex:0 30`
+        `tmux send-keys -t skelaplex:0 "ngrok -subdomain=skela #{PORT}" C-m`
+
+      `tmux split-window -v -t skelaplex:0`
+        `tmux resize-pane -U -t skelaplex:0 3`
+        `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}" C-m C-l`
+        `tmux send-keys -t skelaplex:0 "rails c" C-m`
+
+
+    `tmux new-window -t skelaplex:1 -n Bash`
+    `tmux send-keys -t skelaplex:1 "cd #{APP_DIR}; git lg" C-m`
+
+    `tmux select-window -t skelaplex:0`
+    `tmux attach-session -t skelaplex`
+  end
 end
