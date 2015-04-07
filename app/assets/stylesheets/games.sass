@@ -3,14 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #games
+  li
+    margin: 0 .5em 1em
+    font-size: 2em
+    line-height: 1em
   a
-    padding: .5em 1em
+    padding: 0 1em
     margin: .5em 1em
 
 .tic_tac_toe_board
+  display: inline-block
   height: 600px
   width: 600px
-  background-color: black
   line-height: 0px
 
   margin: 0
@@ -18,12 +22,11 @@
 
 .tic_tac_toe_square
   display: inline-block
-  height: 198px
-  width: 198px
+  height: 196px
+  width: 196px
   line-height: 200px
   float: left
   background-color: white
-  border: 1px solid black
   font-size: 10em
   margin: 0
   padding: 0
@@ -31,7 +34,20 @@
 
   transition: background .2s ease-in-out, color .25s ease-in-out
 
-
+  &.left_vertical
+    border-right: 2px solid #444
+  &.inner_vertical
+    border-right: 2px solid #444
+    border-left: 2px solid #444
+  &.right_vertical
+    border-left: 2px solid #444
+  &.top_horizontal
+    border-bottom: 2px solid #444
+  &.inner_horizontal
+    border-top: 2px solid #444
+    border-bottom: 2px solid #444
+  &.bottom_horizontal
+    border-top: 2px solid #444
 
 
   &:hover
