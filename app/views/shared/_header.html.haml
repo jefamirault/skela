@@ -8,8 +8,8 @@
     = link_to 'Users', users_path, id: 'users_link', class: "#{'selected' if params[:controller] == 'users' && params[:action] == 'index'}", remote: true
     = link_to 'Issues', issues_path, id: 'issues_link', class: "#{'selected' if params[:controller] == 'issues'}", remote: true
     -#= link_to 'Courses', courses_path, id: 'courses_link', class: "#{'selected' if params[:controller] == 'courses'}", remote: true
-    = link_to 'Games', games_index_path, id: 'games_link', class: "#{'selected' if params[:controller] == 'games'}", remote: true
-    = link_to 'Purchases', purchases_path, id: 'purchases_link', class: "#{'selected' if params[:controller] == 'purchases'}"#, remote: true
+    = link_to 'Games', games_index_path, id: 'games_link', class: "#{'selected' if params[:controller] == 'games'}"#, remote: true
+    = link_to 'Purchases', purchases_path, id: 'purchases_link', class: "#{'selected' if params[:controller] == 'purchases'}", remote: true
     .flex
 
     - if logged_in?
