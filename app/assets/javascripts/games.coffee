@@ -120,7 +120,7 @@ $(document).on 'click', '#rotate_left', ->
     fuck = ->
       cloakRow row
       check()
-    window.setTimeout(fuck, 10)
+    window.setTimeout(fuck, 100)
   window.setTimeout(shit, 300)
 
 $(document).on 'click', '#rotate_right', ->
@@ -133,7 +133,7 @@ $(document).on 'click', '#rotate_right', ->
     fuck = ->
       cloakRow row
       check()
-    window.setTimeout(fuck, 10)
+    window.setTimeout(fuck, 100)
 
   window.setTimeout(shit, 300)
 
