@@ -1,6 +1,11 @@
 class PurchasesController < ApplicationController
   def index
     @purchases = Purchase.all.where(user: current_user)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

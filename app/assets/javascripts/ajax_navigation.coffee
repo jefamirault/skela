@@ -13,6 +13,9 @@ $(document).on 'click', '#my_profile_link', ->
 $(document).on 'click', '#courses_link', ->
   navigate 'courses'
 
+$(document).on 'click', '#purchases_link', ->
+  navigate 'purchases'
+
 $(document).on 'click', '#login_link', ->
   navigate '/'
 
