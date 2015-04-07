@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'games/hi_lo'
   get 'games/hundred_puzzle'
 
+  resources :purchases
+
   resources :courses do
   end
 

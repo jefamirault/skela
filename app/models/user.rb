@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :courses
   has_many :assignments, through: :courses
+  has_many :purchases
 
   # has_one :avatar
 
