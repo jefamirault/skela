@@ -113,18 +113,36 @@ root.rotateRow = (index, times) ->
 
 $(document).on 'click', '#rotate_left', ->
   row = $(this).data 'row'
-  rotateRow row
-  updateSums()
-  check()
+  cloakRow row
+  shit = ->
+    rotateRow row
+    updateSums()
+    fuck = ->
+      cloakRow row
+      check()
+    window.setTimeout(fuck, 10)
+  window.setTimeout(shit, 300)
 
 $(document).on 'click', '#rotate_right', ->
   row = $(this).data 'row'
-  for i in [1..4]
-    rotateRow row
-  updateSums()
-  check()
+  cloakRow row
+  shit = ->
+    for i in [1..4]
+      rotateRow row
+    updateSums()
+    fuck = ->
+      cloakRow row
+      check()
+    window.setTimeout(fuck, 10)
+
+  window.setTimeout(shit, 300)
 
 updateSums = ->
   cells = $('#sums').find 'td'
   for col in [0..4]
     $(cells[col]).html(columnSum(col))
+
+root.cloakRow = (index) ->
+  row = $('#hundred_tower').find("tr:eq(#{index})")
+  toggleCloak($(row))
+  toggleCloak($('#sums tr'))
