@@ -59,7 +59,7 @@ incrementAttempts = ->
 
 root.columnSum = (index) ->
   sum = 0
-  for row in [0..3]
+  for row in [0..4]
     sum += cell(row, index)
   Math.round sum
 
@@ -67,7 +67,7 @@ root.cell = (row, col) ->
   parseFloat getCell(row, col).html()
 
 root.setRow = (index, row) ->
-  for col in [0..3]
+  for col in [0..4]
     setCell(index, col, row[col])
 
 getCell = (row, col) ->
@@ -77,7 +77,7 @@ root.setCell = (row, col, value) ->
   getCell(row,col).html value
 
 solved = ->
-  columnSums = (columnSum(index) for index in [0..3])
+  columnSums = (columnSum(index) for index in [0..4])
   for sum in columnSums
     unless (Math.ceil sum) == 100
       return false
@@ -89,24 +89,25 @@ root.check = ->
 
 
 root.initHundredPuzzle = ->
-  setRow(0, [44,10,29,17])
-  setRow(1, [16,30,31,23])
-  setRow(2, [21,33, 6,40])
-  setRow(3, [19,27,34,20])
+  setRow(0, [18,14,25,18,25])
+  setRow(1, [27,26,16,15,16])
+  setRow(2, [13,17,18,35,17])
+  setRow(3, [26,26,14,15,19])
+  setRow(4, [16,17,27,17,23])
   updateSums()
 
   randomizeHundredPuzzle()
 
 root.randomizeHundredPuzzle = ->
-  for row in [0..3]
+  for row in [0..4]
     rotateRow(row, Math.floor(Math.random()*4))
   updateSums()
 
 root.rotateRow = (index, times) ->
   temp = cell(index, 0)
-  for col in [0..3-1]
+  for col in [0..4-1]
     setCell(index, col, cell(index, col+1))
-  setCell(index, 3, temp)
+  setCell(index, 4, temp)
   if times > 1
     rotateRow(index, times-1)
 
@@ -118,12 +119,12 @@ $(document).on 'click', '#rotate_left', ->
 
 $(document).on 'click', '#rotate_right', ->
   row = $(this).data 'row'
-  for i in [1..3]
+  for i in [1..4]
     rotateRow row
   updateSums()
   check()
 
 updateSums = ->
   cells = $('#sums').find 'td'
-  for col in [0..3]
+  for col in [0..4]
     $(cells[col]).html(columnSum(col))

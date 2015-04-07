@@ -76,6 +76,61 @@
   li
     display: block
     line-height: 71px
+    width: 100px
+
+  #rotate_right
+    .arrow
+      position: relative
+      left: 0
+      transition: left .3s linear
+      //-webkit-animation-name: backright
+      //-webkit-animation-duration: .5s
+
+  #rotate_left
+    .arrow
+      position: relative
+      right: 0
+      transition: right .3s linear
+      //-webkit-animation-name: backleft
+      //-webkit-animation-duration: .5s
+
+  #rotate_left:hover
+    .arrow
+      position: relative
+      //-webkit-animation-name: left
+      //-webkit-animation-duration: .5s
+      right: 20px
+      color: #444
+
+  #rotate_right:hover
+    .arrow
+      position: relative
+      //-webkit-animation-name: right
+      //-webkit-animation-duration: .5s
+      left: 20px
+      color: #444
+
+  //@-webkit-keyframes left
+  //  from
+  //    right: 0px
+  //  to
+  //    right: 24px
+  //@-webkit-keyframes right
+  //  from
+  //    left: 0px
+  //  to
+  //    left: 24px
+  //
+  //@-webkit-keyframes backleft
+  //  from
+  //    right: 24px
+  //  to
+  //    right: 0px
+  //@-webkit-keyframes backright
+  //  from
+  //    left: 24px
+  //  to
+  //    left: 0px
 
   a#rotate_left, a#rotate_right
     display: inline-block
@@ -86,8 +141,6 @@
     border-radius: 3px
 
     &:hover
-      color: white
-      background-color: #427fed
       text-decoration: none
 
     @extend .no_select

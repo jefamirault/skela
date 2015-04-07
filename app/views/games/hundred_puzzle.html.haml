@@ -2,23 +2,27 @@
   %h1 100-Puzzle
 
   %ol#left_rotations
-    - 4.times do |row|
-      %li= content_tag :a, '<-', id: 'rotate_left', data: { row: row }
+    - 5.times do |row|
+      %li
+        = content_tag :a, id: 'rotate_left', data: { row: row } do
+          .arrow <-
 
   %table#hundred_tower
-    - 4.times do |row|
+    - 5.times do
       %tr
-        - 4.times do |col|
+        - 5.times do
           %td
 
   %ol#right_rotations
-    - 4.times do |row|
-      %li= content_tag :a, '->', id: 'rotate_right', data: { row: row }
+    - 5.times do |row|
+      %li
+        = content_tag :a, id: 'rotate_right', data: { row: row } do
+          .arrow ->
 
   .block
     %table#sums
       %tr
-        - 4.times do
+        - 5.times do
           %td
 
 
