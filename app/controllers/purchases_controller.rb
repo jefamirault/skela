@@ -23,6 +23,11 @@ class PurchasesController < ApplicationController
     @purchase.update purchase_params
   end
 
+  def remove_purchase_link
+    @purchase = Purchase.find params[:id]
+    @purchase.remove_link
+  end
+
   def destroy
     @purchase = Purchase.find params[:id]
     @purchase.destroy

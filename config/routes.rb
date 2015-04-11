@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'games/hundred_puzzle'
 
   resources :purchases
+  delete 'purchases/:id/remove_purchase_link', to: 'purchases#remove_purchase_link', as: 'remove_purchase_link'
 
   resources :courses do
   end
