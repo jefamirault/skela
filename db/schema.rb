@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401004547) do
+ActiveRecord::Schema.define(version: 20150425205239) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -44,19 +44,15 @@ ActiveRecord::Schema.define(version: 20150401004547) do
     t.string   "target_version"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string  "title"
-    t.string  "description"
-    t.boolean "checked"
-    t.integer "creator_id"
-    t.integer "list_id"
+  create_table "plane_of_worlds_profiles", force: :cascade do |t|
+    t.string  "alias"
+    t.integer "current_world_id"
+    t.integer "portal_points"
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string  "title"
-    t.text    "description"
-    t.boolean "active"
-    t.integer "creator_id"
+  create_table "portals", force: :cascade do |t|
+    t.integer "origin_world_id"
+    t.integer "destination_world_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -78,6 +74,11 @@ ActiveRecord::Schema.define(version: 20150401004547) do
     t.datetime "avatar_updated_at"
     t.string   "favorite_color"
     t.boolean  "show_header",         default: true
+  end
+
+  create_table "worlds", force: :cascade do |t|
+    t.string  "name"
+    t.integer "discoverer_id"
   end
 
 end
