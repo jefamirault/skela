@@ -1,6 +1,6 @@
 %h1 Users
 
-#column_select
+-##column_select
   %strong Show me...
   %ul.horizontal
     - ['User', 'Favorite Color'].each do |column|
@@ -9,7 +9,8 @@
         = check_box_tag "issue_#{column.downcase}", 1, checked: true
 %br
 #user_select
-  %table#users
+  = megatable('User', %w(id username favorite_color))
+  -#%table#users
     %thead
       %tr
         %th{data: {column: 'user_id'}} #
@@ -22,6 +23,8 @@
         = user_select_row user
   %br
   = link_to 'Create New User', admin_new_user_path, remote: true, class: 'new_user'
+
+
 
 #user_form
   %h1 Select a User

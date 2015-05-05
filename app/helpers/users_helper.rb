@@ -25,14 +25,12 @@ module UsersHelper
         end
       end
       favorite_color_cell = content_tag :td do
-        # link_to 'Edit', edit_user_path(user), remote: true, class: 'edit_user'
         user.favorite_color
       end
       email_cell = content_tag :td do
         'something@what.com'
       end
       (user_id_cell + username_cell + favorite_color_cell + email_cell).html_safe
-      # username_cell.html_safe
     end
   end
 end

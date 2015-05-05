@@ -22,10 +22,10 @@ $(document).ready ->
   initializeIssuesTable()
 
 # Users
-$(document).ready ->
-  $('#users').dataTable
-    "order": [[ 0, "desc" ]]
-    "iDisplayLength": 25
+#$(document).ready ->
+#  $('#users').dataTable
+#    "order": [[ 0, "desc" ]]
+#    "iDisplayLength": 25
 
 $(document).on 'click', '.show_path', ->
   table = $(this).closest('table').attr 'id'
