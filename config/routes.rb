@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   get 'games/hi_lo'
   get 'games/hundred_puzzle'
 
+  get 'games/plane_of_worlds', to: 'worlds#index'
+
+  resources :worlds
+
   resources :purchases
 
-  resources :courses do
-  end
+  resources :courses
 
   get 'courses/:course_id/assignments', to: 'assignments#index', as: 'assignments'
   get 'courses/:course_id/assignments/new', to: 'assignments#new', as: 'new_assignment'

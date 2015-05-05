@@ -1,0 +1,17 @@
+<%= form_for(@world) do |f| %>
+  <% if @world.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@world.errors.count, "error") %> prohibited this world from being saved:</h2>
+
+      <ul>
+      <% @world.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

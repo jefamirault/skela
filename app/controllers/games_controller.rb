@@ -8,4 +8,9 @@ class GamesController < ApplicationController
 
   def tic_tac_toe
   end
+
+  def plane_of_worlds
+    @worlds = World.all
+    binding.pry
+  end
 end
