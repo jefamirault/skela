@@ -6,10 +6,8 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @resources = @users
-    respond_to do |format|
-      format.html
-      format.js
-    end
+
+    render 'shared/index'
   end
 
   def update

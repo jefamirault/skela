@@ -1,26 +1,8 @@
 %h1 Users
 
--##column_select
-  %strong Show me...
-  %ul.horizontal
-    - ['User', 'Favorite Color'].each do |column|
-      %li{style: 'padding: .5em 1em'}
-        = label_tag "issue_#{column.downcase}", column
-        = check_box_tag "issue_#{column.downcase}", 1, checked: true
 %br
 #user_select
   = megatable('User', %w(id username favorite_color))
-  -#%table#users
-    %thead
-      %tr
-        %th{data: {column: 'user_id'}} #
-        %th{data: {column: 'user_username'}} User
-        %th{data: {column: 'user_favorite_color'}} Favorite Color
-        %th{data: {column: 'user_email'}} Email
-        -#%th(colspan=2) actions
-    %tbody
-      - @users.each do |user|
-        = user_select_row user
   %br
   = link_to 'Create New User', admin_new_user_path, remote: true, class: 'new_user'
 

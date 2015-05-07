@@ -10,8 +10,7 @@
 %br
 -#- @resources = @issues
 -#= megatable('Issue', %w(description assignee tester category target_version completed updated_at completed_at))
-
-%table#issues
+%table#issues(style='display:inline-block;')
   %thead
     %tr
       %th{data: {column: 'issue_number'}} Issue

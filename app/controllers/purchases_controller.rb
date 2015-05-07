@@ -2,10 +2,7 @@ class PurchasesController < ApplicationController
   def index
     @purchases = Purchase.all.where(user: current_user)
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render 'shared/index'
   end
 
   def new

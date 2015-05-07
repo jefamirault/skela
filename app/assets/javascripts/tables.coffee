@@ -18,8 +18,8 @@ root.initializeIssuesTable = ->
     "iDisplayLength": 50
     "aoColumnDefs": [{ "iDataSort": 8, "aTargets": [7] },{ "iDataSort": 10, "aTargets": [9] }]
 
-$(document).ready ->
-  initializeIssuesTable()
+#$(document).ready ->
+#  initializeIssuesTable()
 
 # Users
 #$(document).ready ->

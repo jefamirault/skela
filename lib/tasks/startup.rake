@@ -28,7 +28,7 @@ namespace :startup do
       `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}; rails s" C-m`
 
       `tmux split-window -h -t skelaplex:0`
-        `tmux resize-pane -R -t skelaplex:0 30`
+        `tmux resize-pane -R -t skelaplex:0 18`
         `tmux send-keys -t skelaplex:0 "ngrok -subdomain=skela #{PORT}" C-m`
 
       `tmux split-window -v -t skelaplex:0`
@@ -38,7 +38,7 @@ namespace :startup do
 
 
     `tmux new-window -t skelaplex:1 -n Bash`
-    `tmux send-keys -t skelaplex:1 "cd #{APP_DIR}; git lg" C-m`
+    `tmux send-keys -t skelaplex:1 "cd #{APP_DIR}; git show --stat" C-m`
 
     `tmux select-window -t skelaplex:0`
     `tmux attach-session -t skelaplex`

@@ -5,10 +5,8 @@ class IssuesController < ApplicationController
   # GET /issues
   def index
     @issues = Issue.all
-    respond_to do |format|
-      format.html
-      format.js
-    end
+
+    render 'shared/index'
   end
 
   # GET /issues/1
@@ -27,10 +25,7 @@ class IssuesController < ApplicationController
 
   # GET /issues/1/edit
   def edit
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render 'shared/edit'
   end
 
   # POST /issues

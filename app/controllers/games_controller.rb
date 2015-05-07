@@ -1,9 +1,10 @@
 class GamesController < ApplicationController
   def index
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+    render 'shared/index'
   end
 
   def tic_tac_toe
@@ -11,6 +12,5 @@ class GamesController < ApplicationController
 
   def plane_of_worlds
     @worlds = World.all
-    binding.pry
   end
 end
