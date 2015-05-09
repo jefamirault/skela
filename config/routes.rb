@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :plants
+
   resources :games, only: :index
   get 'games/tic_tac_toe'
   get 'games/hi_lo'

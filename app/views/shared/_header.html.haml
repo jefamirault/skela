@@ -10,6 +10,7 @@
     -#= link_to 'Courses', courses_path, id: 'courses_link', class: "#{'selected' if params[:controller] == 'courses'}", remote: true
     = link_to 'Games', games_path, id: 'games_link', class: "#{'selected' if params[:controller] == 'games'}", remote: true
     = link_to 'Purchases', purchases_path, id: 'purchases_link', class: "#{'selected' if params[:controller] == 'purchases'}", remote: true
+    = link_to 'Plants', plants_path, id: 'plants_link', class: "#{'selected' if params[:controller] == 'plants'}", remote: true
     .flex
 
     - if logged_in?
