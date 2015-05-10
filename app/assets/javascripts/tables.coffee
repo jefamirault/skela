@@ -12,11 +12,11 @@ showColumn = (column) ->
   $('[data-column=' + column + ']').show()
 
 # Issues
-root.initializeIssuesTable = ->
-  $('#issues').dataTable
-    "order": [[ 0, "desc" ]]
-    "iDisplayLength": 50
-    "aoColumnDefs": [{ "iDataSort": 8, "aTargets": [7] },{ "iDataSort": 10, "aTargets": [9] }]
+#root.initializeIssuesTable = ->
+#  $('#issues').dataTable
+#    "order": [[ 0, "desc" ]]
+#    "iDisplayLength": 50
+#    "aoColumnDefs": [{ "iDataSort": 8, "aTargets": [7] },{ "iDataSort": 10, "aTargets": [9] }]
 
 #$(document).ready ->
 #  initializeIssuesTable()
@@ -33,4 +33,4 @@ $(document).on 'click', '.show_path', ->
   $.ajax
     url: "/#{table}/#{id}/edit"
     dataType: 'script'
-  history.replaceState( {} , '', "/#{table}/#{id}/edit" )
+  history.pushState( {} , '', "/#{table}/#{id}/edit" )

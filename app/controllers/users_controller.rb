@@ -69,10 +69,8 @@ class UsersController < ApplicationController
   def edit
     @user = User.find params[:id]
     set_users
-    respond_to do |format|
-      format.js
-      format.html
-    end
+
+    render 'shared/edit'
   end
 
   def destroy
