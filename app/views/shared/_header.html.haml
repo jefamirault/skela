@@ -9,8 +9,10 @@
     = link_to 'Issues', issues_path, id: 'issues_link', class: "#{'selected' if params[:controller] == 'issues'}", remote: true
     -#= link_to 'Courses', courses_path, id: 'courses_link', class: "#{'selected' if params[:controller] == 'courses'}", remote: true
     = link_to 'Games', games_path, id: 'games_link', class: "#{'selected' if params[:controller] == 'games'}", remote: true
-    = link_to 'Purchases', purchases_path, id: 'purchases_link', class: "#{'selected' if params[:controller] == 'purchases'}", remote: true
+    -#= link_to 'Purchases', purchases_path, id: 'purchases_link', class: "#{'selected' if params[:controller] == 'purchases'}", remote: true
     = link_to 'Plants', plants_path, id: 'plants_link', class: "#{'selected' if params[:controller] == 'plants'}", remote: true
+    = link_to 'Developer', developer_log_entries_path, id: 'developer_log_entries_link', class: "#{'selected' if params[:controller] == 'developer_log_entries'}", remote: true
+
     .flex
 
     - if logged_in?

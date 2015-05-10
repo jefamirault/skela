@@ -27,26 +27,17 @@ module TablesHelper
 
   def megarow(resource, model_name, fields)
     klass = 'show_path'
-    # klass << (options[:hidden] ? ' phased invisible' : '')
 
     content_tag :tr, data: { object_id: resource.id }, class: klass do
       cols = ''
       fields.each do |field|
         cols << content_tag(:td, data: { column: "#{model_name}_#{field}" }) do
           content_tag(:span, class: "#{model_name}_#{resource.id}_#{field}") do
-            # binding.pry
             resource.send(field).to_s
           end
         end
       end
 
-      # favorite_color_cell = content_tag :td do
-      #   resource.favorite_color
-      # end
-      # email_cell = content_tag :td do
-      #   'something@what.com'
-      # end
-      # (resource_id_cell + username_cell + favorite_color_cell + email_cell).html_safe
       cols.html_safe
     end
   end

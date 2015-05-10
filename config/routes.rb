@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :developer_log_entries
+
   resources :plants
 
   resources :games, only: :index

@@ -19,6 +19,12 @@ $(document).on 'click', '#games_link', ->
 $(document).on 'click', '#purchases_link', ->
   navigate 'purchases'
 
+$(document).on 'click', '#developer_log_entries_link', ->
+  navigate 'developer_log_entries'
+
+$(document).on 'click', '#plants_link', ->
+  navigate 'plants'
+
 $(document).on 'click', '#login_link', ->
   navigate '/'
 

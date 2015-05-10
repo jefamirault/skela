@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @developer_log_entry.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @developer_log_entry.text %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @developer_log_entry.datetime %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @developer_log_entry.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_developer_log_entry_path(@developer_log_entry), remote: true %> |
+<%= link_to 'Back', developer_log_entries_path, remote: true %>
+
