@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :worlds
 
   resources :purchases
+  delete 'purchases/:id/remove_purchase_link', to: 'purchases#remove_purchase_link', as: 'remove_purchase_link'
 
   resources :courses
 

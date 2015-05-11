@@ -21,7 +21,13 @@
           %td{data: {column: 'purchase_purchased_at'}}
             = ajax_datetime 'purchased_at', purchase
           %td{data: {column: 'purchase_purchase_link'}}
-            = ajax_text 'purchase_link', purchase
+            - if purchase.purchase_link
+              = link_to 'buy', purchase.purchase_link, target: '_blank'
+              (
+              = link_to 'x', remove_purchase_link_path(purchase.id), method: :delete, remote: true
+              )
+            - else
+              = ajax_text 'purchase_link', purchase
           %td
             = link_to 'delete row', purchase_path(purchase), method: :delete, remote: true
 
