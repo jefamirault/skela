@@ -6,7 +6,9 @@ module TablesHelper
         content_tag :tr do
           cols = ''
           fields.each do |field|
-            cols << content_tag(:th, field, data: { column: "#{model_name}_#{field}" })
+            formatted_field = field.titleize
+
+            cols << content_tag(:th, formatted_field, data: { column: "#{model_name}_#{field}" })
           end
           cols.html_safe
         end

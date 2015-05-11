@@ -9,6 +9,8 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new
     @purchase.user = current_user
     @purchase.save
+
+    redirect_to purchases_path
   end
 
   def create
@@ -28,6 +30,8 @@ class PurchasesController < ApplicationController
   def destroy
     @purchase = Purchase.find params[:id]
     @purchase.destroy
+    redirect_to purchases_path
+
   end
 
   private

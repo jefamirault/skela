@@ -4,6 +4,7 @@ table
   clear: both
   display: block
   margin: 3em 0 1em
+  border-collapse: collapse
 
   border: none
   tr
@@ -18,10 +19,9 @@ table
     &.odd
       td
         //background-color: #f2f0ee
-    //rgba(0,0,0,.04)
-    &:hover
-      td
-        //background-color: orange
+        //rgba(0,0,0,.04)
+    &:hover td
+      background-color: orange
     th.sorting_asc:after
       content: ' v'
     th.sorting_desc:after

@@ -24,13 +24,13 @@
             - if purchase.purchase_link
               = link_to 'buy', purchase.purchase_link, target: '_blank'
               (
-              = link_to 'x', remove_purchase_link_path(purchase.id), method: :delete, remote: true
+              = link_to 'x', remove_purchase_link_path(purchase.id), method: :delete
               )
             - else
               = ajax_text 'purchase_link', purchase
           %td
-            = link_to 'delete row', purchase_path(purchase), method: :delete, remote: true
+            = link_to 'delete row', purchase_path(purchase), method: :delete
 
 %br
 
-= link_to 'new purchase', new_purchase_path, remote: true
+= link_to 'new purchase', new_purchase_path
