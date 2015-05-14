@@ -3,17 +3,17 @@
 #column_select
   %strong Show me...
   %ul.horizontal
-    - %w(Number Description Assignee Tester Category Target_Version Updated_at Completed_at).each do |column|
+    - %w(Number Title Description Assignee Tester Category Target_Version Updated_at Completed_at).each do |column|
       %li{style: 'padding: .5em 1em'}
         = label_tag "issue_#{column.downcase}", column
         = check_box_tag "issue_#{column.downcase}", 1, checked: true
-%br
 -#- @resources = @issues
--#= megatable('Issue', %w(description assignee tester category target_version completed updated_at completed_at))
+-#= megatable('Issue', %w(title description assignee tester category target_version completed updated_at completed_at))
 %table#issues(style='display:inline-block;')
   %thead
     %tr
       %th{data: {column: 'issue_number'}} Issue
+      %th{data: {column: 'issue_title'}} Title
       %th{data: {column: 'issue_description'}} Description
       %th{data: {column: 'issue_assignee'}} Assignee
       %th{data: {column: 'issue_tester'}} Tester
@@ -21,14 +21,15 @@
       %th{data: {column: 'issue_target_version'}} Version
       %th{data: {column: 'issue_status'}, class: 'hidden'} Status
       %th{data: {column: 'issue_updated_at'}} Updated
-      %th{data: {column: 'issue_updated_at_sort'}, class: 'hidden'} Updated (Sort)
       %th{data: {column: 'issue_completed_at'}} Completed
-      %th{data: {column: 'issue_completed_at_sort'}, class: 'hidden'} Completed (Sort))
   %tbody
     - @issues.each do |issue|
       %tr.show_path{data: { object_id: issue.id }, class: issue.completed ? 'resolved' : 'unresolved'}
         %td{data: {column: 'issue_number'}}
           = issue.number plain: true
+
+        %td{data: {column: 'issue_title'}}
+          = issue.title
 
         %td{data: {column: 'issue_description'}}
           = issue.description

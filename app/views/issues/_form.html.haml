@@ -2,6 +2,9 @@
   .right= updated_field_at 'updated_at', @issue
   %br
   %dl
+    %dt Title
+    %dd= ajax_string 'title', @issue
+
     %dt Description
     %dd= ajax_text 'description', @issue
 
