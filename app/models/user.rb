@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
 
   # has_one :avatar
 
+  def username
+    read_attribute(:username).downcase
+  end
+  def username=(value)
+    write_attribute(:username, value.downcase)
+  end
+
+
   def is_superuser?
     self.privilege_level == 1
   end
