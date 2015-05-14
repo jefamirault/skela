@@ -5,10 +5,7 @@ class WelcomeController < ApplicationController
 
   # before_filter :authenticate
 
-  # def index
-  #   respond_to do |format|
-  #     format.html
-  #     format.js
-  #   end
-  # end
+  def index
+    render 'shared/index'
+  end
 end

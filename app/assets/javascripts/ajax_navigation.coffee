@@ -1,42 +1,34 @@
 $(document).on 'click', '#header_left', ->
   navigate 'welcome'
-
-$(document).on 'click', '#issues_link', ->
-  navigate 'issues'
-
-$(document).on 'click', '#users_link', ->
-  navigate 'users'
-
 $(document).on 'click', '#my_profile_link', ->
   navigate 'my_profile'
-
-$(document).on 'click', '#courses_link', ->
-  navigate 'courses'
-
-$(document).on 'click', '#games_link', ->
-  navigate 'games'
-
-$(document).on 'click', '#purchases_link', ->
-  navigate 'purchases'
-
-$(document).on 'click', '#developer_log_entries_link', ->
-  navigate 'developer_log_entries'
-
-$(document).on 'click', '#plants_link', ->
-  navigate 'plants'
-
 $(document).on 'click', '#login_link', ->
   navigate '/'
 
-navigate = (section) ->
-  if section != '/'
-    selector = '#' + section + '_link'
-    $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass('selected');
+$(document).on 'click', '.nav_link', ->
+  navigate $(this).data 'path'
+
+
+navigate = (section, push=true) ->
+  unless section == '/'
+    selector = "[data-path=" + section + "]"
+    $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass 'selected'
     $(selector).addClass 'selected'
 
+
   cloak '#container'
-  window.history.replaceState( {} , '', '/' + section );
+  if push
+    window.history.pushState( {} , '', '/' + section );
 
 
 $ ->
   decloak('#container')
+  if (typeof history.pushState == "function")
+    window.onpopstate = ->
+      cloak '#container'
+      shit = window.location.href.split '/'
+      path = shit[shit.length-1]
+      navigate path, false
+      $.ajax
+        url: window.location.href,
+        dataType: 'script'

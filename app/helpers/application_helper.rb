@@ -42,12 +42,15 @@ module ApplicationHelper
     params[:controller] == controller && params[:action] == action
   end
 
-  ###########
-  ## Sugar ##
-  ###########
-
   def time_ago(datetime)
     "#{distance_of_time_in_words(Time.now, datetime)} ago"
   end
 
+  def navigation_link(title, controller = title)
+    klass = 'nav_link'
+    if params[:controller] == controller
+      klass << ' selected'
+    end
+    link_to title.titleize, send("#{controller}_path"), remote: true, class: klass, data: { path: controller }
+  end
 end

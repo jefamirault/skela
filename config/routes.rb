@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'developer', to: 'developer#index'
   resources :developer_log_entries
 
   resources :plants
