@@ -20,13 +20,6 @@ ActiveRecord::Schema.define(version: 20150514040831) do
     t.datetime "deadline"
   end
 
-  create_table "commands", force: :cascade do |t|
-    t.string   "command_text"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "courses", force: :cascade do |t|
     t.integer "user_id"
     t.string  "title"
