@@ -1,0 +1,19 @@
+= header_left
+
+#header_right.flex_box.flex
+  %nav.flex_box.flex
+    = navigation_link 'users'
+    = navigation_link 'issues'
+    = navigation_link 'games'
+    = navigation_link 'plants'
+    = navigation_link 'developer'
+
+    .flex
+
+    - if logged_in?
+      %nav#user_nav
+        = logged_in_text
+        = link_to 'My Profile', my_profile_path, id: 'my_profile_link', class: "user_link link_1 #{'selected' if params[:controller] == 'users' && params[:action] == 'my_profile'}", remote: true
+        = link_to 'Logout', logout_path, id: 'logout_button', remote: true, method: :delete, class: 'user_link link_2'
+    - else
+      = link_to 'Login', login_path, id: 'login_link', remote: true

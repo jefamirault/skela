@@ -14,8 +14,6 @@ $(document).on 'submit', '#center_form_box form', root.login_attempt
 
 root.login_success = (notice, content, header) ->
   $('#login_button').val 'Success!'
-#  $('.flash.notice').html notice
-#  $('.flash.notice').removeClass 'hidden'
   $('#center_form_box').find('input').attr 'disabled', true
   setTimeout hide_container, 500
   build_header = ->
