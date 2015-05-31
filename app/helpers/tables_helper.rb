@@ -29,7 +29,7 @@ module TablesHelper
 
   def megarow(resource, model_name, fields)
     klass = 'show_path'
-
+    klass << cycle(' odd', ' even')
     content_tag :tr, data: { object_id: resource.id }, class: klass do
       cols = ''
       fields.each do |field|

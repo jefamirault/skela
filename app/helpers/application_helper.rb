@@ -57,4 +57,10 @@ module ApplicationHelper
     end
     link_to target.titleize, send("#{target}_path"), remote: true, class: klass, data: { path: target, parent: parent }
   end
+
+  def circle_add
+    content_tag :i, class: 'material-icons md-icon md-48', style: 'color: #2d5daf' do
+      'add_circle'
+    end
+  end
 end

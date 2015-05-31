@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 gem 'thin'
+gem 'material_icons'
 
 gem "paperclip", "~> 4.2"
 

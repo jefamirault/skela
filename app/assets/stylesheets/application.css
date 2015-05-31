@@ -13,13 +13,14 @@
  *= require_tree
  *= require dataTables/jquery.dataTables
  *= require_self
+ *= require material_icons
  */
 
 body {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: #fff;
+    background: #ececec;
 }
 
 html {

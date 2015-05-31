@@ -1,6 +1,6 @@
 %h1 Issues
 
-#column_select
+-##column_select
   %strong Show me...
   %ul.horizontal
     - %w(Number Title Description Assignee Tester Category Target_Version Updated_at Completed_at).each do |column|
@@ -16,9 +16,9 @@
       %th{data: {column: 'issue_title'}} Title
       %th{data: {column: 'issue_description'}} Description
       %th{data: {column: 'issue_assignee'}} Assignee
-      %th{data: {column: 'issue_tester'}} Tester
-      %th{data: {column: 'issue_category'}} Category
-      %th{data: {column: 'issue_target_version'}} Version
+      -#%th{data: {column: 'issue_tester'}} Tester
+      -#%th{data: {column: 'issue_category'}} Category
+      -#%th{data: {column: 'issue_target_version'}} Version
       %th{data: {column: 'issue_status'}, class: 'hidden'} Status
       %th{data: {column: 'issue_updated_at'}} Updated
       %th{data: {column: 'issue_completed_at'}} Completed
@@ -37,13 +37,13 @@
         %td{data: {column: 'issue_assignee'}}
           = issue.assignee.username if issue.assignee
 
-        %td{data: {column: 'issue_tester'}}
+        -#%td{data: {column: 'issue_tester'}}
           = issue.tester.username if issue.tester
 
-        %td{data: {column: 'issue_category'}}
+        -#%td{data: {column: 'issue_category'}}
           = issue.category
 
-        %td{data: {column: 'issue_target_version'}}
+        -#%td{data: {column: 'issue_target_version'}}
           = issue.target_version
 
         %td{data: {column: 'issue_status'}, style: "color:#{issue.completed ? 'green' : 'red'}", class: 'hidden'}
@@ -51,13 +51,15 @@
 
         %td{data: {column: 'issue_updated_at'}, style: 'font-size:.8em; min-width:10em;'}
           = time_ago(issue.updated_at)
-        %td{data: {column: 'issue_updated_at_sort'}, class: 'hidden'}
-          = issue.updated_at ? issue.updated_at.to_f : -1
+        -#%td{data: {column: 'issue_updated_at_sort'}, class: 'hidden'}
+        -#  = issue.updated_at ? issue.updated_at.to_f : -1
 
         %td{data: {column: 'issue_completed_at'}, style: 'font-size:.8em; min-width:11em;'}
           = issue_completed_at issue
-        %td{data: {column: 'issue_completed_at_sort'}, class: 'hidden'}
-          = issue.completed_at ? issue.completed_at.to_f : (issue.completed ? 1 : 0)
+        -#%td{data: {column: 'issue_completed_at_sort'}, class: 'hidden'}
+        -#  = issue.completed_at ? issue.completed_at.to_f : (issue.completed ? 1 : 0)
 
 %br
-= link_to 'New Issue', new_issue_path, id: 'new_issue', remote: true
+= link_to circle_add, new_issue_path, id: 'new_issue', remote: true, class: 'southeast'
+
+
