@@ -6,15 +6,14 @@ $(document).on 'click', '#login_link', ->
   navigate '/'
 
 $(document).on 'click', '.nav_link', ->
-  navigate $(this).data 'path'
+  navigate $(this).data('path'), $(this).data('parent')
 
 
-navigate = (section, push=true) ->
+navigate = (section, parent_controller=section, push=true) ->
   unless section == '/'
-    selector = "[data-path=" + section + "]"
+    selector = "[data-path=" + parent_controller + "]"
     $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass 'selected'
     $(selector).addClass 'selected'
-
 
   cloak '#container'
   if push

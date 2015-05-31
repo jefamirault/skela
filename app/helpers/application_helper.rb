@@ -46,11 +46,15 @@ module ApplicationHelper
     "#{distance_of_time_in_words(Time.now, datetime)} ago"
   end
 
-  def navigation_link(title, controller = title)
+  def navigation_link(target, parent = target, routing_controllers = [])
     klass = 'nav_link'
-    if params[:controller] == controller
+    if params[:controller] == target
       klass << ' selected'
+    else
+      routing_controllers.each do |c|
+        klass << ' selected' if params[:controller] == c
+      end
     end
-    link_to title.titleize, send("#{controller}_path"), remote: true, class: klass, data: { path: controller }
+    link_to target.titleize, send("#{target}_path"), remote: true, class: klass, data: { path: target, parent: parent }
   end
 end
