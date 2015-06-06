@@ -6,7 +6,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  %body
+  %body{ class: params[:controller] }
     .flash.notice.hidden
       %span.vertical_middle= notice
     .flash.alert.hidden
