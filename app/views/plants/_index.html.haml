@@ -1,0 +1,14 @@
+%p#notice= notice
+
+%h1 Listing Plants
+- @resources = @plants
+-#= megatable 'Plant', %w(name species birthday)
+
+
+%ul
+  - @resources.each do |plant|
+    %li= render partial: 'record_module', locals: { plant: plant }
+
+%br
+
+= link_to circle_add, new_plant_path, remote: true, class: 'southeast'

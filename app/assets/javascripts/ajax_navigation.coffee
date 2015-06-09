@@ -14,7 +14,7 @@ navigate = (section, parent_controller=section, push=true) ->
     selector = "[data-path=" + parent_controller + "]"
     $('#header_right nav').closest('nav').find("a:not("+ selector + ")").removeClass 'selected'
     $(selector).addClass 'selected'
-
+  $('body').attr 'class', parent_controller
   cloak '#container'
   if push
     window.history.pushState( {} , '', '/' + section );

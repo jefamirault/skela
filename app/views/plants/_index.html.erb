@@ -1,9 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Plants</h1>
-<% @resources = @plants %>
-<%= megatable 'Plant', %w(name species birthday) %>
-
-<br>
-
-<%= link_to circle_add, new_plant_path, remote: true, class: 'southeast' %>
