@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'login', to: 'login#new_session', as: 'login'
+
+  get 'signup', to: 'login#signup', as: 'signup'
+  get 'login/new_session'
+  post 'create_session', to: 'login#create_session', as: 'create_session'
+  delete 'logout', to: 'login#destroy_session', as: 'logout'
+
+
   get 'developer', to: 'developer#index'
   resources :developer_log_entries
 
@@ -32,9 +40,9 @@ Rails.application.routes.draw do
   post 'admin_create_user', to: 'users#admin_create', as: 'admin_create_user'
   get 'my_profile', to: 'users#my_profile', as: 'my_profile'
 
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  # get 'signup', to: 'users#new', as: 'signup'
+  # get 'login', to: 'sessions#new', as: 'login'
+  # delete 'logout', to: 'sessions#destroy', as: 'logout'
 
 
   resources :sessions
@@ -43,7 +51,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#new'
+  root 'login#new_session'
 
   get 'welcome' => 'welcome#index', as: :welcome
 

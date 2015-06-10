@@ -16,8 +16,17 @@ module ApplicationHelper
     link_to logo, welcome_path, id: 'header_left', remote: true
   end
 
-  def site_logo
-    image_tag('skela_logo.svg', style: 'width:168px; height:64.5px; vertical-align:bottom')
+  def site_logo(options = {})
+    path = 'skela_logo'
+
+    unless options.empty?
+      path << '_'
+      path << options[:color]
+    end
+
+    path << '.svg'
+
+    image_tag(path, style: 'width:168px; height:64.5px; vertical-align:bottom')
   end
 
   def logged_in_text
@@ -31,11 +40,11 @@ module ApplicationHelper
   end
 
   def logging_in?
-    controller_action? 'sessions', 'new'
+    controller_action? 'login', 'new_session'
   end
 
   def signing_up?
-    controller_action? 'users', 'new'
+    controller_action? 'login', 'signup'
   end
 
   def controller_action?(controller, action)

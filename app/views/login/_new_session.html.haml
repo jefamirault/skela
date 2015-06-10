@@ -1,0 +1,21 @@
+#curtain
+  %h1= site_logo color: 'gray'
+
+  #center_form_box
+    = form_tag sessions_path, remote: true do |f|
+      .center_form_field
+        = text_field_tag :username, nil, placeholder: 'Username'
+      .center_form_field
+        = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
+
+      .actions
+        = submit_tag 'Log in', id: 'login_button'
+
+  %br
+  = link_to 'I don\'t have an account', signup_path, class: 'center_form_link'
+
+:javascript
+  $('#username').focus();
+  jQuery(function(){
+    decloak('#container');
+  });

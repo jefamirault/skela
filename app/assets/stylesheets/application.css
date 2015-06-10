@@ -46,58 +46,6 @@ html {
     clear: both;
     margin-bottom: .2em;
 }
-#center_form_box {
-    background-color: #f3f7f8;
-    width: 300px;
-    display: inline-block;
-    padding: 2.5em 1.5em;
-    border-radius: 3px;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.298039);
-    margin-bottom: 2em;
-    position: relative;
-    left: 0px;
-    transition: left 1s ease-in-out;
-    transition-delay: .5s;
-}
-#center_form_box label {
-    color: rgba(0, 0, 0, 0.698039);
-}
-#center_form_box form .center_form_field input {
-    font-size: 1.3em;
-    line-height: 2.5em;
-    border: solid 1px #ddd;
-    padding: 0 8px 0;
-    width: 260px;
-    margin-bottom: .5em;
-    transition: background .3s ease-in-out;
-}
-.center_form_field input:hover {
-    outline: none;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset;
-}
-#center_form_box form .center_form_field input:focus {
-    outline: none;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset;
-    border: solid 1px #427fed;
-}
-a.center_form_link {
-    font-size: 1em;
-    display: inline-block;
-    color: #427fed;
-    text-decoration: none;
-    padding: 1em 2em;
-}
-a.center_form_link:hover {
-    color: #427fed;
-    background: none;
-    text-decoration: underline;
-}
-a.center_form_link:visited {
-    color: #427fed;
-}
-a.center_form_link:active {
-    color: #427fed;
-}
 
 input.disabled {
     background-color: #f4f4f4;
