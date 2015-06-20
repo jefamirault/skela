@@ -57,13 +57,16 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'webrat'
   # gem 'factory-girl'
+
+  gem 'guard'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 group :development do
   gem 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-nav'
 end
+

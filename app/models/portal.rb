@@ -6,4 +6,16 @@ class Portal < ActiveRecord::Base
     [origin_world.name, destination_world.name]
   end
 
+  def self.cost
+    10
+  end
+
+  def self.exists_between(world1, world2)
+    world1.active_portals.each do |direction|
+      if world1.to_the(direction) == world2
+        return true
+      end
+    end
+    false
+  end
 end
