@@ -58,7 +58,6 @@ group :development, :test do
   gem 'webrat'
   # gem 'factory-girl'
 
-  gem 'guard'
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
@@ -68,5 +67,7 @@ group :development do
   gem 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard'
+  gem 'guard-cucumber'
 end
 

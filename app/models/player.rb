@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   belongs_to :world
+  belongs_to :user
 
   def add_mana(amount)
     if mana

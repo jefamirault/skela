@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :assignments, through: :courses
   has_many :purchases
 
+  belongs_to :world
+  has_one :player
+
   # has_one :avatar
 
   def username
@@ -24,5 +27,18 @@ class User < ActiveRecord::Base
 
   def to_s
     self.username
+  end
+
+  def create_player_account
+    if player.nil?
+      self.player = Player.new
+      player.name = username
+      player.world = World.home
+      player.mana = Portal.cost
+      player.save
+      player
+    else
+      false
+    end
   end
 end

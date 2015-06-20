@@ -64,4 +64,13 @@ class World < ActiveRecord::Base
         to_the_west
     end
   end
+
+  def self.home
+    home = World.where(id: 1).first
+    if home.nil?
+      home = World.new name: 'Home'
+      home.save
+    end
+    home
+  end
 end
