@@ -72,4 +72,8 @@ module ApplicationHelper
       'add_circle'
     end
   end
+
+  def days_since(event)
+    (Time.now - event.to_datetime).to_i / 3600 / 24
+  end
 end
