@@ -5,6 +5,8 @@ class World < ActiveRecord::Base
   has_many :destination_worlds, :through => :inverse_portals, :source => :origin_world
   has_many :players
 
+
+
   def adjacent_worlds
     origin_worlds + destination_worlds
   end
@@ -72,5 +74,9 @@ class World < ActiveRecord::Base
       home.save
     end
     home
+  end
+
+  def portal_open?(direction)
+    active_portals.include? direction
   end
 end

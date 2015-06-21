@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   get 'games/tic_tac_toe'
   get 'games/hi_lo'
   get 'games/hundred_puzzle'
-
-  get 'games/plane_of_worlds', to: 'worlds#index'
-
+  get 'games/plane_of_worlds'
+  get 'open_portal_path/:direction', to: 'games#open_portal', as: 'open_portal'
+  get 'travel_portal_path/:direction', to: 'games#travel_portal', as: 'travel_portal'
   resources :worlds
 
   resources :purchases

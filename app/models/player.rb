@@ -2,6 +2,13 @@ class Player < ActiveRecord::Base
   belongs_to :world
   belongs_to :user
 
+  def world
+    if super.nil?
+      self.world = World.home
+    end
+    super
+  end
+
   def add_mana(amount)
     if mana
       self.mana += amount
@@ -47,6 +54,31 @@ class Player < ActiveRecord::Base
 
     world.save
     other_world.save
+  end
+
+  def open_portal(direction)
+    if world.open_portals.include? direction.to_sym
+      new_world = World.create name: "#{self.name}'s Land"
+
+      case direction
+        when 'north'
+          world.portal_1_id = new_world.id
+          new_world.portal_3_id = world.id
+        when 'east'
+          world.portal_2_id = new_world.id
+          new_world.portal_4_id = world.id
+        when 'south'
+          world.portal_3_id = new_world.id
+          new_world.portal_1_id = world.id
+        when 'west'
+          world.portal_4_id = new_world.id
+          new_world.portal_2_id = world.id
+      end
+      world.save
+      new_world.save
+    self.mana -= 10
+    end
+    save
   end
 
   def take_portal_to(other_world)
