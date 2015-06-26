@@ -68,7 +68,7 @@ class World < ActiveRecord::Base
   end
 
   def self.home
-    home = World.where(id: 1).first
+    home = World.first
     if home.nil?
       home = World.new name: 'Home'
       home.save

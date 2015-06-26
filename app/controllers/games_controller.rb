@@ -7,11 +7,16 @@ class GamesController < ApplicationController
   end
 
   def plane_of_worlds
-    @player = current_user.player
+    find_or_create_player
+
     @world = @player.world
     if @player.nil?
       @player = current_user.create_player_account
     end
+
+    find_players
+
+    render layout: 'plane_of_worlds'
   end
 
   def open_portal
@@ -31,6 +36,7 @@ class GamesController < ApplicationController
       when 'west'
         World.find current_world.portal_4_id
     end
+    find_players
   end
 
 
@@ -40,4 +46,16 @@ class GamesController < ApplicationController
     current_user.player
   end
   helper_method :current_player
+
+  def find_or_create_player
+    @player = current_user.player ? current_user.player : current_user.create_player_account
+    if @player.world.nil?
+      @player.world = World.home
+    end
+  end
+
+  def find_players
+    @players = current_player.world.players
+    @players.delete current_player
+  end
 end

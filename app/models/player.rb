@@ -90,4 +90,8 @@ class Player < ActiveRecord::Base
     end
     false
   end
+
+  def to_s
+    name
+  end
 end
