@@ -79,6 +79,7 @@ class Player < ActiveRecord::Base
     self.mana -= 10
     end
     save
+    new_world
   end
 
   def take_portal_to(other_world)
@@ -89,5 +90,14 @@ class Player < ActiveRecord::Base
       end
     end
     false
+  end
+
+  def to_s
+    name
+  end
+
+  def set_influence(amount)
+    influence = amount
+    save
   end
 end

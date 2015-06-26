@@ -26,3 +26,19 @@ Then(/^I can travel to that world$/) do
   @jef.take_portal_to @b_world
   expect(@jef.world).to eq @b_world
 end
+
+Given(/^The portal space to the east is free$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I can create a portal to the east$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^The portal space to the west is free$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I can create a portal to the west$/) do
+  pending # express the regexp above with the code you wish you had
+end

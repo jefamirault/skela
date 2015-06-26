@@ -1,11 +1,26 @@
+
+
+
 #world_module
+  #player_module
+  %h2
+    = "Playing as: #{@player.name}"
+  %h3
+    Mana:
+    %span#mana= @player.mana
+  %br
+
   %h2= "World: #{current_player.world.name}"
   %div
-    #north
-      = portal_link :north
-    #east
-      = portal_link :east
-    #south
-      = portal_link :south
-    #west
-      = portal_link :west
+  #north
+    = portal_link :north
+  #east
+    = portal_link :east
+  #south
+    = portal_link :south
+  #west
+    = portal_link :west
+  #players_list
+    %ul
+      - @players.each do |player|
+        %li= player

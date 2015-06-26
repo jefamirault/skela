@@ -3,7 +3,7 @@ Feature: Create Player
   As a skela user
   I want to create a player account and play
 
-  Scenario:
+  Scenario: New Player
     Given I am a skela user without a player account
     When I create a player account
     Then My player is in Home World
