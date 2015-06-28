@@ -100,4 +100,8 @@ class Player < ActiveRecord::Base
     influence = amount
     save
   end
+
+  def to_s
+    name
+  end
 end
