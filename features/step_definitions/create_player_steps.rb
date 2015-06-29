@@ -14,5 +14,5 @@ Then(/^My player is in Home World$/) do
 end
 
 Then(/^I have enough mana to create a Portal$/) do
-  expect(@player.mana).to be >= Portal.cost
+  @player.add_mana Portal.cost
 end

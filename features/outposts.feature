@@ -19,6 +19,7 @@ Feature: Outposts
     Then I can create a forum
 
   Scenario: Create Tower
-    Given I have 100 influence
+    Given I am a player in a new world
+    And I have 100 influence
     And I have 20 supporters
     Then I can create a tower

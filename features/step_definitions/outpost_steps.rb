@@ -3,12 +3,11 @@ Given(/^I am a player in a new world$/) do
 
   @player = Player.create
   @player.set_location world1
-  @player.open_portal_to world1
-  @player.take_portal_to world1
 end
 
 When(/^I create an outpost$/) do
-  pending # express the regexp above with the code you wish you had
+  @player.create_outpost
+  expect(@player.world.has_outpost?).to be true
 end
 
 Then(/^I receive influence$/) do

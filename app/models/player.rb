@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
   belongs_to :world
   belongs_to :user
+  has_many :outposts, foreign_key: 'founder_id'
 
   def world
     if super.nil?
@@ -23,7 +24,7 @@ class Player < ActiveRecord::Base
   end
 
   def nearby_portals
-    world.active_portals
+    world.open_portals
   end
 
   def open_portal_to(other_world)
@@ -103,5 +104,14 @@ class Player < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def create_outpost
+    unless world.has_outpost?
+      outpost = Outpost.create
+      outpost.founder = self
+      outpost.world = world
+      outpost.save
+    end
   end
 end

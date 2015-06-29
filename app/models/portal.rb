@@ -11,7 +11,7 @@ class Portal < ActiveRecord::Base
   end
 
   def self.exists_between(world1, world2)
-    world1.active_portals.each do |direction|
+    world1.open_portals.each do |direction|
       if world1.to_the(direction) == world2
         return true
       end

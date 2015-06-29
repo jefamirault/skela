@@ -4,8 +4,12 @@ class World < ActiveRecord::Base
   has_many :inverse_portals, :class_name => 'Portal', :foreign_key => :destination_world_id
   has_many :destination_worlds, :through => :inverse_portals, :source => :origin_world
   has_many :players
+  has_one :outpost
 
 
+  def has_outpost?
+    !!outpost
+  end
 
   def adjacent_worlds
     origin_worlds + destination_worlds
@@ -16,7 +20,7 @@ class World < ActiveRecord::Base
     self.save
   end
 
-  def open_portals
+  def closed_portals
     portals = []
     portals << :north if portal_1_id.nil?
     portals << :east  if portal_2_id.nil?
@@ -25,7 +29,7 @@ class World < ActiveRecord::Base
     portals
   end
 
-  def active_portals
+  def open_portals
     portals = []
     portals << :north unless portal_1_id.nil?
     portals << :east  unless portal_2_id.nil?
@@ -35,22 +39,22 @@ class World < ActiveRecord::Base
   end
 
   def to_the_north
-    if active_portals.include? :north
+    if open_portals.include? :north
       World.find portal_1_id
     end
   end
   def to_the_east
-    if active_portals.include? :east
+    if open_portals.include? :east
       World.find portal_2_id
     end
   end
   def to_the_south
-    if active_portals.include? :south
+    if open_portals.include? :south
       World.find portal_3_id
     end
   end
   def to_the_west
-    if active_portals.include? :west
+    if open_portals.include? :west
       World.find portal_4_id
     end
   end
@@ -77,6 +81,6 @@ class World < ActiveRecord::Base
   end
 
   def portal_open?(direction)
-    active_portals.include? direction
+    open_portals.include? direction
   end
 end
