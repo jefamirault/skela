@@ -18,16 +18,14 @@ When(/^There is another world with open portal spaces$/) do
 end
 
 Then(/^I can open a portal to a new world$/) do
-  pending
-  # @player.open_portal_to @b_world
-  # expect(Portal.exists_between(@a_world, @b_world)).to be true
+  expect(@player.mana).to be >= Portal.cost
+  expect(@player.world.closed_portals.size).to be > 0
 end
 
 Then(/^I can travel through the east portal$/) do
-  expect(@player.mana >= Portal.cost).to be true
-  expect(@player.nearby_portals.include? :east).to be true
+  # expect(@player.mana >= Portal.cost).to be true
+  expect(@player.nearby_portals).to include :east
 end
-
 
 Then(/^I can create a portal to the (.+)/) do |direction|
   expect(@player.world.closed_portals.include? direction.to_sym)
@@ -48,4 +46,15 @@ end
 
 Then(/^there should be closed portals$/) do
   expect(@player.world.closed_portals.size > 0).to be true
+end
+
+Then(/^I can travel through the west portal$/) do
+  expect(@player.nearby_portals).to include :west
+end
+
+Given(/^I am a player in a world with a portal to the (.+)/) do |direction|
+  @player = Player.create(mana: 10)
+  @world = World.create
+  @player.set_location @world
+  @player.open_portal direction.to_sym
 end

@@ -14,12 +14,15 @@ Feature: Portals
     And I have enough mana to create a Portal
     Then I can create a portal to the east
 
-  Scenario: Travel to the East
-    Given I am a player in a world with a portal to the east
-    Then I can travel through the east portal
-
   Scenario: Open Portal to the West
     Given I am a player in a new world
     And I have enough mana to create a Portal
     Then I can create a portal to the west
-    And I can travel to that world
+
+  Scenario: Travel to the East
+    Given I am a player in a world with a portal to the east
+    Then I can travel through the east portal
+
+  Scenario: Travel to the West
+    Given I am a player in a world with a portal to the west
+    Then I can travel through the west portal

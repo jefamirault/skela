@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629181705) do
+ActiveRecord::Schema.define(version: 20150630182540) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150629181705) do
     t.integer "world_id"
     t.integer "mana"
     t.integer "influence"
+    t.integer "leader_id"
   end
 
   create_table "portals", force: :cascade do |t|

@@ -18,8 +18,18 @@ Given(/^I have (\d+) influence$/) do |arg1|
   @player.set_influence arg1
 end
 
-Given(/^I have (\d+) supporters$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should have (\d+) influence$/) do |amount|
+  expect(@player.influence).to eq amount.to_i
+end
+
+Given(/^I have (\d+) supporters$/) do |count|
+  supporters = []
+  count.to_i.times do
+    supporter = Player.create
+    supporter.give_support_to @player
+    supporters << supporter
+  end
+  expect(@player.supporters).to eq supporters
 end
 
 Then(/^I can create a forum$/) do
@@ -28,4 +38,8 @@ end
 
 Then(/^I can create a tower$/) do
   @player.create_tower
+end
+
+Then(/^this world should have an outpost$/) do
+  expect(@player.world.has_outpost?).to be true
 end

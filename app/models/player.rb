@@ -3,6 +3,9 @@ class Player < ActiveRecord::Base
   belongs_to :user
   has_many :outposts, foreign_key: 'founder_id'
 
+  has_many :supporters, class_name: 'Player', foreign_key: 'leader_id'
+  belongs_to :leader, class_name: 'Player'
+
   def world
     if super.nil?
       self.world = World.home
@@ -58,10 +61,11 @@ class Player < ActiveRecord::Base
   end
 
   def open_portal(direction)
-    if world.open_portals.include? direction.to_sym
+    if world.closed_portals.include? direction.to_sym
       new_world = World.create name: "#{self.name}'s Land"
 
-      case direction
+      direction_string = direction.to_s
+      case direction_string
         when 'north'
           world.portal_1_id = new_world.id
           new_world.portal_3_id = world.id
@@ -98,7 +102,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_influence(amount)
-    influence = amount
+    self.influence = amount
     save
   end
 
@@ -108,10 +112,30 @@ class Player < ActiveRecord::Base
 
   def create_outpost
     unless world.has_outpost?
-      outpost = Outpost.create
-      outpost.founder = self
-      outpost.world = world
-      outpost.save
+      if self.influence >= 10
+        self.influence -= 10
+        outpost = Outpost.create
+        outpost.founder = self
+        outpost.world = world
+        outpost.save
+      end
     end
+  end
+
+  def give_support_to(player)
+    self.leader = player
+    save
+  end
+
+  def withdraw_support
+    self.leader = nil
+    save
+  end
+
+  def relinquish_supporters
+    self.supporters.each do |supporter|
+      self.supporters.delete supporter
+    end
+    save
   end
 end

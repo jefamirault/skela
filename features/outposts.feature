@@ -5,8 +5,10 @@ Feature: Outposts
 
   Scenario: Create Outpost
     Given I am a player in a new world
+    And I have 10 influence
     When I create an outpost
-    Then I receive influence
+    Then this world should have an outpost
+    And I should have 0 influence
 
   Scenario: Build Lumber Yard
     Given: I have 1 supporter
