@@ -6,6 +6,8 @@ class Player < ActiveRecord::Base
   has_many :supporters, class_name: 'Player', foreign_key: 'leader_id'
   belongs_to :leader, class_name: 'Player'
 
+  has_many :forums, foreign_key: 'founder_id'
+
   def world
     if super.nil?
       self.world = World.home
@@ -106,6 +108,11 @@ class Player < ActiveRecord::Base
     save
   end
 
+  def add_influence(amount)
+    influence ? self.influence += amount : self.influence = amount
+    save
+  end
+
   def to_s
     name
   end
@@ -136,6 +143,21 @@ class Player < ActiveRecord::Base
     self.supporters.each do |supporter|
       self.supporters.delete supporter
     end
+    save
+  end
+
+  def create_forum
+    return false if world.outpost.has_forum?
+    forum = Forum.new
+    forum.outpost = world.outpost
+    forum.founder = self
+    save
+  end
+
+  def create_tower
+    return false if world.outpost && world.outpost.has_tower?
+    tower = Tower.new
+    tower.outpost = world.outpost
     save
   end
 end

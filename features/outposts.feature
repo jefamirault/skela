@@ -14,14 +14,9 @@ Feature: Outposts
     Given: I have 1 supporter
     Then: I can create an outpost
 
-  Scenario: Create Forum
-    Given I am a player in a new world
-    And I have 50 influence
-    And I have 10 supporters
-    Then I can create a forum
-
   Scenario: Create Tower
     Given I am a player in a new world
+    And there is an outpost in this world
     And I have 100 influence
     And I have 20 supporters
     Then I can create a tower

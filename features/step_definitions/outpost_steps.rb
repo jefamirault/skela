@@ -10,10 +10,6 @@ When(/^I create an outpost$/) do
   expect(@player.world.has_outpost?).to be true
 end
 
-Then(/^I receive influence$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
 Given(/^I have (\d+) influence$/) do |arg1|
   @player.set_influence arg1
 end
@@ -38,8 +34,16 @@ end
 
 Then(/^I can create a tower$/) do
   @player.create_tower
+  expect(@player.world.outpost.has_tower?).to be true
 end
 
 Then(/^this world should have an outpost$/) do
+  expect(@player.world.has_outpost?).to be true
+end
+
+Given(/^there is an outpost in this world$/) do
+  @player.add_influence Outpost.influence_cost
+  @player.create_outpost
+
   expect(@player.world.has_outpost?).to be true
 end

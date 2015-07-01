@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630182540) do
+ActiveRecord::Schema.define(version: 20150701185757) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "title"
     t.text     "description"
     t.datetime "deadline"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "forum_id"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -33,6 +40,13 @@ ActiveRecord::Schema.define(version: 20150630182540) do
     t.text     "text"
     t.datetime "datetime"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.integer  "outpost_id"
+    t.integer  "founder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,6 +103,15 @@ ActiveRecord::Schema.define(version: 20150630182540) do
     t.integer "destination_world_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer  "conversation_id"
+    t.text     "content"
+    t.integer  "poster_id"
+    t.integer  "parent_post_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -96,6 +119,13 @@ ActiveRecord::Schema.define(version: 20150630182540) do
     t.float    "cost"
     t.datetime "purchased_at"
     t.text     "purchase_link"
+  end
+
+  create_table "towers", force: :cascade do |t|
+    t.integer  "outpost_id"
+    t.integer  "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
