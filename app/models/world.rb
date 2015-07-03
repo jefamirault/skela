@@ -83,4 +83,6 @@ class World < ActiveRecord::Base
   def portal_open?(direction)
     open_portals.include? direction
   end
+
+  delegate :has_lumber_yard?, to: :outpost
 end

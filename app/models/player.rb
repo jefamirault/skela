@@ -160,4 +160,11 @@ class Player < ActiveRecord::Base
     tower.outpost = world.outpost
     save
   end
+
+  def build_lumber_yard
+    return false if world.outpost && world.outpost.has_lumber_yard?
+    lumber_yard = LumberYard.new
+    lumber_yard.outpost = world.outpost
+    save
+  end
 end

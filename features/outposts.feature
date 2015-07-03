@@ -11,8 +11,10 @@ Feature: Outposts
     And I should have 0 influence
 
   Scenario: Build Lumber Yard
-    Given: I have 1 supporter
-    Then: I can create an outpost
+    Given I am a player in a new world
+    And there is an outpost in this world
+    And I have 1 supporter
+    Then I can build a lumber yard
 
   Scenario: Create Tower
     Given I am a player in a new world

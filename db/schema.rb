@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701185757) do
+ActiveRecord::Schema.define(version: 20150703152621) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "title"
     t.text     "description"
     t.datetime "deadline"
+  end
+
+  create_table "commands", force: :cascade do |t|
+    t.string   "command_text"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -66,6 +73,13 @@ ActiveRecord::Schema.define(version: 20150701185757) do
     t.datetime "assigned_at"
     t.string   "target_version"
     t.string   "title"
+  end
+
+  create_table "lumber_yards", force: :cascade do |t|
+    t.integer  "outpost_id"
+    t.integer  "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "outposts", force: :cascade do |t|

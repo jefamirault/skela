@@ -18,7 +18,7 @@ Then(/^I should have (\d+) influence$/) do |amount|
   expect(@player.influence).to eq amount.to_i
 end
 
-Given(/^I have (\d+) supporters$/) do |count|
+Given(/^I have (\d+) supporters?$/) do |count|
   supporters = []
   count.to_i.times do
     supporter = Player.create
@@ -46,4 +46,9 @@ Given(/^there is an outpost in this world$/) do
   @player.create_outpost
 
   expect(@player.world.has_outpost?).to be true
+end
+
+Then(/^I can build a lumber yard$/) do
+  @player.build_lumber_yard
+  expect(@player.world.has_lumber_yard?).to be true
 end
