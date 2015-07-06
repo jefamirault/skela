@@ -10,7 +10,6 @@ class LoginController < ApplicationController
   end
 
   def create_session
-    binding.pry
     if logged_in?
       session[:user_id] = nil
     end
