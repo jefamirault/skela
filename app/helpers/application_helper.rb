@@ -76,4 +76,9 @@ module ApplicationHelper
   def days_since(event)
     (Time.now - event.to_datetime).to_i / 3600 / 24
   end
+
+  def get_next_weekday(weekday)
+    weekday = "#{weekday.to_s}?".to_sym
+    (Date.today..Date.today + 1.week).select{ |day| day.send weekday }.first
+  end
 end
