@@ -11,10 +11,14 @@ class User < ActiveRecord::Base
   belongs_to :world
   has_one :player
 
+  has_many :shifts
+  has_many :created_shifts, class_name: 'Shift', foreign_key: :created_by
+
   # has_one :avatar
 
   def username
-    read_attribute(:username).downcase
+    database_says = read_attribute(:username)
+    database_says ? database_says.downcase : nil
   end
   def username=(value)
     write_attribute(:username, value.downcase)
@@ -40,5 +44,12 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def create_shift(shift_params = {})
+    shift = Shift.new shift_params
+    shift.creator = self
+    shift.save
+    shift
   end
 end
