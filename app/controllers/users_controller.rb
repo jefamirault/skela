@@ -55,8 +55,9 @@ class UsersController < ApplicationController
     if User.find_by_username params[:user][:username]
       # flash[:alert] = 'That username is taken'
     else
-      @user = User.create(user_params)
+      @user = User.new(user_params)
       if @user.valid?
+        @user.save
         session[:user_id] = @user.id
       end
     end
