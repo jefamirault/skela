@@ -11,20 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706161704) do
+ActiveRecord::Schema.define(version: 20150708204009) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "title"
     t.text     "description"
     t.datetime "deadline"
-  end
-
-  create_table "commands", force: :cascade do |t|
-    t.string   "command_text"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -112,11 +105,6 @@ ActiveRecord::Schema.define(version: 20150706161704) do
     t.integer "leader_id"
   end
 
-  create_table "portals", force: :cascade do |t|
-    t.integer "origin_world_id"
-    t.integer "destination_world_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer  "conversation_id"
     t.text     "content"
@@ -161,15 +149,11 @@ ActiveRecord::Schema.define(version: 20150706161704) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.integer  "privilege_level"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "favorite_color"
-    t.boolean  "show_header",         default: true
+    t.string  "username"
+    t.string  "password_digest"
+    t.integer "privilege_level"
+    t.string  "favorite_color"
+    t.boolean "show_header",     default: true
   end
 
   create_table "worlds", force: :cascade do |t|
