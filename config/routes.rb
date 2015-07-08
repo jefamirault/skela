@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :shifts
+  get 'new_shift', to: 'shifts#new'
+
   get 'login', to: 'login#new_session', as: 'login'
 
   get 'signup', to: 'login#signup', as: 'signup'

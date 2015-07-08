@@ -1,5 +1,5 @@
 module TablesHelper
-  def megatable(model_name, fields)
+  def megatable(model_name, fields, resources = @resources)
     model_name = model_name.downcase
     content_tag :table, id: model_name.pluralize do
       header = content_tag :thead do
@@ -16,7 +16,7 @@ module TablesHelper
 
       body = content_tag :tbody do
         rows = ''
-        @resources.each do |resource|
+        resources.each do |resource|
           rows << megarow(resource, model_name, fields)
         end
         rows.html_safe
@@ -35,7 +35,15 @@ module TablesHelper
       fields.each do |field|
         cols << content_tag(:td, data: { column: "#{model_name}_#{field}" }) do
           content_tag(:span, class: "#{model_name}_#{resource.id}_#{field}") do
-            resource.send(field).to_s
+            value = resource.send(field)
+            if value.class == Date
+              value.strftime('%A, %B %d, %Y')
+            elsif value.class == Time
+              value.strftime('%-I:%M %p')
+            else
+              value.to_s
+            end
+
           end
         end
       end

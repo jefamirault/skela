@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20150706161704) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "user_id"
     t.integer  "created_by"
     t.datetime "created_at", null: false
