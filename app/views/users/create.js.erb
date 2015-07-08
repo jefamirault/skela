@@ -2,7 +2,7 @@
 
   var notice  = 'Thank you for signing up, welcome to Skela!';
   var content = '<%= j render partial: 'welcome/index' %>';
-  var header  = '<%= j render partial: 'shared/header' %>';
+  var header  = '<%= j render partial: 'layouts/header' %>';
 
   login_success(notice, content, header);
   window.history.replaceState( {} , '', '<%= welcome_path %>' );
