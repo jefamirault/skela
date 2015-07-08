@@ -1,0 +1,14 @@
+.center_form
+  .right= updated_field_at 'updated_at', @shift
+  %br
+  %dl
+    %dt Start
+    %dd= ajax_datetime 'start_time', @shift
+
+    %dt End
+    %dd= ajax_datetime 'end_time', @shift
+
+    %dt User
+    %dd= ajax_user_select 'user_id', @shift
+
+  .right= link_to 'Destroy', shift_path(@shift), method: :delete, class: 'destroy_shift', remote: true

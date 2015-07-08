@@ -1,0 +1,9 @@
+%h1 Shifts
+
+- if @shifts
+  .center
+    = megatable 'Shift', %w(date start end user), @shifts
+
+%br
+.center
+  = navigation_link 'new_shift', 'shifts'

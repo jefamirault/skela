@@ -27,29 +27,38 @@ module AjaxFormHelper
     ajax_form 'datetime', resource, field
   end
 
+  def ajax_time(field, resource = @resource)
+    ajax_form 'time', resource, field
+  end
+
   def ajax_form(type, resource, field)
     klass = type
     form_for resource, html: { id: "edit_issue_#{field}", class: klass}, remote: true do |f|
-      if type == 'user_select'
-        user_select f, field
-      elsif type == 'number'
-        f.number_field field, class: 'ajax_field'
-      elsif type == 'string'
-        f.text_field field, class: 'ajax_field'
-      elsif type == 'text'
-        f.text_area field, class: 'ajax_field'
-      elsif type == 'boolean'
-        (f.label field) + (f.check_box field, class: 'ajax_field')
-      elsif type == 'datetime'
-        f.date_select field, class: 'ajax_field'
-      elsif type == 'price'
-        f.text_field field, class: 'ajax_field', value: number_with_precision(resource.send(field), precision: 2)
+      case type
+        when 'user_select'
+          user_select f, field, resource
+        when 'number'
+          f.number_field field, class: 'ajax_field'
+        when 'string'
+          f.text_field field, class: 'ajax_field'
+        when 'text'
+          f.text_area field, class: 'ajax_field'
+        when 'boolean'
+          (f.label field) + (f.check_box field, class: 'ajax_field')
+        when 'datetime'
+          f.datetime_local_field field, class: 'ajax_field'
+        when 'time'
+          f.time_field field, class: 'ajax_field'
+        when 'date'
+          f.date_field field, class: 'ajax_field'
+        when 'price'
+          f.text_field field, class: 'ajax_field', value: number_with_precision(resource.send(field), precision: 2)
       end
     end
   end
 
-  def user_select(form_builder, field)
-    form_builder.select field, options_for_select(User.all.map { |user| [user.username, user.id.to_s]}, @issue.send(field)), { include_blank: true }, { class: 'ajax_field' }
+  def user_select(form_builder, field, resource)
+    form_builder.select field, options_for_select(User.all.map { |user| [user.username, user.id.to_s]}, resource.send(field)), { include_blank: true }, { class: 'ajax_field' }
   end
 
   def updated_field_at(field, object, options = {})

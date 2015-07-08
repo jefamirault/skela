@@ -1,0 +1,7 @@
+%h1= @shift.title
+
+= render 'form'
+
+%br
+.center
+  = link_to 'Done Editing', shifts_path, remote: true
