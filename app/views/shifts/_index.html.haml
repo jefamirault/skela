@@ -2,7 +2,7 @@
 
 - if @shifts
   .center
-    = megatable 'Shift', %w(date start end user), @shifts
+    = supertable @shifts, { 'Date' => {}, 'Start' => {}, 'End' => {}, 'User' => {} }
 
 %br
 .center

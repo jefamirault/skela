@@ -51,4 +51,58 @@ module TablesHelper
       cols.html_safe
     end
   end
+
+  def supertable(resources, fields = {})
+    model = resources.first.class.to_s.downcase
+    content_tag :table, id: model.pluralize do
+      header = content_tag :thead do
+        content_tag :tr do
+          cols = ''
+          fields.map do |field, options|
+            formatted_field = field.titleize
+
+            cols << content_tag(:th, formatted_field, data: { column: "#{model}_#{field}" })
+          end
+          cols.html_safe
+        end
+      end
+
+      body = content_tag :tbody do
+        rows = ''
+        resources.each do |resource|
+          rows << superrow(resource, fields)
+        end
+        rows.html_safe
+      end
+
+      header + body
+    end
+  end
+
+  def superrow(resource, fields)
+    model = resource.class.to_s.downcase
+    klass = 'show_path'
+    klass << cycle(' odd', ' even')
+    content_tag :tr, data: { object_id: resource.id }, class: klass do
+      cols = ''
+      fields.map do |field, options|
+        field = field.downcase
+        cols << content_tag(:td, data: { column: "#{model}_#{field}" }) do
+          content_tag(:span, class: "#{model}_#{resource.id}_#{field}") do
+            value = resource.send(field)
+            if value.class == Date
+              value.strftime('%A, %B %d, %Y')
+            elsif value.class == Time
+              value.strftime('%-I:%M %p')
+            else
+              value.to_s
+            end
+
+          end
+        end
+      end
+
+      cols.html_safe
+    end
+  end
 end
