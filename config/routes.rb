@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :tasks
+  get 'new_task', to: 'tasks#new'
+
   resources :shifts
   get 'new_shift', to: 'shifts#new'
 

@@ -1,0 +1,7 @@
+%h1= @task.title
+
+= render 'form'
+
+%br
+.center
+  = link_to 'Done Editing', tasks_path, remote: true

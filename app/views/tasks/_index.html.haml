@@ -1,0 +1,9 @@
+%h1 Tasks
+
+- if @tasks
+  .center
+    = megatable 'Task', %w(title complete), @tasks
+
+%br
+.center
+  = navigation_link 'new_task', 'tasks'
