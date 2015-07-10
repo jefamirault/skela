@@ -57,6 +57,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'webrat'
   # gem 'factory-girl'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 
 end
 
@@ -66,8 +69,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard'
   gem 'guard-cucumber'
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-nav'
+  # gem 'pry'
+  # gem 'pry-remote'
+  # gem 'pry-nav'
 end
-

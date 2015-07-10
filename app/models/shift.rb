@@ -3,7 +3,7 @@ class Shift < ActiveRecord::Base
   belongs_to :creator, class_name: 'User', foreign_key: :created_by
   has_many :tasks, as: :taskable
 
-  validate :shift_starts_and_ends_same_day
+  # validate :shift_starts_and_ends_same_day
   validate :start_time_is_before_end_time
 
   def title
