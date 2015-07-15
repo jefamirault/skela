@@ -2,11 +2,11 @@
 
 #header_right.flex_box.flex
   %nav.flex_box.flex
-    = navigation_link 'games'
-    = navigation_link 'plants'
-    = navigation_link 'shifts'
-    = navigation_link 'tasks'
-    = navigation_link 'developer', 'developer', %w(issues users)
+    = primary_nav_link display: 'Games',     path: games_path,     controller: 'games'
+    = primary_nav_link display: 'Plants',    path: plants_path,    controller: 'plants'
+    = primary_nav_link display: 'Shifts',    path: shifts_path,    controller: 'shifts'
+    = primary_nav_link display: 'Tasks',     path: tasks_path,     controller: 'tasks'
+    = primary_nav_link display: 'Developer', path: developer_path, controller: 'developer'
 
     .flex
 
