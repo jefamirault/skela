@@ -17,7 +17,6 @@ navigate = (section, parent_controller=section, push=true) ->
   $('body').attr 'class', parent_controller
   cloak '#container'
   if push
-    debugger
     window.history.pushState( {} , '', '/' + section );
 
 

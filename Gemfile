@@ -73,3 +73,5 @@ group :development do
   # gem 'pry-remote'
   # gem 'pry-nav'
 end
+
+gem 'annotate', '~> 2.6.6'
