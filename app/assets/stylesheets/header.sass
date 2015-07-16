@@ -59,12 +59,11 @@ span.vertical_middle
   background-color: #00796B
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
   display: flex
-  line-height: 68px
+  line-height: 62px
   font-weight: bold
   transition: top .70s ease-in-out, margin .70s ease-in-out, opacity .45s ease-in-out, height .7s ease-in-out, background .2s ease-in-out
   position: relative
   top: 0
-  //max-width: 1200px
   z-index: 9
   padding: 0 23px
 
@@ -82,7 +81,7 @@ span.vertical_middle
     color: #555
     font-family: Ubuntu, Verdana, Geneva, sans-serif
     font-weight: bold
-    height: 76px
+    height: 70px
     display: inline-block
     vertical-align: middle
     padding: 0px 20px
@@ -94,6 +93,7 @@ span.vertical_middle
   ///// Navigation /////
 
   #header_right
+    background: inherit
     font-size: 1.1em
     color: #48c
     display: inline-block
@@ -102,26 +102,22 @@ span.vertical_middle
     vertical-align: bottom
 
     nav
+      background: inherit
       a
         display: inline-block
         padding: 0 1em
-        margin: 13px .6em
+        margin: 10px .6em
         line-height: 50px
-        //border-top: 4px solid rgba(0,0,0,0)
-        //border-bottom: 4px solid #f3f7f8
         color: rgba(255,255,255,.91)
         transition: border-color 0.3s ease
 
         &:hover, &.selected
           text-decoration: none
-          //border-bottom-color: #48c
-          //border-top-color: #f3f7f8
-          //border-radius: 1px
           cursor: pointer
           background-color: rgba(255,255,255,.06)
   #user_nav
     display: inline-block
-    line-height: 76px
+    line-height: 70px
     text-align: left
     white-space: nowrap
 
@@ -148,6 +144,25 @@ span.vertical_middle
 
     vertical-align: bottom
 
+ul#primary_nav
+  margin: 0
+  background: inherit
+  li
+    display: inline-block
+    background: inherit
+
+  .drop_down_nav
+    display: none
+    margin: 0
+    position: absolute
+    background: inherit
+    top: 70px
+    min-width: 100px
+    font-size: inherit
+    li
+      display: block
+  li:hover ul.drop_down_nav
+    display: block
 
 #toggle_header
   float: left

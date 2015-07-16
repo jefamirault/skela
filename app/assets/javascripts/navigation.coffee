@@ -6,11 +6,16 @@ $(document).on 'click', '#login_link', ->
   navigate '/'
 
 $(document).on 'click', '.nav_link', ->
+  navigate this
+
+navigate = (selector, push_state = true) ->
   $('#header_right').find('a').removeClass('selected')
-  $(this).addClass('selected')
+  $(selector).addClass('selected')
   cloak '#container'
-  window.history.pushState( {} , '', $(this).attr('href') );
-  $('body').attr 'class', $(this).data('controller')
+  if push_state
+    window.history.pushState( {} , '', $(selector).attr('href') );
+  $('body').attr 'class', $(selector).data('theme')
+
 
 $ ->
   decloak('#container')
@@ -19,7 +24,11 @@ $ ->
       cloak '#container'
       shit = window.location.href.split '/'
       path = shit[shit.length-1]
+
       navigate path, false
       $.ajax
         url: window.location.href,
         dataType: 'script'
+
+$(document).on 'click', '.drop_down_nav', ->
+  $(this).hide()

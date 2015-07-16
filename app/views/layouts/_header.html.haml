@@ -1,13 +1,15 @@
-= header_left
+-#= header_left
 
 #header_right.flex_box.flex
   %nav.flex_box.flex
-    = primary_nav_link display: 'Games',     path: games_path,     controller: 'games'
-    = primary_nav_link display: 'Plants',    path: plants_path,    controller: 'plants'
-    = primary_nav_link display: 'Shifts',    path: shifts_path,    controller: 'shifts'
-    = primary_nav_link display: 'Tasks',     path: tasks_path,     controller: 'tasks'
-    = primary_nav_link display: 'Developer', path: developer_path, controller: 'developer'
-
+    %ul#primary_nav
+      %li= primary_nav_link display: site_logo, path: welcome_path
+      %li= primary_nav_link 'games', %w(tic_tac_toe hi_lo hundred_puzzle plane_of_worlds)
+      %li= primary_nav_link 'plants'
+      %li= primary_nav_link 'shifts'
+      %li= primary_nav_link 'tasks'
+      %li= primary_nav_link 'developer', drop_down: %w(log issues users)
+    -#= primary_nav_links %w(games plants shifts tasks developer)
     .flex
 
     - if logged_in?
