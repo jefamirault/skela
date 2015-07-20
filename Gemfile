@@ -38,8 +38,6 @@ gem 'material_icons'
 
 gem "paperclip", "~> 4.2"
 
-gem 'jquery-datatables-rails', '~> 3.1.1'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
