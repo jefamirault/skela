@@ -9,8 +9,12 @@ $(document).on 'click', '.nav_link', ->
   navigate this
 
 navigate = (selector, push_state = true) ->
-  $('#header_right').find('a').removeClass('selected')
+  $('#header').find('a').removeClass('selected')
   $(selector).addClass('selected')
+
+  if $(selector).closest('ul').hasClass('drop_down_nav')
+    $($(selector).parents('li')[1]).find('a:first').addClass('selected')
+
   cloak '#container'
   if push_state
     window.history.pushState( {} , '', $(selector).attr('href') );

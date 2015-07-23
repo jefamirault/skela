@@ -1,25 +1,37 @@
 module NavigationHelper
-  def primary_nav_link(link_skel, options = {})
-    if link_skel.class == Hash
-      text = link_skel[:display]
-      path = link_skel[:path]
-      theme = link_skel[:theme]
-    else
-      text = link_skel.titleize
-      path = '/' + link_skel
-      theme = link_skel
+  def primary_nav_link(options = {})
+    # binding.pry
+    # if links.class == Hash
+    #   text = links[:display]
+    #   path = links[:path]
+    #   theme = links[:theme]
+    # elsif links.class == Symbol
+    #   subject = links.to_s
+    #   text = subject.titleize
+    #   path = '/' + subject
+    #   theme = subject
+    #
+    if options.class == Array
+      display_text = options[0]
+      path =  options[1]
+      theme = ''
     end
-    link = link_to text, path, class: 'nav_link', remote: true, data: { theme: theme }
+
+    display_text ||= options[:display]
+    path ||= options[:path]
+    theme ||= options[:theme]
+
+    link = link_to display_text, path, class: 'nav_link', remote: true, data: { theme: theme }
     if options.class == Hash && options[:drop_down]
-      drop_down(options[:drop_down]) + link
+      link + drop_down(options[:drop_down], theme)
     else
       link
     end
   end
 
-  def primary_nav_links(link_skels)
-    link_skels.map do |skel|
-      primary_nav_link skel
+  def primary_nav_links(links)
+    links.map do |link|
+      primary_nav_link link
     end.join.html_safe
   end
 
@@ -27,11 +39,11 @@ module NavigationHelper
 
   end
 
-  def drop_down(skela)
-    return ''.html_safe if skela == ''
+  def drop_down(links = {}, theme = '')
+    return ''.html_safe if links == ''
     content_tag :ul, class: 'drop_down_nav' do
-      skela.map do |skel|
-        content_tag :li, primary_nav_link(skel)
+      links.map do |link|
+        content_tag :li, primary_nav_link(display: link[0], path: link[1], theme: theme)
       end.join.html_safe
     end
   end

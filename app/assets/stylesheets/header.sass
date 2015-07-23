@@ -52,9 +52,10 @@ span.vertical_middle
 
 .flex_box
   display: flex
+  display: -webkit-flex
 .flex
   flex: 1
-
+  webkit-flex: 1
 #helmet
   background-color: #00796B
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
@@ -69,55 +70,37 @@ span.vertical_middle
 
 
   &.hidden
-    top: -78px
-    margin: 0 auto -78px
+    top: -50px
+    margin: 0 auto -50px
   &:not(.hidden)
     margin: 0 auto 0
-  ///// Skela Logo /////
 
-  #header_left
-    font-size: 5em
-    line-height: inherit
-    color: #555
-    font-family: Ubuntu, Verdana, Geneva, sans-serif
-    font-weight: bold
-    height: 70px
-    display: inline-block
-    vertical-align: middle
-    padding: 0px 20px
-    margin: 0
-
-    &:hover
-      text-decoration: none
-    
-  ///// Navigation /////
-
-  #header_right
+  #header
     background: inherit
-    font-size: 1.1em
+    font-size: 1.05em
     color: #48c
-    display: inline-block
+    display: block
     padding: 0
     margin: 0
     vertical-align: bottom
 
-    nav
-      background: inherit
-      a
-        display: inline-block
-        padding: 0 1em
-        margin: 10px .6em
-        line-height: 50px
-        color: rgba(255,255,255,.91)
-        transition: border-color 0.3s ease
+  nav
+    background: inherit
+  a
+    display: inline-block
+    padding: 0 1.5em
+    margin: 0 0em
+    line-height: 50px
+    color: rgba(255,255,255,.91)
+    transition: all 0.15s ease-out
 
-        &:hover, &.selected
-          text-decoration: none
-          cursor: pointer
-          background-color: rgba(255,255,255,.06)
+    &:hover, &.selected
+      text-decoration: none
+      cursor: pointer
+      background-color: rgba(255,255,255,.06)
   #user_nav
     display: inline-block
-    line-height: 70px
+    line-height: 50px
     text-align: left
     white-space: nowrap
 
@@ -156,25 +139,25 @@ ul#primary_nav
     margin: 0
     position: absolute
     background: inherit
-    top: 70px
-    min-width: 100px
+    top: 50px
     font-size: inherit
     li
       display: block
+    .nav_link
+      width: 144px
+      line-height: 40px
   li:hover ul.drop_down_nav
     display: block
 
-#toggle_header
+#helmet #toggle_header
   float: left
   position: absolute
-  left: 48px
-  top: 64px
-  color: #b7babb
+  left: 10px
+  top: 50px
+  color: rgba(0,0,0,.15)
 
   transition: color .3s ease-in-out
 
   &:hover
     text-decoration: none
-    color: #6d6f70
-  &:active
-    color: #222
+    color: rgba(0,0,0,.45)

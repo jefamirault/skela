@@ -12,20 +12,14 @@
     .flash.alert.hidden
       %span.vertical_middle= alert
 
-    - if current_user && !current_user.show_header
-      - helmet_klass = 'hidden'
-    - elsif logging_in? || signing_up?
-      - helmet_klass = 'hidden'
-    - else
-      - container_klass = 'hasHeader'
-    %div#helmet{class: helmet_klass}
+    %div#helmet{class: (logging_in? || signing_up?) ? 'hidden' : '' }
       #hide_show_header
-        = link_to 'show/hide', toggle_header_path(id: current_user ? current_user.id : 0), id: 'toggle_header', method: :post, remote: true
+        = link_to 'show/hide', '', id: 'toggle_header', method: :post, remote: true
 
       = render partial: 'layouts/header'
 
 
-    #container.invisible{class: container_klass}
+    #container.invisible
       = yield
       %div{style: 'height:24px; width:100%;'}
 

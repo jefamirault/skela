@@ -26,7 +26,7 @@ module ApplicationHelper
 
     path << '.svg'
 
-    image_tag(path, style: 'width:160px; height:60px; vertical-align:bottom')
+    image_tag(path, style: 'width:135px; height:45px; vertical-align:middle; margin-bottom:2px;')
   end
 
   def logged_in_text

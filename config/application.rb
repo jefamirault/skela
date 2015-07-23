@@ -26,5 +26,7 @@ module Skela
     config.timezone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
 
+    config.middleware.use Rack::Deflater
+
   end
 end
