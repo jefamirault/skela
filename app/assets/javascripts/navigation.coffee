@@ -36,3 +36,6 @@ $ ->
 
 $(document).on 'click', '.drop_down_nav', ->
   $(this).hide()
+
+$(document).on 'click', 'tr.show_path', ->
+  cloak '#container'
