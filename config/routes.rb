@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :inventories
+  # get 'inventory', to: 'inventory#index', as: 'inventory'
+
   resources :tasks
   get 'new_task', to: 'tasks#new'
 

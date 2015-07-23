@@ -1,0 +1,8 @@
+.center_form
+  %br
+  %dl
+    %dt Name
+    %dd= ajax_string 'name', @inventory
+
+
+  .right= link_to 'Destroy', inventory_path(@inventory), method: :delete, class: 'destroy_inventory', remote: true

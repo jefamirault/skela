@@ -1,0 +1,9 @@
+%h1 Inventory
+
+- if @inventories
+  .center
+    = supertable @inventories, { 'Name' => {} }
+
+%br
+.center
+  = navigation_link 'new_inventory', 'inventories'
