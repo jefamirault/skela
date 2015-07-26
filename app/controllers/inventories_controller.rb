@@ -33,6 +33,17 @@ class InventoriesController < ApplicationController
     render 'shared/index'
   end
 
+  def track_item
+    @inventory = Inventory.find params[:inventory_id]
+    @item = Item.find params[:item_id]
+
+    if @inventory.track_item(@item)
+      respond_to do |format|
+        format.js
+      end
+    end
+
+  end
 
   private
 

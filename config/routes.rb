@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :items
-  resources :inventories
+  resources :inventories do
+    post 'track_item/:item_id', to: 'inventories#track_item', as: 'track_item'
+  end
   # get 'inventory', to: 'inventory#index', as: 'inventory'
 
   resources :tasks

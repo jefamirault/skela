@@ -4,5 +4,14 @@
     %dt Name
     %dd= ajax_string 'name', @inventory
 
+  %h3 Tracked Items
+  %ul
+    - @inventory.items.each do |item|
+      %li= item.name
+
+
+  = link_to 'Add Toilet Paper', inventory_track_item_path(inventory_id: @inventory.id, item_id: 14), remote: true, method: :post
+
+  %br
 
   .right= link_to 'Destroy', inventory_path(@inventory), method: :delete, class: 'destroy_inventory', remote: true
