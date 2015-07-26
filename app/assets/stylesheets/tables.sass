@@ -20,16 +20,17 @@ table
       //background-color: #B2DFDB
       cursor: pointer
   tr
-
+    td
+      border-bottom: solid 4px #ececec
+      //padding-bottom: 4px
     &.even
       td
-        background-color: #f9f9f9
+        //background-color: #f9f9f9
     &.odd
       td
-        background-color: #E0F2F1
+        //background-color: #E0F2F1
     &:hover td
       background-color: #B2DFDB
-    th.sorting_asc:after
-      content: ' v'
-    th.sorting_desc:after
-      content: ' ^'
+
+    th
+      opacity: .74

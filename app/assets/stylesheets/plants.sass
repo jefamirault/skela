@@ -2,18 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+$one: #1976D2 // 700
+$two: #E0ECFE
+$three: #BBDEFB
+$four: #0D47A1
+
 table#plants
   display: inline-block
 
 body.plants
   #helmet
-    background-color: #0277BD
+    background-color: $one
 
   .record_module
     &:hover
-      //background-color: #FF80AB
-    //&:focus
-      background-color: red
   dt
     padding: 0
     font-size: .7em
@@ -22,3 +25,11 @@ body.plants
     padding: 0
     font-size: 1.2em
     margin-left: 10px
+
+  tr:hover td
+    background: $three
+  a
+    color: $one
+
+  h1, th
+    color: $four
