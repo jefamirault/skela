@@ -1,0 +1,11 @@
+.center_form
+  .right= updated_field_at 'updated_at', @item
+  %br
+  %dl
+    %dt Name
+    %dd= ajax_string 'name', @item
+
+    %dt Description
+    %dd= ajax_text 'description', @item
+
+  .right= link_to 'Destroy', item_path(@item), method: :delete, class: 'destroy_item', remote: true

@@ -1,0 +1,9 @@
+%h1 Items
+
+- if @items
+  .center
+    = megatable 'Items', %w(name description), @items
+
+%br
+.center
+  = navigation_link 'new_item', 'items'

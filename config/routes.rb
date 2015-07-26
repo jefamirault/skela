@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :items
   resources :inventories
   # get 'inventory', to: 'inventory#index', as: 'inventory'
 
