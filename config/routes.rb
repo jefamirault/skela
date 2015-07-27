@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :inventories do
     delete 'remove_item/:item_id', to: 'inventories#remove_item', as: 'remove_item'
     post 'track_item', to: 'inventories#track_item', as: 'track_item'
+
+    post 'update_stock', to: 'inventories#update_stock', as: 'update_stock'
   end
   # get 'inventory', to: 'inventory#index', as: 'inventory'
 

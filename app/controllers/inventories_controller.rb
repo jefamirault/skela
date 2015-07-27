@@ -61,6 +61,14 @@ class InventoriesController < ApplicationController
     @inventory.remove_item @item
   end
 
+  def update_stock
+    @inventory = Inventory.find params[:inventory_id]
+    stock = Stock.find params[:inventory][:stocks_attributes]['0'][:id]
+    @item = stock.item
+    quantity = params[:inventory][:stocks_attributes]['0'][:quantity]
+
+    @inventory.update_stock @item, quantity
+  end
 
   private
 

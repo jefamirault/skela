@@ -2,6 +2,9 @@ class Inventory < ActiveRecord::Base
   has_many :stocks
   has_many :items, through: :stocks
 
+  accepts_nested_attributes_for :stocks
+
+
   def track_item(item)
     unless items.include? item
       stock = Stock.new
@@ -17,5 +20,11 @@ class Inventory < ActiveRecord::Base
       return items.delete item
     end
     true
+  end
+
+  def update_stock(item, quantity)
+    stock = Stock.where(inventory_id: self.id, item_id: item.id).first
+    stock.quantity = quantity
+    stock.save
   end
 end
