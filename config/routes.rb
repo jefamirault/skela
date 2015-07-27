@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'items/autocomplete', to: 'items#autocomplete', as: 'autocomplete_items'
   resources :items
+
   resources :inventories do
-    post 'track_item/:item_id', to: 'inventories#track_item', as: 'track_item'
+    # post 'track_item/:item_id', to: 'inventories#track_item', as: 'track_item_by_id'
+    post 'track_item', to: 'inventories#track_item', as: 'track_item'
   end
   # get 'inventory', to: 'inventory#index', as: 'inventory'
 

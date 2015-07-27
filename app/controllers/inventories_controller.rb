@@ -1,7 +1,6 @@
 class InventoriesController < ApplicationController
   def index
     @inventories = Inventory.all
-
     render 'shared/index'
   end
 
@@ -17,7 +16,6 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find params[:id]
-
     render 'shared/edit'
   end
 
@@ -35,7 +33,18 @@ class InventoriesController < ApplicationController
 
   def track_item
     @inventory = Inventory.find params[:inventory_id]
-    @item = Item.find params[:item_id]
+
+    item_id_or_name = params[:inventory][:item_id]
+    @item = if item_id_or_name.class == Fixnum
+      Item.find item_id_or_name
+    else # string
+      item = Item.find_by_name item_id_or_name
+      if item.nil?
+        item = Item.new name: item_id_or_name
+        item.save
+      end
+      item
+    end
 
     if @inventory.track_item(@item)
       respond_to do |format|

@@ -6,11 +6,18 @@
 
   %h3 Tracked Items
   %ul
-    - @inventory.items.each do |item|
-      %li= item.name
+    - @inventory.stocks.each do |item|
+      %li
+        = item.item.name
+        = item.quantity
 
 
-  = link_to 'Add Toilet Paper', inventory_track_item_path(inventory_id: @inventory.id, item_id: 14), remote: true, method: :post
+  %br
+
+  = form_for @inventory, method: :post, url: inventory_track_item_path(@inventory), remote: true do |f|
+    - f.hidden_field :id
+    - f.search_field :item_id, placeholder: 'Add Item'
+
 
   %br
 
