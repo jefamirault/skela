@@ -54,6 +54,14 @@ class InventoriesController < ApplicationController
 
   end
 
+  def remove_item
+    @inventory = Inventory.find params[:inventory_id]
+    @item = Item.find params[:item_id]
+
+    @inventory.remove_item @item
+  end
+
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

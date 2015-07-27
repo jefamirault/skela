@@ -6,11 +6,13 @@
 
   %h3 Tracked Items
   %ul
-    - @inventory.stocks.each do |item|
-      %li
-        = item.item.name
-        = item.quantity
-
+    - @inventory.stocks.each do |stock|
+      %li{data: { id: stock.item.id }}
+        = stock.item.name
+        = stock.quantity
+        (
+        = link_to 'x', inventory_remove_item_path(inventory_id: @inventory.id, item_id: stock.item.id), remote: true, method: :delete
+        )
 
   %br
 

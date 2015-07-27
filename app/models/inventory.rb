@@ -11,4 +11,11 @@ class Inventory < ActiveRecord::Base
     end
     true
   end
+
+  def remove_item(item)
+    if items.include? item
+      return items.delete item
+    end
+    true
+  end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :items
 
   resources :inventories do
-    # post 'track_item/:item_id', to: 'inventories#track_item', as: 'track_item_by_id'
+    delete 'remove_item/:item_id', to: 'inventories#remove_item', as: 'remove_item'
     post 'track_item', to: 'inventories#track_item', as: 'track_item'
   end
   # get 'inventory', to: 'inventory#index', as: 'inventory'
