@@ -1,30 +1,15 @@
 %h1 Issues
 
--##column_select
-  %strong Show me...
-  %ul.horizontal
-    - %w(Number Title Description Assignee Tester Category Target_Version Updated_at Completed_at).each do |column|
-      %li{style: 'padding: .5em 1em'}
-        = label_tag "issue_#{column.downcase}", column
-        = check_box_tag "issue_#{column.downcase}", 1, checked: true
--#- @resources = @issues
--#= megatable('Issue', %w(title description assignee tester category target_version completed updated_at completed_at))
 %table#issues(style='display:inline-block;')
   %thead
     %tr
       %th{data: {column: 'issue_number'}} Issue
       %th{data: {column: 'issue_title'}} Title
       %th{data: {column: 'issue_description'}} Description
-      %th{data: {column: 'issue_assignee'}} Assignee
-      -#%th{data: {column: 'issue_tester'}} Tester
-      -#%th{data: {column: 'issue_category'}} Category
-      -#%th{data: {column: 'issue_target_version'}} Version
-      %th{data: {column: 'issue_status'}, class: 'hidden'} Status
       %th{data: {column: 'issue_updated_at'}} Updated
-      %th{data: {column: 'issue_completed_at'}} Completed
   %tbody
     - @issues.each do |issue|
-      %tr.show_path{data: { object_id: issue.id }, class: issue.completed ? 'resolved' : 'unresolved'}
+      %tr.show_path{data: { object_id: issue.id }}
         %td{data: {column: 'issue_number'}}
           = issue.number plain: true
 
@@ -34,32 +19,9 @@
         %td{data: {column: 'issue_description'}}
           = issue.description
 
-        %td{data: {column: 'issue_assignee'}}
-          = issue.assignee.username if issue.assignee
-
-        -#%td{data: {column: 'issue_tester'}}
-          = issue.tester.username if issue.tester
-
-        -#%td{data: {column: 'issue_category'}}
-          = issue.category
-
-        -#%td{data: {column: 'issue_target_version'}}
-          = issue.target_version
-
-        %td{data: {column: 'issue_status'}, style: "color:#{issue.completed ? 'green' : 'red'}", class: 'hidden'}
-          = issue.completed ? 'Resolved' : 'Unresolved'
-
         %td{data: {column: 'issue_updated_at'}, style: 'font-size:.8em; min-width:10em;'}
           = time_ago(issue.updated_at)
-        -#%td{data: {column: 'issue_updated_at_sort'}, class: 'hidden'}
-        -#  = issue.updated_at ? issue.updated_at.to_f : -1
-
-        %td{data: {column: 'issue_completed_at'}, style: 'font-size:.8em; min-width:11em;'}
-          = issue_completed_at issue
-        -#%td{data: {column: 'issue_completed_at_sort'}, class: 'hidden'}
-        -#  = issue.completed_at ? issue.completed_at.to_f : (issue.completed ? 1 : 0)
 
 %br
+
 = link_to circle_add, new_issue_path, id: 'new_issue', remote: true, class: 'southeast'
-
-

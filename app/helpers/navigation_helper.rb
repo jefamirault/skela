@@ -1,16 +1,5 @@
 module NavigationHelper
   def primary_nav_link(options = {})
-    # binding.pry
-    # if links.class == Hash
-    #   text = links[:display]
-    #   path = links[:path]
-    #   theme = links[:theme]
-    # elsif links.class == Symbol
-    #   subject = links.to_s
-    #   text = subject.titleize
-    #   path = '/' + subject
-    #   theme = subject
-    #
     if options.class == Array
       display_text = options[0]
       path =  options[1]

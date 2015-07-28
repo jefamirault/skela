@@ -4,6 +4,7 @@ class Inventory < ActiveRecord::Base
 
   accepts_nested_attributes_for :stocks
 
+  attr_accessor :item_id
 
   def track_item(item)
     unless items.include? item

@@ -31,6 +31,17 @@ class TasksController < ApplicationController
     render 'shared/destroy'
   end
 
+  def autocomplete
+    query = Task.ransack(title_cont: params[:data]).result
+    @suggestions = query.map do |task|
+      { label: task.title, value: task.title }
+    end.to_json
+
+    respond_to do |format|
+      format.json { render json: @suggestions }
+    end
+  end
+
   private
 
   def set_task

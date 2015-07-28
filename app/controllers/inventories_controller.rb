@@ -51,7 +51,6 @@ class InventoriesController < ApplicationController
         format.js
       end
     end
-
   end
 
   def remove_item

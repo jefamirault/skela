@@ -8,4 +8,14 @@
     %dt Complete
     %dd= ajax_boolean 'complete', @task
 
+
+  - unless @task.taskable.nil?
+    %h3 Associated Records
+    %ul
+      - issue = @task.taskable
+      %li= link_to issue.title, edit_issue_path(issue), remote: true, class: 'nav_link'
+
+
+  %br
+
   .right= link_to 'Destroy', task_path(@task), method: :delete, class: 'destroy_task', remote: true

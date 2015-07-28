@@ -1,11 +1,15 @@
 class Issue < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
-  belongs_to :assignee, class_name: 'User'
-  belongs_to :tester, class_name: 'User'
+  # belongs_to :assignee, class_name: 'User'
+  # belongs_to :tester, class_name: 'User'
 
-  before_update :update_tested_at, if: :tester_id_changed?
-  before_update :update_completed_at, if: :completed_changed?
-  before_update :updated_assigned_at, if: :assignee_id_changed?
+  # before_update :update_tested_at, if: :tester_id_changed?
+  # before_update :update_completed_at, if: :completed_changed?
+  # before_update :updated_assigned_at, if: :assignee_id_changed?
+
+  has_many :tasks, as: :taskable
+
+  attr_accessor :task_id
 
   def number(options = {})
     include_number_sign = !options[:plain]

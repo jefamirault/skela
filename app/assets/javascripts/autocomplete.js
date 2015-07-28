@@ -12,3 +12,18 @@ $(function(){
 
     });
 });
+
+$(function(){
+    jQuery("#issue_task_id").autocomplete({
+        source: function (request, response) {
+            jQuery.get("/tasks/autocomplete", {
+                data: request.term,
+                dataType: "json"
+            }, function (data) {
+                response(data);
+            });
+        },
+        autoFocus: true
+
+    });
+});

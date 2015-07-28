@@ -45,14 +45,6 @@ class IssuesController < ApplicationController
 
   # PATCH/PUT /issues/1
   def update
-    # if issue_params.include? 'tester_id'
-    #   if issue_params['tester_id'].blank?
-    #     @issue.tested_at = nil
-    #   else
-    #     @issue.tested_at = Time.now
-    #   end
-    # end
-
     respond_to do |format|
       if @issue.update(issue_params)
         format.html { redirect_to edit_issue_path(@issue), notice: 'Issue updated successfully!' }
@@ -77,6 +69,31 @@ class IssuesController < ApplicationController
       # format.html { redirect_to issues_url, notice: 'Issue destroyed successfully!' }
       format.js
     end
+  end
+
+  def add_task
+    @issue = Issue.find params[:issue_id]
+    task_id_or_title = params[:issue][:task_id]
+
+    @task = if task_id_or_title.class == Fixnum
+      Task.find task_id_or_title
+    else # string
+      task = Task.find_by_title task_id_or_title
+      if task.nil?
+        task = Task.new title: task_id_or_title
+        task.save
+      end
+      task
+    end
+
+    @issue.tasks << @task
+  end
+
+  def remove_task
+    @issue = Issue.find params[:issue_id]
+    @task = Task.find params[:task_id]
+
+    @issue.tasks.delete @task
   end
 
   private

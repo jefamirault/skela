@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
     post 'update_stock', to: 'inventories#update_stock', as: 'update_stock'
   end
-  # get 'inventory', to: 'inventory#index', as: 'inventory'
 
+  get 'tasks/autocomplete', to: 'tasks#autocomplete', as: 'autocomplete_tasks'
   resources :tasks
   get 'new_task', to: 'tasks#new'
 
@@ -48,8 +48,10 @@ Rails.application.routes.draw do
   get 'courses/:course_id/assignments/new', to: 'assignments#new', as: 'new_assignment'
   resources :assignments, except: [:index, :new]
 
-
-  resources :issues
+  resources :issues do
+    delete 'remove_task/:task_id', to: 'issues#remove_task', as: 'remove_task'
+    post 'add_task', to: 'issues#add_task', as: 'add_task'
+  end
 
   resources :users
 
