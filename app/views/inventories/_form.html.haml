@@ -11,7 +11,8 @@
         = stock.item.name
         = form_for @inventory, method: :post, url: inventory_update_stock_path(inventory_id: @inventory.id), remote: true do |f|
           - f.fields_for :stocks, stock do |stock_fields|
-            - stock_fields.number_field :quantity, style: 'width: 4em;'
+            - stock_fields.number_field :quantity, style: 'width:4em; text-align:center;'
+        = stock.item.units
         (
         = link_to 'x', inventory_remove_item_path(inventory_id: @inventory.id, item_id: stock.item.id), remote: true, method: :delete
         )
