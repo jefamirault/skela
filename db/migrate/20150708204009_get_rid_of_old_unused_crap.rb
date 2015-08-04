@@ -1,6 +1,5 @@
 class GetRidOfOldUnusedCrap < ActiveRecord::Migration
   def change
-    drop_table :commands
     drop_table :portals
     remove_column :users, :avatar_file_name
     remove_column :users, :avatar_content_type

@@ -45,15 +45,22 @@ namespace :deploy do
       # end
     end
   end
-
-end
-
-desc 'Restart application'
+  
+  desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute "service thin restart"  ## -> line you should add
+      `rake db:migrate ENV=production`
     end
-end
+  end
+  
+  after :publishing, 'deploy:restart'
 
-after :publishing, :restart
+  task :setup_secrets do
+    # put File.read("config/secrets.yml"), "#{shared_path}/config/secrets.yml"
+    secrets = File.read("config/secrets.yml")
+    `echo #{secrets} >> #{shared_path}/config/secrets.yml`
+  end
+  after :publishing, 'deploy:setup_secrets'
+end
 
