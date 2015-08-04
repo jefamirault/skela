@@ -169,6 +169,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.2)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -311,6 +312,7 @@ DEPENDENCIES
   material_icons
   meta_request
   paperclip (~> 4.2)
+  pg
   pry
   pry-nav
   pry-remote
@@ -328,4 +330,4 @@ DEPENDENCIES
   webrat
 
 BUNDLED WITH
-   1.10.3
+   1.10.6
