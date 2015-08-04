@@ -23,7 +23,7 @@ test: &test
 production:
   adapter: postgresql
   username: foxwordy
-  password: foxwordy # from psql setup, see Postgresql
+  password: foxwordy
   database: production
 
 cucumber:
