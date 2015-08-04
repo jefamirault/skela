@@ -22,9 +22,11 @@ test: &test
 
 production:
   adapter: postgresql
-  username: foxwordy
-  password: foxwordy
+  host: localhost
+  username: god
+  password: damn
   database: production
 
 cucumber:
   <<: *test
+
