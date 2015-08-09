@@ -2,8 +2,8 @@
   .right= updated_field_at 'updated_at', @task
   %br
   %dl
-    %dt Title
-    %dd= ajax_text 'title', @task
+    %dt Subject
+    %dd= ajax_subject 'title', @task
 
     %dt Complete
     %dd= ajax_boolean 'complete', @task

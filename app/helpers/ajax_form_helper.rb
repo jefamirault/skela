@@ -3,6 +3,10 @@ module AjaxFormHelper
     ajax_form 'string', resource, field
   end
 
+  def ajax_subject(field, resource = @resource)
+    ajax_form 'subject', resource, field
+  end
+
   def ajax_text(field, resource = @resource)
     ajax_form 'text', resource, field
   end
@@ -41,6 +45,8 @@ module AjaxFormHelper
           f.number_field field, class: 'ajax_field'
         when 'string'
           f.text_field field, class: 'ajax_field'
+        when 'subject'
+          f.text_field field, class: 'ajax_field subject'
         when 'text'
           f.text_area field, class: 'ajax_field'
         when 'boolean'
