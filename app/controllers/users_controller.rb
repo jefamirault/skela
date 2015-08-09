@@ -118,6 +118,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def autocomplete
+    query = User.ransack(username_cont: params[:data]).result
+    @suggestions = query.map do |user|
+      { label: user.username, value: user.username }
+    end.to_json
+
+    respond_to do |format|
+      format.json { render json: @suggestions }
+    end
+  end
+
   private
 
   def set_users

@@ -53,7 +53,9 @@ Rails.application.routes.draw do
     post 'add_task', to: 'issues#add_task', as: 'add_task'
   end
 
+  get 'users/autocomplete', to: 'users#autocomplete', as: 'autocomplete_users'
   resources :users
+
 
   get 'admin_new_user', to: 'users#admin_new', as: 'admin_new_user'
   post 'admin_create_user', to: 'users#admin_create', as: 'admin_create_user'

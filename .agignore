@@ -3,10 +3,7 @@ capybara-*.html
 .rspec
 /log
 /tmp
-/bin
 /db/*.sqlite3
-db/schema.rb
-db/schema.rb
 db/schema.rb
 /db/*.sqlite3-journal
 /public/system

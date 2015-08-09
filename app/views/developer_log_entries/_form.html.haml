@@ -1,0 +1,18 @@
+.center_form
+  %br
+  %dl
+    %dt Title
+    %dd= ajax_string 'title', @developer_log_entry
+
+    %dt Text
+    %dd= ajax_text 'text', @developer_log_entry
+
+    %dt Date & Time
+    %dd= ajax_datetime 'datetime', @developer_log_entry
+
+    %dt User
+    %dd
+      = form_for @developer_log_entry, method: :put, remote: true do |f|
+        - f.search_field :user
+
+  .right= link_to 'Destroy', developer_log_entry_path(@developer_log_entry), method: :delete, class: 'destroy_item', remote: true

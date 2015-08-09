@@ -16,7 +16,7 @@ class DeveloperLogEntriesController < ApplicationController
 
   # GET /developer_log_entries/new
   def new
-    @developer_log_entry = DeveloperLogEntry.new
+    @developer_log_entry = DeveloperLogEntry.create
     render 'shared/new'
   end
 
@@ -46,11 +46,7 @@ class DeveloperLogEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @developer_log_entry.update(developer_log_entry_params)
-        format.html { redirect_to @developer_log_entry, notice: 'Developer log entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @developer_log_entry }
-      else
-        format.html { render :edit }
-        format.json { render json: @developer_log_entry.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -73,6 +69,6 @@ class DeveloperLogEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def developer_log_entry_params
-      params.require(:developer_log_entry).permit(:title, :text, :datetime, :user_id)
+      params.require(:developer_log_entry).permit(:title, :text, :datetime, :user)
     end
 end
