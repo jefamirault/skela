@@ -4,7 +4,7 @@
   %thead
     %tr
       %th{data: {column: 'issue_number'}} Issue
-      %th{data: {column: 'issue_title'}} Title
+      %th{data: {column: 'issue_subject'}} Subject
       %th{data: {column: 'issue_description'}} Description
       %th{data: {column: 'issue_updated_at'}} Updated
   %tbody
@@ -13,8 +13,8 @@
         %td{data: {column: 'issue_number'}}
           = issue.number plain: true
 
-        %td{data: {column: 'issue_title'}}
-          = issue.title
+        %td{data: {column: 'issue_subject'}}
+          = issue.subject
 
         %td{data: {column: 'issue_description'}}
           = issue.description

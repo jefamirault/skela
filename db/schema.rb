@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728210130) do
+ActiveRecord::Schema.define(version: 20150809190441) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150728210130) do
   create_table "inventories", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.float    "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150728210130) do
     t.integer  "creator_id"
     t.string   "category"
     t.string   "target_version"
-    t.string   "title"
+    t.string   "subject"
   end
 
   create_table "items", force: :cascade do |t|
@@ -159,12 +160,13 @@ ActiveRecord::Schema.define(version: 20150728210130) do
 
   create_table "tasks", force: :cascade do |t|
     t.boolean  "complete"
-    t.string   "title"
+    t.string   "subject"
     t.integer  "taskable_id"
     t.string   "taskable_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "assignee_id"
+    t.string   "notes"
   end
 
   create_table "towers", force: :cascade do |t|

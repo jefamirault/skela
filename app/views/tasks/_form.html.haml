@@ -3,7 +3,10 @@
   %br
   %dl
     %dt Subject
-    %dd= ajax_subject 'title', @task
+    %dd= ajax_subject 'subject', @task
+
+    %dt Notes
+    %dd= ajax_text 'notes', @task
 
     %dt Complete
     %dd= ajax_boolean 'complete', @task
@@ -13,7 +16,7 @@
     %h3 Associated Records
     %ul
       - issue = @task.taskable
-      %li= link_to issue.title, edit_issue_path(issue), remote: true, class: 'nav_link'
+      %li= link_to issue.subject, edit_issue_path(issue), remote: true, class: 'nav_link'
 
 
   %br
