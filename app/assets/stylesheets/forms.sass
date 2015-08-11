@@ -1,10 +1,44 @@
 .center_form
+  background: white
+  box-shadow: 0px 3px 17px rgba(0,0,0,.50)
+  position: relative
+
+  .subject_container
+    padding: 20px 20px 22px
+    input.subject
+      border: none
+      font-size: 140%
+      font-weight: bold
+      height: 20px
+      outline: none
+
+  .notes_container
+    padding: 0 20px
+    textarea
+      border: none
+      font-family: arial
+      resize: vertical
+      outline: none
+      line-height: 150%
 
   textarea
     width: 100%
     height: 7em
 
+  footer
+    height: 24px
+    padding: 12px 13px
+    a
+      color: #666
+      &:hover
+        color: #000
+
+
 form.subject
   width: 100%
 .ajax_field.subject
+  width: 100%
+form.notes
+  width: 100%
+input.notes
   width: 100%

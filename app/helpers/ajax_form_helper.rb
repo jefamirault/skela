@@ -3,8 +3,12 @@ module AjaxFormHelper
     ajax_form 'string', resource, field
   end
 
-  def ajax_subject(field, resource = @resource)
+  def ajax_subject(field, resource = @resource, focus_target = false)
     ajax_form 'subject', resource, field
+  end
+
+  def ajax_notes(field, resource = @resource)
+    ajax_form 'notes', resource, field
   end
 
   def ajax_text(field, resource = @resource)
@@ -45,8 +49,10 @@ module AjaxFormHelper
           f.number_field field, class: 'ajax_field'
         when 'string'
           f.text_field field, class: 'ajax_field'
+        when 'notes'
+          f.text_area field, class: 'ajax_field notes', placeholder: 'Notes'
         when 'subject'
-          f.text_field field, class: 'ajax_field subject'
+          f.text_field field, class: 'ajax_field subject', placeholder: 'Subject'
         when 'text'
           f.text_area field, class: 'ajax_field'
         when 'boolean'

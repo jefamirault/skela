@@ -37,5 +37,29 @@ $ ->
 $(document).on 'click', '.drop_down_nav', ->
   $(this).hide()
 
-$(document).on 'click', 'tr.show_path', ->
-  cloak '#container'
+#$(document).on 'click', 'tr.show_path', ->
+#  cloak '.content'
+
+#$(document).on 'click', '#new_task, #tasks tr.show_path', ->
+#  $('.card_header').addClass('hidden')
+#  poop = ->
+#    $('.card_header h2').html('Editing Task')
+#  schoop = ->
+#    $('.card_header').removeClass('hidden')
+#  window.setTimeout poop, 300
+#  window.setTimeout schoop, 310
+
+$(document).on 'click', '[data-fade-content]', ->
+  if $(this).data('fade-content')
+    cloak('.content')
+
+$(document).on 'click', '[data-swap-title]', ->
+  $('.card_header').addClass('hidden')
+  new_title = $(this).data 'swap-title'
+  poop = ->
+    $('.card_header h2').html new_title
+  schoop = ->
+    $('.card_header').removeClass('hidden')
+  window.setTimeout poop, 300
+  window.setTimeout schoop, 310
+

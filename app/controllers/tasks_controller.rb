@@ -6,12 +6,16 @@ class TasksController < ApplicationController
 
 
   def index
-    render 'shared/index'
+    if request.format == :html
+      render 'shared/index'
+    end
   end
 
   def new
     @task = Task.create
-    render 'shared/new'
+    if request.format == :html
+      render 'shared/new'
+    end
   end
 
   def show
@@ -19,7 +23,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    render 'shared/edit'
+    if request.format == :html
+      render 'shared/edit'
+    end
   end
 
   def update
@@ -28,7 +34,8 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    render 'shared/destroy'
+    @tasks = Task.all
+    render 'index'
   end
 
   def autocomplete

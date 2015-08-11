@@ -1,4 +1,6 @@
-%h1= @task.title
+- if request.format == :html
+  .card_header(style="width: 592px; margin: 0 auto;")
+    %h2 New Task
 
 = render 'form'
 

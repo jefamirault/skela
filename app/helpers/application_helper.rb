@@ -64,7 +64,7 @@ module ApplicationHelper
         klass << ' selected' if params[:controller] == c
       end
     end
-    link_to target.titleize, send("#{target}_path"), remote: true, class: klass, data: { path: target, parent: parent }
+    link_to target.titleize, send("#{target}_path"), remote: true, class: klass, data: { path: target, parent: parent, fade_content: true }
   end
 
   def circle_add

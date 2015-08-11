@@ -1,15 +1,14 @@
 .center_form
-  .right= updated_field_at 'updated_at', @task
-  %br
-  %dl
-    %dt Subject
-    %dd= ajax_subject 'subject', @task
+  .subject_container
+    = ajax_subject 'subject', @task
+  .notes_container
+    = ajax_notes 'notes', @task
 
-    %dt Notes
-    %dd= ajax_text 'notes', @task
 
-    %dt Complete
-    %dd= ajax_boolean 'complete', @task
+  -#.left= updated_field_at 'updated_at', @task
+  -#%dl
+  -#  %dt Complete
+  -#  %dd= ajax_boolean 'complete', @task
 
 
   - unless @task.taskable.nil?
@@ -18,7 +17,5 @@
       - issue = @task.taskable
       %li= link_to issue.subject, edit_issue_path(issue), remote: true, class: 'nav_link'
 
-
-  %br
-
-  .right= link_to 'Destroy', task_path(@task), method: :delete, class: 'destroy_task', remote: true
+  %footer
+    = link_to trash_icon_right, task_path(@task), data: {method: :delete, remote: true, fade_content: true, swap_title: 'Tasks'}, class: 'destroy_task'

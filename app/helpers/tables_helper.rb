@@ -30,7 +30,9 @@ module TablesHelper
   def megarow(resource, model_name, fields)
     klass = 'show_path'
     klass << cycle(' odd', ' even')
-    content_tag :tr, data: { object_id: resource.id }, class: klass do
+    edit_title = "Editing #{model_name.titleize}"
+
+    content_tag :tr, data: { object_id: resource.id, swap_title: edit_title, fade_content: true }, class: klass do
       cols = ''
       fields.each do |field|
         cols << content_tag(:td, data: { column: "#{model_name}_#{field}" }) do
