@@ -7,24 +7,22 @@ class TasksController < ApplicationController
 
   def index
     if request.format == :html
-      render 'shared/index'
+      render 'cards/index'
     end
   end
 
   def new
     @task = Task.create
-    if request.format == :html
-      render 'shared/new'
-    end
+    render 'cards/new'
   end
 
   def show
-    render 'shared/show'
+    render 'cards/show'
   end
 
   def edit
     if request.format == :html
-      render 'shared/edit'
+      render 'cards/edit'
     end
   end
 

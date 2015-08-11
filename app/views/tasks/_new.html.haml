@@ -1,9 +1,10 @@
 - if request.format == :html
-  .card_header(style="width: 592px; margin: 0 auto;")
+  .card_header
     %h2 New Task
 
-= render 'form'
+.content
+  = render 'form'
 
-%br
-.center
-= link_to 'Done Editing', tasks_path, remote: true
+  %br
+  .center
+  = link_to 'Done Editing', tasks_path, remote: true
