@@ -1,18 +1,10 @@
-#user_form
-  %h1 Edit User
-  %dl
-    %dt Username
-    %dd= ajax_string 'username', @user
+- if request.format == :html
+  .card_header
+    %h2 Editing User
 
-    - if superuser?
-      %dt Privilege
-      %dd= ajax_number 'privilege_level', @user
+.content{class: request.format == 'html' ? '' : 'invisible'}
 
-    %dt Favorite Color
-    %dd= ajax_string 'favorite_color', @user
+  = render 'form'
 
   %br
-  = destroy_user_link
-%br
-%br
-%p= link_to 'Users Index', users_path, remote: true
+  = link_to 'Back', users_path, data: { remote: true, fade_content: true, swap_title: 'Users' }

@@ -1,7 +1,14 @@
-%h1 Users
+- if request.format == :html
+  .card_header
+    %h2 Users
 
-#user_select
-  = megatable('User', %w(id username favorite_color))
-  %br
-  = link_to circle_add, admin_new_user_path, remote: true, class: 'new_user southeast'
+.content{class: request.format == 'html' ? '' : 'invisible'}
+
+  - if @users
+    .center
+      = megatable 'User', %w(id username favorite_color)
+
+  -#%br
+  -#.center
+  -#  = link_to 'New User', new_user_path, remote: true, data: { fade_content: true, swap_title: 'New User'}
 

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @users = User.all
     @resources = @users
 
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def update
@@ -47,9 +47,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  #   render 'cards/new'
+  # end
 
   def create
     if User.find_by_username params[:user][:username]
@@ -71,7 +72,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     set_users
 
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   def destroy
@@ -83,6 +84,9 @@ class UsersController < ApplicationController
       flash[:alert] = 'Only an admin can do that.'
     end
 
+    @users = User.all
+    @resources = @users
+    render 'cards/index'
   end
 
   def admin_new
