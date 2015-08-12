@@ -6,7 +6,7 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.all
 
-    render 'shared/index'
+    render 'cards/index'
   end
 
   # GET /issues/1
@@ -16,16 +16,13 @@ class IssuesController < ApplicationController
   # GET /issues/new
   def new
     @issue = Issue.new(creator: current_user)
-    respond_to do |format|
-      if @issue.save
-        format.js
-      end
-    end
+    @issue.save
+    render 'cards/new'
   end
 
   # GET /issues/1/edit
   def edit
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   # POST /issues
@@ -60,15 +57,9 @@ class IssuesController < ApplicationController
 
   # DELETE /issues/1
   def destroy
+    @issue.destroy
     @issues = Issue.all
-    if @issue.destroy
-      # redirect_to issues_path
-      # return
-    end
-    respond_to do |format|
-      # format.html { redirect_to issues_url, notice: 'Issue destroyed successfully!' }
-      format.js
-    end
+    render 'cards/index'
   end
 
   def add_task

@@ -1,27 +1,33 @@
-%h1 Issues
+- if request.format == :html
+  .card_header
+    %h2 Issues
 
-%table#issues(style='display:inline-block;')
-  %thead
-    %tr
-      %th{data: {column: 'issue_number'}} Issue
-      %th{data: {column: 'issue_subject'}} Subject
-      %th{data: {column: 'issue_description'}} Description
-      %th{data: {column: 'issue_updated_at'}} Updated
-  %tbody
-    - @issues.each do |issue|
-      %tr.show_path{data: { object_id: issue.id }}
-        %td{data: {column: 'issue_number'}}
-          = issue.number plain: true
+.content{class: request.format == 'html' ? '' : 'invisible'}
 
-        %td{data: {column: 'issue_subject'}}
-          = issue.subject
+  %table#issues
+    %thead
+      %tr
+        %th{data: {column: 'issue_number'}} Issue
+        %th{data: {column: 'issue_subject'}} Subject
+        %th{data: {column: 'issue_description'}} Description
+        %th{data: {column: 'issue_updated_at'}} Updated
+    %tbody
+      - @issues.each do |issue|
+        %tr.show_path{data: { object_id: issue.id, fade_content: 'true', swap_title: 'Editing Issue' }}
+          %td{data: {column: 'issue_number'}}
+            = issue.number plain: true
 
-        %td{data: {column: 'issue_description'}}
-          = issue.description
+          %td{data: {column: 'issue_subject'}}
+            = issue.subject
 
-        %td{data: {column: 'issue_updated_at'}, style: 'font-size:.8em; min-width:10em;'}
-          = time_ago(issue.updated_at)
+          %td{data: {column: 'issue_description'}}
+            = issue.description
 
-%br
+          %td{data: {column: 'issue_updated_at'}, style: 'font-size:.8em; min-width:10em;'}
+            = time_ago(issue.updated_at)
 
-= link_to circle_add, new_issue_path, id: 'new_issue', remote: true, class: 'southeast'
+  %br
+
+  .center
+    = link_to 'New Issue', new_issue_path, remote: true, data: { fade_content: true, swap_title: 'New Issue'}
+
