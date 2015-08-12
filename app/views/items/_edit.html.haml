@@ -1,7 +1,10 @@
-%h1= @item.name
+- if request.format == :html
+  .card_header
+    %h2 Editing Item
 
-= render 'form'
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  = render 'form'
 
-%br
-.center
-  = navigation_link 'items'
+  %br
+  .center
+    = link_to 'Back', items_path, remote: true, data: { fade_content: true, swap_title: 'Items'}

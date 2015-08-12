@@ -2,25 +2,23 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def edit
     @item = Item.find params[:id]
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   def new
     @item = Item.create
-    render 'shared/new'
+    render 'cards/new'
   end
-
 
   def update
     @item = Item.find params[:id]
-
     @item.update(item_params)
-    render 'shared/update'
+    render nothing: true
   end
 
   def destroy
@@ -29,7 +27,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     @items = Item.all
-    render 'shared/index'
+    render 'cards/index'
   end
 
 
