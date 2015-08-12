@@ -1,0 +1,11 @@
+- if request.format == :html
+  .card_header
+    %h2 Developer Log
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  -if @developer_log_entries
+    .center
+      = megatable 'DeveloperLogEntry', %w(title text datetime user), @developer_log_entries
+  %br
+  .center
+    = link_to 'New Log Entry', new_developer_log_entry_path, remote: true, data: { fade_content: true, swap_title: 'New Log Entry'}

@@ -1,6 +1,6 @@
 module TablesHelper
   def megatable(model_name, fields, resources = @resources)
-    model_name = model_name.downcase
+    model_name = model_name.underscore
     content_tag :table, id: model_name.pluralize do
       header = content_tag :thead do
         content_tag :tr do
