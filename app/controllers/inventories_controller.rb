@@ -1,22 +1,22 @@
 class InventoriesController < ApplicationController
   def index
     @inventories = Inventory.all
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def new
     @inventory = Inventory.create
-    render 'shared/new'
+    render 'cards/new'
   end
 
   def edit
     @inventory = Inventory.find params[:id]
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   def show
     @inventory = Inventory.find params[:id]
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   def update
@@ -28,7 +28,7 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.find(params[:id])
     @inventory.destroy
     @inventories = Inventory.all
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def track_item
