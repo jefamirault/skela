@@ -1,9 +1,12 @@
-%h1 Shifts
+- if request.format == :html
+  .card_header
+    %h2 Shifts
 
-- if @shifts
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  - if @shifts
+    .center
+      = megatable 'Shift', %w(date start end user), @shifts
+
+  %br
   .center
-    = supertable @shifts, { 'Date' => {}, 'Start' => {}, 'End' => {}, 'User' => {} }
-
-%br
-.center
-  = navigation_link 'new_shift', 'shifts'
+    = link_to 'New Task', new_shift_path, remote: true, data: { fade_content: true, swap_title: 'New Shift'}

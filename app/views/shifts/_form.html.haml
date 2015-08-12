@@ -11,4 +11,4 @@
     %dt User
     %dd= ajax_user_select 'user_id', @shift
 
-  .right= link_to 'Destroy', shift_path(@shift), method: :delete, class: 'destroy_shift', remote: true
+  .right= link_to 'Destroy', shift_path(@shift), data: { method: :delete, remote: true, fade_content: true, swap_title: 'Shifts' }, class: 'destroy_shift'

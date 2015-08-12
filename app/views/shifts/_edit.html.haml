@@ -1,7 +1,10 @@
-%h1= @shift.title
+- if request.format == :html
+  .card_header
+    %h2 Editing Shift
 
-= render 'form'
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  = render 'form'
 
-%br
-.center
-  = navigation_link 'shifts'
+  %br
+  .center
+    = link_to 'Back', shifts_path, remote: true, data: { fade_content: true, swap_title: 'Shifts'}

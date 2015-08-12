@@ -42,6 +42,8 @@ module TablesHelper
               value.strftime('%A, %B %d, %Y')
             elsif value.class == Time
               value.strftime('%-I:%M %p')
+            elsif value.nil?
+              '&nbsp;'.html_safe
             else
               value.to_s
             end

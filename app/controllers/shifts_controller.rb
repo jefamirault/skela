@@ -6,17 +6,17 @@ class ShiftsController < ApplicationController
   def index
     @resources = Shift.all
 
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def new
     @shift = Shift.create
-    render 'shared/new'
+    render 'cards/new'
   end
 
   def edit
     @shift = Shift.find(params[:id])
-    render 'shared/edit'
+    render 'cards/edit'
   end
 
   def update
@@ -27,7 +27,7 @@ class ShiftsController < ApplicationController
   def destroy
     @shift = Shift.find(params[:id])
     @shift.destroy
-    render 'shared/index'
+    render 'cards/index'
   end
 
 
