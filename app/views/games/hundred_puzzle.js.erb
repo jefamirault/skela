@@ -1,4 +1,6 @@
 window.setTimeout(function(){
-  $('#container').html('<%= j render partial: 'hundred_puzzle' %>');
-  decloak('#container');
-}, 400);
+    $('.content').replaceWith('<%= j render partial: 'hundred_puzzle' %>');
+}, 310);
+window.setTimeout(function(){
+    decloak('.content');
+}, 320);

@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    render 'shared/index'
+    render 'cards/index'
   end
 
   def tic_tac_toe

@@ -1,17 +1,21 @@
 - range = 100
 
-%h1 Hi-Lo
-%p
-  = "I'm thinking of a number between 0 and #{range}"
+- if request.format == :html
+  .card_header
+    %h2 Hi-Lo
 
-.center.small_width
-  Guess:
-  %form#guess_form
-    = number_field_tag 'guess'
+.content{class: request.format == :html ? '' : 'invisible'}
+  %p
+    = "I'm thinking of a number between 0 and #{range}"
 
-%p
-  Number of attempts:
-  %span#number_of_attempts 0
+  .center.small_width
+    Guess:
+    %form#guess_form
+      = number_field_tag 'guess'
+
+  %p
+    Number of attempts:
+    %span#number_of_attempts 0
 
 
 

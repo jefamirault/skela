@@ -1,4 +1,6 @@
 window.setTimeout(function(){
-  $('#container').html('<%= j render partial: 'tic_tac_toe' %>');
-  decloak('#container');
-}, 400);
+    $('.content').replaceWith('<%= j render partial: 'tic_tac_toe' %>');
+}, 310);
+window.setTimeout(function(){
+    decloak('.content');
+}, 320);

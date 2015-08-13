@@ -1,29 +1,32 @@
-#hundred_puzzle
-  %h1 100-Puzzle
+- if request.format == :html
+  .card_header
+    %h2 100-Puzzle
 
-  %ol#left_rotations
-    - 5.times do |row|
-      %li
-        = content_tag :a, id: 'rotate_left', data: { row: row } do
-          .arrow <-
+.content{class: request.format == :html ? '' : 'invisible'}
+  #hundred_puzzle
+    %ol#left_rotations
+      - 5.times do |row|
+        %li
+          = content_tag :a, id: 'rotate_left', data: { row: row } do
+            .arrow <-
 
-  %table#hundred_tower
-    - 5.times do
-      %tr
-        - 5.times do
-          %td
+    %table#hundred_tower
+      - 5.times do
+        %tr
+          - 5.times do
+            %td
 
-  %ol#right_rotations
-    - 5.times do |row|
-      %li
-        = content_tag :a, id: 'rotate_right', data: { row: row } do
-          .arrow ->
+    %ol#right_rotations
+      - 5.times do |row|
+        %li
+          = content_tag :a, id: 'rotate_right', data: { row: row } do
+            .arrow ->
 
-  .block
-    %table#sums
-      %tr
-        - 5.times do
-          %td
+    .block
+      %table#sums
+        %tr
+          - 5.times do
+            %td
 
 
 

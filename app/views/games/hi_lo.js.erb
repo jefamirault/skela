@@ -1,4 +1,6 @@
 window.setTimeout(function(){
-  $('#container').html('<%= j render partial: 'hi_lo' %>');
-  decloak('#container');
-}, 400);
+    $('.content').replaceWith('<%= j render partial: 'hi_lo' %>');
+}, 310);
+window.setTimeout(function(){
+    decloak('.content');
+}, 320);
