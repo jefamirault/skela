@@ -22,7 +22,7 @@
     %ul
       - @issue.tasks.each do |task|
         %li{ data: { id: task.id }}
-          = link_to task.title, edit_task_path(task), remote: true, class: 'nav_link'
+          = link_to task.subject, edit_task_path(task), remote: true, class: 'nav_link'
           (
           = link_to 'x', issue_remove_task_path(issue_id: @issue.id, task_id: task.id), remote: true, method: :delete
           )
