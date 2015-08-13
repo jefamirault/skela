@@ -1,7 +1,7 @@
 #header.flex_box.flex
   %nav.flex_box.flex
     %ul#primary_nav.flex_box
-      %li= primary_nav_link display: site_logo, path: welcome_path, title: false
+      %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome'
       %li= primary_nav_link( display: 'Games',
                               path: games_path,
                               theme: 'games',
@@ -18,11 +18,12 @@
                                            'Items' => items_path,
                                            'Inventories' => inventories_path })
       %li= primary_nav_link( display: 'Developer',
-                              path: developer_path,
+                              path: issues_path,
+                              title: 'Issues',
                               theme: 'developer',
-                              drop_down: { 'Log'    => developer_log_entries_path,
+                              drop_down: { 'Users'  => users_path,
                                            'Issues' => issues_path,
-                                           'Users'  => users_path })
+                                           'Log'    => developer_log_entries_path })
     .flex
 
     - if logged_in?

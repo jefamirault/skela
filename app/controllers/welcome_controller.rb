@@ -6,6 +6,6 @@ class WelcomeController < ApplicationController
   # before_filter :authenticate
 
   def index
-    render 'shared/index'
+    render 'cards/index'
   end
 end
