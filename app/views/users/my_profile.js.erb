@@ -1,4 +1,6 @@
 window.setTimeout(function(){
-  $('#container').html('<%= j render partial: 'edit' %>');
-  decloak('#container, #user_form');
-}, 400);
+    $('.content').replaceWith('<%= j render partial: 'my_profile' %>');
+}, 310);
+window.setTimeout(function(){
+    decloak('.content');
+}, 320);
