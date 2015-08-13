@@ -64,14 +64,14 @@ class IssuesController < ApplicationController
 
   def add_task
     @issue = Issue.find params[:issue_id]
-    task_id_or_title = params[:issue][:task_id]
+    task_id_or_subject = params[:issue][:task_id]
 
-    @task = if task_id_or_title.class == Fixnum
-      Task.find task_id_or_title
+    @task = if task_id_or_subject.class == Fixnum
+      Task.find task_id_or_subject
     else # string
-      task = Task.find_by_title task_id_or_title
+      task = Task.find_by_subject task_id_or_subject
       if task.nil?
-        task = Task.new title: task_id_or_title
+        task = Task.new subject: task_id_or_subject
         task.save
       end
       task

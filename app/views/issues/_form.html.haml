@@ -19,7 +19,7 @@
 
   %h3 Associated Tasks
   - unless @issue.tasks.empty?
-    %ul
+    %ul#associated_tasks
       - @issue.tasks.each do |task|
         %li{ data: { id: task.id }}
           = link_to task.subject, edit_task_path(task), remote: true, class: 'nav_link'

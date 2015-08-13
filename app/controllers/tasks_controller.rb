@@ -37,9 +37,9 @@ class TasksController < ApplicationController
   end
 
   def autocomplete
-    query = Task.ransack(title_cont: params[:data]).result
+    query = Task.ransack(subject_cont: params[:data]).result
     @suggestions = query.map do |task|
-      { label: task.title, value: task.title }
+      { label: task.subject, value: task.subject}
     end.to_json
 
     respond_to do |format|
