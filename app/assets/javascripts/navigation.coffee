@@ -15,17 +15,20 @@ navigate = (selector, push_state = true) ->
   if $(selector).closest('ul').hasClass('drop_down_nav')
     $($(selector).parents('li')[1]).find('a:first').addClass('selected')
 
-  cloak '#container'
+  cloak '#content'
   if push_state
     window.history.pushState( {} , '', $(selector).attr('href') );
-  $('body').attr 'class', $(selector).data('theme')
+
+  changeTheme = ->
+    $('body').attr 'class', $(selector).data('theme')
+  window.setTimeout changeTheme, 290
 
 
 $ ->
-  decloak('#container')
+  decloak('#content')
   if (typeof history.pushState == "function")
     window.onpopstate = ->
-      cloak '#container'
+      cloak '#content'
       shit = window.location.href.split '/'
       path = shit[shit.length-1]
 

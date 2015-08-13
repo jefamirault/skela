@@ -10,7 +10,13 @@ module NavigationHelper
     path ||= options[:path]
     theme ||= options[:theme]
 
-    link = link_to display_text, path, class: 'nav_link', remote: true, data: { theme: theme }
+    title = if options[:title] == false
+      ''
+    else
+      options[:title] || display_text
+    end
+
+    link = link_to display_text, path, class: 'nav_link', data: { remote: true, theme: theme, fade_content: true, swap_title: title }
     if options.class == Hash && options[:drop_down]
       link + drop_down(options[:drop_down], theme)
     else

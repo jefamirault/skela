@@ -1,7 +1,7 @@
 #header.flex_box.flex
   %nav.flex_box.flex
     %ul#primary_nav.flex_box
-      %li= primary_nav_link display: site_logo, path: welcome_path
+      %li= primary_nav_link display: site_logo, path: welcome_path, title: false
       %li= primary_nav_link( display: 'Games',
                               path: games_path,
                               theme: 'games',
@@ -12,9 +12,9 @@
       %li= primary_nav_link( display: 'Trackers',
                               path: shifts_path,
                               theme: 'plants',
+                              title: 'Shifts',
                               drop_down: { 'Shifts'    => shifts_path,
                                            'Tasks'     => tasks_path,
-                                           'Plants'    => plants_path,
                                            'Items' => items_path,
                                            'Inventories' => inventories_path })
       %li= primary_nav_link( display: 'Developer',
