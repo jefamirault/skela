@@ -43,7 +43,7 @@ Given(/^I have an upcoming shift$/) do
 end
 
 Then(/^I can create a todo item for that shift$/) do
-  todo = Task.new title: 'Get shift done'
+  todo = Task.new subject: 'Get shift done'
   @shift.tasks << todo
   expect(@shift.tasks).to include todo
   expect(todo.taskable).to eq @shift
@@ -61,7 +61,7 @@ Given(/^I am on a shift$/) do
 end
 
 Then(/^I can create a complete todo item for my shift$/) do
-  todo = Task.new title: 'Get shift done', complete: true
+  todo = Task.new subject: 'Get shift done', complete: true
   @shift.tasks << todo
   expect(@shift.tasks).to include todo
   expect(todo.taskable).to eq @shift
