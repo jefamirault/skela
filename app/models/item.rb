@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_many :stocks
+  has_many :stocks, dependent: :destroy
   has_many :inventories, through: :stocks
 
   def name
