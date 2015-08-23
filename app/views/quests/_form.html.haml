@@ -1,0 +1,27 @@
+.center_form
+  .subject_container
+    = ajax_subject 'title', @quest
+  -#.right= updated_field_at 'updated_at', @shift
+  %br
+
+  .center
+    = link_to 'Play Quest', play_quest_path(@quest), data: { remote: true, fade_content: true, swap_title: 'Play Quest' }
+
+  - if @quest.creator == current_user
+    %div(style="background: #f2f2f2;")
+      %h3 Challenges
+      .center
+        = megatable 'Challenge', %w(text), @quest.challenges
+
+    %br
+
+    .center
+    = link_to 'New Challenge', quests_new_challenge_path(@quest), data: { remote: true, method: :post, fade_content: true }
+
+  %br
+
+  %footer
+    - if @quest.creator == current_user
+      .left
+        = publish_link @quest
+      = link_to trash_icon_right, quest_path(@quest), data: {method: :delete, remote: true, fade_content: true, swap_title: 'Quests'}, class: 'destroy_quest'

@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809190441) do
+ActiveRecord::Schema.define(version: 20150821145323) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
     t.string   "title"
     t.text     "description"
     t.datetime "deadline"
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.text     "text"
+    t.string   "answer"
+    t.integer  "quest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -54,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150809190441) do
   create_table "inventories", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.float    "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,6 +139,14 @@ ActiveRecord::Schema.define(version: 20150809190441) do
     t.float    "cost"
     t.datetime "purchased_at"
     t.text     "purchase_link"
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "published"
   end
 
   create_table "shifts", force: :cascade do |t|

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  post 'quests/:id/new_challenge', to: 'quests#new_challenge', as: 'quests_new_challenge'
+  get 'quests/:id/play', to: 'quests#play', as: 'play_quest'
+  resources :quests
+
+  post 'quests/:id/attempt_challenge/:challenge_id', to: 'quests#attempt_challenge', as: 'attempt_challenge'
+  resources :challenges
+
+
   get 'items/autocomplete', to: 'items#autocomplete', as: 'autocomplete_items'
   resources :items
 

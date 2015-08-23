@@ -1,0 +1,10 @@
+<% if @message %>
+  alert("<%= @message %>");
+<% end %>
+
+window.setTimeout(function(){
+  $('.content').replaceWith('<%= j render partial: 'quests/play' %>');
+}, 310);
+window.setTimeout(function(){
+  decloak('.content');
+}, 320);

@@ -81,4 +81,11 @@ module ApplicationHelper
     weekday = "#{weekday.to_s}?".to_sym
     (Date.today..Date.today + 1.week).select{ |day| day.send weekday }.first
   end
+
+  def publish_link(record)
+    text = record.published ? '<i class="material-icons">visibility</i>'.html_safe : '<i class="material-icons">visibility_off</i>'.html_safe
+    klass = record.class.to_s.underscore
+    title = record.published ? 'Public' : 'Private'
+    link_to(text, send("#{klass}_path", klass => { published: !record.published }, id: record.id), id: 'publish_link', title: title, data: { method: :put, remote: true })
+  end
 end

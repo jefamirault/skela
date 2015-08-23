@@ -1,0 +1,3 @@
+<% if params[:quest][:published] %>
+  $('#publish_link').replaceWith('<%= j publish_link @quest %>');
+<% end %>

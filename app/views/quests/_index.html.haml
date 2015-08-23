@@ -1,0 +1,13 @@
+- if request.format == :html
+  .card_header
+    %h2 Quests
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  - if @quests
+    .center
+      = megatable 'Quest', %w(title), @quests
+
+  %br
+  - if logged_in?
+    .center
+      = link_to 'New Quest', new_quest_path, remote: true, data: { fade_content: true, swap_title: 'New Quest'}

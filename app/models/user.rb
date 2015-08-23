@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :shifts
   has_many :created_shifts, class_name: 'Shift', foreign_key: :created_by
 
+  has_many :quests, foreign_key: :creator_id
+
   # has_one :avatar
 
   def username

@@ -1,0 +1,10 @@
+- if request.format == :html
+  .card_header
+    %h2 Editing Challenge
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  = render 'challenges/form'
+
+  %br
+  .center
+    = link_to 'Back', edit_quest_path(@challenge.quest), remote: true, data: { fade_content: true, swap_title: 'Editing Quest'}
