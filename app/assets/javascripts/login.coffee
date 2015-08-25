@@ -12,23 +12,27 @@ root.login_attempt = ->
 
 $(document).on 'submit', '#center_form_box form', root.login_attempt
 
-root.login_success = (notice, content, header) ->
+root.login_success = (notice, content, user_nav) ->
   $('#login_button').val 'Success!'
+  cloak('#user_nav')
+  poop = ->
+    swap_title 'Welcome'
+    $('#user_nav').html(user_nav)
+    decloak '#user_nav'
+  setTimeout poop, 500
   $('#center_form_box').find('input').attr 'disabled', true
-  setTimeout hide_container, 500
-  build_header = ->
+  setTimeout hide_content, 500
+  reveal_content = ->
     new_content(content);
-  setTimeout build_header, 1000
-  flashNotice(notice);
-  $('#helmet').html header
-  showHeader()
+  setTimeout reveal_content, 1000
+#  flashNotice(notice);
 
 new_content = (content) ->
-  $('#container').html content
-  $('#container').removeClass 'hidden'
+  $('.content').html content
+  decloak('.content')
 
-hide_container = ->
-  $('#container').addClass 'hidden'
+hide_content = ->
+  cloak('.content')
 
 hide_helmet = ->
   $('#helmet').addClass 'hidden'
@@ -36,8 +40,8 @@ hide_helmet = ->
 # Logout
 
 root.logout = ->
-  setTimeout hide_helmet, 0
-  setTimeout hide_container, 300
+#  setTimeout hide_helmet, 0
+  setTimeout hide_content, 300
 
 $(document).on 'click', '#logout_button', root.logout
 

@@ -1,0 +1,6 @@
+window.setTimeout(function(){
+  $('.content').replaceWith('<%= j render partial: 'new_session' %>');
+}, 310);
+window.setTimeout(function(){
+  decloak('.content');
+}, 320);

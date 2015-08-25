@@ -14,9 +14,9 @@
     .flash.alert.hidden
       %span.vertical_middle= alert
 
-    %div#helmet{class: (logging_in? || signing_up?) ? 'hidden' : '' }
+    #helmet
       #hide_show_header
-        = link_to 'show/hide', '', id: 'toggle_header', method: :post, remote: true
+        = link_to 'show/hide', nil, id: 'toggle_header', method: :post, remote: true
 
       = render partial: 'layouts/header'
 

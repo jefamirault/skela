@@ -1,9 +1,11 @@
+root = exports ? this
+
 $(document).on 'click', '#header_left', ->
   navigate 'welcome'
 $(document).on 'click', '#my_profile_link', ->
   navigate 'my_profile'
-$(document).on 'click', '#login_link', ->
-  navigate '/'
+#$(document).on 'click', '#login_link', ->
+#  navigate '/'
 
 $(document).on 'click', '.nav_link', ->
   navigate this
@@ -45,12 +47,14 @@ $(document).on 'click', '[data-fade-content]', ->
     cloak('.content')
 
 $(document).on 'click', '[data-swap-title]', ->
-  $('.card_header').addClass('hidden')
   new_title = $(this).data 'swap-title'
+  swap_title new_title
+
+root.swap_title = (new_title) ->
+  $('.card_header').addClass 'hidden'
   poop = ->
     $('.card_header h2').html new_title
   schoop = ->
-    $('.card_header').removeClass('hidden')
+    $('.card_header').removeClass 'hidden'
   window.setTimeout poop, 300
   window.setTimeout schoop, 310
-

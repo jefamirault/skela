@@ -1,9 +1,9 @@
 <% if logged_in? %>
   var notice  = 'Logged in successfully!';
   var content = '<%= j render partial: 'welcome/index' %>';
-  var header  = '<%= j render partial: 'layouts/header' %>';
+  var user_nav  = '<%= j render partial: 'layouts/user_nav' %>';
 
-  login_success(notice, content, header);
+  login_success(notice, content, user_nav);
   window.history.replaceState( {} , 'Welcome', '<%= welcome_path %>' );
 <% else %>
   $('.flash.alert').html('Invalid login details');

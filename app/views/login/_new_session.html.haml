@@ -1,21 +1,26 @@
-#curtain
-  %h1= site_logo color: 'gray'
+- if request.format == :html
+  .card_header.hidden
+    %h2 Login
 
-  #center_form_box
-    = form_tag sessions_path, remote: true do |f|
-      .center_form_field
-        = text_field_tag :username, nil, placeholder: 'Username'
-      .center_form_field
-        = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  #curtain
+    %h1= site_logo color: 'gray'
 
-      .actions
-        = submit_tag 'Log in', id: 'login_button'
+    #center_form_box
+      = form_tag sessions_path, remote: true do |f|
+        .center_form_field
+          = text_field_tag :username, nil, placeholder: 'Username'
+        .center_form_field
+          = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
 
-  %br
-  = link_to 'I don\'t have an account', signup_path, class: 'center_form_link'
+        .actions
+          = submit_tag 'Log in', id: 'login_button'
 
-:javascript
-  $('#username').focus();
-  jQuery(function(){
-    decloak('#container');
-  });
+    %br
+    = link_to 'I don\'t have an account', signup_path, class: 'center_form_link'
+
+  :javascript
+    $('#username').focus();
+    jQuery(function(){
+      decloak('#container');
+    });
