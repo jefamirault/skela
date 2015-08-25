@@ -16,7 +16,7 @@ root.login_success = (notice, content, user_nav) ->
   $('#login_button').val 'Success!'
   cloak('#user_nav')
   poop = ->
-    swap_title 'Welcome'
+    swap_title 'Welcome to skela!'
     $('#user_nav').html(user_nav)
     decloak '#user_nav'
   setTimeout poop, 500
@@ -25,7 +25,7 @@ root.login_success = (notice, content, user_nav) ->
   reveal_content = ->
     new_content(content);
   setTimeout reveal_content, 1000
-#  flashNotice(notice);
+  flashNotice(notice);
 
 new_content = (content) ->
   $('.content').html content
@@ -40,7 +40,6 @@ hide_helmet = ->
 # Logout
 
 root.logout = ->
-#  setTimeout hide_helmet, 0
   setTimeout hide_content, 300
 
 $(document).on 'click', '#logout_button', root.logout
@@ -56,8 +55,3 @@ root.clientSideValidations = ->
     $('.flash.alert').removeClass 'hidden'
 
     return false
-
-# Prettyness
-
-$(document).on 'click', '.center_form_link', ->
-  cloak('#container')

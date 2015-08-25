@@ -50,8 +50,14 @@ $(document).on 'click', '[data-swap-title]', ->
   new_title = $(this).data 'swap-title'
   swap_title new_title
 
-root.swap_title = (new_title) ->
+$(document).on 'click', '[data-hide-title]', ->
+  hide_title()
+
+root.hide_title = ->
   $('.card_header').addClass 'hidden'
+
+root.swap_title = (new_title) ->
+  hide_title()
   poop = ->
     $('.card_header h2').html new_title
   schoop = ->

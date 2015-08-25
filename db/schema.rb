@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20150821145323) do
   create_table "inventories", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.float    "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
