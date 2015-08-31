@@ -18,4 +18,4 @@
       %li= link_to issue.subject, edit_issue_path(issue), remote: true, class: 'nav_link'
 
   %footer
-    = link_to trash_icon_right, task_path(@task), data: {method: :delete, remote: true, fade_content: true, swap_title: 'Tasks'}, class: 'destroy_task'
+    = destroy_link @task

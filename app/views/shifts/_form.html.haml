@@ -7,11 +7,9 @@
 
     %dt End
     %dd= ajax_datetime 'end_time', @shift
-    -#%dd= ajax_datetime 'end_time', @shift, DateTime.current
 
     %dt User
     %dd= ajax_user_select 'user_id', @shift
 
   %footer
-    = link_to trash_icon_right, shift_path(@shift), data: {method: :delete, remote: true, fade_content: true, swap_title: 'Shifts'}, class: 'destroy_shift'
-
+    = destroy_link @shift

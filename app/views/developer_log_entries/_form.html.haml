@@ -1,12 +1,10 @@
 .center_form
-  %br
+  .subject_container
+    = ajax_subject 'title', @developer_log_entry
+  .notes_container
+    = ajax_notes 'text', @developer_log_entry
+
   %dl
-    %dt Title
-    %dd= ajax_string 'title', @developer_log_entry
-
-    %dt Text
-    %dd= ajax_text 'text', @developer_log_entry
-
     %dt Date & Time
     %dd= ajax_datetime 'datetime', @developer_log_entry
 
@@ -15,5 +13,5 @@
       = form_for @developer_log_entry, method: :put, remote: true do |f|
         - f.search_field :user
 
-  .right= link_to 'Destroy', developer_log_entry_path(@developer_log_entry), data: { method: :delete, remote: true, fade_content: true, swap_title: 'Developer Log' }
-
+  %footer
+    = destroy_link @developer_log_entry

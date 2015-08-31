@@ -1,14 +1,15 @@
 .center_form
-  .right= updated_field_at 'updated_at', @item
+  .subject_container
+    -#.right= updated_field_at 'updated_at', @item
+    = ajax_subject 'name', @item
+  .notes_container
+    = ajax_notes 'description', @item
   %br
-  %dl
-    %dt Name
-    %dd= ajax_subject 'name', @item
 
+  %dl
     %dt Units
     %dd= ajax_string 'units', @item
 
-    %dt Description
-    %dd= ajax_text 'description', @item
 
-  .right= link_to 'Destroy', item_path(@item), data: {  method: :delete, remote: true, fade_content: true, swap_title: 'Items'}, class: 'destroy_item'
+  %footer
+    = destroy_link @item

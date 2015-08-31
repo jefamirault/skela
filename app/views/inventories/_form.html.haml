@@ -1,8 +1,6 @@
 .center_form
-  %br
-  %dl
-    %dt Name
-    %dd= ajax_subject 'name', @inventory
+  .subject_container
+    = ajax_subject 'name', @inventory
 
   %h3 Tracked Items
   %ul
@@ -26,4 +24,5 @@
 
   %br
 
-  .right= link_to 'Destroy', inventory_path(@inventory), data: { method: :delete, remote: true, fade_content: true, swap_title: 'Inventories' }, class: 'destroy_inventory'
+  %footer
+    = destroy_link @inventory

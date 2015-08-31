@@ -88,4 +88,11 @@ module ApplicationHelper
     title = record.published ? 'Public' : 'Private'
     link_to(text, send("#{klass}_path", klass => { published: !record.published }, id: record.id), id: 'publish_link', title: title, data: { method: :put, remote: true })
   end
+
+  def destroy_link(record)
+    klass = record.class.to_s.underscore
+    title = klass.titleize.pluralize
+    path = send(klass + '_path', record)
+    link_to trash_icon_right, path, data: {method: :delete, remote: true, fade_content: true, swap_title: title }, class: "destroy_#{klass}"
+  end
 end

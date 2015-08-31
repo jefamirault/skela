@@ -1,10 +1,10 @@
 .center_form
-  .right= updated_field_at 'updated_at', @issue
-  %br
-  %dl
-    %dt Subject
-    %dd= ajax_subject 'subject', @issue
+  -#.right= updated_field_at 'updated_at', @issue
 
+  .subject_container
+    = ajax_subject 'subject', @issue
+
+  %dl
     %dt Description
     %dd= ajax_text 'description', @issue
 
@@ -34,5 +34,5 @@
 
 
   %br
-
-  .right= link_to 'Destroy', issue_path(@issue), data: { method: :delete, remote: true, fade_content: true, swap_title: 'Issues' }
+  %footer
+    = destroy_link @issue
