@@ -31,15 +31,15 @@ module AjaxFormHelper
     ajax_form 'boolean', resource, field
   end
 
-  def ajax_datetime(field, resource = @resource)
-    ajax_form 'datetime', resource, field
+  def ajax_datetime(field, resource = @resource, value = nil)
+    ajax_form 'datetime', resource, field, value
   end
 
   def ajax_time(field, resource = @resource)
     ajax_form 'time', resource, field
   end
 
-  def ajax_form(type, resource, field)
+  def ajax_form(type, resource, field, value = nil)
     klass = type
     form_for resource, html: { id: "edit_issue_#{field}", class: klass}, remote: true do |f|
       case type
@@ -58,7 +58,12 @@ module AjaxFormHelper
         when 'boolean'
           (f.label field) + (f.check_box field, class: 'ajax_field')
         when 'datetime'
-          f.datetime_local_field field, class: 'ajax_field'
+          value = if resource.send(field)
+            resource.send(field).in_time_zone('Eastern Time (US & Canada)').strftime('%FT%R')
+          else
+            nil
+          end
+          f.datetime_local_field field, class: 'ajax_field', value: value
         when 'time'
           f.time_field field, class: 'ajax_field'
         when 'date'

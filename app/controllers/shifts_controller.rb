@@ -15,23 +15,30 @@ class ShiftsController < ApplicationController
   end
 
   def edit
-    @shift = Shift.find(params[:id])
     render 'cards/edit'
   end
 
   def update
-    @shift = Shift.find(params[:id])
+    sanitize_timezones
     @shift.update(shift_params)
   end
 
   def destroy
-    @shift = Shift.find(params[:id])
     @shift.destroy
     render 'cards/index'
   end
 
 
   private
+
+  def sanitize_timezones
+    if params[:shift][:start_time]
+      params[:shift][:start_time] = (params[:shift][:start_time].to_datetime + 4.hours).to_s
+    end
+    if params[:shift][:end_time]
+      params[:shift][:end_time] = (params[:shift][:end_time].to_datetime + 4.hours).to_s
+    end
+  end
 
   def set_shift
     @shift = Shift.find(params[:id])

@@ -23,9 +23,6 @@ module Skela
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.timezone = 'Eastern Time (US & Canada)'
-    config.active_record.default_timezone = :local
-
     config.middleware.use Rack::Deflater
 
   end
