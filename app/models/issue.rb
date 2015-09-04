@@ -17,6 +17,64 @@ class Issue < ActiveRecord::Base
     "#{ '#' if include_number_sign }#{self.id.to_s.rjust(issue_number_length, '0')}"
   end
 
+  def mark_complete
+    case tasks.size
+      when 0
+        task = Task.create complete: true
+        self.tasks << task
+      when 1
+        tasks.first.mark_incomplete
+      when 2
+        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+    end
+  end
+
+  def mark_incomplete
+    case tasks.size
+      when 0
+        task = Task.create
+        self.tasks << task
+      when 1
+        tasks.first.mark_incomplete
+      when 2
+        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+    end
+  end
+
+  def status
+    case tasks.size
+      when 0
+        'No Task'
+      when 1
+        tasks.first.complete ? 'Complete' : 'Incomplete'
+      else
+        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+    end
+  end
+
+  def assign_to(user)
+    case tasks.size
+      when 0
+        task = Task.create assignee: user
+        self.tasks << task
+      when 1
+        tasks.first.assign_to user
+      when 2
+        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+    end
+  end
+
+  def assignee
+    case tasks.size
+      when 0
+        'Unassigned'
+      when 1
+        tasks.first.assignee
+      else
+        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+    end
+  end
+
   private
 
   def update_tested_at

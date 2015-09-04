@@ -29,10 +29,6 @@ namespace :startup do
 
       `tmux split-window -h -t skelaplex:0`
         `tmux resize-pane -R -t skelaplex:0 18`
-        `tmux send-keys -t skelaplex:0 "ngrok -subdomain=skela #{PORT}" C-m`
-
-      `tmux split-window -v -t skelaplex:0`
-        `tmux resize-pane -U -t skelaplex:0 3`
         `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}" C-m C-l`
         `tmux send-keys -t skelaplex:0 "rails c" C-m`
 
