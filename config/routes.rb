@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   resources :issues do
     delete 'remove_task/:task_id', to: 'issues#remove_task', as: 'remove_task'
+    post 'new_task'
     post 'add_task', to: 'issues#add_task', as: 'add_task'
   end
 

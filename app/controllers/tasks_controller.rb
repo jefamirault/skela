@@ -33,7 +33,6 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     @tasks = Task.all
-    render 'index'
   end
 
   def autocomplete
@@ -58,6 +57,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:subject, :notes, :complete)
+    params.require(:task).permit(:subject, :notes, :complete, :assignee_id)
   end
 end

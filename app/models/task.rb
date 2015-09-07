@@ -6,4 +6,26 @@ class Task < ActiveRecord::Base
     super.nil? ? 'Unassigned' : super
   end
 
+  def subject
+    super || 'Unnamed Task'
+  end
+
+  def status
+    self.complete ? 'Complete' : 'Incomplete'
+  end
+
+  def assign_to(user)
+    self.assignee = user
+    save
+  end
+
+  def mark_incomplete
+    self.complete = false
+    save
+  end
+
+  def mark_complete
+    self.complete = true
+    save
+  end
 end

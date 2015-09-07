@@ -3,22 +3,24 @@
 
   .subject_container
     = ajax_subject 'subject', @issue
+  .notes_container
+    = ajax_notes 'description', @issue
 
-  %dl
-    %dt Description
-    %dd= ajax_text 'description', @issue
 
-    %dt How to Test
-    %dd= ajax_text 'how_to_test', @issue
+  #tasks_header
+    %h4 Status
+    .spacer
+    %h4 Assigned To
+  #tasks
+    - if @issue.tasks
+      - @issue.tasks.each do |task|
+        = task_cards task, false, select: false
+  = new_task_for @issue
+  -#%br(style="clear:both;")
+  -#%br(style="clear:both;")
 
-    %dt Category
-    %dd= ajax_string 'category', @issue
-
-    %dt Target Version
-    %dd= ajax_string 'target_version', @issue
-
-  %h3 Associated Tasks
-  - unless @issue.tasks.empty?
+  -#- unless @issue.tasks.empty?
+    %h2 Tasks
     %ul#associated_tasks
       - @issue.tasks.each do |task|
         %li{ data: { id: task.id }}
@@ -26,11 +28,19 @@
           (
           = link_to 'x', issue_remove_task_path(issue_id: @issue.id, task_id: task.id), remote: true, method: :delete
           )
-  %br
+    -#%br
+    -#
+    -#= form_for @issue, method: :post, url: issue_add_task_path(@issue), remote: true do |f|
+      - f.hidden_field :id
+      - f.search_field :task_id, placeholder: 'Add Task'
 
-  = form_for @issue, method: :post, url: issue_add_task_path(@issue), remote: true do |f|
-    - f.hidden_field :id
-    - f.search_field :task_id, placeholder: 'Add Task'
+  %dl
+    %dt Category
+    %dd= ajax_string 'category', @issue
+
+    %dt Target Version
+    %dd= ajax_string 'target_version', @issue
+
 
 
   %br

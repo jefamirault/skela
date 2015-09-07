@@ -89,10 +89,22 @@ module ApplicationHelper
     link_to(text, send("#{klass}_path", klass => { published: !record.published }, id: record.id), id: 'publish_link', title: title, data: { method: :put, remote: true })
   end
 
-  def destroy_link(record)
+  def destroy_link(record, nav = true)
     klass = record.class.to_s.underscore
     title = klass.titleize.pluralize
     path = send(klass + '_path', record)
-    link_to trash_icon_right, path, data: {method: :delete, remote: true, fade_content: true, swap_title: title }, class: "destroy_#{klass}"
+    data = { method: :delete, remote: true }
+    if nav
+      data.merge! ({fade_content: true, swap_title: title})
+    end
+    link_to trash_icon_right, path, data: data, class: "destroy_#{klass}"
+  end
+
+  def md_icon(icon)
+    content_tag :i, icon, class: 'material-icons'
+  end
+
+  def div_tag(content, options)
+
   end
 end

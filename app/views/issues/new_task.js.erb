@@ -1,0 +1,6 @@
+window.setTimeout(function(){
+  $('.task_space:first').replaceWith('<%= j task_cards @task, true %>');
+  setTimeout(function(){
+    decloak('.task:last');
+  }, 1)
+}, 100);

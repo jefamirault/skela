@@ -48,7 +48,9 @@ class Issue < ActiveRecord::Base
       when 1
         tasks.first.complete ? 'Complete' : 'Incomplete'
       else
-        raise 'SHIT I DIDN\'T CODE THAT PART YET'
+        done = tasks.where(complete: true).size
+        total = tasks.size
+        "#{done}/#{total} Complete"
     end
   end
 

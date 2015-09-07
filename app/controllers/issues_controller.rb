@@ -62,6 +62,12 @@ class IssuesController < ApplicationController
     render 'cards/index'
   end
 
+  def new_task
+    @issue = Issue.find params[:issue_id]
+    @task = Task.create
+    @issue.tasks << @task
+  end
+
   def add_task
     @issue = Issue.find params[:issue_id]
     task_id_or_subject = params[:issue][:task_id]

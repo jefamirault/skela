@@ -4,6 +4,21 @@
   .notes_container
     = ajax_notes 'notes', @task
 
+  %dl
+    %dt Status
+    %dd
+      #task_status
+        - case @task.status
+          - when 'No Task'
+            = @task.status
+          - when 'Incomplete'
+            = md_icon 'done'
+            Incomplete
+          - when 'Complete'
+            = md_icon 'done'
+            Complete
+    %dt Assigned To
+    %dd= @task.assignee
 
   -#.left= updated_field_at 'updated_at', @task
   -#%dl

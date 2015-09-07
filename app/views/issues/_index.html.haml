@@ -10,6 +10,7 @@
         %th{data: {column: 'issue_number'}} Issue
         %th{data: {column: 'issue_subject'}} Subject
         %th{data: {column: 'issue_description'}} Description
+        %th{data: {column: 'issue_status'}} Status
         %th{data: {column: 'issue_updated_at'}} Updated
     %tbody
       - @issues.each do |issue|
@@ -22,6 +23,9 @@
 
           %td{data: {column: 'issue_description'}}
             = issue.description
+
+          %td{data: {column: 'issue_status'}}
+            = issue.status
 
           %td{data: {column: 'issue_updated_at'}, style: 'font-size:.8em; min-width:10em;'}
             = time_ago(issue.updated_at)
