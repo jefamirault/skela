@@ -6,24 +6,10 @@
 
   %dl
     %dt Status
-    %dd
-      #task_status
-        - case @task.status
-          - when 'No Task'
-            = @task.status
-          - when 'Incomplete'
-            = md_icon 'done'
-            Incomplete
-          - when 'Complete'
-            = md_icon 'done'
-            Complete
-    %dt Assigned To
-    %dd= @task.assignee
+    %dd= task_status
 
-  -#.left= updated_field_at 'updated_at', @task
-  -#%dl
-  -#  %dt Complete
-  -#  %dd= ajax_boolean 'complete', @task
+    %dt Assigned To
+    %dd= task_assignee
 
 
   - unless @task.taskable.nil?

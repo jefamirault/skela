@@ -1,1 +1,3 @@
-$('.task[data-id=<%= @task.id %>] .task_assignee').replaceWith('<%= j task_assignee @task, false %>');
+<% if params[:task][:assignee_id]  %>
+  $('.task_assignee[data-id=<%= @task.id %>]').replaceWith('<%= j task_assignee @task, false %>');
+<% end %>

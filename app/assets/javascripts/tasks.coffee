@@ -11,6 +11,6 @@ $(document).on 'click', '#new_task', ->
 $(document).on 'click', '.task .destroy_task', ->
   cloak($(this).closest('.task'))
 
-$(document).on 'click', '.task .task_assignee', ->
+$(document).on 'click', '.task_assignee', ->
   $(this).find('.text:first').hide()
   $(this).find('.text:eq(1)').show()
