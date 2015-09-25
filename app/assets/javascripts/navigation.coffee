@@ -4,8 +4,6 @@ $(document).on 'click', '#header_left', ->
   navigate 'welcome'
 $(document).on 'click', '#my_profile_link', ->
   navigate 'my_profile'
-#$(document).on 'click', '#login_link', ->
-#  navigate '/'
 
 $(document).on 'click', '.nav_link', ->
   navigate this

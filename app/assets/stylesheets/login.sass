@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.login
-  #center_form_box
-    background: #f7f7f7
+  background: #d6d6d6
 
 #login_button
   font-size: 1.3em
@@ -36,21 +35,22 @@ body.login
   display: inline-block
   padding: 2.5em 1.5em
   border-radius: 3px
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.298039)
   margin-bottom: 2em
   position: relative
   left: 0px
   transition: left 1s ease-in-out
   transition-delay: .5s
-  background: white
 
 #center_form_box label
   color: rgba(0, 0, 0, 0.698039)
 
-#center_form_box form .center_form_field input
+=outline($color)
+  border: solid 1px $color
+
+.center_form_field input
   font-size: 1.3em
   line-height: 2.5em
-  border: solid 1px #ddd
+  +outline(#ddd)
   padding: 0 8px 0
   width: 260px
   margin-bottom: .5em
@@ -58,12 +58,12 @@ body.login
 
 .center_form_field input:hover
   outline: none
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset
+  +outline(#bbb)
 
-#center_form_box form .center_form_field input:focus
+.center_form_field input:focus
   outline: none
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset
-  border: solid 1px #00BFA5
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298) inset
+  +outline(#00BFA5)
 
 a.center_form_link
   font-size: 1em

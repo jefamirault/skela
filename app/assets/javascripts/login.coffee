@@ -16,7 +16,7 @@ root.login_success = (notice, content, user_nav) ->
   $('#login_button').val 'Success!'
   cloak('#user_nav')
   poop = ->
-    swap_title 'Welcome to skela!'
+    swap_title 'Welcome to Skela!'
     $('#user_nav').html(user_nav)
     decloak '#user_nav'
   setTimeout poop, 500

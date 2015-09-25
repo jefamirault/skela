@@ -16,7 +16,7 @@
 
     #helmet
       #hide_show_header
-        = link_to 'show/hide', nil, id: 'toggle_header', method: :post, remote: true
+        = content_tag :a, 'show/hide', id: 'toggle_header', remote: true
 
       = render partial: 'layouts/header'
 

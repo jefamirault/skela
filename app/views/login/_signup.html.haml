@@ -1,0 +1,22 @@
+- if request.format == :html
+  .card_header
+    %h2 Create an Account
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  #curtain
+    #center_form_box
+      = form_for @user, remote: true do |f|
+        .center_form_field= f.text_field :username, autofocus: true, placeholder: 'Username'
+        .center_form_field= f.password_field :password, autocomplete: 'off', placeholder: 'Password'
+        .center_form_field= f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+        .actions= f.submit 'Sign up', id: 'login_button'
+      %br
+      %br
+      = link_to 'I already have an account', login_path, class: 'center_form_link', data: { swap_title: 'Authenticate', fade_content: true, remote: true }
+
+
+:javascript
+  $('#new_user').on('submit', clientSideValidations);
+  jQuery(function(){
+      decloak('#container');
+  });

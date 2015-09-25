@@ -1,6 +1,5 @@
 cloak('#user_nav');
 setTimeout(function(){
-    hide_title();
     $('#user_nav').html('<%= j render 'layouts/user_nav' %>');
     window.setTimeout(function(){
         decloak('#user_nav');

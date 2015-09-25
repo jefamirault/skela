@@ -1,11 +1,9 @@
 - if request.format == :html
-  .card_header.hidden
-    %h2 Login
+  .card_header
+    %h2 Authenticate
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
   #curtain
-    %h1= site_logo color: 'gray'
-
     #center_form_box
       = form_tag sessions_path, remote: true do |f|
         .center_form_field
@@ -15,9 +13,9 @@
 
         .actions
           = submit_tag 'Log in', id: 'login_button'
-
-    %br
-    = link_to 'I don\'t have an account', signup_path, class: 'center_form_link'
+      %br
+      %br
+      = link_to 'I don\'t have an account', signup_path, class: 'center_form_link', data: { swap_title: 'Create an Account', fade_content: true, remote: true }
 
   :javascript
     $('#username').focus();
