@@ -49,8 +49,8 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # execute "service thin restart"  ## -> line you should add
       `rake db:migrate ENV=production`
+      execute "kill -9 `ps -ax | ag server | head -n1 | awk '{print $1}'` ; service thin start"
     end
   end
   
