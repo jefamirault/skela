@@ -16,10 +16,11 @@ module NavigationHelper
       options[:title] || display_text
     end
 
-    link = link_to display_text, path, class: 'nav_link', data: { remote: true, theme: theme, fade_content: true, swap_title: title }
     if options.class == Hash && options[:drop_down]
-      link + drop_down(options[:drop_down], theme)
+      dropper = content_tag :div, display_text, class: 'dropper'
+      dropper + drop_down(options[:drop_down], theme)
     else
+      link = link_to display_text, path, class: 'nav_link', data: { remote: true, theme: theme, fade_content: true, swap_title: title }
       link
     end
   end

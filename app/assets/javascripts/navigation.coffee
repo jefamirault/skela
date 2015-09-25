@@ -5,15 +5,25 @@ $(document).on 'click', '#header_left', ->
 $(document).on 'click', '#my_profile_link', ->
   navigate 'my_profile'
 
+
+$(document).on 'click', '.dropper', ->
+  $('#header').find('.dropper').removeClass 'selected'
+  $(this).addClass 'selected'
+  dropdown = $(this).closest('li').find('.drop_down_nav')
+  dropdown.addClass 'active'
+  $(document).one 'click', ->
+    dropdown.removeClass 'active'
+
+
 $(document).on 'click', '.nav_link', ->
+  $('.drop_down_nav').removeClass 'active'
   navigate this
 
 navigate = (selector, push_state = true) ->
-  $('#header').find('a').removeClass('selected')
-  $(selector).addClass('selected')
-
-  if $(selector).closest('ul').hasClass('drop_down_nav')
-    $($(selector).parents('li')[1]).find('a:first').addClass('selected')
+  $('#header').find('.nav_link').removeClass 'selected'
+  $(selector).addClass 'selected'
+  $('.dropper').removeClass 'selected'
+  $(selector).parents('li:eq(1)').find('.dropper').addClass 'selected'
 
   cloak '#content'
   if push_state
@@ -37,8 +47,8 @@ $ ->
         url: window.location.href,
         dataType: 'script'
 
-$(document).on 'click', '.drop_down_nav', ->
-  $(this).hide()
+#$(document).on 'click', '.drop_down_nav', ->
+#  $(this).hide()
 
 $(document).on 'click', '[data-fade-content]', ->
   if $(this).data('fade-content')
