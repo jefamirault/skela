@@ -5,7 +5,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    %link{ href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
     = favicon_link_tag 'icon.png'
 
   %body{ class: params[:controller] }
@@ -23,8 +23,7 @@
 
     #container
       = yield
-      %div{style: 'height:24px; width:100%;'}
-
+      %br
     .developer_pad.hidden
       #developer_pad_title
         Developer Tools
@@ -36,5 +35,3 @@
           = trigger_flash_alert
         %li
           = hide_stuff
-
-    .spacer
