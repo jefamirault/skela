@@ -31,9 +31,19 @@ module ApplicationHelper
 
   def logged_in_text
     if logged_in?
-      content_tag :div, id: 'logged_in_text' do
-        content_tag(:strong, content_tag(:span, current_user.username, class: "user_#{current_user.id}_username"))
+      text = content_tag :div, id: 'logged_in_text' do
+        content_tag :div do
+          username = content_tag :div, style: 'display:inline-block;vertical-align:top;' do
+            content_tag(:strong, content_tag(:span, "#{current_user.username}", class: "user_#{current_user.id}_username"))
+          end
+          avatar = content_tag :div, style: 'display:inline-block;vertical-align:top;' do
+            image_tag('default_skel', class: 'avatar')
+          end
+          username + avatar
+        end
       end
+      text
+
     else
       'Logged out'
     end

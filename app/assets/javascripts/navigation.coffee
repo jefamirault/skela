@@ -11,9 +11,11 @@ $(document).on 'click', '.dropper', ->
   $(this).addClass 'selected'
   dropdown = $(this).closest('li').find('.drop_down_nav')
   dropdown.addClass 'active'
-  $(document).one 'click', ->
-    dropdown.removeClass 'active'
+#  $(document).one 'click', ->
+#    dropdown.removeClass 'active'
 
+$(document).on 'click', ->
+  $('.drop_down_nav').removeClass 'active'
 
 $(document).on 'click', '.nav_link', ->
   $('.drop_down_nav').removeClass 'active'
