@@ -1,5 +1,1 @@
-window.setTimeout(function(){
-  $('#container').html('<%= j render partial: 'index' %>');
-  decloak('#container');
-}, 400);
-//window.history.replaceState( {} , '', '<%= issues_path %>' );
+replaceContentAndDecloak('<%= j render partial: 'index' %>');
