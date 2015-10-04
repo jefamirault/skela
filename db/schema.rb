@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004152205) do
+ActiveRecord::Schema.define(version: 20151004155335) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -152,10 +152,10 @@ ActiveRecord::Schema.define(version: 20151004152205) do
   create_table "shifts", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "user_id"
-    t.integer  "created_by"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "assignee_id"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "songs", force: :cascade do |t|

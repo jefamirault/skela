@@ -8,7 +8,7 @@ class ShiftsController < ApplicationController
   end
 
   def new
-    @shift = Shift.create
+    @shift = Shift.create creator: current_user
     render 'cards/new'
   end
 
@@ -48,6 +48,6 @@ class ShiftsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def shift_params
-    params.require(:shift).permit(:start_time, :end_time, :user_id)
+    params.require(:shift).permit(:start_time, :end_time, :assignee_id)
   end
 end

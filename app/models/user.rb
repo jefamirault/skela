@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   belongs_to :world
   has_one :player
 
-  has_many :shifts
-  has_many :created_shifts, class_name: 'Shift', foreign_key: :created_by
+  has_many :assigned_shifts, class_name: 'Shift', foreign_key: :assignee_id
+  has_many :shifts, foreign_key: :creator_id
 
   has_many :quests, foreign_key: :creator_id
 

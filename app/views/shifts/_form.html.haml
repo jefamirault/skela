@@ -8,8 +8,8 @@
     %dt End
     %dd= ajax_datetime 'end_time', @shift
 
-    %dt User
-    %dd= ajax_user_select 'user_id', @shift
+    %dt Assignee
+    %dd= ajax_user_select 'assignee_id', @shift
 
   %footer
     = destroy_link @shift
