@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = current_user.items
     render 'cards/index'
   end
 
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.create
+    @item = Item.create creator: current_user
     render 'cards/new'
   end
 

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'login/new_session'
   post 'create_session', to: 'login#create_session', as: 'create_session'
   delete 'logout', to: 'login#destroy_session', as: 'logout'
+  get 'logout', to: 'login#destroy_session'
 
 
   get 'developer', to: 'developer#index'

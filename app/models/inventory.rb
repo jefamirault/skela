@@ -1,6 +1,7 @@
 class Inventory < ActiveRecord::Base
   has_many :stocks
   has_many :items, through: :stocks
+  belongs_to :user
 
   accepts_nested_attributes_for :stocks
 

@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_filter :authorize_superuser, only: [:admin_create]
 
   def index
-    @users = User.all
+    @users = superuser? ? User.all : [current_user]
+
     @resources = @users
 
     render 'cards/index'

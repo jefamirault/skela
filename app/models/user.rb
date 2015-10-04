@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :courses
   has_many :assignments, through: :courses
   has_many :purchases
+  has_many :inventories
+  has_many :items, foreign_key: :creator_id
+  has_many :tasks, foreign_key: :creator_id
 
   belongs_to :world
   has_one :player

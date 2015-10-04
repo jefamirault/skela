@@ -1,9 +1,7 @@
 class TasksController < ApplicationController
 
   before_filter :set_tasks
-
   before_filter :set_task, only: [:show, :edit, :update, :destroy]
-
 
   def index
     if request.format == :html
@@ -12,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.create
+    @task = Task.create creator: current_user
     render 'cards/new'
   end
 
@@ -53,7 +51,7 @@ class TasksController < ApplicationController
   end
 
   def set_tasks
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def task_params

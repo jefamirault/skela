@@ -1,11 +1,11 @@
 class InventoriesController < ApplicationController
   def index
-    @inventories = Inventory.all
+    @inventories = current_user.inventories
     render 'cards/index'
   end
 
   def new
-    @inventory = Inventory.create
+    @inventory = Inventory.create(user: current_user)
     render 'cards/new'
   end
 

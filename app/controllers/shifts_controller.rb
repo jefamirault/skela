@@ -4,8 +4,6 @@ class ShiftsController < ApplicationController
   before_filter :set_shift, only: [:edit, :destroy, :update]
 
   def index
-    @resources = Shift.all
-
     render 'cards/index'
   end
 
@@ -45,7 +43,7 @@ class ShiftsController < ApplicationController
   end
 
   def set_shifts
-    @shifts = Shift.all
+    @shifts = current_user.shifts
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
