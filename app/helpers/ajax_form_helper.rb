@@ -87,4 +87,13 @@ module AjaxFormHelper
       end
     end
   end
+
+  def edit_fields(object, fields = {})
+    content_tag :dl do
+      fields.map do |field, type|
+        content_tag(:dt, field.to_s.titleize) +
+            content_tag(:dd, send("ajax_#{type.to_s}", field, object))
+      end.reduce :+
+    end
+  end
 end

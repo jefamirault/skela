@@ -3,7 +3,6 @@
     %ul#primary_nav.flex_box
       %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome'
       %li= primary_nav_link( display: 'Games',
-                              path: games_tic_tac_toe_path,
                               title: 'Tic-Tac-Toe',
                               theme: 'games',
                               drop_down: { 'Tic-Tac-Toe' => games_tic_tac_toe_path,
@@ -12,20 +11,19 @@
                                            'Quests'      => quests_path })
 
       %li= primary_nav_link( display: 'Trackers',
-                              path: shifts_path,
                               theme: 'plants',
                               title: 'Shifts',
                               drop_down: { 'Shifts'    => shifts_path,
                                            'Tasks'     => tasks_path,
                                            'Items' => items_path,
                                            'Inventories' => inventories_path })
-      %li= primary_nav_link( display: 'Developer',
-                              path: issues_path,
-                              title: 'Issues',
-                              theme: 'developer',
-                              drop_down: { 'Users'  => users_path,
-                                           'Issues' => issues_path,
-                                           'Log'    => developer_log_entries_path })
+      - if superuser?
+        %li= primary_nav_link( display: 'Developer',
+                                title: 'Issues',
+                                theme: 'developer',
+                                drop_down: { 'Users'  => users_path,
+                                             'Issues' => issues_path,
+                                             'Log'    => developer_log_entries_path })
     .flex
 
     %nav#user_nav
