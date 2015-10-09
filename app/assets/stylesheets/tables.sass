@@ -15,10 +15,6 @@ table
     padding: .5em
     transition: background .3s ease-out
 
-  tbody
-    tr
-      //background-color: #B2DFDB
-      cursor: pointer
   tr
     td
       border-bottom: solid 4px #f2f2f2
@@ -29,7 +25,8 @@ table
     &.odd
       td
         //background-color: #E0F2F1
-    &:hover td
+    &:hover td:not(.nothing)
+      cursor: pointer
       background-color: #B2DFDB
 
     th

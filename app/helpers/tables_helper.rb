@@ -16,8 +16,14 @@ module TablesHelper
 
       body = content_tag :tbody do
         rows = ''
-        resources.each do |resource|
-          rows << megarow(resource, model_name, fields)
+        if resources.empty?
+          rows = content_tag :tr do
+            content_tag :td, 'There\'s nothing here...', colspan: fields.size, class: 'nothing'
+          end
+        else
+          resources.each do |resource|
+            rows << megarow(resource, model_name, fields)
+          end
         end
         rows.html_safe
       end
