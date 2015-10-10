@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'calculators/budget'
+  get 'calculators/tip'
+
   post 'quests/:id/new_challenge', to: 'quests#new_challenge', as: 'quests_new_challenge'
   get 'quests/:id/play', to: 'quests#play', as: 'play_quest'
   resources :quests
