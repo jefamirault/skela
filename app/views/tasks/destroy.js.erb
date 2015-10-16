@@ -1,5 +1,0 @@
-$('.task[data-id=<%= @task.id %>]').html('');
-$('.task[data-id=<%= @task.id %>]').addClass('minimized');
-window.setTimeout(function(){
-  $('.task[data-id=<%= @task.id %>]').remove();
-},300);
