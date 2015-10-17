@@ -70,9 +70,12 @@ root.swap_title = (new_title) ->
   window.setTimeout poop, 300
   window.setTimeout schoop, 310
 
+replaceAndDecloak = (selector, partial) ->
+  timeout 300, -> $(selector).replaceWith partial
+  timeout 320, -> decloak(selector)
+
 root.replaceContentAndDecloak = (partial) ->
-  timeout 300, -> $('.content').replaceWith partial
-  timeout 320, -> decloak('.content')
+  replaceAndDecloak '.content', partial
 
 root.timeout = (delay, callback) ->
   window.setTimeout callback, delay

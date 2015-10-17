@@ -7,9 +7,9 @@ class Task < ActiveRecord::Base
     super.nil? ? 'Unassigned' : super
   end
 
-  def subject
-    super || 'Unnamed Task'
-  end
+  # def subject
+  #   super || 'Unnamed Task'
+  # end
 
   def status
     self.complete ? 'Complete' : 'Incomplete'

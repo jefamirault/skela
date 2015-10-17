@@ -4,29 +4,30 @@ class TasksController < ApplicationController
   before_filter :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    render 'cards/default'
+    render 'cruddy/index'
   end
 
   def new
-    @task = Task.create creator: current_user
-    render 'cards/default'
+    @resource = Task.create creator: current_user
+    render 'cruddy/create'
   end
 
   def show
-    render 'cards/default'
+    render 'cruddy/read'
   end
 
   def edit
-    render 'cards/default'
+    render 'cruddy/read'
   end
 
   def update
-    @task.update(task_params)
+    @resource.update(task_params)
+    render 'cruddy/update'
   end
 
   def destroy
-    @task.destroy
-    render 'cards/destroy'
+    @resource.destroy
+    render 'cruddy/destroy'
   end
 
   def autocomplete
@@ -42,16 +43,12 @@ class TasksController < ApplicationController
 
   private
 
-  def default_render
-    render 'cards/default'
-  end
-
   def set_task
-    @task = Task.find(params[:id])
+    @resource = Task.find(params[:id])
   end
 
   def set_tasks
-    @tasks = current_user.tasks
+    @resources = current_user.tasks
   end
 
   def task_params

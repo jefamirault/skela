@@ -1,0 +1,11 @@
+- if request.format == :html
+  .card_header
+    %h2 Cruds
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  = cruddy_table row: 'compact', enlarged: 'full', resources: @resources
+
+  %br
+  .center
+    .new_task
+      = link_to 'New Crud', new_task_path, remote: true, id: 'new_crud'

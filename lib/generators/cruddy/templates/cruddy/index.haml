@@ -1,0 +1,14 @@
+- if request.format == :html
+  .card_header
+    %h2 Cruds
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  - if @cruds
+    .center
+      -#= megatable 'Crud', %w(field1 field2), @cruds
+      = cruddy_table row: 'compact', enlarged: 'full', resources: @cruds
+
+  %br
+  .center
+    .new_task
+      = link_to 'New Crud', new_crud_path, remote: true, id: 'new_crud', data: { fade_content: true, swap_title: 'New Crud'}

@@ -1,0 +1,21 @@
+.subject_container
+  = ajax_subject 'subject', @resource
+.notes_container
+  = ajax_notes 'notes', @resource
+
+%dl
+  %dt Status
+  %dd= task_status(@resource)
+
+  %dt Assigned To
+  %dd= task_assignee(@resource)
+
+
+- unless @resource.taskable.nil?
+  %h3 Associated Records
+  %ul
+    - issue = @resource.taskable
+    %li= link_to issue.subject, edit_issue_path(issue), remote: true, class: 'nav_link'
+
+%footer
+  = destroy_link @resource, false

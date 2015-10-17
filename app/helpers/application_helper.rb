@@ -93,7 +93,7 @@ module ApplicationHelper
     klass = record.class.to_s.underscore
     title = klass.titleize.pluralize
     path = send(klass + '_path', record)
-    data = { method: :delete, remote: true }
+    data = { method: :delete, remote: true, collapse: true }
     if nav
       data.merge! ({fade_content: true, swap_title: title})
     end
