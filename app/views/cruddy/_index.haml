@@ -1,6 +1,6 @@
 - if request.format == :html
   .card_header
-    %h2 Cruds
+    %h2= params[:controller].titleize
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
   = cruddy_table row: 'compact', enlarged: 'full', resources: @resources
