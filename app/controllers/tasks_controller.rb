@@ -48,7 +48,11 @@ class TasksController < ApplicationController
   end
 
   def set_tasks
-    @resources = current_user.tasks
+    @resources = if logged_in?
+      current_user.tasks
+    else
+      Task.public
+    end
   end
 
   def task_params
