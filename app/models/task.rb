@@ -3,13 +3,13 @@ class Task < ActiveRecord::Base
   belongs_to :assignee, class_name: 'User'
   belongs_to :creator, class_name: 'User'
 
+  def self.public
+    Task.where(creator_id: nil)
+  end
+
   def assignee
     super.nil? ? 'Unassigned' : super
   end
-
-  # def subject
-  #   super || 'Unnamed Task'
-  # end
 
   def status
     self.complete ? 'Complete' : 'Incomplete'
