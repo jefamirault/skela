@@ -19,4 +19,16 @@ module CruddyHelper
       end
     end
   end
+
+  def new_cruddy_resource(resource, hidden = false)
+    content_tag :li, class: 'cruddy_resource', data: { resource_id: resource.id } do
+      views = content_tag :div, class: 'compact', style: 'display:none;' do
+        render partial: 'compact', locals: { resource: resource }
+      end
+      views += content_tag :div, class: 'full', style: hidden ? 'display:none;' : '' do
+        render partial: 'full', locals: { resource: resource }
+      end
+      views
+    end
+  end
 end

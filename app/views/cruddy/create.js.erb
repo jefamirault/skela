@@ -1,1 +1,6 @@
-$('.cruddy_table').append('<%= j crud_wrapper(@resource, render(partial: 'compact', locals: {resource: @resource})) %>');
+$('.cruddy_table').append('<%= j new_cruddy_resource @resource, true %>');
+$('.cruddy_resource[data-resource-id=<%= @resource.id %>]').find('.full').slideDown();
+// focus on the subject field after some milliseconds. looks funky without the delay
+timeout(100, function(){
+  $('.cruddy_resource[data-resource-id=<%= @resource.id %>]').find('.subject').focus();
+});
