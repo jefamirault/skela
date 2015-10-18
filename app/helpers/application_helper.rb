@@ -100,8 +100,8 @@ module ApplicationHelper
     link_to trash_icon_right, path, data: data, class: "destroy_#{klass}"
   end
 
-  def md_icon(icon)
-    content_tag :i, icon, class: 'material-icons'
+  def md_icon(icon, huge = false)
+    content_tag :i, icon, class: "material-icons#{' huge' if huge}"
   end
 
   def div_tag(content, options)
