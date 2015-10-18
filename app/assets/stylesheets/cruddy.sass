@@ -14,8 +14,8 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4)
     border-top: solid #ddd 1px
     width: 560px
+    height: 30px
     margin: auto
-
 
   .full
     background: white
@@ -23,7 +23,6 @@
     margin: 11px auto
     width: 650px
     border-top: solid #ddd 1px
-
 
   .subject_container
     padding: 20px 20px 22px
@@ -59,16 +58,35 @@
     margin: 0 20px 0
 
 .crud_title
-  float: left
+  display: inline-block
+  //float: left
   font-weight: bold
-  width: 300px
+  font-family: arial, sans-serif
+  font-size: 120%
+
+.crud_text
+  display: inline-block
+  //float: left
+
+  padding-left: 15px
+  opacity: .5
+  white-space: nowrap
+  overflow: hidden
+
 .faint
   color: rgba(0,0,0,.35)
+
 .huge
   font-size: 300%
+
 .new_crud_button
   opacity: .6
   transition: all .2s ease
 
   &:hover
     opacity: 1
+
+.v_middle
+  position: relative
+  top: 50%
+  transform: translateY(-50%)

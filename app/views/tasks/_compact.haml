@@ -1,9 +1,13 @@
-.crud_title.subject
-  - if resource.subject.nil?
+.crud_title.subject.v_middle
+  - if resource.subject.to_s == ''
     .faint Unnamed Task
   - else
     = resource.subject
-.right
+
+-#.crud_text.v_middle
+  = resource.notes
+
+.right.v_middle
   = task_status resource, true
 
 %br
