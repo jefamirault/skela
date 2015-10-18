@@ -1,7 +1,13 @@
 module TasksHelper
-  def task_status(task = @task)
-    link_to update_field_path(task, :complete, !task.complete), class: "task_status#{task.status == 'Complete' ? ' complete' : ''}", remote: true, method: :put do
-      md_icon('done') + content_tag(:div, task.status, class: 'text')
+  def task_status(task = @task, plain = false)
+    if plain
+      link_to update_field_path(task, :complete, !task.complete), class: "task_status plain#{task.status == 'Complete' ? ' complete' : ''}", remote: true, method: :put do
+        md_icon('done')
+      end
+    else
+      link_to update_field_path(task, :complete, !task.complete), class: "task_status#{task.status == 'Complete' ? ' complete' : ''}", remote: true, method: :put do
+        md_icon('done') + content_tag(:div, task.status, class: 'text')
+      end
     end
   end
 

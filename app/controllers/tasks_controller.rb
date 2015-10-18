@@ -21,8 +21,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @resource.update(task_params)
-    render 'cruddy/update'
+    @resource.update task_params
   end
 
   def destroy
