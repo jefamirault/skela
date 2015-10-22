@@ -1,14 +1,14 @@
 class TasksController < ApplicationController
 
   before_filter :set_tasks, only: [:index, :destroy]
-  before_filter :set_task, only: [:show, :edit, :update, :destroy]
+  before_filter :find_task, only: [:show, :edit, :update, :destroy]
+  before_filter :create_task, only: :new
 
   def index
     render 'cruddy/index'
   end
 
   def new
-    @resource = Task.create creator: current_user
     render 'cruddy/create'
   end
 
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   private
 
-  def set_task
+  def find_task
     @resource = Task.find(params[:id])
   end
 
@@ -52,6 +52,10 @@ class TasksController < ApplicationController
     else
       Task.public
     end
+  end
+
+  def create_task
+    @resource = Task.create creator: current_user
   end
 
   def task_params
