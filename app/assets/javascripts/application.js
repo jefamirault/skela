@@ -41,11 +41,3 @@ function hide(selector) {
 function show(selector) {
     jQuery(selector).removeClass('hidden');
 }
-
-$(document).on('click', '.destroy_issue', function(){
-    var row = $(this).closest('tr');
-    row.addClass('invisible');
-    window.setTimeout(function(){
-        row.addClass('hidden');
-    }, 450);
-});
