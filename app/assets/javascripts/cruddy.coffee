@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+root = exports ? this
+
 $(document).on 'click', '.cruddy_resource .compact', ->
   table = $(this).closest('.cruddy_table').attr 'id'
   id = $(this).closest('.cruddy_resource').data 'resource-id'
@@ -29,3 +31,6 @@ $(document).on 'click', '[data-collapse]', ->
   timeout 250, ->
     full.closest('.cruddy_resource').find('.compact').show()
     full.remove()
+
+root.find_crud = (id) ->
+  $(".cruddy_resource[data-resource-id=#{id}]");

@@ -1,4 +1,4 @@
-var task = $('.cruddy_resource[data-resource-id=<%= @resource.id %>]');
+var task = find_crud(<%= @resource.id %>);
 task.find('.compact .subject').html('<%= @resource.subject.to_s == "" ? content_tag(:div, "Unnamed Task", class: "faint") : @resource.subject %>');
 
 <% if @resource.complete %>

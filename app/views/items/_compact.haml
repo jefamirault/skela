@@ -1,0 +1,10 @@
+.crud_title.subject.v_middle
+  - if resource.name.to_s == ''
+    .faint Unnamed Item
+  - else
+    = resource.name
+
+.right.v_middle.units
+  = resource.units
+
+%br

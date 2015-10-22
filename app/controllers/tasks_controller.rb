@@ -1,5 +1,9 @@
 class TasksController < CruddyController
 
+  def new
+
+  end
+
   def update
     @resource.update task_params
   end
@@ -20,6 +24,6 @@ class TasksController < CruddyController
 
   def task_params
     params.require(:task).permit(:subject, :notes, :complete, :assignee_id)
-  end
+   end
 
 end
