@@ -1,32 +1,7 @@
-class TasksController < ApplicationController
-
-  before_filter :set_tasks, only: [:index, :destroy]
-  before_filter :find_task, only: [:show, :edit, :update, :destroy]
-  before_filter :create_task, only: :new
-
-  def index
-    render 'cruddy/index'
-  end
-
-  def new
-    render 'cruddy/create'
-  end
-
-  def show
-    render 'cruddy/read'
-  end
-
-  def edit
-    render 'cruddy/read'
-  end
+class TasksController < CruddyController
 
   def update
     @resource.update task_params
-  end
-
-  def destroy
-    @resource.destroy
-    render 'cruddy/destroy'
   end
 
   def autocomplete
@@ -40,25 +15,11 @@ class TasksController < ApplicationController
     end
   end
 
+
   private
-
-  def find_task
-    @resource = Task.find(params[:id])
-  end
-
-  def set_tasks
-    @resources = if logged_in?
-      current_user.tasks
-    else
-      Task.public
-    end
-  end
-
-  def create_task
-    @resource = Task.create creator: current_user
-  end
 
   def task_params
     params.require(:task).permit(:subject, :notes, :complete, :assignee_id)
   end
+
 end
