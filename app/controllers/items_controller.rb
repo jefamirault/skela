@@ -1,8 +1,8 @@
 class ItemsController < CruddyController
 
   def update
-    @item = Item.find params[:id]
     @item.update(item_params)
+    render 'cruddy/update'
   end
 
   def autocomplete

@@ -6,6 +6,7 @@ class TasksController < CruddyController
 
   def update
     @resource.update task_params
+    render 'cruddy/update'
   end
 
   def autocomplete
