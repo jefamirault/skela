@@ -1,3 +1,4 @@
 $(document).on 'click', '.task_status', ->
 # hackeroo
-  timeout 150, -> $('.task_status').toggleClass 'complete'
+  thing = $(this)
+  timeout 150, -> thing.toggleClass 'complete'
