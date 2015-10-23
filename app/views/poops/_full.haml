@@ -1,0 +1,11 @@
+.subject_container
+  = ajax_datetime 'time', @resource
+
+-#.notes_container
+  -#= ajax_notes 'description', @resource
+
+= edit_fields @resource, rating: :number
+
+
+%footer
+  = destroy_link @resource, false
