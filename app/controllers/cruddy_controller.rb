@@ -21,6 +21,11 @@ class CruddyController < ApplicationController
     render 'cruddy/read'
   end
 
+  def update
+    @resource.update crud_params
+    render 'cruddy/update'
+  end
+
   def destroy
     @resource.destroy
     render 'cruddy/destroy'

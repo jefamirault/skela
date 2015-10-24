@@ -1,11 +1,2 @@
-- time = resource.time ? resource.time.strftime('%A, %B %d, %Y') : nil
-.crud_title.subject.v_middle
-  - if time == ''
-    .faint Unknown Time
-  - else
-    = time
-
-.right.v_middle.units
-  = resource.rating
-
-%br
+.crud_title
+  = resource
