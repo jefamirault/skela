@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :poops
-
   get 'calculators/budget'
   get 'calculators/tip'
 
