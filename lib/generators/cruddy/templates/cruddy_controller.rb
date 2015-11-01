@@ -22,6 +22,7 @@ class CruddyController < ApplicationController
   end
 
   def update
+    binding.pry
     @resource.update crud_params
     render 'cruddy/update'
   end
@@ -59,6 +60,10 @@ class CruddyController < ApplicationController
   def create_resource
     @resource = model.create
     self.instance_variable_set model_formatted.to_sym, @resource
+  end
+
+  def crud_params
+    eval "#{model.singularize.underscore}_params"
   end
 
 end

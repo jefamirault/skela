@@ -1,7 +1,7 @@
 class ItemsController < CruddyController
 
   def update
-    @item.update(item_params)
+    @item.update item_params
     render 'cruddy/update'
   end
 
