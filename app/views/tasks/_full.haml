@@ -18,4 +18,5 @@
     %li= link_to issue.subject, edit_issue_path(issue), remote: true, class: 'nav_link'
 
 %footer
+  = collapse_button
   = destroy_link @resource, false

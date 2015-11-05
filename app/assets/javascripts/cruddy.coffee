@@ -5,6 +5,7 @@
 root = exports ? this
 
 $(document).on 'click', '.cruddy_resource .compact', ->
+  collapse $('.full')
   table = $(this).closest('.cruddy_table').attr 'id'
   id = $(this).closest('.cruddy_resource').data 'resource-id'
   $.ajax
@@ -12,20 +13,16 @@ $(document).on 'click', '.cruddy_resource .compact', ->
     dataType: 'script'
   false
 
-$(document).on 'click', ':not(.cruddy_resource .full)', ->
-  if ($(this).parents().is('a'))
-    return true;
-  if ($(this).parents().hasClass('full'))
-    return false;
-  full = $('.cruddy_table').find('.full')
+$(document).on 'click', '.cruddy_resource .collapse', ->
+  collapse $(this).closest '.full'
+
+collapse = (full) ->
   full.slideUp()
   timeout 250, ->
     full.closest('.cruddy_resource').find('.compact').show()
     full.remove()
-  event.stopPropagation()
 
 $(document).on 'click', '[data-collapse]', ->
-
   full = $('.cruddy_table').find('.full')
   full.slideUp('fast')
   timeout 250, ->

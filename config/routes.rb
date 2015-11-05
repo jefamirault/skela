@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :sounds
+
   get 'calculators/budget'
   get 'calculators/tip'
 

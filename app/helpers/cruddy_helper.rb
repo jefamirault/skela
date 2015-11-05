@@ -31,4 +31,10 @@ module CruddyHelper
       views
     end
   end
+
+  def collapse_button
+    content_tag 'div', class: 'center collapse' do
+      md_icon 'expand_less'
+    end
+  end
 end
