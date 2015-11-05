@@ -36,9 +36,10 @@ class Sound < ActiveRecord::Base
   end
 
   NUM_BYTES_IN_MEGABYTE = 1048576
+  MAX_MEGABYTES = 8
   def file_size
-    if @file && (@file.size.to_f / NUM_BYTES_IN_MEGABYTE) > 32
-      errors.add(:file, 'File size cannot be over four megabytes.')
+    if @file && (@file.size.to_f / NUM_BYTES_IN_MEGABYTE) > MAX_MEGABYTES
+      errors.add(:file, "File size cannot be over #{MAX_MEGABYTES} megabytes.")
     end
   end
 
