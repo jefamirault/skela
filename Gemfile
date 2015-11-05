@@ -81,4 +81,4 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0', require: false
 end
 
-gem 'pg'
+gem 'pg', '0.17.1'

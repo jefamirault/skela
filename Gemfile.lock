@@ -169,7 +169,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    pg (0.18.2)
+    pg (0.17.1)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -312,7 +312,7 @@ DEPENDENCIES
   material_icons
   meta_request
   paperclip (~> 4.2)
-  pg
+  pg (= 0.17.1)
   pry
   pry-nav
   pry-remote
