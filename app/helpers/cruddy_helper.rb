@@ -33,7 +33,7 @@ module CruddyHelper
   end
 
   def collapse_button
-    content_tag 'div', class: 'center collapse' do
+    content_tag 'div', class: 'collapse center' do
       md_icon 'expand_less'
     end
   end
