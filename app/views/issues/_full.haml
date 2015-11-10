@@ -9,7 +9,7 @@
   %h4 Assigned To
 #tasks
   - if @issue.task
-    = task_cards @issue.task, false, select: false
+    = task_cards @issue.task, false, select: true
 = new_task_for @issue
 
 = edit_fields @issue, category: :string,
