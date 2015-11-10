@@ -61,7 +61,9 @@ span.vertical_middle
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
   display: flex
   line-height: 62px
-  font-weight: bold
+  font-weight: 400
+  //font-family: 'Open Sans', sans-serif
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   transition: top .70s ease-in-out, margin .70s ease-in-out, opacity .45s ease-in-out, height .7s ease-in-out, background .2s ease-in-out
   position: relative
   top: 0
@@ -85,6 +87,8 @@ span.vertical_middle
 
   nav
     background: inherit
+  .dropper
+    font-size: 114%
   a, .dropper
     display: inline-block
     padding: 0 1.5em
@@ -92,7 +96,6 @@ span.vertical_middle
     line-height: 50px
     color: rgba(255,255,255,.91)
     transition: all 0.15s ease-out
-
     &:hover, &.selected
       text-decoration: none
       cursor: pointer
