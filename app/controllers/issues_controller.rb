@@ -26,8 +26,11 @@ class IssuesController < CruddyController
 
   def new_task
     @issue = Issue.find params[:issue_id]
-    @task = Task.create
-    @issue.tasks << @task
+    unless @issue.task
+      subject = 'Resolve ' + @issue.subject || @issue.number
+      @task = Task.create subject: subject
+      @issue.task = @task
+    end
   end
 
   def add_task

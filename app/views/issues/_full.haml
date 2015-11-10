@@ -8,9 +8,8 @@
   .spacer
   %h4 Assigned To
 #tasks
-  - if @issue.tasks
-    - @issue.tasks.each do |task|
-      = task_cards task, false, select: false
+  - if @issue.task
+    = task_cards @issue.task, false, select: false
 = new_task_for @issue
 
 = edit_fields @issue, category: :string,

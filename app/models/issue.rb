@@ -7,7 +7,8 @@ class Issue < ActiveRecord::Base
   # before_update :update_completed_at, if: :completed_changed?
   # before_update :updated_assigned_at, if: :assignee_id_changed?
 
-  has_many :tasks, as: :taskable
+
+  has_one :task, as: :taskable, dependent: :destroy
 
   attr_accessor :task_id
 
@@ -55,15 +56,10 @@ class Issue < ActiveRecord::Base
   end
 
   def status
-    case tasks.size
-      when 0
-        'No Task'
-      when 1
-        tasks.first.complete ? 'Complete' : 'Incomplete'
-      else
-        done = tasks.where(complete: true).size
-        total = tasks.size
-        "#{done}/#{total} Complete"
+    if task
+      task.complete ? 'Complete' : 'Incomplete'
+    else
+      'Incomplete'
     end
   end
 
