@@ -11,6 +11,19 @@ class Issue < ActiveRecord::Base
 
   attr_accessor :task_id
 
+
+  def self.incomplete
+    Issue.all.select do |issue|
+      issue.status != 'Complete'
+    end
+  end
+
+  def self.complete
+    Issue.all.select do |issue|
+      issue.status == 'Complete'
+    end
+  end
+
   def number(options = {})
     include_number_sign = !options[:plain]
     issue_number_length = 4

@@ -1,6 +1,15 @@
 class IssuesController < CruddyController
   before_filter :authenticate, except: [:index, :show]
 
+  def index
+    @resources = if params[:complete] == 'hidden'
+      Issue.incomplete
+    else
+      Issue.all
+    end
+    render 'cruddy/index'
+  end
+
   def update
     respond_to do |format|
       if @issue.update(issue_params)
