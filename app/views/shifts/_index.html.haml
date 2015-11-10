@@ -5,7 +5,7 @@
 .content{class: request.format == 'html' ? '' : 'invisible'}
   - if @shifts
     .center
-      = megatable 'Shift', %w(date start end user), @shifts
+      = megatable 'Shift', %w(date start end assignee), @shifts
 
   %br
   .center

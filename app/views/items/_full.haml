@@ -1,0 +1,12 @@
+.subject_container
+  = ajax_subject 'name', @resource
+
+.notes_container
+  = ajax_notes 'description', @resource
+
+= edit_fields @item, units: :string
+
+
+%footer
+  = collapse_button
+  = destroy_link @resource, false

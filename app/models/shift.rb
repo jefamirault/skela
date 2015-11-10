@@ -1,6 +1,6 @@
 class Shift < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :creator, class_name: 'User', foreign_key: :created_by
+  belongs_to :assignee, class_name: 'User', foreign_key: :assignee_id
+  belongs_to :creator, class_name: 'User', foreign_key: :creator_id
   has_many :tasks, as: :taskable
 
   # validate :shift_starts_and_ends_same_day

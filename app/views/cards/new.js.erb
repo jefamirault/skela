@@ -1,6 +1,1 @@
-window.setTimeout(function(){
-  $('.content').replaceWith('<%= j render partial: 'edit' %>');
-}, 310);
-window.setTimeout(function(){
-  decloak('.content');
-}, 320);
+replaceContentAndDecloak('<%= j render partial: 'edit' %>');

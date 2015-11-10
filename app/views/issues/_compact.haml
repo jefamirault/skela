@@ -1,0 +1,10 @@
+.crud_title.subject.v_middle
+  - if resource.subject.to_s == ''
+    .faint No Subject
+  - else
+    = resource.subject
+
+-#.right.v_middle.status
+  = resource.status
+
+%br

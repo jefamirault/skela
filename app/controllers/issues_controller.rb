@@ -1,46 +1,15 @@
-class IssuesController < ApplicationController
+class IssuesController < CruddyController
   before_filter :authenticate, except: [:index, :show]
-  before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
-  # GET /issues
   def index
-    @issues = Issue.all
-
-    render 'cards/index'
-  end
-
-  # GET /issues/1
-  def show
-  end
-
-  # GET /issues/new
-  def new
-    @issue = Issue.new(creator: current_user)
-    @issue.save
-    render 'cards/new'
-  end
-
-  # GET /issues/1/edit
-  def edit
-    render 'cards/edit'
-  end
-
-  # POST /issues
-  def create
-    @issue = Issue.new(issue_params)
-    @issue.creator = current_user
-    respond_to do |format|
-      if @issue.save
-        format.html { redirect_to @issue, notice: 'Issue created successfully!' }
-        format.json { render :show, status: :created, location: @issue }
-      else
-        format.html { render :new }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
+    @resources = if params[:complete] == 'hidden'
+      Issue.incomplete
+    else
+      Issue.all
     end
+    render 'cruddy/index'
   end
 
-  # PATCH/PUT /issues/1
   def update
     respond_to do |format|
       if @issue.update(issue_params)
@@ -55,17 +24,13 @@ class IssuesController < ApplicationController
     end
   end
 
-  # DELETE /issues/1
-  def destroy
-    @issue.destroy
-    @issues = Issue.all
-    render 'cards/index'
-  end
-
   def new_task
     @issue = Issue.find params[:issue_id]
-    @task = Task.create
-    @issue.tasks << @task
+    unless @issue.task
+      subject = 'Resolve ' + @issue.subject || @issue.number
+      @task = Task.create subject: subject
+      @issue.task = @task
+    end
   end
 
   def add_task
@@ -94,15 +59,11 @@ class IssuesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_issue
-      @issue = Issue.find(params[:id]) rescue redirect_to(issues_path)
 
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def issue_params
+    params.require(:issue).permit(:subject, :description, :how_to_test, :completed, :assignee_id, :tester_id, :category,
+                                  :target_version, :created_at, :updated_at, :completed_at, :tested_at, :assigned_at)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def issue_params
-      params.require(:issue).permit(:subject, :description, :how_to_test, :completed, :assignee_id, :tester_id, :category,
-                                    :target_version, :created_at, :updated_at, :completed_at, :tested_at, :assigned_at)
-    end
 end

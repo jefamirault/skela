@@ -103,15 +103,15 @@ module ApplicationHelper
     klass = record.class.to_s.underscore
     title = klass.titleize.pluralize
     path = send(klass + '_path', record)
-    data = { method: :delete, remote: true }
+    data = { method: :delete, remote: true, collapse: true }
     if nav
       data.merge! ({fade_content: true, swap_title: title})
     end
     link_to trash_icon_right, path, data: data, class: "destroy_#{klass}"
   end
 
-  def md_icon(icon)
-    content_tag :i, icon, class: 'material-icons'
+  def md_icon(icon, huge = false)
+    content_tag :i, icon, class: "material-icons#{' huge' if huge}"
   end
 
   def div_tag(content, options)

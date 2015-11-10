@@ -4,14 +4,8 @@
   .notes_container
     = ajax_notes 'text', @developer_log_entry
 
-  %dl
-    %dt Date & Time
-    %dd= ajax_datetime 'datetime', @developer_log_entry
-
-    %dt User
-    %dd
-      = form_for @developer_log_entry, method: :put, remote: true do |f|
-        - f.search_field :user
+  = edit_fields @developer_log_entry, datetime: :datetime,
+                                      user_id: :user_select
 
   %footer
     = destroy_link @developer_log_entry

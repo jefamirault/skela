@@ -4,13 +4,11 @@ class ShiftsController < ApplicationController
   before_filter :set_shift, only: [:edit, :destroy, :update]
 
   def index
-    @resources = Shift.all
-
     render 'cards/index'
   end
 
   def new
-    @shift = Shift.create
+    @shift = Shift.create creator: current_user
     render 'cards/new'
   end
 
@@ -45,11 +43,11 @@ class ShiftsController < ApplicationController
   end
 
   def set_shifts
-    @shifts = Shift.all
+    @shifts = current_user.shifts
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def shift_params
-    params.require(:shift).permit(:start_time, :end_time, :user_id)
+    params.require(:shift).permit(:start_time, :end_time, :assignee_id)
   end
 end

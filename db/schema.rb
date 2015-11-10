@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821145323) do
+ActiveRecord::Schema.define(version: 20151104191813) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150821145323) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "units"
+    t.integer  "creator_id"
   end
 
   create_table "lumber_yards", force: :cascade do |t|
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150821145323) do
     t.date     "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "notes"
   end
 
   create_table "players", force: :cascade do |t|
@@ -120,6 +122,11 @@ ActiveRecord::Schema.define(version: 20150821145323) do
     t.integer "mana"
     t.integer "influence"
     t.integer "leader_id"
+  end
+
+  create_table "poops", force: :cascade do |t|
+    t.datetime "time"
+    t.integer  "rating"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -151,10 +158,10 @@ ActiveRecord::Schema.define(version: 20150821145323) do
   create_table "shifts", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "user_id"
-    t.integer  "created_by"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "assignee_id"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "songs", force: :cascade do |t|
@@ -163,6 +170,13 @@ ActiveRecord::Schema.define(version: 20150821145323) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sounds", force: :cascade do |t|
+    t.string "title"
+    t.string "filename"
+    t.string "content_type"
+    t.binary "file_contents"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -182,6 +196,7 @@ ActiveRecord::Schema.define(version: 20150821145323) do
     t.datetime "updated_at",    null: false
     t.integer  "assignee_id"
     t.string   "notes"
+    t.integer  "creator_id"
   end
 
   create_table "towers", force: :cascade do |t|

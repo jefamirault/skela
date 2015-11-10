@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :sounds
+
+  get 'calculators/budget'
+  get 'calculators/tip'
+
   post 'quests/:id/new_challenge', to: 'quests#new_challenge', as: 'quests_new_challenge'
   get 'quests/:id/play', to: 'quests#play', as: 'play_quest'
   resources :quests
@@ -31,6 +36,7 @@ Rails.application.routes.draw do
   get 'login/new_session'
   post 'create_session', to: 'login#create_session', as: 'create_session'
   delete 'logout', to: 'login#destroy_session', as: 'logout'
+  get 'logout', to: 'login#destroy_session'
 
 
   get 'developer', to: 'developer#index'

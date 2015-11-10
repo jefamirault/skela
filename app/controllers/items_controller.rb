@@ -1,35 +1,9 @@
-class ItemsController < ApplicationController
-
-  def index
-    @items = Item.all
-    render 'cards/index'
-  end
-
-  def edit
-    @item = Item.find params[:id]
-    render 'cards/edit'
-  end
-
-  def new
-    @item = Item.create
-    render 'cards/new'
-  end
+class ItemsController < CruddyController
 
   def update
-    @item = Item.find params[:id]
-    @item.update(item_params)
-    render nothing: true
+    @item.update item_params
+    render 'cruddy/update'
   end
-
-  def destroy
-    @item = Item.find params[:id]
-
-    @item.destroy
-
-    @items = Item.all
-    render 'cards/index'
-  end
-
 
   def autocomplete
     query = Item.ransack(name_cont: params[:data]).result
@@ -42,9 +16,11 @@ class ItemsController < ApplicationController
     end
   end
 
+
   private
 
   def item_params
     params.require(:item).permit(:name, :units, :description)
   end
+
 end

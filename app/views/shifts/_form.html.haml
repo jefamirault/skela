@@ -1,15 +1,9 @@
 .center_form
   .right= updated_field_at 'updated_at', @shift
-  %br
-  %dl
-    %dt Start
-    %dd= ajax_datetime 'start_time', @shift
 
-    %dt End
-    %dd= ajax_datetime 'end_time', @shift
-
-    %dt User
-    %dd= ajax_user_select 'user_id', @shift
+  = edit_fields @shift, start_time:  :datetime,
+                        end_time:    :datetime,
+                        assignee_id: :user_select
 
   %footer
     = destroy_link @shift

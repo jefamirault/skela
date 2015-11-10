@@ -49,9 +49,6 @@ $ ->
         url: window.location.href,
         dataType: 'script'
 
-#$(document).on 'click', '.drop_down_nav', ->
-#  $(this).hide()
-
 $(document).on 'click', '[data-fade-content]', ->
   if $(this).data('fade-content')
     cloak('.content')
@@ -74,3 +71,13 @@ root.swap_title = (new_title) ->
     $('.card_header').removeClass 'hidden'
   window.setTimeout poop, 300
   window.setTimeout schoop, 310
+
+replaceAndDecloak = (selector, partial) ->
+  timeout 300, -> $(selector).replaceWith partial
+  timeout 320, -> decloak(selector)
+
+root.replaceContentAndDecloak = (partial) ->
+  replaceAndDecloak '.content', partial
+
+root.timeout = (delay, callback) ->
+  window.setTimeout callback, delay
