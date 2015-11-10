@@ -32,7 +32,9 @@ module ApplicationHelper
   def logged_in_text
     if logged_in?
       text = content_tag :div, id: 'logged_in_text' do
-        link_to my_profile_path, remote: true, data: { fade_content: true, swap_title: 'My Profile' } do
+        klass = 'nav_link'
+        klass << ' selected' if params[:controller] == 'users' && params[:action] == 'my_profile'
+        link_to my_profile_path, remote: true, class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
           username = content_tag :div, style: 'display:inline-block;vertical-align:top;' do
             content_tag(:strong, content_tag(:span, "#{current_user.username}", class: "user_#{current_user.id}_username"))
           end
