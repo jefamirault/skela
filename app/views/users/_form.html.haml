@@ -11,4 +11,6 @@
     %dd= ajax_string 'favorite_color', @user
 
   %footer
-    = destroy_link @user
+    -#= destroy_link @user
+    = link_to 'Logout', logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2'
+
