@@ -30,24 +30,26 @@ module ApplicationHelper
   end
 
   def logged_in_text
-    if logged_in?
-      text = content_tag :div, id: 'logged_in_text' do
-        klass = 'nav_link'
-        klass << ' selected' if params[:controller] == 'users' && params[:action] == 'my_profile'
-        link_to my_profile_path, remote: true, class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
-          username = content_tag :div, style: 'display:inline-block;vertical-align:top;' do
+    text = content_tag :div, id: 'logged_in_text' do
+      my_profile_nav do
+        username = if logged_in?
+          content_tag :div, style: 'display:inline-block;vertical-align:top;' do
             content_tag(:strong, content_tag(:span, "#{current_user.username}", class: "user_#{current_user.id}_username"))
           end
-          avatar = content_tag :div, style: 'display:inline-block;vertical-align:top;' do
-            image_tag('default_skel', class: 'avatar')
-          end
-          username + avatar
+        else
+          'Guest'
         end
+        username.html_safe + avatar
       end
-      text
+    end
+    text
+  end
 
-    else
-      'Logged out'
+  def my_profile_nav(&block)
+    klass = 'nav_link'
+    klass << ' selected' if params[:controller] == 'users' && params[:action] == 'my_profile'
+    link_to my_profile_path, remote: true, class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
+      block.call
     end
   end
 
@@ -118,5 +120,19 @@ module ApplicationHelper
 
   def div_tag(content, options)
 
+  end
+
+  def avatar(user = nil)
+    content_tag :div, style: 'display:inline-block;vertical-align:top;' do
+      image_tag('default_skel', class: 'avatar')
+    end
+  end
+
+  def login_link
+    if logged_in?
+      link_to 'Logout', logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2'
+    else
+      link_to 'Login', login_path, id: 'login_link', class: 'nav_link', data: { remote: true, fade_content: true, swap_title: 'Authenticate', theme: 'login' }
+    end
   end
 end
