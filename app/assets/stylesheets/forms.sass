@@ -32,7 +32,10 @@
       color: #666
       &:hover
         color: #000
-
+    .toe
+      @extend .v_middle
+      &.right
+        padding-left: 6px
   dl
     margin: 0 20px 0
 
@@ -44,3 +47,8 @@ form.notes
   width: 100%
 input.notes
   width: 100%
+
+.v_middle
+  position: relative
+  top: 50%
+  transform: translateY(-50%)
