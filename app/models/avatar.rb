@@ -5,10 +5,82 @@ class Avatar < ActiveRecord::Base
   HEADS  = %w{bow ninja pirate plain top_hat}
   COLORS = %w{blue gold gray green purple red}
 
-  def avatar_path
-    path = "skels/#{FACES[face]}"
-    path << "/#{HEADS[head]}" if head
-    path << "/#{COLORS[color]}" if color
+  def self.default
+    'skels/normal/plain'
+  end
+
+  def path
+    path = "skels/#{face}"
+    path << "/#{head}" if head
+    if head == 'bow' || head == 'ninja' || head == 'top_hat'
+      path << "/#{color}"
+    end
     path
+  end
+
+  def face=(new_face)
+    type = new_face.class
+    if type == String
+      write_attribute :face, FACES.index(new_face)
+    elsif type == Fixnum
+      write_attribute :face, new_face
+    else
+      raise "cannot set avatar face using type: #{type}"
+    end
+  end
+  def face
+    face_index ? FACES[face_index] : nil
+  end
+  def face_index
+    read_attribute :face
+  end
+
+  def head=(new_head)
+    type = new_head.class
+    if type == String
+      write_attribute :head, HEADS.index(new_head)
+    elsif type == Fixnum
+      write_attribute :head, new_head
+    else
+      raise "cannot set avatar face using type: #{type}"
+    end
+  end
+  def head
+    head_index ? HEADS[head_index] : nil
+  end
+  def head_index
+    read_attribute :head
+  end
+
+  def color=(new_color)
+    type = new_color.class
+    if type == String
+      write_attribute :color, COLORS.index(new_color)
+    elsif type == Fixnum
+      write_attribute :color, new_color
+    else
+      raise "cannot set avatar face using type: #{type}"
+    end
+  end
+  def color
+    color_index ? COLORS[color_index] : nil
+  end
+  def color_index
+    (read_attribute :color) || 0
+  end
+
+  def increment_face
+    self.face = (face_index + 1) % FACES.size
+    save
+  end
+
+  def increment_head
+    self.head = (head_index + 1) % HEADS.size
+    save
+  end
+
+  def increment_color
+    self.color = (color_index + 1) % COLORS.size
+    save
   end
 end

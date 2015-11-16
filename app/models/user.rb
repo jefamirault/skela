@@ -57,4 +57,12 @@ class User < ActiveRecord::Base
     shift.save
     shift
   end
+
+  def avatar_path
+    if avatar.nil?
+      nil
+    else
+      avatar.path
+    end
+  end
 end

@@ -6,5 +6,7 @@ class CreateAvatars < ActiveRecord::Migration
       t.integer :head
       t.integer :color
     end
+
+    remove_column :users, :avatar
   end
 end

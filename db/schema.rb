@@ -219,7 +219,6 @@ ActiveRecord::Schema.define(version: 20151116164832) do
     t.integer "privilege_level"
     t.string  "favorite_color"
     t.boolean "show_header",     default: true
-    t.integer "avatar",          default: 0
   end
 
   create_table "worlds", force: :cascade do |t|
