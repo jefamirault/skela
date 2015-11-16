@@ -122,7 +122,8 @@ module ApplicationHelper
 
   end
 
-  def avatar(user = current_user, size = 50)
+  def avatar(user = nil, size = 50)
+    user = current_user if logged_in?
     avatar_id = if user.nil?
       Random.rand 6
     else
