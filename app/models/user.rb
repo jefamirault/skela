@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :quests, foreign_key: :creator_id
 
-  # has_one :avatar
+  has_one :avatar
 
   def username
     database_says = read_attribute(:username)
