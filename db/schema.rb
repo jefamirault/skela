@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104191813) do
+ActiveRecord::Schema.define(version: 20151115230547) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 20151104191813) do
     t.integer "privilege_level"
     t.string  "favorite_color"
     t.boolean "show_header",     default: true
+    t.integer "avatar",          default: 0
   end
 
   create_table "worlds", force: :cascade do |t|

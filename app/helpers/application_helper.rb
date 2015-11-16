@@ -122,9 +122,14 @@ module ApplicationHelper
 
   end
 
-  def avatar(user = nil)
+  def avatar(user = current_user, size = 50)
+    avatar_id = if user.nil?
+      Random.rand 6
+    else
+      user.avatar
+    end.to_s
     content_tag :div, style: 'display:inline-block;vertical-align:top;' do
-      image_tag('default_skel', class: 'avatar')
+      image_tag('avatars/' + avatar_id, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
     end
   end
 

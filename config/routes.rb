@@ -69,7 +69,11 @@ Rails.application.routes.draw do
   end
 
   get 'users/autocomplete', to: 'users#autocomplete', as: 'autocomplete_users'
-  resources :users
+  resources :users do
+    member do
+      post 'change_avatar'
+    end
+  end
 
 
   get 'admin_new_user', to: 'users#admin_new', as: 'admin_new_user'

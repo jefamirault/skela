@@ -117,6 +117,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_avatar
+    @user = current_user
+    @user.avatar = (@user.avatar + 1) % 6
+    @user.save
+  end
+
   def not_allowed
     respond_to do |format|
       format.js
