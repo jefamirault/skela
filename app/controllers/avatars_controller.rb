@@ -21,6 +21,10 @@ class AvatarsController < ApplicationController
 
   def set_avatar
     @avatar = current_user.avatar
+    if @avatar.nil?
+      @avatar = Avatar.create
+      current_user.avatar = @avatar
+    end
   end
 
   def avatar_params

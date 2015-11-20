@@ -32,7 +32,7 @@ class Avatar < ActiveRecord::Base
     face_index ? FACES[face_index] : nil
   end
   def face_index
-    read_attribute :face
+    (read_attribute :face) || 4
   end
 
   def head=(new_head)
@@ -49,7 +49,7 @@ class Avatar < ActiveRecord::Base
     head_index ? HEADS[head_index] : nil
   end
   def head_index
-    read_attribute :head
+    (read_attribute :head) || 3
   end
 
   def color=(new_color)
