@@ -21,7 +21,7 @@
         %li= primary_nav_link( display: 'Developer',
                                 theme: 'developer',
                                 drop_down: { 'Users'  => users_path,
-                                             'Issues' => issues_path,
+                                             'Issues' => issues_path(complete: 'hidden'),
                                              'Log'    => developer_log_entries_path })
 
       -#%li= primary_nav_link( display: 'Calculators',
