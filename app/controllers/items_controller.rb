@@ -1,9 +1,6 @@
 class ItemsController < CruddyController
 
-  def update
-    @item.update item_params
-    render 'cruddy/update'
-  end
+  # define any CRUD actions to override CruddyController
 
   def autocomplete
     query = Item.ransack(name_cont: params[:data]).result

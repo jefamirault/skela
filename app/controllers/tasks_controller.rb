@@ -1,12 +1,9 @@
 class TasksController < CruddyController
 
+  # define any CRUD actions to override CruddyController
+
   def new
 
-  end
-
-  def update
-    @resource.update task_params
-    render 'cruddy/update'
   end
 
   def autocomplete

@@ -61,4 +61,8 @@ class CruddyController < ApplicationController
     self.instance_variable_set model_formatted.to_sym, @resource
   end
 
+  def crud_params
+    eval "#{model.to_s.singularize.underscore}_params"
+  end
+
 end

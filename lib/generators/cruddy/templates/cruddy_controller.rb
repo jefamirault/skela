@@ -22,7 +22,6 @@ class CruddyController < ApplicationController
   end
 
   def update
-    binding.pry
     @resource.update crud_params
     render 'cruddy/update'
   end
@@ -63,7 +62,7 @@ class CruddyController < ApplicationController
   end
 
   def crud_params
-    eval "#{model.singularize.underscore}_params"
+    eval "#{model.to_s.singularize.underscore}_params"
   end
 
 end
