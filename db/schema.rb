@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207161329) do
+ActiveRecord::Schema.define(version: 20151207163501) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20151207161329) do
     t.integer  "quest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "context_trackers", force: :cascade do |t|
+    t.integer "context_id"
+    t.integer "tracker_id"
+    t.integer "data"
   end
 
   create_table "contexts", force: :cascade do |t|

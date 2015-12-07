@@ -1,6 +1,10 @@
 .subject_container
   = ajax_subject 'name', @resource
 
+%dl
+  %dt Creator
+  %dd= @resource.creator
+
 %footer
   = collapse_button
   = destroy_link @resource, false
