@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  resources :contexts
+
   resources :trackers
 
   resources :sounds
