@@ -5,6 +5,22 @@
   %dt Creator
   %dd= @resource.creator
 
+%h3 Trackers
+%ul{ id: "context_#{@resource.id}_trackers" }
+  - @resource.trackers.each do |tracker|
+    %li{ id: "tracker_#{tracker.id}" }
+      = tracker.name
+      = link_to md_icon('delete'), remove_tracker_context_path(@resource, tracker: tracker.id), remote: true, method: :post
+
+-#= select_tag :new_tracker_id, options_for_select(Tracker.all.collect{ |u| [u.name, u.id] }), id: 'new_tracker_id'
+-#= link_to 'Add Tracker', add_tracker_context_path(@resource, tracker_id: nil), remote: true, method: :post
+
+= form_for @context, method: :post, url: add_tracker_context_path(@resource, tracker_id: nil), remote: true do |f|
+  = select_tag :tracker, options_for_select(Tracker.all.collect{ |u| [u.name, u.id] }), id: 'new_tracker_id'
+  = f.submit
+
+
+
 %footer
   = collapse_button
   = destroy_link @resource, false

@@ -8,6 +8,17 @@ class ContextsController < CruddyController
     render 'cruddy/create'
   end
 
+  def add_tracker
+    @context = Context.find params[:id]
+    @tracker = Tracker.find params[:tracker]
+    @context.trackers << @tracker
+  end
+  def remove_tracker
+    @context = Context.find params[:id]
+    @tracker = Tracker.find params[:tracker]
+    @context.trackers.delete @tracker
+  end
+
   private
 
   def context_params

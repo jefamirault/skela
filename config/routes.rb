@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 
-  resources :contexts
+  resources :contexts do
+    member do
+      post 'add_tracker'
+      post 'remove_tracker'
+    end
+  end
 
   resources :trackers
 
