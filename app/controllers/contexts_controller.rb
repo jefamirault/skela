@@ -19,6 +19,17 @@ class ContextsController < CruddyController
     @context.trackers.delete @tracker
   end
 
+  def activate
+    @context = Context.find params[:id]
+    session[:context] = @context.id
+    render 'layouts/primary_nav'
+  end
+
+  def deactivate
+    session[:context] = nil
+    render 'layouts/primary_nav'
+  end
+
   private
 
   def context_params

@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     member do
       post 'add_tracker'
       post 'remove_tracker'
+      get 'activate'
     end
   end
+  get 'deactivate_context', to: 'contexts#deactivate', as: 'deactivate_context'
 
   resources :trackers
 

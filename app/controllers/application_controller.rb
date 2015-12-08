@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_context
+    if session[:context].nil?
+      nil
+    else
+      Context.find session[:context]
+    end
+  end
+  helper_method :current_context
+
   def logged_in?
     !current_user.new_record?
   end

@@ -1,35 +1,8 @@
 #header.flex_box.flex
   %nav.flex_box.flex
     %ul#primary_nav.flex_box
-      %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome'
-      %li= primary_nav_link( display: 'Games',
-                              theme: 'games',
-                              drop_down: { 'Tic-Tac-Toe' => games_tic_tac_toe_path,
-                                           'Hi-Lo'       => games_hi_lo_path,
-                                           '100-Puzzle'  => games_hundred_puzzle_path,
-                                           'Quests'      => quests_path })
+      = render 'layouts/primary_nav'
 
-      %li= primary_nav_link( display: 'Trackers',
-                              theme: 'plants',
-                              drop_down: { 'Shifts'    => shifts_path,
-                                           'Tasks'     => tasks_path,
-                                           'Items' => items_path,
-                                           'Inventories' => inventories_path,
-                                           'Plants' => plants_path,
-                                           'Sounds' => sounds_path,
-                                           'Trackers' => trackers_path,
-                                           'Contexts' => contexts_path })
-      - if superuser?
-        %li= primary_nav_link( display: 'Developer',
-                                theme: 'developer',
-                                drop_down: { 'Users'  => users_path,
-                                             'Issues' => issues_path(complete: 'hidden'),
-                                             'Log'    => developer_log_entries_path })
-
-      -#%li= primary_nav_link( display: 'Calculators',
-      -#                        theme: 'plants',
-      -#                        drop_down: { 'Budget' => calculators_budget_path,
-      -#                                     'Tip'    => calculators_tip_path })
     .flex
 
     %nav#user_nav
