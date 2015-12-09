@@ -52,12 +52,24 @@ class CruddyController < ApplicationController
   end
 
   def set_resources
-    @resources = model.all
+    @resources = if model.columns.map{|c| c.name}.include? 'context_id'
+                   if session[:context].present?
+                     model.where context_id: session[:context]
+                   else
+                     model.where context_id: nil
+                   end
+                 else
+                   model.all
+                 end
     self.instance_variable_set model_formatted.pluralize.to_sym, @resources
   end
 
   def create_resource
     @resource = model.create
+    if session[:context].present?
+      @resource.context = current_context
+      @resource.save
+    end
     self.instance_variable_set model_formatted.to_sym, @resource
   end
 

@@ -43,7 +43,7 @@ class ShiftsController < ApplicationController
   end
 
   def set_shifts
-    @shifts = current_user.shifts
+    @shifts = Shift.all
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

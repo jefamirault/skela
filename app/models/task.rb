@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  belongs_to :context
   belongs_to :taskable, polymorphic: true
   belongs_to :assignee, class_name: 'User'
   belongs_to :creator, class_name: 'User'

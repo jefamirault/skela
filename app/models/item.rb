@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  belongs_to :context
   has_many :stocks, dependent: :destroy
   has_many :inventories, through: :stocks
   belongs_to :creator, class_name: 'User'
