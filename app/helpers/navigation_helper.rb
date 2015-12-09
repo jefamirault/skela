@@ -31,8 +31,10 @@ module NavigationHelper
     end.join.html_safe
   end
 
-  def primary_nav_bar(skela)
-
+  def nav_link(text, path, title, options = {})
+    klass = 'nav_link'
+    id = options[:page_title] ? 'page_title' : nil
+    link_to text, path, id: id, class: klass, data: { remote: true, theme: '', fade_context: true, swap_title: title }
   end
 
   def drop_down(links = {}, theme = '')

@@ -1,32 +1,34 @@
 - if session[:context].nil?
   %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome'
-  %li= primary_nav_link( display: 'Games',
-                                theme: 'games',
-                                drop_down: { 'Tic-Tac-Toe' => games_tic_tac_toe_path,
-                                             'Hi-Lo'       => games_hi_lo_path,
-                                             '100-Puzzle'  => games_hundred_puzzle_path,
-                                             'Quests'      => quests_path })
-  %li= primary_nav_link( display: 'Trackers',
-                                theme: 'plants',
-                                drop_down: { 'Shifts'    => shifts_path,
-                                             'Tasks'     => tasks_path,
-                                             'Items' => items_path,
-                                             'Inventories' => inventories_path,
-                                             'Plants' => plants_path,
-                                             'Sounds' => sounds_path,
-                                             'Trackers' => trackers_path,
-                                             'Contexts' => contexts_path })
+
+  %li= primary_nav_link(display:   'Games',
+                        theme:     'games',
+                        drop_down: { 'Tic-Tac-Toe' => games_tic_tac_toe_path,
+                                     'Hi-Lo'       => games_hi_lo_path,
+                                     '100-Puzzle'  => games_hundred_puzzle_path,
+                                     'Quests'      => quests_path })
+
+  %li= primary_nav_link(display:   'Trackers',
+                        theme:     'plants',
+                        drop_down: { 'Shifts'      => shifts_path,
+                                     'Tasks'       => tasks_path,
+                                     'Items'       => items_path,
+                                     'Inventories' => inventories_path,
+                                     'Plants'      => plants_path,
+                                     'Sounds'      => sounds_path,
+                                     'Trackers'    => trackers_path,
+                                     'Contexts'    => contexts_path })
   - if superuser?
-    %li= primary_nav_link( display: 'Developer',
-                                  theme: 'developer',
-                                  drop_down: { 'Users'  => users_path,
-                                               'Issues' => issues_path(complete: 'hidden'),
-                                               'Log'    => developer_log_entries_path })
+    %li= primary_nav_link display:   'Developer',
+                          theme:     'developer',
+                          drop_down: { 'Users'  => users_path,
+                                       'Issues' => issues_path(complete: 'hidden'),
+                                       'Log'    => developer_log_entries_path }
 - else
-  %li= primary_nav_link display: current_context.name, path: deactivate_context_path
+  %li= nav_link current_context.name, deactivate_context_path, 'Contexts', page_title: true
   - current_context.trackers.each do |tracker|
     - name = tracker.name
-    %li= primary_nav_link( display: name,
-                                path: send("#{name.downcase}_path"),
-                                title: name,
-                                theme: 'plants')
+    %li= primary_nav_link(display: name,
+                          path: send("#{name.downcase}_path"),
+                          title: name,
+                          theme: 'plants')

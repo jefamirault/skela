@@ -22,12 +22,12 @@ class ContextsController < CruddyController
   def activate
     @context = Context.find params[:id]
     session[:context] = @context.id
-    render 'layouts/primary_nav'
   end
 
   def deactivate
+    @context = Context.find session[:context]
     session[:context] = nil
-    render 'layouts/primary_nav'
+    @resources = Context.all
   end
 
   private

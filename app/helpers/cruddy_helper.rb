@@ -37,4 +37,8 @@ module CruddyHelper
       md_icon 'expand_less'
     end
   end
+
+  def big_button(text, path)
+    link_to text, path, remote: true, class: 'big_button'
+  end
 end
