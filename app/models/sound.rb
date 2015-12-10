@@ -1,5 +1,7 @@
 class Sound < ActiveRecord::Base
 
+  belongs_to :context
+  
   validate :file_size, :sound_file_extensions
 
 

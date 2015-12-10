@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209153836) do
+ActiveRecord::Schema.define(version: 20151210013139) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "course_id"
@@ -193,10 +193,11 @@ ActiveRecord::Schema.define(version: 20151209153836) do
   end
 
   create_table "sounds", force: :cascade do |t|
-    t.string "title"
-    t.string "filename"
-    t.string "content_type"
-    t.binary "file_contents"
+    t.string  "title"
+    t.string  "filename"
+    t.string  "content_type"
+    t.binary  "file_contents"
+    t.integer "context_id"
   end
 
   create_table "stocks", force: :cascade do |t|
