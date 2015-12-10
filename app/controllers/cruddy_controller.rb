@@ -35,7 +35,7 @@ class CruddyController < ApplicationController
   private
 
   def model
-    eval params[:controller].singularize.titleize
+    eval params[:controller].singularize.titleize.gsub(' ','')
   end
 
   def model_formatted

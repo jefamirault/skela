@@ -50,9 +50,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'login#destroy_session', as: 'logout'
   get 'logout', to: 'login#destroy_session'
 
-
-  get 'developer', to: 'developer#index'
-  resources :developer_log_entries
+  resources :log_entries
 
   resources :plants
 

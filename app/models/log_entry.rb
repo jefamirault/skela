@@ -1,4 +1,4 @@
-class DeveloperLogEntry < ActiveRecord::Base
+class LogEntry < ActiveRecord::Base
   belongs_to :user
 
   def user=(user_or_username)
