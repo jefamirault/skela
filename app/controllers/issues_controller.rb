@@ -1,15 +1,6 @@
 class IssuesController < CruddyController
   before_filter :authenticate, except: [:index, :show]
 
-  def index
-    @resources = if params[:complete] == 'hidden'
-      Issue.incomplete
-    else
-      Issue.all
-    end
-    render 'cruddy/index'
-  end
-
   def new_task
     @issue = Issue.find params[:issue_id]
     unless @issue.task
