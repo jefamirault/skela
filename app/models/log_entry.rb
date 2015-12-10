@@ -1,4 +1,5 @@
 class LogEntry < ActiveRecord::Base
+  belongs_to :context
   belongs_to :user
 
   def user=(user_or_username)

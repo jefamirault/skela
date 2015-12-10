@@ -27,6 +27,6 @@
   - current_context.trackers.each do |tracker|
     - name = tracker.name
     %li= primary_nav_link(display: name,
-                          path: send("#{name.downcase}_path"),
+                          path: send("#{name.downcase.gsub(' ','_')}_path"),
                           title: name,
                           theme: 'plants')
