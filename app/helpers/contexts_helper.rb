@@ -1,9 +1,22 @@
 module ContextsHelper
-  def activate_context_button(context = @context)
+  def activate_context(button_method = :big_button, context = @context)
     if session[:context].present? && @context.present? && session[:context] == @context.id
-      big_button 'Deactivate Context', deactivate_context_path
+      text = 'Deactivate Context'
+      path = deactivate_context_path
     else
-      big_button 'Activate Context', activate_context_path(context)
+      text = context.name
+      path = activate_context_path context
     end
+    def left(content)
+      content_tag :div, content, class: 'left'
+    end
+    wrapped_text = left text
+    wrapped_icon = left md_icon('chevron_right')
+
+    clickable = wrapped_icon + wrapped_text
+
+
+    send button_method, clickable, path
   end
+
 end

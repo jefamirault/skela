@@ -40,7 +40,7 @@ html
 
 #container #curtain h1
   color: #444
-  font-family: Ubuntu
+  font-family: Ubuntu, sans-serif
   font-size: 5em
   line-height: 1em
   clear: both
@@ -53,12 +53,59 @@ input.disabled
 #container
   display: inline-block
   clear: both
-  text-align: center
   width: 100%
+  white-space: nowrap
+  overflow: hidden
 
 #container h1
   margin: 0 0 .5em
 
 .center
-  display: inline-block
   margin: auto
+  text-align: center
+
+
+#sidebar
+  vertical-align: top
+  //background: rgba(100,150,0,.09)
+  padding: 6px
+  margin-top: 6px
+  width: 200px
+  display: inline-block
+  float: left
+
+  ul
+    margin: 0
+
+  li
+    display: block
+
+  .button
+    display: block
+    padding: 10px
+    border-radius: 2px
+    color: rgba(0,0,0,.59)
+    font-size: 90%
+    height: 30px
+    line-height: 30px
+
+    &:hover
+      text-decoration: none
+      background: rgba(0,0,0,.07)
+
+    i.material-icons
+      margin-top: 2px
+      margin-right: 18px
+
+#main
+  vertical-align: top
+  display: inline-block
+  min-width: 600px
+
+  margin-left: 30px
+  margin-right: 100px
+
+  padding: 0 10px
+
+  white-space: nowrap
+  overflow-x: hidden

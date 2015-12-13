@@ -39,6 +39,10 @@ module CruddyHelper
   end
 
   def big_button(text, path)
-    link_to text, path, remote: true, class: 'big_button'
+    link_to text, path, remote: true, class: 'big_button', remote: true
+  end
+
+  def button(text, path)
+    link_to text, path, remote: true, class: 'button', remote: true
   end
 end

@@ -16,23 +16,24 @@
       %span.vertical_middle= alert
 
     #helmet
-      #hide_show_header
+      -##hide_show_header
         = content_tag :a, 'show/hide', id: 'toggle_header', remote: true
 
       = render partial: 'layouts/header'
 
-
     #container
-      = yield
-      %br
-    .developer_pad.hidden
-      #developer_pad_title
-        Developer Tools
-
-      %ul.god_buttons
-        %li
-          = trigger_flash_notice
-        %li
-          = trigger_flash_alert
-        %li
-          = hide_stuff
+      #sidebar
+        = render partial: 'layouts/sidebar'
+      #main= yield
+    -#  %br
+    -#.developer_pad.hidden
+    -#  #developer_pad_title
+    -#    Developer Tools
+    -#
+    -#  %ul.god_buttons
+    -#    %li
+    -#      = trigger_flash_notice
+    -#    %li
+    -#      = trigger_flash_alert
+    -#    %li
+    -#      = hide_stuff
