@@ -11,7 +11,7 @@ module ContextsHelper
       content_tag :div, content, class: 'left'
     end
     wrapped_text = left text
-    wrapped_icon = left md_icon('chevron_right')
+    wrapped_icon = left md_icon(context.icon || 'chevron_right')
 
     clickable = wrapped_icon + wrapped_text
 

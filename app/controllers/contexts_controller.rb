@@ -33,7 +33,7 @@ class ContextsController < CruddyController
   private
 
   def context_params
-    params.require(:context).permit(:name)
+    params.require(:context).permit(:name, :icon)
   end
 
 end
