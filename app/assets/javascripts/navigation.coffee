@@ -81,3 +81,7 @@ root.replaceContentAndDecloak = (partial) ->
 
 root.timeout = (delay, callback) ->
   window.setTimeout callback, delay
+
+$(document).on 'click', '#sidebar .button', ->
+  $('#sidebar .button').removeClass 'selected'
+  $(this).addClass 'selected'

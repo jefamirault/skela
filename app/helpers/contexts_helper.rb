@@ -15,8 +15,9 @@ module ContextsHelper
 
     clickable = wrapped_icon + wrapped_text
 
+    selected = session[:context] == context.id
 
-    send button_method, clickable, path
+    send button_method, clickable, path, selected
   end
 
 end

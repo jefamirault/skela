@@ -38,11 +38,11 @@ module CruddyHelper
     end
   end
 
-  def big_button(text, path)
-    link_to text, path, remote: true, class: 'big_button', remote: true
+  def big_button(text, path, selected = false)
+    link_to text, path, remote: true, class: "big_button#{' selected' if selected}", remote: true
   end
 
-  def button(text, path)
-    link_to text, path, remote: true, class: 'button', remote: true
+  def button(text, path, selected = false)
+    link_to text, path, remote: true, class: "button#{' selected' if selected}", remote: true
   end
 end
