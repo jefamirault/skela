@@ -67,12 +67,21 @@ input.disabled
 
 #sidebar
   vertical-align: top
-  //background: rgba(100,150,0,.09)
   padding: 6px
   margin-top: 6px
-  width: 200px
-  display: inline-block
+  width: 50px
   float: left
+  display: inline-block
+
+  transition: width .3s ease
+
+  .context_title
+    display: none
+
+  @media only screen and (min-width: 896px)
+    width: 200px
+    .context_title
+      display: inline-block
 
   ul
     margin: 0
@@ -88,6 +97,8 @@ input.disabled
     font-size: 90%
     height: 30px
     line-height: 30px
+    white-space: nowrap
+    text-overflow: hidden
 
     &:hover
       text-decoration: none
@@ -102,7 +113,7 @@ input.disabled
   display: inline-block
   min-width: 600px
 
-  margin-left: 30px
+  margin-left: 10px
   margin-right: 100px
 
   padding: 0 10px
