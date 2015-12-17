@@ -1,14 +1,13 @@
-class UsersController < ApplicationController
+class UsersController < CruddyController
 
   before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create]
   before_filter :authorize_superuser, only: [:admin_create]
 
   def index
     @users = superuser? ? User.all : [current_user]
-
     @resources = @users
 
-    render 'cards/index'
+    render 'cruddy/index'
   end
 
   def update
