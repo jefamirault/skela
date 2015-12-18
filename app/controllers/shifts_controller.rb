@@ -1,16 +1,7 @@
-class ShiftsController < ApplicationController
+  class ShiftsController < CruddyController
 
   before_filter :set_shifts
   before_filter :set_shift, only: [:edit, :destroy, :update]
-
-  def index
-    render 'cards/index'
-  end
-
-  def new
-    @shift = Shift.create creator: current_user
-    render 'cards/new'
-  end
 
   def edit
     render 'cards/edit'
@@ -19,13 +10,8 @@ class ShiftsController < ApplicationController
   def update
     sanitize_timezones
     @shift.update(shift_params)
+    render 'cruddy/update'
   end
-
-  def destroy
-    @shift.destroy
-    render 'cards/index'
-  end
-
 
   private
 
