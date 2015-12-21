@@ -38,11 +38,13 @@ module CruddyHelper
     end
   end
 
-  def big_button(text, path, selected = false)
-    link_to text, path, remote: true, class: "big_button#{' selected' if selected}", remote: true
+  def big_button(text, path, selected = false, data = {})
+    data.merge! remote: true
+    link_to text, path, class: "big_button#{' selected' if selected}", data: data
   end
 
-  def button(text, path, selected = false)
-    link_to text, path, remote: true, class: "button#{' selected' if selected}", remote: true
+  def button(text, path, selected = false, data = {})
+    data.merge! remote: true
+    link_to text, path, class: "button#{' selected' if selected}", data: data
   end
 end

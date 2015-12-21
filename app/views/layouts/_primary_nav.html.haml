@@ -1,5 +1,5 @@
 - if session[:context].nil?
-  %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome'
+  %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome', no_nav: true
 
   %li= primary_nav_link(display:   'Games',
                         theme:     'games',
@@ -23,7 +23,7 @@
                                      'Issues'      => issues_path})
 
 - else
-  %li= nav_link current_context.name, deactivate_context_path, 'Contexts', page_title: true
+  %li= nav_link current_context.name, deactivate_context_path, 'Contexts', page_title: true, no_nav: true
   - current_context.trackers.each do |tracker|
     - name = tracker.name
     %li= primary_nav_link(display: name,

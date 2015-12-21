@@ -20,7 +20,11 @@ module NavigationHelper
       dropper = content_tag :div, display_text, class: 'dropper'
       dropper + drop_down(options[:drop_down], theme)
     else
-      link = link_to display_text, path, class: 'nav_link', data: { remote: true, theme: theme, fade_content: true, swap_title: title }
+      klass = ''
+      klass << 'nav_link' unless options[:no_nav]
+      selected = params[:controller] == options[:display].underscore
+      klass << ' selected' if selected
+      link = link_to display_text, path, class: klass, data: { remote: true, theme: theme, fade_content: true, swap_title: title }
       link
     end
   end
@@ -32,7 +36,8 @@ module NavigationHelper
   end
 
   def nav_link(text, path, title, options = {})
-    klass = 'nav_link'
+    klass = ''
+    klass << 'nav_link' unless options[:no_nav]
     id = options[:page_title] ? 'page_title' : nil
     link_to text, path, id: id, class: klass, data: { remote: true, theme: '', fade_context: true, swap_title: title }
   end
@@ -44,5 +49,9 @@ module NavigationHelper
         content_tag :li, primary_nav_link(display: link[0], path: link[1], theme: theme)
       end.join.html_safe
     end
+  end
+
+  def path_for_tracker(tracker = @tracker)
+    send "#{name.underscore}_path"
   end
 end

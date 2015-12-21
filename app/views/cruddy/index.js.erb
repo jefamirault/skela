@@ -1,1 +1,4 @@
+if ($('#page_title').html != '<%= current_context %>')
+  $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
+
 replaceContentAndDecloak('<%= j render partial: 'cruddy/index' %>');

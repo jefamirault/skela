@@ -22,6 +22,7 @@ class ContextsController < CruddyController
   def activate
     @context = Context.find params[:id]
     session[:context] = @context.id
+    redirect_to @context.trackers.first.path
   end
 
   def deactivate

@@ -1,5 +1,5 @@
 module ContextsHelper
-  def activate_context(button_method = :big_button, context = @context)
+  def activate_context(button_method = :big_button, context = @context, data = {})
     if session[:context].present? && @context.present? && session[:context] == @context.id
       text = 'Deactivate Context'
       path = deactivate_context_path
@@ -17,7 +17,9 @@ module ContextsHelper
 
     selected = session[:context] == context.id
 
-    send button_method, clickable, path, selected
+    data.merge! fade_content: true, swap_title: context.trackers.first.name
+
+    send button_method, clickable, path, selected, data
   end
 
 end
