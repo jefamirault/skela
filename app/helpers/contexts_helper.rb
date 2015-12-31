@@ -20,7 +20,7 @@ module ContextsHelper
 
     selected = session[:context] == context.id
 
-    data.merge! fade_content: true, swap_title: context.trackers.first.name
+    data.merge! fade_content: true, swap_title: context.first_tracker.to_s
 
     send button_method, clickable, path, selected, data
   end

@@ -4,4 +4,12 @@ class Context < ActiveRecord::Base
   has_many :context_trackers
   has_many :trackers, through: :context_trackers
 
+  def first_tracker
+    if trackers.present?
+      trackers.first
+    else
+      nil
+    end
+  end
+
 end

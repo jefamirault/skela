@@ -5,4 +5,8 @@ class Tracker < ActiveRecord::Base
   def path
     Rails.application.routes.url_helpers.send "#{name.underscore}_path"
   end
+
+  def to_s
+    self.name
+  end
 end
