@@ -7,10 +7,13 @@ module ContextsHelper
       text = context.name
       path = activate_context_path context
     end
-    def left(content, klass = nil)
-      content_tag :div, content, class: "left #{klass}"
+    def div(content, klass = nil)
+      content_tag :div, content, class: "#{klass}"
     end
-    wrapped_text = left text, 'context_title'
+    def left(content, klass = nil)
+      div content, "left #{klass}"
+    end
+    wrapped_text = div text, 'context_title'
     wrapped_icon = left md_icon(context.icon || 'chevron_right')
 
     clickable = wrapped_icon + wrapped_text

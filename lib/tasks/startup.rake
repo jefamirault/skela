@@ -19,13 +19,13 @@ namespace :startup do
   end
   task skelaplex: :environment do
 
-    APP_DIR = '/home/jef/Sites/skela'
+    APP_DIR = '~/web/skela'
     PORT = 3000
 
     `tmux start-server`
 
     `tmux new-session -d -s skelaplex -n Server`
-      `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}; rails s" C-m`
+      `tmux send-keys -t skelaplex:0 "cd #{APP_DIR}; rails s -p #{PORT}" C-m`
 
       `tmux split-window -h -t skelaplex:0`
         `tmux resize-pane -R -t skelaplex:0 18`
