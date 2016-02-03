@@ -44,10 +44,10 @@ class CruddyController < ApplicationController
 
   def set_resource
     @resource = if params[:id]
-      model.find params[:id]
-    else
-      nil
-    end
+                  model.find params[:id]
+                else
+                  nil
+                end
     self.instance_variable_set model_formatted.to_sym, @resource
   end
 

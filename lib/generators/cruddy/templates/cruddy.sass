@@ -1,6 +1,12 @@
 .cruddy_table
   position: relative
   margin: 0
+  width: 650px
+
+  @media only screen and (min-width: 1080px)
+    width: 830px
+  @media only screen and (min-width: 1300px)
+    width: 1060px
 
 .cruddy_resource
   position: relative
@@ -14,8 +20,16 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4)
     border-top: solid #ddd 1px
     width: 560px
-    height: 30px
+    height: 22px
     margin: auto
+    font-size: 98%
+
+    transition: width .3s ease
+
+    @media only screen and (min-width: 1080px)
+      width: 740px
+    @media only screen and (min-width: 1310px)
+      width: 970px
 
   .full
     background: white
@@ -24,11 +38,19 @@
     width: 650px
     border-top: solid #ddd 1px
 
+    transition: width .3s ease
+
+
+    @media only screen and (min-width: 1080px)
+      width: 830px
+    @media only screen and (min-width: 1310px)
+      width: 1060px
+
   .subject_container
     padding: 20px 20px 22px
     input.subject
       border: none
-      font-size: 140%
+      font-size: 120%
       font-weight: bold
       height: 20px
       outline: none
@@ -37,7 +59,7 @@
     padding: 0 20px
     textarea
       border: none
-      font-family: arial
+      font-family: arial, sans-serif
       resize: vertical
       outline: none
       line-height: 150%
@@ -47,26 +69,27 @@
     height: 7em
 
   footer
+    text-align: center
     height: 24px
     padding: 12px 13px
     a
       color: #666
       &:hover
         color: #000
+  //.toe
+    float: right
+    //@extend .v_middle
 
   dl
     margin: 0 20px 0
 
 .crud_title
   display: inline-block
-  //float: left
   font-weight: bold
   font-family: arial, sans-serif
-  font-size: 120%
 
 .crud_text
   display: inline-block
-  //float: left
 
   padding-left: 15px
   opacity: .5
@@ -90,3 +113,62 @@
   position: relative
   top: 50%
   transform: translateY(-50%)
+
+.collapse
+  cursor: pointer
+  transform: translateX(50%)
+  display: inline-block
+  margin: auto
+
+.zero_or_more
+  text-align: center
+
+.one_of_many
+  width: 180px
+  margin: 10px auto
+  height: 30px
+  line-height: 30px
+  border-radius: 2px
+  box-shadow: 0px 0px 4px rgba(0,0,0,.71)
+
+  i
+    position: absolute
+    right: 36%
+
+.big_button
+  display: block
+  margin: 0 auto
+  text-align: center
+  width: 300px
+  height: 20px
+  padding: 20px
+  border-radius: 8px
+  font-size: 120%
+  background: rgba(0,0,0,.06)
+  transition: all .18s ease-out
+
+  &:hover
+    background: rgba(0,0,0,.12)
+    text-decoration: none
+
+.card_header
+  background: #ddd
+  padding: 1px 0 1px
+  box-shadow: 0 0 9px rgba(0,0,0,.5)
+
+  width: 500px
+  margin: 0 auto
+
+  position: relative
+  top: 0
+  transition: top .3s ease, width .3s ease
+  text-align: center
+
+  &.hidden
+    top: -64px
+
+
+  @media only screen and (min-width: 1080px)
+    width: 592px
+  @media only screen and (min-width: 1310px)
+    width: 792px
