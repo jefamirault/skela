@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217231211) do
+ActiveRecord::Schema.define(version: 20160203195019) do
 
   create_table "assignments", force: :cascade do |t|
-    t.integer  "course_id"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "deadline"
+    t.integer "course_id"
+    t.string  "title"
+    t.text    "description"
+    t.date    "due_date"
   end
 
   create_table "avatars", force: :cascade do |t|
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20151217231211) do
     t.string  "name"
     t.integer "creator_id"
     t.string  "icon"
+    t.boolean "public",     default: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -57,9 +58,18 @@ ActiveRecord::Schema.define(version: 20151217231211) do
   create_table "courses", force: :cascade do |t|
     t.integer "user_id"
     t.string  "title"
-    t.text    "description"
     t.string  "instructor"
-    t.string  "assistant_instructor"
+    t.string  "course_number"
+    t.string  "schedule"
+    t.string  "location"
+  end
+
+  create_table "exams", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "topic"
+    t.text     "description"
+    t.datetime "datetime"
+    t.string   "location"
   end
 
   create_table "forums", force: :cascade do |t|
@@ -86,6 +96,8 @@ ActiveRecord::Schema.define(version: 20151217231211) do
     t.string   "target_version"
     t.string   "subject"
     t.integer  "context_id"
+    t.boolean  "resolved"
+    t.integer  "assigned_to"
   end
 
   create_table "items", force: :cascade do |t|
@@ -176,6 +188,24 @@ ActiveRecord::Schema.define(version: 20151217231211) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "published"
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.text    "description"
+    t.date    "due_date"
+    t.integer "course_id"
+  end
+
+  create_table "resource_inclusions", force: :cascade do |t|
+    t.integer "resource_id"
+    t.integer "resourceful_id"
+    t.string  "resourceful_type"
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string "url"
+    t.text   "description"
+    t.string "type"
   end
 
   create_table "shifts", force: :cascade do |t|
