@@ -35,6 +35,10 @@ module AjaxFormHelper
     ajax_form 'datetime', resource, field, value
   end
 
+  def ajax_date(field, resource = @resource, value = nil)
+    ajax_form 'date', resource, field, value
+  end
+
   def ajax_time(field, resource = @resource)
     ajax_form 'time', resource, field
   end

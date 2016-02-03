@@ -6,7 +6,7 @@ class ResourcesController < CruddyController
   private
 
   def resource_params
-    params.require(:resource).permit()
+    params.require(:resource).permit(:description, :url)
   end
 
 end

@@ -1,2 +1,12 @@
-.crud_title
-  = resource
+.subject_container
+  = ajax_subject 'title', @resource
+
+
+= edit_fields @resource, instructor: :string,
+                         location: :string,
+                         schedule: :string
+
+
+%footer
+  = collapse_button
+  = destroy_link @resource, false

@@ -6,7 +6,7 @@ class AssignmentsController < CruddyController
   private
 
   def assignment_params
-    params.require(:assignment).permit()
+    params.require(:assignment).permit(:title, :description, :due_date)
   end
 
 end

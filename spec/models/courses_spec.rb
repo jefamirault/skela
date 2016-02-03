@@ -13,10 +13,6 @@ RSpec.describe 'Courses' do
       @course.instructor = 'David Jensen'
       expect(@course.instructor).to eq 'David Jensen'
     end
-    it 'should set course number' do
-      @course.number = 'COMPSCI348'
-      expect(@course.number).to eq 'COMPSCI348'
-    end
     it 'should set location' do
       @course.location = 'Engineering Lab 304'
       expect(@course.location).to eq 'Engineering Lab 304'

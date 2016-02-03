@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203195019) do
+ActiveRecord::Schema.define(version: 20160203215405) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "course_id"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20160203195019) do
     t.integer "user_id"
     t.string  "title"
     t.string  "instructor"
-    t.string  "course_number"
     t.string  "schedule"
     t.string  "location"
   end
@@ -194,6 +193,7 @@ ActiveRecord::Schema.define(version: 20160203195019) do
     t.text    "description"
     t.date    "due_date"
     t.integer "course_id"
+    t.string  "topic"
   end
 
   create_table "resource_inclusions", force: :cascade do |t|
