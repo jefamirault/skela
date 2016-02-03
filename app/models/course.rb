@@ -4,19 +4,23 @@ class Course < ActiveRecord::Base
   has_many :readings
   has_many :exams
 
+  alias_attribute :number, :course_number
+
+
   def to_s
     self.title
   end
 
-  alias_attribute :number, :course_number
-
   def add_reading(reading)
     self.readings << reading
   end
+
   def add_assignment(assignment)
     self.assignments << assignment
   end
+
   def add_exam(exam)
     self.exams << exam
   end
+
 end

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :courses
+
+  resources :assignments
+
+  resources :readings
+
+  resources :exams
+
+  resources :resources
 
   resources :contexts do
     member do
@@ -66,11 +75,6 @@ Rails.application.routes.draw do
   resources :purchases
   delete 'purchases/:id/remove_purchase_link', to: 'purchases#remove_purchase_link', as: 'remove_purchase_link'
 
-  resources :courses
-
-  get 'courses/:course_id/assignments', to: 'assignments#index', as: 'assignments'
-  get 'courses/:course_id/assignments/new', to: 'assignments#new', as: 'new_assignment'
-  resources :assignments, except: [:index, :new]
 
   resources :issues do
     delete 'remove_task/:task_id', to: 'issues#remove_task', as: 'remove_task'

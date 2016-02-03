@@ -66,7 +66,7 @@ class CruddyController < ApplicationController
 
   def create_resource
     @resource = model.create
-    if session[:context].present?
+    if session[:context].present? && @resource.respond_to?(:context)
       @resource.context = current_context
       @resource.save
     end

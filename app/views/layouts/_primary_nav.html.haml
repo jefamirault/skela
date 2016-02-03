@@ -20,7 +20,12 @@
                                      'Contexts'    => contexts_path,
                                      'Log'         => log_entries_path,
                                      'Users'       => users_path,
-                                     'Issues'      => issues_path})
+                                     'Issues'      => issues_path,
+                                     'Courses'     => courses_path,
+                                     'Assignments' => assignments_path,
+                                     'Exams'       => exams_path,
+                                     'Readings'    => readings_path,
+                                     'Resources'   => resources_path })
 
 - else
   %li= nav_link current_context.name, deactivate_context_path, 'Contexts', page_title: true, no_nav: true
