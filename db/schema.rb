@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160206201743) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assignments", force: :cascade do |t|
     t.integer "course_id"
     t.string  "title"
@@ -45,7 +48,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.string  "name"
     t.integer "creator_id"
     t.string  "icon"
-    t.boolean "public",     default: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -95,8 +97,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.string   "target_version"
     t.string   "subject"
     t.integer  "context_id"
-    t.boolean  "resolved"
-    t.integer  "assigned_to"
   end
 
   create_table "items", force: :cascade do |t|
