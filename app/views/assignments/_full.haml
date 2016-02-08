@@ -13,6 +13,12 @@
       - @resource.resources.each do |resource|
         %li= link_to resource.description, resources_path
 
+      = form_for @resource, url: add_resource_assignment_path(@resource), method: :post do |f|
+        = f.text_field 'new_resource'
+        = f.submit 'Add Resource'
 %footer
   = collapse_button
   = destroy_link @resource, false
+
+:javascript
+  $('#assignment_new_resource').autocomplete({ source: #{current_course.resources.map{|r| r.description}.to_json} });

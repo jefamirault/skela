@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :assignments
+  resources :assignments do
+    member do
+      post 'add_resource', to: 'assignments#add_resource', as: 'add_resource'
+    end
+  end
 
   resources :readings
 

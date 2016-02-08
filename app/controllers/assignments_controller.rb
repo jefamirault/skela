@@ -2,7 +2,11 @@ class AssignmentsController < CruddyController
 
   # define any CRUD actions to override CruddyController
 
-
+  def add_resource
+    @assignment = Assignment.find params[:id]
+    @resource = Resource.find_by_description params[:assignment][:new_resource]
+    @assignment.resources << @resource
+  end
 
   private
 
@@ -17,7 +21,7 @@ class AssignmentsController < CruddyController
   end
 
   def assignment_params
-    params.require(:assignment).permit(:title, :description, :due_date)
+    params.require(:assignment).permit(:title, :description, :due_date, :new_resource)
   end
 
 end
