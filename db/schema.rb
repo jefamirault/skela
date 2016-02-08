@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206201743) do
+ActiveRecord::Schema.define(version: 20160208012124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.string  "icon"
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "forum_id"
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "courses", force: :cascade do |t|
     t.integer "user_id"
     t.string  "title"
@@ -71,13 +64,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.text     "description"
     t.datetime "datetime"
     t.string   "location"
-  end
-
-  create_table "forums", force: :cascade do |t|
-    t.integer  "outpost_id"
-    t.integer  "founder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -119,26 +105,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.integer  "context_id"
   end
 
-  create_table "lumber_yards", force: :cascade do |t|
-    t.integer  "outpost_id"
-    t.integer  "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "outposts", force: :cascade do |t|
-    t.integer  "world_id"
-    t.integer  "founder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "plane_of_worlds_profiles", force: :cascade do |t|
-    t.string  "alias"
-    t.integer "current_world_id"
-    t.integer "portal_points"
-  end
-
   create_table "plants", force: :cascade do |t|
     t.string   "name"
     t.string   "species"
@@ -149,27 +115,9 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.integer  "context_id"
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string  "name"
-    t.integer "user_id"
-    t.integer "world_id"
-    t.integer "mana"
-    t.integer "influence"
-    t.integer "leader_id"
-  end
-
   create_table "poops", force: :cascade do |t|
     t.datetime "time"
     t.integer  "rating"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer  "conversation_id"
-    t.text     "content"
-    t.integer  "poster_id"
-    t.integer  "parent_post_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -258,13 +206,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.integer  "context_id"
   end
 
-  create_table "towers", force: :cascade do |t|
-    t.integer  "outpost_id"
-    t.integer  "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "trackers", force: :cascade do |t|
     t.string "name"
   end
@@ -275,15 +216,6 @@ ActiveRecord::Schema.define(version: 20160206201743) do
     t.integer "privilege_level"
     t.string  "favorite_color"
     t.boolean "show_header",     default: true
-  end
-
-  create_table "worlds", force: :cascade do |t|
-    t.string  "name"
-    t.integer "discoverer_id"
-    t.integer "portal_1_id"
-    t.integer "portal_2_id"
-    t.integer "portal_3_id"
-    t.integer "portal_4_id"
   end
 
 end
