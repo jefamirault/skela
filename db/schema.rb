@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208022200) do
+ActiveRecord::Schema.define(version: 20160208022739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,18 +28,6 @@ ActiveRecord::Schema.define(version: 20160208022200) do
     t.integer "face"
     t.integer "head"
     t.integer "color"
-  end
-
-  create_table "context_trackers", force: :cascade do |t|
-    t.integer "context_id"
-    t.integer "tracker_id"
-    t.integer "data"
-  end
-
-  create_table "contexts", force: :cascade do |t|
-    t.string  "name"
-    t.integer "creator_id"
-    t.string  "icon"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -78,10 +66,6 @@ ActiveRecord::Schema.define(version: 20160208022200) do
     t.string "filename"
     t.string "content_type"
     t.binary "file_contents"
-  end
-
-  create_table "trackers", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

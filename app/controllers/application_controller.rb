@@ -2,22 +2,23 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :set_contexts
+
+  before_filter :set_courses
 
   private
 
-  def set_contexts
-    @contexts = Context.all
+  def set_courses
+    @courses = Course.all
   end
 
-  def current_context
-    if session[:context].nil?
+  def current_course
+    if session[:course].nil?
       nil
     else
-      Context.find session[:context]
+      Course.find session[:course]
     end
   end
-  helper_method :current_context
+  helper_method :current_course
 
   def logged_in?
     !current_user.new_record?

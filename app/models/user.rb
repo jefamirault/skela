@@ -28,26 +28,6 @@ class User < ActiveRecord::Base
     self.username
   end
 
-  def create_player_account
-    if player.nil?
-      self.player = Player.new
-      player.name = username
-      player.world = World.home
-      player.mana = Portal.cost
-      player.save
-      player
-    else
-      false
-    end
-  end
-
-  def create_shift(shift_params = {})
-    shift = Shift.new shift_params
-    shift.creator = self
-    shift.save
-    shift
-  end
-
   def avatar_path
     if avatar.nil?
       nil
