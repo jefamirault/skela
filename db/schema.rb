@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208012124) do
+ActiveRecord::Schema.define(version: 20160208012323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,13 +66,6 @@ ActiveRecord::Schema.define(version: 20160208012124) do
     t.string   "location"
   end
 
-  create_table "inventories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "issues", force: :cascade do |t|
     t.text     "description"
     t.text     "how_to_test"
@@ -82,16 +75,6 @@ ActiveRecord::Schema.define(version: 20160208012124) do
     t.string   "category"
     t.string   "target_version"
     t.string   "subject"
-    t.integer  "context_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "units"
-    t.integer  "creator_id"
     t.integer  "context_id"
   end
 
@@ -183,14 +166,6 @@ ActiveRecord::Schema.define(version: 20160208012124) do
     t.string  "content_type"
     t.binary  "file_contents"
     t.integer "context_id"
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.integer  "inventory_id"
-    t.integer  "item_id"
-    t.float    "quantity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "tasks", force: :cascade do |t|
