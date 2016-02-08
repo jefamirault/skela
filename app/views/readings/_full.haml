@@ -4,9 +4,12 @@
 
 = edit_fields @resource, due_date: :date
 
-%ul
-  - @resource.resources.each do |resource|
-    %li= link_to resource.description, resources_path
+%dl
+  %dt Resources
+  %dd
+    %ul
+      - @resource.resources.each do |resource|
+        %li= link_to resource.description, resources_path
 
 
 %footer
