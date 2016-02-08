@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208014739) do
+ActiveRecord::Schema.define(version: 20160208015450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,22 +87,6 @@ ActiveRecord::Schema.define(version: 20160208014739) do
     t.string "filename"
     t.string "content_type"
     t.binary "file_contents"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sounds", force: :cascade do |t|
-    t.string  "title"
-    t.string  "filename"
-    t.string  "content_type"
-    t.binary  "file_contents"
-    t.integer "context_id"
   end
 
   create_table "trackers", force: :cascade do |t|
