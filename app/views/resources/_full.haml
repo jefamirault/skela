@@ -4,6 +4,23 @@
 
 = edit_fields @resource, url: :string
 
+%dl
+  %dt Attachment
+  %dd
+    %p
+      - if @resource.filename
+        = @resource.filename
+        = link_to 'Download', resource_path(@resource)
+        (
+        = link_to 'X', remove_file_resource_path(@resource.id), method: :delete
+        )
+      - else
+        = form_for @resource, remote: true, authenticity_token: true do |f|
+          .field.left
+            = f.file_field :file
+          .actions.left
+            = f.submit
+
 
 %footer
   = collapse_button

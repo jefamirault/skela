@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 
   resources :exams
 
-  resources :resources
+  resources :resources do
+    member do
+      delete 'remove_file', to: 'resources#remove_file', as: 'remove_file'
+    end
+  end
+
 
   resources :contexts do
     member do

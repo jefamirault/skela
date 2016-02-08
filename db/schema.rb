@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203215405) do
+ActiveRecord::Schema.define(version: 20160206201743) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "course_id"
@@ -206,6 +206,9 @@ ActiveRecord::Schema.define(version: 20160203215405) do
     t.string "url"
     t.text   "description"
     t.string "type"
+    t.string "filename"
+    t.string "content_type"
+    t.binary "file_contents"
   end
 
   create_table "shifts", force: :cascade do |t|

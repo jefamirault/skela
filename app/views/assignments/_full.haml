@@ -6,6 +6,10 @@
                          due_date: :date
 
 
+%ul
+  - @resource.resources.each do |resource|
+    %li= link_to resource.description, resources_path
+
 %footer
   = collapse_button
   = destroy_link @resource, false
