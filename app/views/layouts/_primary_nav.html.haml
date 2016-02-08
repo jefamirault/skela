@@ -1,25 +1,11 @@
 - if session[:context].nil?
   %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome', no_nav: true
 
-  %li= primary_nav_link(display:   'Games',
-                        theme:     'games',
-                        drop_down: { 'Tic-Tac-Toe' => games_tic_tac_toe_path,
-                                     'Hi-Lo'       => games_hi_lo_path,
-                                     '100-Puzzle'  => games_hundred_puzzle_path,
-                                     'Quests'      => quests_path })
-
   %li= primary_nav_link(display:   'Trackers',
                         theme:     'plants',
-                        drop_down: { 'Shifts'      => shifts_path,
-                                     'Tasks'       => tasks_path,
-                                     'Items'       => items_path,
-                                     'Inventories' => inventories_path,
-                                     'Plants'      => plants_path,
-                                     'Trackers'    => trackers_path,
+                        drop_down: { 'Trackers'    => trackers_path,
                                      'Contexts'    => contexts_path,
-                                     'Log'         => log_entries_path,
                                      'Users'       => users_path,
-                                     'Issues'      => issues_path,
                                      'Courses'     => courses_path,
                                      'Assignments' => assignments_path,
                                      'Exams'       => exams_path,
