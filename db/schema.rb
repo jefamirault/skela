@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208013504) do
+ActiveRecord::Schema.define(version: 20160208014250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20160208013504) do
     t.integer "face"
     t.integer "head"
     t.integer "color"
-  end
-
-  create_table "challenges", force: :cascade do |t|
-    t.text     "text"
-    t.string   "answer"
-    t.integer  "quest_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "context_trackers", force: :cascade do |t|
@@ -88,11 +80,6 @@ ActiveRecord::Schema.define(version: 20160208013504) do
     t.integer  "context_id"
   end
 
-  create_table "poops", force: :cascade do |t|
-    t.datetime "time"
-    t.integer  "rating"
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -100,14 +87,6 @@ ActiveRecord::Schema.define(version: 20160208013504) do
     t.float    "cost"
     t.datetime "purchased_at"
     t.text     "purchase_link"
-  end
-
-  create_table "quests", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "creator_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "published"
   end
 
   create_table "readings", force: :cascade do |t|
