@@ -2,6 +2,6 @@
   %ul
     - @courses.each do |course|
       %li
-        = course
-        - if course == current_course
-          <-
+        - klass = 'button'
+        - klass << ' selected' if course == current_course
+        = link_to course, activate_course_path(course.id), class: klass, remote: false
