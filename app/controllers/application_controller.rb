@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     if session[:course].nil?
       nil
     else
-      Course.find session[:course]
+      Course.where(id: session[:course]).first
     end
   end
   helper_method :current_course

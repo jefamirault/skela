@@ -4,4 +4,7 @@
       %li
         - klass = 'button'
         - klass << ' selected' if course == current_course
-        = link_to course, activate_course_path(course.id), class: klass, remote: false
+        = link_to course.title, activate_course_path(course.id), class: klass, remote: false
+
+    -#%li
+      = link_to 'New Course', new_course_path, class: 'button', data: { fade_content: true, swap_title: 'New Course', remote: true }

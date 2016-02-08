@@ -5,7 +5,7 @@ class CoursesController < CruddyController
   def activate_course
     @course = Course.find params[:id]
     session[:course] = @course.id
-    redirect_to assignments_path
+    redirect_to courses_path
   end
 
   private

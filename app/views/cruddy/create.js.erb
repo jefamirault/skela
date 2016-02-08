@@ -1,2 +1,10 @@
-$('.cruddy_table').append('<%= j new_cruddy_resource @resource, true %>');
-find_crud(<%= @resource.id %>).find('.full').slideDown();
+if ($('#courses')) {
+  $('.cruddy_table').append('<%= j new_cruddy_resource @resource, true %>');
+  find_crud(<%= @resource.id %>).find('.full').slideDown();
+} else {
+  if ($('#page_title').html != '<%= current_course %>')
+    $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
+
+  replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
+
+}
