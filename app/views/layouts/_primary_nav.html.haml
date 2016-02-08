@@ -1,19 +1,6 @@
-- if session[:context].nil?
-  %li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome', no_nav: true
-
-  %li= primary_nav_link(display:   'Trackers',
-                        theme:     'plants',
-                        drop_down: { 'Courses'     => courses_path,
-                                     'Assignments' => assignments_path,
-                                     'Exams'       => exams_path,
-                                     'Readings'    => readings_path,
-                                     'Resources'   => resources_path })
-
-- else
-  %li= nav_link current_context.name, deactivate_context_path, 'Contexts', page_title: true, no_nav: true
-  - current_context.trackers.each do |tracker|
-    - name = tracker.name
-    %li= primary_nav_link(display: name,
-                          path: send("#{name.downcase.gsub(' ','_')}_path"),
-                          title: name,
-                          theme: 'plants')
+%li= primary_nav_link display: site_logo, path: welcome_path, title: 'Welcome', no_nav: true
+%li= primary_nav_link display: 'Courses', path: courses_path, title: 'Courses'
+%li= primary_nav_link display: 'Assignments', path: assignments_path, title: 'Assignments'
+%li= primary_nav_link display: 'Exams', path: exams_path, title: 'Exams'
+%li= primary_nav_link display: 'Readings', path: readings_path, title: 'Readings'
+%li= primary_nav_link display: 'Resources', path: resources_path, title: 'Resources'

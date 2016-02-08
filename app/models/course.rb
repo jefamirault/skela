@@ -3,6 +3,7 @@ class Course < ActiveRecord::Base
   has_many :assignments
   has_many :readings
   has_many :exams
+  has_many :resources
 
   alias_attribute :number, :course_number
 

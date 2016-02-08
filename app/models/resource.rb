@@ -1,4 +1,5 @@
 class Resource < ActiveRecord::Base
+  belongs_to :course
   has_many :resource_inclusions
   has_many :resourcefuls, through: :resource_inclusions
 

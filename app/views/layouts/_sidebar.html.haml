@@ -1,4 +1,7 @@
 %nav
   %ul
-    - @courses.each do |context|
-      %li= context
+    - @courses.each do |course|
+      %li
+        = course
+        - if course == current_course
+          <-

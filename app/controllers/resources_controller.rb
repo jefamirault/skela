@@ -21,6 +21,16 @@ class ResourcesController < CruddyController
 
   private
 
+  def create_resource
+    @resource = Resource.create
+    @resource.course = current_course
+    @resource.save
+  end
+
+  def set_resources
+    @resources = current_course.resources
+  end
+
   def resource_params
     params.require(:resource).permit(:description, :url, :file)
   end

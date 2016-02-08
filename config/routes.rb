@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :courses
+  resources :courses do
+    member do
+      get 'activate', to: 'courses#activate_course'
+    end
+  end
 
   resources :assignments
 

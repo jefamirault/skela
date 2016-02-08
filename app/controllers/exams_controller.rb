@@ -5,6 +5,16 @@ class ExamsController < CruddyController
 
   private
 
+  def create_resource
+    @resource = Exam.create
+    @resource.course = current_course
+    @resource.save
+  end
+
+  def set_resources
+    @resources = current_course.exams
+  end
+
   def exam_params
     params.require(:exam).permit(:topic, :description, :datetime, :location)
   end

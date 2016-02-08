@@ -6,6 +6,9 @@
                          location: :string,
                          schedule: :string
 
+%dl
+  %dt Activate
+  %dd= link_to 'Activate Course', activate_course_path(@resource.id), remote: true
 
 %footer
   = collapse_button
