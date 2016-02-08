@@ -1,9 +1,0 @@
-.right= updated_field_at 'updated_at', @shift
-
-= edit_fields @shift, start_time:  :datetime,
-                      end_time:    :datetime,
-                      assignee_id: :user_select
-
-%footer
-  = collapse_button
-  = destroy_link @shift

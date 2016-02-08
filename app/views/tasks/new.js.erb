@@ -1,7 +1,0 @@
-$('.cruddy_table').append('<%= j new_cruddy_resource @resource, true %>');
-var view = find_crud(<%= @resource.id %>).find('.full');
-view.slideDown();
-// focus on the subject field after some milliseconds. looks funky without the delay
-timeout(100, function(){
-  view.find('.subject').focus();
-});

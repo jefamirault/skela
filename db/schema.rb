@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208014250) do
+ActiveRecord::Schema.define(version: 20160208014739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,28 +58,6 @@ ActiveRecord::Schema.define(version: 20160208014250) do
     t.string   "location"
   end
 
-  create_table "issues", force: :cascade do |t|
-    t.text     "description"
-    t.text     "how_to_test"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "creator_id"
-    t.string   "category"
-    t.string   "target_version"
-    t.string   "subject"
-    t.integer  "context_id"
-  end
-
-  create_table "log_entries", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "datetime"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "context_id"
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -111,16 +89,6 @@ ActiveRecord::Schema.define(version: 20160208014250) do
     t.binary "file_contents"
   end
 
-  create_table "shifts", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "assignee_id"
-    t.integer  "creator_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "context_id"
-  end
-
   create_table "songs", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
@@ -135,19 +103,6 @@ ActiveRecord::Schema.define(version: 20160208014250) do
     t.string  "content_type"
     t.binary  "file_contents"
     t.integer "context_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.boolean  "complete"
-    t.string   "subject"
-    t.integer  "taskable_id"
-    t.string   "taskable_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "assignee_id"
-    t.string   "notes"
-    t.integer  "creator_id"
-    t.integer  "context_id"
   end
 
   create_table "trackers", force: :cascade do |t|
