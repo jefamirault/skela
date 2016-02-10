@@ -8,10 +8,14 @@ $(document).on 'click', '.cruddy_resource .compact', ->
   collapse $('.full')
   table = $(this).closest('.cruddy_table').attr 'id'
   id = $(this).closest('.cruddy_resource').data 'resource-id'
+
   $.ajax
     url: "/#{table}/#{id}"
     dataType: 'script'
   false
+
+$(document).on 'click', '.cruddy_resource .compact a', (event) ->
+  event.stopPropagation()
 
 $(document).on 'click', '.cruddy_resource .collapse', ->
   collapse $(this).closest '.full'

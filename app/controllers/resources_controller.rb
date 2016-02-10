@@ -17,6 +17,12 @@ class ResourcesController < CruddyController
   def remove_file
     @resource = Resource.find params[:id]
     @resource.remove_file
+    redirect_to resources_path
+  end
+
+  def update
+    @resource.update crud_params
+    redirect_to resources_path
   end
 
   private

@@ -11,7 +11,8 @@
   %dd
     %ul
       - @resource.resources.each do |resource|
-        %li= link_to resource.description, resources_path
+        %li
+          = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
 
       = form_for @resource, url: add_resource_assignment_path(@resource), method: :post do |f|
         = f.text_field 'new_resource'
@@ -20,5 +21,7 @@
   = collapse_button
   = destroy_link @resource, false
 
+- autocomplete_source = (current_course.resources - @resource.resources).map{|r| r.description}.to_json
+-#- binding.pry
 :javascript
-  $('#assignment_new_resource').autocomplete({ source: #{current_course.resources.map{|r| r.description}.to_json} });
+  $('#assignment_new_resource').autocomplete({ source: #{autocomplete_source} });

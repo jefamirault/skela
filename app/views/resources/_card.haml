@@ -1,0 +1,5 @@
+.resource_card{ data: { resource_id: resource.id }}
+  = link_to resource.description, resources_path
+  (
+  = link_to 'X', send("remove_resource_#{resourceful.class.to_s.underscore}_path", resourceful, resource_id: resource.id), class: 'remove', data: { method: :post, remote: true, remove_parent_li: true }
+  )

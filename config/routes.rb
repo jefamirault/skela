@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :assignments do
     member do
       post 'add_resource', to: 'assignments#add_resource', as: 'add_resource'
+      post 'remove_resource', to: 'assignments#remove_resource', as: 'remove_resource'
     end
   end
 
