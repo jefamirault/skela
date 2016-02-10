@@ -3,6 +3,20 @@ class ExamsController < CruddyController
   # define any CRUD actions to override CruddyController
 
 
+  def add_resource
+    @exam = Exam.find params[:id]
+    @resource = Resource.find_by_description params[:exam][:new_resource]
+    @exam.resources << @resource
+    redirect_to exams_path
+  end
+
+  def remove_resource
+    @exam = Exam.find params[:id]
+    @resource = Resource.find params[:resource_id]
+    @exam.resources.delete @resource
+    render nothing: true
+  end
+
   private
 
   def create_resource

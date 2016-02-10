@@ -13,10 +13,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :readings
+  resources :readings do
+    member do
+      post 'add_resource', to: 'readings#add_resource', as: 'add_resource'
+      post 'remove_resource', to: 'readings#remove_resource', as: 'remove_resource'
+    end
+  end
 
-  resources :exams
+  resources :exams do
+    member do
+      post 'add_resource', to: 'exams#add_resource', as: 'add_resource'
+      post 'remove_resource', to: 'exams#remove_resource', as: 'remove_resource'
+    end
+  end
 
+  get 'resources/autocomplete'
   resources :resources do
     member do
       delete 'remove_file', to: 'resources#remove_file', as: 'remove_file'

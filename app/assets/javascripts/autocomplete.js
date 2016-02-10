@@ -1,27 +1,41 @@
 $(function(){
-    jQuery("#inventory_item_id").autocomplete({
-        source: function (request, response) {
-            jQuery.get("/items/autocomplete", {
-                data: request.term,
-                dataType: "json"
-            }, function (data) {
-                response(data);
-            });
-        },
-        autoFocus: true
-    });
+  jQuery("#inventory_item_id").autocomplete({
+    source: function (request, response) {
+      jQuery.get("/items/autocomplete", {
+        data: request.term,
+        dataType: "json"
+      }, function (data) {
+        response(data);
+      });
+    },
+    autoFocus: true
+  });
 });
 
 $(function(){
-    jQuery("#issue_task_id").autocomplete({
-        source: function (request, response) {
-            jQuery.get("/tasks/autocomplete", {
-                data: request.term,
-                dataType: "json"
-            }, function (data) {
-                response(data);
-            });
-        },
-        autoFocus: true
-    });
+  jQuery("#issue_task_id").autocomplete({
+    source: function (request, response) {
+      jQuery.get("/tasks/autocomplete", {
+        data: request.term,
+        dataType: "json"
+      }, function (data) {
+        response(data);
+      });
+    },
+    autoFocus: true
+  });
+});
+
+$(document).on('keydown', '[data-autocomplete="resources"]', function(){
+  $(this).autocomplete({
+    source: function (request, response) {
+      $.get('/resources/autocomplete', {
+        data: request.term,
+        dataType: 'json'
+      }, function (data) {
+        response(data);
+      });
+    },
+    autoFocus: true
+  })
 });

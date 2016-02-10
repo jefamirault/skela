@@ -15,13 +15,9 @@
           = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
 
       = form_for @resource, url: add_resource_assignment_path(@resource), method: :post do |f|
-        = f.text_field 'new_resource'
+        = f.text_field 'new_resource', data: { autocomplete: 'resources' }
         = f.submit 'Add Resource'
+
 %footer
   = collapse_button
   = destroy_link @resource, false
-
-- autocomplete_source = (current_course.resources - @resource.resources).map{|r| r.description}.to_json
--#- binding.pry
-:javascript
-  $('#assignment_new_resource').autocomplete({ source: #{autocomplete_source} });

@@ -3,4 +3,11 @@ class Reading < ActiveRecord::Base
 
   belongs_to :course
 
+  def new_resource=(resource)
+    self.resources << resource
+    save
+  end
+  def new_resource
+    nil
+  end
 end

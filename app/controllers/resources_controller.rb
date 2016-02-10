@@ -25,6 +25,18 @@ class ResourcesController < CruddyController
     redirect_to resources_path
   end
 
+
+  def autocomplete
+    query = Resource.ransack(description_cont: params[:data], course_id_eq: current_course.id).result
+    @suggestions = query.map do |resource|
+      { label: resource.description, value: resource.description }
+    end.to_json
+
+    respond_to do |format|
+      format.json { render json: @suggestions }
+    end
+  end
+
   private
 
   def create_resource

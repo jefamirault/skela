@@ -9,7 +9,12 @@
   %dd
     %ul
       - @resource.resources.each do |resource|
-        %li= link_to resource.description, resources_path
+        %li
+          = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
+
+      = form_for @resource, url: add_resource_reading_path(@resource), method: :post do |f|
+        = f.text_field 'new_resource', data: { autocomplete: 'resources' }
+        = f.submit 'Add Resource'
 
 
 %footer
