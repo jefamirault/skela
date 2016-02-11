@@ -21,6 +21,18 @@
     %dt Favorite Color
     %dd= ajax_string 'favorite_color', @user
 
+
+    - if @user.is_guest?
+      %h4 Create a password to save your data!
+      %dt Register
+      %dd
+        = form_for @user, remote: true do |f|
+          = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
+          %br
+          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+          .actions= f.submit 'Save Password'
+
+
   %footer
     -# TODO fix css disaster
     .right{style: 'padding-top:14px;'}

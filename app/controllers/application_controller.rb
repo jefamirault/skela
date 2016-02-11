@@ -7,8 +7,23 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def add_owner(record)
+    if logged_in?
+      record.user = current_user
+      record.save
+    else
+      @guest = User.create
+      @guest.username = "Guest_#{@guest.id}"
+      @guest.save
+
+      session[:user_id] = @guest.id
+      record.user = @guest
+      record.save
+    end
+  end
+
   def set_courses
-    @courses = Course.all
+    @courses = logged_in? ? current_user.courses : []
   end
 
   def current_course

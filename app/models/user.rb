@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password validations: false
-  validates_presence_of :password, on: :create
-  validates_presence_of :username
+  validates_presence_of :password, on: :create,
+                        unless: Proc.new { |a| a.is_guest }
+  validates_presence_of :username,
+                        unless: Proc.new { |a| a.is_guest }
   validates_uniqueness_of :username
 
   has_many :contexts
@@ -34,5 +36,12 @@ class User < ActiveRecord::Base
     else
       avatar.path
     end
+  end
+
+  def is_guest
+    is_guest?
+  end
+  def is_guest?
+    password_digest.nil?
   end
 end

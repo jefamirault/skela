@@ -10,6 +10,20 @@ class CoursesController < CruddyController
 
   private
 
+  def create_resource
+    @resource = @course = Course.create
+    add_owner @course
+    session[:course] = @course.id
+  end
+
+  def set_resources
+    @resources = @courses = if logged_in?
+                 current_user.courses
+               else
+                 []
+               end
+  end
+
   def course_params
     params.require(:course).permit(:title, :instructor, :course_number, :location, :schedule)
   end
