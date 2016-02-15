@@ -2,7 +2,7 @@
   %h1= site_logo
 
   #center_form_box
-    = form_tag sessions_path, remote: true do |f|
+    = form_tag sessions_path, remote: false do |f|
       .center_form_field
         = text_field_tag :username, nil, placeholder: 'Username'
       .center_form_field

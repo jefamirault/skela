@@ -6,16 +6,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if logged_in?
-      session[:user_id] = nil
-    end
     user = User.find_by_username params[:username]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      session[:course] = user.courses.first.id
-    end
-    respond_to do |format|
-      format.js
+      session[:course] = user.courses.first.id if user.courses.present?
+      redirect_to courses_path
     end
   end
 

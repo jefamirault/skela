@@ -1,0 +1,7 @@
+$('#header').html('<%= j render 'layouts/header' %>');
+
+replaceContentAndDecloak('<%= j render template: 'courses/index.haml' %>');
+
+
+window.history.pushState( {} , '', 'courses' );
+swap_title('Courses');

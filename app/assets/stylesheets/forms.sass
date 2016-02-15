@@ -16,7 +16,7 @@
     padding: 0 20px
     textarea
       border: none
-      font-family: arial
+      font-family: arial sans-serif
       resize: vertical
       outline: none
       line-height: 150%
@@ -38,6 +38,14 @@
         padding-left: 6px
   dl
     margin: 0 20px 0
+
+
+  transition: width .3s ease
+
+  @media only screen and (min-width: 1080px)
+    width: 740px
+  @media only screen and (min-width: 1310px)
+    width: 970px
 
 form.subject
   width: 100%

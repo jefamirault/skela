@@ -3,7 +3,7 @@ class CoursesController < CruddyController
   # define any CRUD actions to override CruddyController
 
   def index
-    
+
   end
 
 
