@@ -35,3 +35,6 @@ $(document).on 'click', '[data-collapse]', ->
 
 root.find_crud = (id) ->
   $(".cruddy_resource[data-resource-id=#{id}]");
+
+$(document).on 'click', '#new_crud', ->
+  $(this).removeClass 'look_at_me'

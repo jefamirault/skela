@@ -1,0 +1,45 @@
+$one: #1876d2
+$two: #42a4f5
+$three: #badefa
+
+
+#get_started
+  margin: 100px 0
+
+  p
+    color: rgba(0,0,0,0.45)
+    margin: 0 auto
+    font-size: 200%
+    font-weight: bold
+    line-height: 200%
+    text-align: center
+
+  i
+    font-size: 48px
+    width: 48px
+
+
+
+/* The animation code */
+@keyframes example
+  5%
+    opacity: 1
+  45%
+    opacity: .5
+  55%
+    opacity: .5
+  95%
+    opacity: 1
+
+/* The element to apply the animation to */
+.look_at_me
+  color: $one
+  animation-name: example
+  animation-duration: 2.2s
+  animation-iteration-count: infinite
+  animation-timing-function: linear
+
+//#new_crud:hover .material-icons
+  opacity: 1
+  transition: all .3s
+

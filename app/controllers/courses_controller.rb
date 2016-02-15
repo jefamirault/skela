@@ -2,6 +2,11 @@ class CoursesController < CruddyController
 
   # define any CRUD actions to override CruddyController
 
+  def index
+    
+  end
+
+
   def activate_course
     @course = Course.find params[:id]
     session[:course] = @course.id
