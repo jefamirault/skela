@@ -39,7 +39,7 @@ module ApplicationHelper
         else
           'Guest'
         end
-        username.html_safe + avatar(current_user.avatar)
+        username.html_safe + avatar(current_user.avatar, 72)
       end
     end
     text
@@ -128,7 +128,7 @@ module ApplicationHelper
     else
       avatar.path
     end
-    content_tag :div, style: 'display:inline-block;vertical-align:top;' do
+    content_tag :div, style: 'display:inline-block;vertical-align:top;padding-top:5px;' do
       image_tag(avatar_path, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
     end
   end
