@@ -9,12 +9,13 @@
 %dl
   %dt Resources
   %dd
-    %ul
+    %ul.associated_resources
       - @resource.resources.each do |resource|
         %li
           = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
 
-      = form_for @resource, url: add_resource_assignment_path(@resource), method: :post do |f|
+    .center
+      = form_for @resource, url: add_resource_assignment_path(@resource), method: :post, remote: true do |f|
         = f.text_field 'new_resource', data: { autocomplete: 'resources' }
         = f.submit 'Add Resource'
 

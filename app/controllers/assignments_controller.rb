@@ -6,7 +6,7 @@ class AssignmentsController < CruddyController
     @assignment = Assignment.find params[:id]
     @resource = Resource.find_by_description params[:assignment][:new_resource]
     @assignment.resources << @resource
-    redirect_to assignments_path
+    # redirect_to assignments_path
   end
 
   def remove_resource
