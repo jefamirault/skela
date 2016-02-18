@@ -6,7 +6,7 @@ module ResourcefulController
       @resourceful = resourceful.find params[:id]
       @resource = Resource.find_by_description params[resourceful_name.to_sym][:new_resource]
       @resourceful.resources << @resource
-      render 'shared/add_resource'
+      render 'resources/add_resource'
     end
 
     def remove_resource

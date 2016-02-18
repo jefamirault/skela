@@ -4,20 +4,7 @@
 
 = edit_fields @resource, due_date: :date
 
-
-
-%dl
-  %dt Resources
-  %dd
-    %ul.associated_resources
-      - @resource.resources.each do |resource|
-        %li
-          = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
-
-    .center
-      = form_for @resource, url: add_resource_reading_path(@resource), method: :post, remote: true do |f|
-        = f.text_field 'new_resource', data: { autocomplete: 'resources' }
-        = f.submit 'Add Resource'
+= render partial: 'resources/add_resource'
 
 
 %footer

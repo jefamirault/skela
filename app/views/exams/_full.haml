@@ -6,18 +6,8 @@
                          datetime: :datetime,
                          location: :string
 
-%dl
-  %dt Resources
-  %dd
-    %ul.associated_resources
-      - @resource.resources.each do |resource|
-        %li
-          = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
+= render partial: 'resources/add_resource'
 
-    .center
-      = form_for @resource, url: add_resource_exam_path(@resource), method: :post, remote: true do |f|
-        = f.text_field 'new_resource', data: { autocomplete: 'resources' }
-        = f.submit 'Add Resource'
 
 %footer
   = collapse_button
