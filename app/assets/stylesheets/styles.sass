@@ -20,8 +20,12 @@ a
   color: $one
 
 .compact
-  a:hover
-    color: #0C3D6E
+  a
+    opacity: 0.5
+    transition: none
+
+    &:hover
+      opacity: 1
 
 a.task_status
   color: rgba(0,0,0,.9)
