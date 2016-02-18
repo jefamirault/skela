@@ -6,13 +6,11 @@ $(document).on 'click', '#my_profile_link', ->
   navigate 'my_profile'
 
 
-$(document).on 'click', '.dropper', ->
-  $('#header').find('.dropper').removeClass 'selected'
-  $(this).addClass 'selected'
-  dropdown = $(this).closest('li').find('.drop_down_nav')
-  dropdown.addClass 'active'
-#  $(document).one 'click', ->
-#    dropdown.removeClass 'active'
+#$(document).on 'click', '.dropper', ->
+#  $('#header').find('.dropper').removeClass 'selected'
+#  $(this).addClass 'selected'
+#  dropdown = $(this).closest('li').find('.drop_down_nav')
+#  dropdown.addClass 'active'
 
 $(document).on 'click', ->
   $('.drop_down_nav').removeClass 'active'
@@ -24,8 +22,8 @@ $(document).on 'click', '.nav_link', ->
 navigate = (selector, push_state = true) ->
   $('#header').find('.nav_link').removeClass 'selected'
   $(selector).addClass 'selected'
-  $('.dropper').removeClass 'selected'
-  $(selector).parents('li:eq(1)').find('.dropper').addClass 'selected'
+#  $('.dropper').removeClass 'selected'
+#  $(selector).parents('li:eq(1)').find('.dropper').addClass 'selected'
 
   cloak '#content'
   if push_state

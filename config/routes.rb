@@ -33,17 +33,7 @@ Rails.application.routes.draw do
       delete 'remove_file', to: 'resources#remove_file', as: 'remove_file'
     end
   end
-
-
-  resources :contexts do
-    member do
-      post 'add_tracker'
-      post 'remove_tracker'
-      get 'activate'
-    end
-  end
-  get 'deactivate_context', to: 'contexts#deactivate', as: 'deactivate_context'
-
+  
   resources :trackers
 
   resources :sounds
