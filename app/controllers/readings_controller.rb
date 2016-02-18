@@ -1,22 +1,7 @@
 class ReadingsController < CruddyController
+  include ResourcefulController
 
   # define any CRUD actions to override CruddyController
-
-
-  def add_resource
-    @reading = Reading.find params[:id]
-    @resource = Resource.find_by_description params[:reading][:new_resource]
-    @reading.resources << @resource
-    redirect_to readings_path
-  end
-
-  def remove_resource
-    @reading = Reading.find params[:id]
-    @resource = Resource.find params[:resource_id]
-    @reading.resources.delete @resource
-    render nothing: true
-  end
-
 
   private
 
