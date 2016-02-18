@@ -22,4 +22,4 @@ production:
   host: localhost
   username: god
   password: damn
-  database: production
+  database: skela_courses_production
