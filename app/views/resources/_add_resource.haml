@@ -8,5 +8,5 @@
 
     .center
       = form_for @resource, url: send("add_resource_#{controller_name.singularize}_path", @resource), method: :post, remote: true do |f|
-        = f.text_field 'new_resource', data: { autocomplete: 'resources' }
+        = f.text_field 'new_resource', data: { autocomplete: 'resources' }, class: 'add_associated_resource'
         = f.submit 'Add Resource'
