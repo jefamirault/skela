@@ -38,6 +38,7 @@ module NavigationHelper
   def nav_link(text, path, title, options = {})
     klass = ''
     klass << 'nav_link' unless options[:no_nav]
+    klass << ' selected' if controller_name == title.underscore
     id = options[:page_title] ? 'page_title' : nil
     link_to text, path, id: id, class: klass, data: { remote: true, theme: '', fade_context: true, swap_title: title }
   end
