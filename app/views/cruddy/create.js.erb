@@ -1,6 +1,8 @@
 if ($('#courses')) {
   $('.cruddy_table').append('<%= j new_cruddy_resource @resource, true %>');
-  find_crud(<%= @resource.id %>).find('.full').slideDown();
+  var thing = find_crud(<%= @resource.id %>).find('.full');
+  thing.slideDown();
+  thing.find('input:not([type="hidden"]):eq(0)').focus();
 } else {
   if ($('#page_title').html != '<%= current_course %>')
     $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
