@@ -6,4 +6,4 @@
         - klass << ' selected' if course == current_course
         %a{ href: activate_course_path(course.id), class: klass, remote: false }
           .left= md_icon 'class'
-          .course_title= course.title
+          .course_title= course.title.present? ? course.title : 'New Course'
