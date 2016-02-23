@@ -1,5 +1,6 @@
 %li= nav_link 'Courses', courses_path, 'Courses', page_title: true
-%li= primary_nav_link display: 'Assignments', path: assignments_path, title: 'Assignments'
-%li= primary_nav_link display: 'Exams', path: exams_path, title: 'Exams'
-%li= primary_nav_link display: 'Readings', path: readings_path, title: 'Readings'
-%li= primary_nav_link display: 'Resources', path: resources_path, title: 'Resources'
+- if @courses.present?
+  %li= primary_nav_link display: 'Assignments', path: assignments_path, title: 'Assignments'
+  %li= primary_nav_link display: 'Exams',       path: exams_path,       title: 'Exams'
+  %li= primary_nav_link display: 'Readings',    path: readings_path,    title: 'Readings'
+  %li= primary_nav_link display: 'Resources',   path: resources_path,   title: 'Resources'

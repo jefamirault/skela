@@ -13,4 +13,5 @@ setTimeout(function(){
   flashNotice("Logged out successfully!");
   window.history.replaceState( {} , '', '<%= login_path %>' );
   $('#sidebar').html('<%= j render 'layouts/sidebar' %>');
+  $('#header').html('<%= j render 'layouts/header' %>');
 }, 600);
