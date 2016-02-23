@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       return false
     end
-    current_user.is_superuser?
+    current_user.admin
   end
   helper_method :superuser?
 

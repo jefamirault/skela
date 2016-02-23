@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208205112) do
+ActiveRecord::Schema.define(version: 20160223193218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,9 +72,8 @@ ActiveRecord::Schema.define(version: 20160208205112) do
   create_table "users", force: :cascade do |t|
     t.string  "username"
     t.string  "password_digest"
-    t.integer "privilege_level"
-    t.string  "favorite_color"
     t.boolean "show_header",     default: true
+    t.boolean "admin"
   end
 
 end

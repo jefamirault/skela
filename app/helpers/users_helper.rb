@@ -24,13 +24,10 @@ module UsersHelper
           user.username
         end
       end
-      favorite_color_cell = content_tag :td do
-        user.favorite_color
-      end
       email_cell = content_tag :td do
         'something@what.com'
       end
-      (user_id_cell + username_cell + favorite_color_cell + email_cell).html_safe
+      (user_id_cell + username_cell + email_cell).html_safe
     end
   end
 end

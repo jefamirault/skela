@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
 
   def is_superuser?
-    self.privilege_level == 1
+    self.admin
   end
 
   def to_s

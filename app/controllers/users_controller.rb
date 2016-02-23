@@ -12,15 +12,15 @@ class UsersController < CruddyController
 
   def update
     @user = User.find params[:id]
-    if params[:user] && params[:user].include?(:privilege_level)
+    if params[:user] && params[:user].include?(:admin)
       if superuser?
-        @user.privilege_level = params[:user][:privilege_level]
+        @user.admin = params[:user][:admin]
       else
         flash[:alert] = 'Get the fuck out of here.'
         session[:user_id] = nil
         return
       end
-      params[:user].delete :privilege_level
+      params[:user].delete :admin
     end
     unless superuser?
       if @user != current_user

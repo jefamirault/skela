@@ -4,7 +4,7 @@ namespace :make_jef_superuser do
     if jef.nil?
       puts 'User jef does not exist'
     else
-      jef.privilege_level = 1
+      jef.admin = true
       puts jef.save ? 'jef now has superuser privileges' : 'failed'
     end
   end

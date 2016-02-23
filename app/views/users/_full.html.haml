@@ -15,10 +15,7 @@
 
   - if superuser?
     %dt Privilege
-    %dd= ajax_number 'privilege_level', @user
-
-  %dt Favorite Color
-  %dd= ajax_string 'favorite_color', @user
+    %dd= ajax_boolean 'admin', @user
 
   %footer
     -# TODO fix css disaster

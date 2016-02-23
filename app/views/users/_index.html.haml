@@ -6,9 +6,4 @@
 
   - if @users
     .center
-      = megatable 'User', %w(id username favorite_color)
-
-  -#%br
-  -#.center
-  -#  = link_to 'New User', new_user_path, remote: true, data: { fade_content: true, swap_title: 'New User'}
-
+      = megatable 'User', %w(id username)
