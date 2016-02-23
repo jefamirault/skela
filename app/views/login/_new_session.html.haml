@@ -5,7 +5,7 @@
 .content{class: request.format == 'html' ? '' : 'invisible'}
   #curtain
     #center_form_box
-      = form_tag sessions_path, remote: true do |f|
+      = form_tag create_session_path, remote: true do |f|
         .center_form_field
           = text_field_tag :username, nil, placeholder: 'Username'
         .center_form_field

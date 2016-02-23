@@ -1,7 +1,4 @@
 class LoginController < ApplicationController
-  def index
-
-  end
 
   def new_session
     if logged_in?
@@ -10,21 +7,18 @@ class LoginController < ApplicationController
   end
 
   def create_session
-    if logged_in?
-      session[:user_id] = nil
-    end
     user = User.find_by_username params[:username]
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-    end
-    respond_to do |format|
-      format.js
+      session[:course] = user.courses.first.id if user.courses.present?
+      redirect_to courses_path
     end
   end
 
   def destroy_session
     session[:user_id] = nil
-
+    session[:course] = nil
+    @courses = Course.where(user_id: nil)
     respond_to do |format|
       format.js
       format.html { redirect_to welcome_path }
