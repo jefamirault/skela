@@ -36,15 +36,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_course
 
   def logged_in?
-    !current_user.new_record?
+    current_user.present?
   end
   helper_method :logged_in?
 
   def current_user
     if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
+      @current_user ||= User.where(id: session[:user_id]).first
     else
-      User.new
+      nil
     end
   end
   helper_method :current_user

@@ -39,7 +39,7 @@ module ApplicationHelper
         else
           'Guest'
         end
-        username.html_safe + avatar(current_user.avatar, 72)
+        username.html_safe + avatar(current_user, 72)
       end
     end
     text
@@ -122,11 +122,11 @@ module ApplicationHelper
 
   end
 
-  def avatar(avatar = nil, size = 50)
-    avatar_path = if avatar.nil?
+  def avatar(user = nil, size = 50)
+    avatar_path = if user.nil?
       Avatar.default
     else
-      avatar.path
+      user.avatar ? user.avatar.path : Avatar.default
     end
     content_tag :div, style: 'display:inline-block;vertical-align:top;padding-top:5px;' do
       image_tag(avatar_path, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
