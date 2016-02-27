@@ -12,9 +12,7 @@ class ApplicationController < ActionController::Base
       record.user = current_user
       record.save
     else
-      @guest = User.create
-      @guest.username = "Guest_#{@guest.id}"
-      @guest.save
+      @guest = User.guest
 
       session[:user_id] = @guest.id
       record.user = @guest

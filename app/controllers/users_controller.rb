@@ -1,6 +1,6 @@
 class UsersController < CruddyController
 
-  before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create]
+  before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create, :my_profile]
   before_filter :authorize_superuser, only: [:admin_create]
 
   def index
@@ -108,8 +108,8 @@ class UsersController < CruddyController
   end
 
   def my_profile
-    @user = current_user
-
+    @user = current_user || User.guest
+    session[:user_id] = @user.id
     respond_to do |format|
       format.html
       format.js

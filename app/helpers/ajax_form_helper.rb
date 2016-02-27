@@ -72,8 +72,6 @@ module AjaxFormHelper
           f.time_field field, class: 'ajax_field'
         when 'date'
           f.date_field field, class: 'ajax_field'
-        when 'price'
-          f.text_field field, class: 'ajax_field', value: number_with_precision(resource.send(field), precision: 2)
       end
     end
   end

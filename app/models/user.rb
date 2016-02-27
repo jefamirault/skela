@@ -44,4 +44,11 @@ class User < ActiveRecord::Base
   def is_guest?
     password_digest.nil?
   end
+
+  def self.guest
+    user = User.create
+    user.username = "Guest_#{user.id}"
+    user.save
+    user
+  end
 end
