@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
                         unless: Proc.new { |a| a.is_guest }
   validates_presence_of :username,
                         unless: Proc.new { |a| a.is_guest }
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username,
+                        unless: Proc.new { |a| a.is_guest }
 
   has_many :courses
   has_many :assignments, through: :courses
@@ -13,15 +14,6 @@ class User < ActiveRecord::Base
   has_many :resources, through: :courses
 
   has_one :avatar
-
-  def username
-    database_says = read_attribute(:username)
-    database_says ? database_says.downcase : nil
-  end
-  def username=(value)
-    write_attribute(:username, value.downcase)
-  end
-
 
   def is_superuser?
     self.admin

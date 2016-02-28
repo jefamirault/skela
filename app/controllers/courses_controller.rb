@@ -7,7 +7,7 @@ class CoursesController < CruddyController
   end
 
   def new
-    @courses = current_user.courses
+    @courses = current_user ? current_user.courses : []
   end
 
   def activate_course

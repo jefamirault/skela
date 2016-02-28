@@ -1,1 +1,42 @@
-= render partial: 'edit'
+- if request.format == :html
+  .card_header
+    %h2 My Profile
+%br
+.content{class: request.format == 'html' ? '' : 'invisible'}
+
+  -#.center_formf
+  = render 'form'
+
+  - if @user.is_guest?
+    %br
+    %br
+    -#%h3.center Log in to save your data!
+    %dl.left_half
+      #login_button.center.trigger_reveal New to Skela?
+      .to_be_revealed
+        %dd
+          = form_for @user, remote: true do |f|
+            .center_form_field
+              = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'reveal_focus'
+            .center_form_field
+              = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+            .actions= f.submit 'Sign Up', id: 'login_button'
+
+    %dl.right_half
+      #login_button.center.trigger_reveal Already a member?
+      .to_be_revealed
+        %dd
+          = form_tag create_session_path, remote: true do |f|
+            .center_form_field
+              = text_field_tag :username, nil, placeholder: 'Username', class: 'reveal_focus'
+            .center_form_field
+              = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
+            .actions
+              = submit_tag 'Log In', id: 'login_button'
+
+  %footer
+    - unless current_user && current_user.guest?
+      .right{style: 'padding-top:14px;'}
+        = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
+          .toe.right Logout
+          .toe.right= md_icon 'exit_to_app'
