@@ -1,6 +1,6 @@
 class UsersController < CruddyController
 
-  before_filter :authenticate, except: [:index, :admin_new, :edit, :new, :create, :my_profile]
+  before_filter :authenticate, except: [:admin_new, :edit, :new, :create, :my_profile]
   before_filter :authorize_superuser, only: [:admin_create]
 
   def index
