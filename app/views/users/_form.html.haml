@@ -1,38 +1,18 @@
-.center_form
-  %dl
-    %dt Username
-    %dd= ajax_string 'username', @user
+%dl
+  %dt Username
+  %dd= ajax_string 'username', @user
 
-    %dt Avatar
-    %dd
-      - size = 75
-      .avatar_box{ style: "width:#{size}px;height:#{size}px;background:#aaa;"}
-        = avatar @user, 75
-      .edit_avatar
-        %ul
-          %li= link_to 'Change Face', change_avatar_face_path, remote: true, method: :post
-          %li= link_to 'Change Head', change_avatar_head_path, remote: true, method: :post
-          %li= link_to 'Change Color', change_avatar_color_path, remote: true, method: :post
+  %dt Avatar
+  %dd
+    - size = 75
+    .avatar_box{ style: "width:#{size}px;height:#{size}px;background:#aaa;"}
+      = avatar @user, 75
+    .edit_avatar
+      %ul
+        %li= link_to 'Change Face', change_avatar_face_path, remote: true, method: :post
+        %li= link_to 'Change Head', change_avatar_head_path, remote: true, method: :post
+        %li= link_to 'Change Color', change_avatar_color_path, remote: true, method: :post
 
-    - if superuser?
-      %dt Admin
-      %dd= ajax_boolean 'admin', @user
-
-
-    - if @user.is_guest?
-      %h4 Create a password to save your data!
-      %dt Register
-      %dd
-        = form_for @user, remote: true do |f|
-          = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
-          %br
-          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
-          .actions= f.submit 'Save Password'
-
-
-  %footer
-    -# TODO fix css disaster
-    .right{style: 'padding-top:14px;'}
-      = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
-        .toe.right Logout
-        .toe.right= md_icon 'exit_to_app'
+  - if superuser?
+    %dt Admin
+    %dd= ajax_boolean 'admin', @user

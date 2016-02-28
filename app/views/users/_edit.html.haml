@@ -4,7 +4,40 @@
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
 
-  = render 'form'
+  .center_form
+    = render 'form'
+
+
+    - if @user.is_guest?
+      %dl
+        %h4 Log in to save your data!
+        %dt New to Skela?
+        %dd
+          = form_for @user, remote: true do |f|
+            .center_form_field
+              = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
+            .center_form_field
+              = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+
+            .actions= f.submit 'Sign Up', id: 'login_button'
+        %p OR
+        %dt Already a member?
+        %dd
+          = form_tag create_session_path, remote: true do |f|
+            .center_form_field
+              = text_field_tag :username, nil, placeholder: 'Username'
+            .center_form_field
+              = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
+
+            .actions
+              = submit_tag 'Log In', id: 'login_button'
+
+
+    %footer
+      .right{style: 'padding-top:14px;'}
+        = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
+          .toe.right Logout
+          .toe.right= md_icon 'exit_to_app'
 
   %br
-  = link_to 'Back', users_path, data: { remote: true, fade_content: true, swap_title: 'Users' }
+  = link_to 'Back', root_path, data: { remote: true, fade_content: true, swap_title: 'Courses' }

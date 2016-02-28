@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
                         unless: Proc.new { |a| a.is_guest }
   validates_uniqueness_of :username
 
-  has_many :contexts
-
   has_many :courses
   has_many :assignments, through: :courses
+  has_many :exams, through: :courses
+  has_many :readings, through: :courses
+  has_many :resources, through: :courses
 
   has_one :avatar
 
@@ -44,6 +45,12 @@ class User < ActiveRecord::Base
   def is_guest?
     password_digest.nil?
   end
+  def guest
+    is_guest?
+  end
+  def guest?
+    is_guest?
+  end
 
   def self.guest
     user = User.create
@@ -51,4 +58,11 @@ class User < ActiveRecord::Base
     user.save
     user
   end
+
+  def absorb_data(user)
+    self.courses << user.courses
+    user.reload
+    user.destroy
+  end
+
 end

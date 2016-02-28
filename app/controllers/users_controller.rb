@@ -47,11 +47,6 @@ class UsersController < CruddyController
     end
   end
 
-  # def new
-  #   @user = User.new
-  #   render 'cards/new'
-  # end
-
   def create
     if User.find_by_username params[:user][:username]
       # flash[:alert] = 'That username is taken'

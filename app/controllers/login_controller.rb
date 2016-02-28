@@ -9,6 +9,11 @@ class LoginController < ApplicationController
   def create_session
     user = User.find_by_username params[:username]
     if user && user.authenticate(params[:password])
+      if current_user && current_user.guest
+        user.absorb_data(current_user)
+      #   gives user all of current_user's data
+      #   then destroys current_user
+      end
       session[:user_id] = user.id
       session[:course] = user.courses.first.id if user.courses.present?
       redirect_to courses_path
