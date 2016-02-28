@@ -7,10 +7,11 @@
   .center_form
     = render 'form'
 
-
     - if @user.is_guest?
-      %dl
-        %h4 Log in to save your data!
+      %br
+      %br
+      %h3.center Log in to save your data!
+      %dl.left_half
         %dt New to Skela?
         %dd
           = form_for @user, remote: true do |f|
@@ -20,7 +21,7 @@
               = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
 
             .actions= f.submit 'Sign Up', id: 'login_button'
-        %p OR
+      %dl.right_half
         %dt Already a member?
         %dd
           = form_tag create_session_path, remote: true do |f|
@@ -34,10 +35,11 @@
 
 
     %footer
-      .right{style: 'padding-top:14px;'}
-        = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
-          .toe.right Logout
-          .toe.right= md_icon 'exit_to_app'
+      - unless current_user.guest?
+        .right{style: 'padding-top:14px;'}
+          = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
+            .toe.right Logout
+            .toe.right= md_icon 'exit_to_app'
 
   %br
-  = link_to 'Back', root_path, data: { remote: true, fade_content: true, swap_title: 'Courses' }
+  .center= link_to 'Back', root_path, data: { remote: true, fade_content: true, swap_title: 'Courses' }
