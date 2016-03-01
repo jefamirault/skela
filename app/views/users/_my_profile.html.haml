@@ -38,5 +38,5 @@
     - unless current_user && current_user.guest?
       .right{style: 'padding-top:14px;'}
         = link_to logout_path, id: 'logout_button', data: { remote: true, method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
-          .toe.right Logout
-          .toe.right= md_icon 'exit_to_app'
+          .icon= md_icon 'exit_to_app'
+          .flex Logout
