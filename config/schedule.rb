@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+job_type :rake,    "cd :path && :environment_variable=:environment bundle exec rake -e :environment :task --silent :output"
+
 set :output, { error: 'error.log', standard: 'cron.log' }
 
 every 1.minute do
