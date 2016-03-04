@@ -82,3 +82,5 @@ group :development do
 end
 
 gem 'pg', '0.17.1'
+
+gem 'whenever', :require => false

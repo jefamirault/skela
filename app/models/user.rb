@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   has_one :avatar
 
+  scope :guests, -> { where(password_digest: nil) }
+
+  after_save :update_last_active
+
   def is_superuser?
     self.admin
   end
@@ -55,6 +59,12 @@ class User < ActiveRecord::Base
     self.courses << user.courses
     user.reload
     user.destroy
+  end
+
+  private
+
+  def update_last_active
+    write_attribute :last_active, Time.now
   end
 
 end

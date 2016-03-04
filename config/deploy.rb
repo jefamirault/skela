@@ -35,6 +35,8 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -63,4 +65,3 @@ namespace :deploy do
   end
   after :publishing, 'deploy:setup_secrets'
 end
-
