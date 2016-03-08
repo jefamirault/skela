@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_one :avatar
 
   scope :guests, -> { where(password_digest: nil) }
+  scope :inactive, -> { where('last_active < ?', 2.weeks.ago) }
+  scope :inactive_guests, -> { User.guests.where('last_active < ?', 2.weeks.ago) }
 
   after_save :update_last_active
 
