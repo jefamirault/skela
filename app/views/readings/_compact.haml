@@ -1,4 +1,5 @@
 .crud_title
   = resource.description
 .right
-  = resource.due_date.strftime '%a %-m/%-d'
+  = resource.due_date ? resource.due_date.strftime('%a %-m/%-d') : nil
+  

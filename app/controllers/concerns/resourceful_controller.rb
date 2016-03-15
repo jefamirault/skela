@@ -4,7 +4,18 @@ module ResourcefulController
   included do
     def add_resource
       @resourceful = resourceful.find params[:id]
-      @resource = Resource.find_by_description params[resourceful_name.to_sym][:new_resource]
+      input = params[resourceful_name.to_sym][:new_resource]
+      @resource = Resource.where(description: input).first
+      if @resource.nil?
+        def input.looks_like_a_url?
+          self[0..6] == 'http://'
+        end
+        @resource = if input.looks_like_a_url?
+          Resource.create url: input, description: input[7..-1], course: current_course
+        else
+          Resource.create description: input, course: current_course
+        end
+      end
       @resourceful.resources << @resource
       render 'resources/add_resource'
     end

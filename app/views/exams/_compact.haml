@@ -1,4 +1,4 @@
 .crud_title
   = resource.topic
 .right
-  = resource.datetime.strftime '%a %-m/%-d @%l:%M'
+  = resource.datetime ? resource.datetime.strftime('%a %-m/%-d @%l:%M') : nil
