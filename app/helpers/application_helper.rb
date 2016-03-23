@@ -30,25 +30,23 @@ module ApplicationHelper
   end
 
   def logged_in_text
-    text = content_tag :div, id: 'logged_in_text' do
-      my_profile_nav do
-        username = if logged_in?
-          content_tag :div, style: 'display:inline-block;vertical-align:top;' do
-            content_tag(:strong, content_tag(:span, "#{current_user.username}", class: "user_#{current_user.id}_username"))
-          end
-        else
-          content_tag(:span, 'Guest', class: 'user_0_username')
-        end
-        username.html_safe + avatar(current_user, 72)
-      end
+    user = UserPresenter.new current_user
+    my_profile_nav do
+
     end
-    text
+  end
+
+  def present(object, klass = nil)
+    klass ||= "#{object.class}Presenter".constantize
+    presenter = klass.new(object, self)
+    yield presenter if block_given?
+    presenter
   end
 
   def my_profile_nav(&block)
     klass = 'nav_link'
     klass << ' selected' if params[:controller] == 'users' && params[:action] == 'my_profile'
-    link_to my_profile_path, remote: true, class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
+    link_to my_profile_path, remote: true, id: 'logged_in_user', class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
       block.call
     end
   end
