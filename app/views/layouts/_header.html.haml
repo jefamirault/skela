@@ -5,8 +5,6 @@
 
     .flex
 
-
-    -#= render 'layouts/user_nav'
     = my_profile_nav do
       - present current_user do |user|
         = user.username_and_avatar

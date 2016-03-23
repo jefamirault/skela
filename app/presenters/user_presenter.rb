@@ -21,11 +21,6 @@ class UserPresenter
   end
 
   def username_and_avatar
-    # klass = 'nav_link'
-    # klass << ' selected' if params[:controller] == 'users' && params[:action] == 'my_profile'
-    # link_to my_profile_path, remote: true, class: klass, data: { fade_content: true, swap_title: 'My Profile' } do
-    #   username + avatar
-    # end
     username + avatar
   end
 end
