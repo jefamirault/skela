@@ -37,7 +37,7 @@ module ApplicationHelper
             content_tag(:strong, content_tag(:span, "#{current_user.username}", class: "user_#{current_user.id}_username"))
           end
         else
-          'Guest'
+          content_tag(:span, 'Guest', class: 'user_0_username')
         end
         username.html_safe + avatar(current_user, 72)
       end
