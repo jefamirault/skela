@@ -4,6 +4,7 @@ lock '3.4.0'
 set :application, 'skela'
 set :repo_url, 'https://github.com/AdmiralJef/skela.git'
 set :rbenv_ruby, '2.1.2'
+set :rails_env, "production"
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
