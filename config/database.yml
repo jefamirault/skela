@@ -1,27 +1,25 @@
 default: &default
   adapter: postgresql
   host: localhost
+  username: god
+  password: damn
+  database: skela_courses_production
+
+development: &development
+  adapter: postgresql
+  host: localhost
   pool: 5
   timeout: 5000
-
-development:
-  <<: *default
-  database: skela_courses_development
   username: databoss
   password: Aquafina
+  database: skela_courses_development
 
 test: &test
-  <<: *default
+  <<: *development
   database: skela_courses_test
-  username: databoss
-  password: Aquafina
 
 cucumber:
   <<: *test
 
 production:
-  adapter: postgresql
-  host: localhost
-  username: god
-  password: damn
-  database: skela_courses_production
+  << *default
