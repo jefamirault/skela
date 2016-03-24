@@ -22,4 +22,4 @@ cucumber:
   <<: *test
 
 production:
-  << *default
+  <<: *default
