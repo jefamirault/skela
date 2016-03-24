@@ -59,3 +59,5 @@ server '45.55.215.70', user: 'root', roles: %w{web app}
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+set :stage, :production
