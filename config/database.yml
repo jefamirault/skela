@@ -12,7 +12,7 @@ development: &development
   timeout: 5000
   username: god
   password: damn
-  database: skela_courses_development
+  database: skela_courses_production
 
 test: &test
   <<: *development
