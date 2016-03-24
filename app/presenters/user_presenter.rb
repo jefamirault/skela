@@ -10,7 +10,7 @@ class UserPresenter
 
   def username
     content_tag :div, id: 'current_user' do
-      content_tag(:strong, content_tag(:span, "#{@user.username}", class: "user_#{@user.id}_username"))
+      content_tag(:strong, content_tag(:span, "#{@user ? @user.username : 'Guest'}", class: "user_#{@user ? @user.id : 0}_username"))
     end
   end
 
