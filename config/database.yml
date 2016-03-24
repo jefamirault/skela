@@ -3,16 +3,18 @@ default: &default
   host: localhost
   pool: 5
   timeout: 5000
-  username: databoss
-  password: Aquafina
 
 development:
   <<: *default
   database: skela_courses_development
+  username: databoss
+  password: Aquafina
 
 test: &test
   <<: *default
   database: skela_courses_test
+  username: databoss
+  password: Aquafina
 
 cucumber:
   <<: *test
