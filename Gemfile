@@ -35,7 +35,6 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'haml'
-gem 'thin'
 gem 'material_icons'
 
 gem "paperclip", "~> 4.2"
@@ -53,10 +52,8 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', :require => false
-  # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'webrat'
-  # gem 'factory-girl'
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
@@ -69,9 +66,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard'
   gem 'guard-cucumber'
-  # gem 'pry'
-  # gem 'pry-remote'
-  # gem 'pry-nav'
 end
 
 gem 'ransack'
@@ -84,3 +78,5 @@ end
 gem 'pg', '0.17.1'
 
 gem 'whenever', :require => false
+
+gem 'passenger'

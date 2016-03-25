@@ -10,9 +10,9 @@ development: &development
   host: localhost
   pool: 5
   timeout: 5000
-  username: god
-  password: damn
-  database: skela_courses_production
+  username: databoss
+  password: Aquafina
+  database: skela_courses_development
 
 test: &test
   <<: *development
