@@ -65,4 +65,8 @@ namespace :deploy do
     `echo #{secrets} >> #{shared_path}/config/secrets.yml`
   end
   after :publishing, 'deploy:setup_secrets'
+
+  task :ruby_v do
+    exec 'ruby -v'
+  end
 end
