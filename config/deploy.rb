@@ -53,7 +53,8 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       `rake db:migrate RAILS_ENV=production`
-      execute "kill -9 `ps -ax | ag server | head -n1 | awk '{print $1}'` ; service thin start"
+      # execute "kill -9 `ps -ax | ag server | head -n1 | awk '{print $1}'` ; bundle exec passenger start"
+      execute 'bundle exec passenger start'
     end
   end
   
