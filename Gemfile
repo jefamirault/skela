@@ -80,3 +80,4 @@ gem 'pg', '0.17.1'
 gem 'whenever', :require => false
 
 gem 'passenger'
+gem 'capistrano-passenger'
