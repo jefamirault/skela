@@ -1,4 +1,4 @@
-This is skela
+This is Skela
 =============
 
-Welcome to skela. Use skela to keep track of things. Create your own set of trackers and share them with collaborators.
+Use Skela to keep track of school stuff. Easily organize your courses into Assignments, Exams, Readings, and Resources.
