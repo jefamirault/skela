@@ -55,4 +55,8 @@ module NavigationHelper
   def path_for_tracker(tracker = @tracker)
     send "#{name.underscore}_path"
   end
+
+  def navbar_link(title)
+    link_to title, send("#{title.pluralize.underscore}_path"), class: 'nav_link', data: { remote: true, fade_content: true, swap_title: title }
+  end
 end

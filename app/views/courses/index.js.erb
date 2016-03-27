@@ -1,4 +1,4 @@
-$('#header').html('<%= j render 'layouts/header' %>');
+$('#header').replaceWith('<%= j render 'layouts/header' %>');
 
 replaceContentAndDecloak('<%= j render template: 'courses/index.haml' %>');
 

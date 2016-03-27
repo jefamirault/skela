@@ -1,67 +1,57 @@
+=white-text($alpha)
+  color: rgba(255,255,255,$alpha)
+=black-text($alpha)
+  color: rgba(0,0,0,$alpha)
+
+=white-background($alpha)
+  background-color: rgba(255,255,255,$alpha)
+=black-text($alpha)
+  background-color: rgba(0,0,0,$alpha)
+
+
+
 .flex_box
   display: flex
-  display: -webkit-flex
 .flex
   flex: 1
-  webkit-flex: 1
-#helmet
+
+#page_title
+  font-size: 300%
+  font-family: 'Ubuntu', 'sans-serif'
+  font-weight: bold
+  color: #fff
+  padding: 0 20px
+  white-space: nowrap
+
+#header
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-  transition: top .70s ease-in-out, margin .70s ease-in-out, opacity .45s ease-in-out, height .7s ease-in-out, background .2s ease-in-out
+  +white-text(.96)
+  background: #1976D2
+  padding: 0 23px
   position: relative
   z-index: 9
-  padding: 0 23px
 
-  #page_title
-    font-size: 300%
-    font-family: 'Ubuntu', 'sans-serif'
-    font-weight: bold
-    color: #fff
-    padding: 0 20px
-    white-space: nowrap
 
-  &.hidden
-    top: -50px
-    margin: 0 auto -50px
-  &:not(.hidden)
-    margin: 0 auto 0
+  nav
+    display: flex
+    justify-content: space-between
 
-  #header
-    color: rgba(255,255,255,.91)
-    display: block
-    padding: 0
+  ul
+    display: flex
+    align-self: flex-start
     margin: 0
-    vertical-align: bottom
 
 a.nav_link
   display: inline-block
   font-size: 110%
   padding: 0 1em
-  margin: 0
   line-height: 84px
-  color: rgba(255,255,255,.91)
+  +white-text(.91)
   transition: all 0.15s ease-out
   &:hover, &.selected
     text-decoration: none
-    cursor: pointer
-    background-color: rgba(255,255,255,.06)
-
-ul#primary_nav
-  margin: 0
+    +white-background(.06)
 
 #logged_in_user
   display: flex
   align-items: center
-
-#helmet #toggle_header
-  float: left
-  position: absolute
-  left: 10px
-  top: 50px
-  color: rgba(0,0,0,.15)
-
-  transition: color .3s ease-in-out
-
-  &:hover
-    text-decoration: none
-    color: rgba(0,0,0,.45)

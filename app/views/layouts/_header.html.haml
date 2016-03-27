@@ -1,10 +1,11 @@
-#header.flex_box.flex
-  %nav.flex_box.flex
-    %ul#primary_nav.flex_box
-      = render 'layouts/primary_nav'
+#header
+  %nav
+    = nav_link 'Courses', courses_path, 'Courses', page_title: true
+
+    %ul#primary_nav
+      = render partial: 'layouts/primary_nav'
 
     .flex
-
     = my_profile_nav do
       - present current_user do |user|
         = user.username_and_avatar
