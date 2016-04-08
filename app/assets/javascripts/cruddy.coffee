@@ -38,3 +38,6 @@ root.find_crud = (id) ->
 
 $(document).on 'click', '#new_crud', ->
   $(this).removeClass 'look_at_me'
+
+root.locate = (type, id) ->
+  $("[data-type=#{type}][data-resource-id=#{id}]");

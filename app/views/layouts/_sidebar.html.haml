@@ -1,7 +1,7 @@
 %nav
   %ul
     - @courses.each do |course|
-      %li
+      %li{ data: { type: 'course', resource_id: course.id }}
         - klass = 'button'
         - klass << ' selected' if course == current_course
         %a{ href: activate_course_path(course.id), class: klass, remote: false }
