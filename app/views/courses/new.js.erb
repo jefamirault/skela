@@ -5,10 +5,10 @@ if ($('#courses')) {
   thing.find('input:not([type="hidden"]):eq(0)').focus();
 } else {
   if ($('#page_title').html != '<%= current_course %>')
-    $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
+    $('#primary_nav').replaceWith('<%= j render 'layouts/primary_nav' %>');
 
   replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
 
 }
-$('#header').html('<%= j render 'layouts/header' %>');
+$('#header').replaceWith('<%= j render 'layouts/header' %>');
 $('#sidebar').html('<%= j render 'layouts/sidebar' %>');
