@@ -22,7 +22,7 @@ class ResourcesController < CruddyController
 
   def update
     @resource.update crud_params
-    redirect_to resources_path
+    redirect_to explore_course_path(@resource.course)
   end
 
 

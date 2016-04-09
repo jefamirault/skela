@@ -6,15 +6,28 @@
   #assignments_container.category
     %h4 Assignments
     = cruddy_table compact: 'assignments/compact', enlarged: 'assignments/full', resources: @assignments, type: 'assignment'
+    .center
+      .new_crud_button
+        = link_to md_icon('add_circle', true), new_assignment_path, remote: true, id: 'new_crud'
+
   #exams_container.category
     %h4 Exams
     = cruddy_table compact: 'exams/compact', enlarged: 'exams/full', resources: @exams, type: 'exams'
+    .center
+      .new_crud_button
+        = link_to md_icon('add_circle', true), new_exam_path, remote: true, id: 'new_crud'
   #readings_container.category
     %h4 Readings
     = cruddy_table compact: 'readings/compact', enlarged: 'readings/full', resources: @readings, type: 'reading'
+    .center
+      .new_crud_button
+        = link_to md_icon('add_circle', true), new_reading_path, remote: true, id: 'new_crud'
   #resources_container.category
     %h4 Resources
     = cruddy_table compact: 'resources/compact', enlarged: 'resources/full', resources: @resources, type: 'resource'
+    .center
+      .new_crud_button
+        = link_to md_icon('add_circle', true), new_resource_path, remote: true, id: 'new_crud'
   %br
 
 :javascript
