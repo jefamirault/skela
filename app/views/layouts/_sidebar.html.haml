@@ -7,7 +7,7 @@
 
     - @courses.each do |course|
       %li{ data: { type: 'course', resource_id: course.id }}
-        - klass = 'button nav_link'
+        - klass = 'button nav_link course'
         - klass << ' selected' if course == current_course
         %a{ href: explore_course_path(course.id), class: klass, data: { remote: true, swap_title: course.title, fade_content: 'true' }}
           .left= md_icon 'class'
