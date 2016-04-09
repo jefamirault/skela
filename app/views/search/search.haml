@@ -4,5 +4,41 @@
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
 
-  %form
-    %input{ type: 'search' }
+  %form#search_form
+    .row
+      %label Full-Text:
+      .field
+        = md_icon 'search'
+        %input#full_text_search{ type: 'search' }
+      %a#advanced_search_toggle Advanced Search
+
+    #advanced_search.hidden
+      .row
+        %label Due date:
+        .field
+          %input{ type: 'search' }
+
+      .row
+        %label Created at:
+        .field
+          %input{ type: 'search' }
+
+      .row
+        %label Modified:
+        .field
+          %input{ type: 'search' }
+
+      .row
+        %label Title:
+        .field
+          %input{ type: 'search' }
+
+      .row
+        %label Notes:
+        .field
+          %input{ type: 'search' }
+
+      %input.button{ type: 'submit', value: 'Advanced Search' }
+
+:javascript
+  $('#full_text_search').focus();
