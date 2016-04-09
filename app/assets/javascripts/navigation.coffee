@@ -1,30 +1,11 @@
 root = exports ? this
 
-$(document).on 'click', '#header_left', ->
-  navigate 'welcome'
-$(document).on 'click', '#my_profile_link', ->
-  navigate 'my_profile'
-
-
-#$(document).on 'click', '.dropper', ->
-#  $('#header').find('.dropper').removeClass 'selected'
-#  $(this).addClass 'selected'
-#  dropdown = $(this).closest('li').find('.drop_down_nav')
-#  dropdown.addClass 'active'
-
-$(document).on 'click', ->
-  $('.drop_down_nav').removeClass 'active'
-
 $(document).on 'click', '.nav_link', ->
-  $('.drop_down_nav').removeClass 'active'
-  navigate this
+  window.history.pushState( {} , '', $(this).attr('href') );
 
 navigate = (selector, push_state = true) ->
   $('#header').find('.nav_link').removeClass 'selected'
   $(selector).addClass 'selected'
-#  $('.dropper').removeClass 'selected'
-#  $(selector).parents('li:eq(1)').find('.dropper').addClass 'selected'
-
   cloak '#content'
   if push_state
     window.history.pushState( {} , '', $(selector).attr('href') );
@@ -83,3 +64,8 @@ root.timeout = (delay, callback) ->
 $(document).on 'click', '#sidebar .button', ->
   $('#sidebar .button').removeClass 'selected'
   $(this).addClass 'selected'
+
+$(document).on 'click', '.category_toggle', ->
+  $(this).toggleClass 'selected'
+  target = $(this).data 'toggle'
+  $("##{target}").toggleClass 'hidden'

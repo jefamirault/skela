@@ -41,16 +41,22 @@
     align-self: flex-start
     margin: 0
 
-a.nav_link
+a.nav_link, a.category_toggle
   display: inline-block
   font-size: 110%
   padding: 0 1em
   line-height: 84px
   +white-text(.91)
   transition: all 0.15s ease-out
-  &:hover, &.selected
+  cursor: pointer
+  &.selected
     text-decoration: none
-    +white-background(.06)
+    +white-background(.07)
+  &:hover
+    text-decoration: none
+    +white-background(.04)
+  &:hover.selected
+    +white-background(.09)
 
 #logged_in_user
   display: flex

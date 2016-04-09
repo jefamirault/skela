@@ -38,7 +38,7 @@ module NavigationHelper
   def nav_link(text, path, title, options = {})
     klass = ''
     klass << 'nav_link' unless options[:no_nav]
-    klass << ' selected' if controller_name == title.underscore
+    # klass << ' selected' if controller_name == title.underscore
     id = options[:page_title] ? 'page_title' : nil
     link_to text, path, id: id, class: klass, data: { remote: true, theme: '', fade_context: true, swap_title: title }
   end
@@ -57,6 +57,11 @@ module NavigationHelper
   end
 
   def navbar_link(title)
-    link_to title, send("#{title.pluralize.underscore}_path"), class: 'nav_link', data: { remote: true, fade_content: true, swap_title: title }
+    link_to title, '', class: 'nav_link category_toggle', data: { remote: true, fade_content: true, swap_title: title }
   end
+end
+# send("#{title.pluralize.underscore}_path")
+
+def category_toggle(title)
+  content_tag :a, title, class: 'category_toggle selected', data: { toggle: "#{title.underscore}_container" }
 end
