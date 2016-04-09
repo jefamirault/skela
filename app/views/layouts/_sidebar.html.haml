@@ -1,9 +1,18 @@
 %nav
   %ul
+    %li
+      %a{ href: courses_path, class: 'button nav_link', data: { remote: true, swap_title: 'Courses', fade_content: 'true' } }
+        .left= md_icon 'school'
+        .course_title= 'Courses'
+
     - @courses.each do |course|
       %li{ data: { type: 'course', resource_id: course.id }}
-        - klass = 'button'
+        - klass = 'button nav_link'
         - klass << ' selected' if course == current_course
-        %a{ href: activate_course_path(course.id), class: klass, remote: false }
+        %a{ href: explore_course_path(course.id), class: klass, data: { remote: true, swap_title: course.title, fade_content: 'true' }}
           .left= md_icon 'class'
           .course_title= course.title.present? ? course.title : 'New Course'
+    %li
+      %a{ href: search_path, class: 'button nav_link', data: { remote: true, swap_title: 'Search', fade_content: 'true' }}
+        .left= md_icon 'search'
+        .course_title= 'Search'

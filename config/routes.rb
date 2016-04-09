@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'search', to: 'search#search'
+
   resources :courses do
     member do
       get 'activate', to: 'courses#activate_course'
+      get 'explore', to: 'courses#explore'
     end
   end
 

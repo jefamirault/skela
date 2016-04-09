@@ -2,18 +2,17 @@ class CoursesController < CruddyController
 
   # define any CRUD actions to override CruddyController
 
-  def index
-
-  end
-
   def new
     @courses = current_user ? current_user.courses : []
   end
 
-  def activate_course
+  def explore
     @course = Course.find params[:id]
-    session[:course] = @course.id
-    redirect_to courses_path
+    session[:course] = @course.id if @course
+    @assignments = @course.assignments
+    @exams       = @course.exams
+    @readings    = @course.readings
+    @resources   = @course.resources
   end
 
   private

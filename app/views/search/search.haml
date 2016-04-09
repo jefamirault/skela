@@ -1,0 +1,8 @@
+- if request.format == :html
+  .card_header
+    %h2= params[:controller].titleize
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+
+  %form
+    %input{ type: 'search' }

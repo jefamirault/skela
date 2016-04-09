@@ -1,0 +1,19 @@
+- if request.format == :html
+  .card_header
+    %h2= @course.title
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  %h4 Assignments
+  = cruddy_table compact: 'assignments/compact', enlarged: 'assignments/full', resources: @assignments, type: 'assignment'
+  %h4 Exams
+  = cruddy_table compact: 'exams/compact', enlarged: 'exams/full', resources: @exams, type: 'exams'
+  %h4 Readings
+  = cruddy_table compact: 'readings/compact', enlarged: 'readings/full', resources: @readings, type: 'reading'
+  %h4 Resources
+  = cruddy_table compact: 'resources/compact', enlarged: 'resources/full', resources: @resources, type: 'resource'
+  %br
+
+:javascript
+  $(document).on('click', '#new_crud', function(){
+    $('#get_started').fadeOut('fast');
+  });

@@ -1,6 +1,6 @@
 module CruddyHelper
   def cruddy_table(options)
-    id = controller_name
+    id = options[:type] ? options[:type].pluralize : controller_name
     content_tag :ul, class: 'cruddy_table', id: id do
       if options[:resources]
         options[:resources].map do |resource|
