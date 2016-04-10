@@ -56,7 +56,7 @@ module AjaxFormHelper
         when 'notes'
           f.text_area field, class: 'ajax_field notes', placeholder: 'Notes'
         when 'subject'
-          f.text_field field, class: 'ajax_field subject', placeholder: 'Subject'
+          f.text_field field, class: 'ajax_field subject', placeholder: "New #{resource.class.to_s}"
         when 'text'
           f.text_area field, class: 'ajax_field'
         when 'boolean'

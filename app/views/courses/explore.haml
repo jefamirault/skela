@@ -3,31 +3,33 @@
     %h2= @course.title
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
-  #assignments_container.category
-    .row{ style: 'align-items: flex-end;'}
-      %h4 Assignments
-      .new_crud_button{ style: 'display:inline;'}
-        = link_to md_icon('add_circle', false), new_assignment_path, remote: true, id: 'new_crud'
-    = cruddy_table compact: 'assignments/compact', enlarged: 'assignments/full', resources: @assignments, type: 'assignment'
+  #by_category
+    #assignments_container.category
+      .row{ style: 'align-items: flex-end;'}
+        %h4 Assignments
+        .new_crud_button{ style: 'display:inline;'}
+          = link_to md_icon('add_circle', false), new_assignment_path, remote: true, id: 'new_crud'
+      = cruddy_table compact: 'assignments/compact', enlarged: 'assignments/full', resources: @assignments, type: 'assignment'
 
-  #exams_container.category
-    .row{ style: 'align-items: flex-end;'}
-      %h4 Exams
-      .new_crud_button
-        = link_to md_icon('add_circle', false), new_exam_path, remote: true, id: 'new_crud'
-    = cruddy_table compact: 'exams/compact', enlarged: 'exams/full', resources: @exams, type: 'exams'
-  #readings_container.category
-    .row{ style: 'align-items: flex-end;'}
-      %h4 Readings
-      .new_crud_button
-        = link_to md_icon('add_circle', false), new_reading_path, remote: true, id: 'new_crud'
-    = cruddy_table compact: 'readings/compact', enlarged: 'readings/full', resources: @readings, type: 'reading'
-  #resources_container.category
-    .row{ style: 'align-items: flex-end;'}
-      %h4 Resources
-      .new_crud_button
-        = link_to md_icon('add_circle', false), new_resource_path, remote: true, id: 'new_crud'
-    = cruddy_table compact: 'resources/compact', enlarged: 'resources/full', resources: @resources, type: 'resource'
+    #exams_container.category
+      .row{ style: 'align-items: flex-end;'}
+        %h4 Exams
+        .new_crud_button
+          = link_to md_icon('add_circle', false), new_exam_path, remote: true, id: 'new_crud'
+      = cruddy_table compact: 'exams/compact', enlarged: 'exams/full', resources: @exams, type: 'exams'
+    #readings_container.category
+      .row{ style: 'align-items: flex-end;'}
+        %h4 Readings
+        .new_crud_button
+          = link_to md_icon('add_circle', false), new_reading_path, remote: true, id: 'new_crud'
+      = cruddy_table compact: 'readings/compact', enlarged: 'readings/full', resources: @readings, type: 'reading'
+    #resources_container.category
+      .row{ style: 'align-items: flex-end;'}
+        %h4 Resources
+        .new_crud_button
+          = link_to md_icon('add_circle', false), new_resource_path, remote: true, id: 'new_crud'
+      = cruddy_table compact: 'resources/compact', enlarged: 'resources/full', resources: @resources, type: 'resource'
+
   %br
 
 :javascript
