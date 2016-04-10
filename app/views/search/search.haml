@@ -6,7 +6,7 @@
 
   %form#search_form
     .row
-      %label Full-Text:
+      %label{ for: 'full_text_search' } Full-Text:
       .field
         = md_icon 'search'
         %input#full_text_search{ type: 'search' }
@@ -14,29 +14,29 @@
 
     #advanced_search.hidden
       .row
-        %label Due date:
+        %label{ for: 'due_date_search' } Due date:
         .field
-          %input{ type: 'search' }
+          %input#due_date_search{ type: 'search' }
 
       .row
-        %label Created at:
+        %label{ for: 'created_at_search' } Created at:
         .field
-          %input{ type: 'search' }
+          %input#created_at_search{ type: 'search' }
 
       .row
-        %label Modified:
+        %label{ for: 'modified_search' } Modified:
         .field
-          %input{ type: 'search' }
+          %input#modified_search{ type: 'search' }
 
       .row
-        %label Title:
+        %label{ for: 'title_search' } Title:
         .field
-          %input{ type: 'search' }
+          %input#title_search{ type: 'search' }
 
       .row
-        %label Notes:
+        %label{ for: 'notes_search' } Notes:
         .field
-          %input{ type: 'search' }
+          %input#notes_search{ type: 'search' }
 
       %input.button{ type: 'submit', value: 'Advanced Search' }
 
