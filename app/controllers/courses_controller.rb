@@ -9,9 +9,9 @@ class CoursesController < CruddyController
   def explore
     @course = Course.find params[:id]
     session[:course] = @course.id if @course
-    @assignments = @course.assignments
-    @exams       = @course.exams
-    @readings    = @course.readings
+    @assignments = @course.assignments.order :due_date
+    @exams       = @course.exams.order :datetime
+    @readings    = @course.readings.order :due_date
     @resources   = @course.resources
   end
 
