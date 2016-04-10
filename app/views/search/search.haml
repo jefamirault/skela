@@ -9,8 +9,8 @@
       %label{ for: 'full_text_search' } Full-Text:
       .field
         = md_icon 'search'
-        %input#full_text_search{ type: 'search' }
-      %a#advanced_search_toggle Advanced Search
+        %input#full_text_search{ type: 'search', name: 'ftext', value: params[:ftext] }
+      -#%a#advanced_search_toggle Advanced Search
 
     #advanced_search.hidden
       .row
@@ -39,6 +39,11 @@
           %input#notes_search{ type: 'search' }
 
       %input.button{ type: 'submit', value: 'Advanced Search' }
+
+
+  = render template: 'shared/by_category.haml'
+
+  %br
 
 :javascript
   $('#full_text_search').focus();
