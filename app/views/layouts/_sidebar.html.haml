@@ -14,6 +14,10 @@
           .left= md_icon 'class'
           .course_title= course.title.present? ? course.title : 'New Course'
     %li
+      %a{ href: calendar_path, class: "button nav_link#{controller_name == 'calendar' ? ' selected' : ''}", data: { remote: true, swap_title: 'Calendar', fade_content: 'true' }}
+        .left= md_icon 'date_range'
+        .course_title= 'Calendar'
+    %li
       %a{ href: search_path, class: "button nav_link#{controller_name == 'search' ? ' selected' : ''}", data: { remote: true, swap_title: 'Search', fade_content: 'true' }}
         .left= md_icon 'search'
         .course_title= 'Search'

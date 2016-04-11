@@ -1,0 +1,7 @@
+- if request.format == :html
+  .card_header
+    %h2= params[:controller].titleize
+
+.content{class: request.format == 'html' ? '' : 'invisible'}
+  %br
+  %h1 Course Stuff by date!

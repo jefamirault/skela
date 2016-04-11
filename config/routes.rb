@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'calendar', to: 'calendar#agenda'
+
   get 'search', to: 'search#search'
 
   resources :courses do
