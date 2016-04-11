@@ -41,7 +41,7 @@
       %input.button{ type: 'submit', value: 'Advanced Search' }
 
 
-  = render template: 'shared/by_category.haml'
+  = render template: 'shared/by_category.haml', locals: { allow_create: false }
 
   %br
 

@@ -3,7 +3,7 @@
     %h2= @course.title
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
-  = render template: 'shared/by_category.haml'
+  = render template: 'shared/by_category.haml', locals: { allow_create: true}
 
   %br
 
