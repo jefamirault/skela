@@ -8,7 +8,7 @@
     .row
       %label{ for: 'full_text_search' } Full-Text:
       .field
-        = md_icon 'search'
+        %span(style='pointer-events:none;')= md_icon 'search'
         %input#full_text_search{ type: 'search', name: 'ftext', value: params[:ftext] }
       -#%a#advanced_search_toggle Advanced Search
 
