@@ -10,4 +10,8 @@ class Reading < ActiveRecord::Base
   def new_resource
     nil
   end
+
+  def date
+    self.due_date
+  end
 end

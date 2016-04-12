@@ -3,5 +3,10 @@
     %h2= params[:controller].titleize
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
+  #by_date
+    - @groups.each_pair do |title, group|
+      .category{ id: "#{title}_container" }
+        .row{ style: 'align-items: flex-end;'}
+          %h4= title.to_s.titleize
+        = cruddier_table group
   %br
-  %h1 Course Stuff by date!

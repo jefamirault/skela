@@ -11,4 +11,8 @@ class Exam < ActiveRecord::Base
   def new_resource
     nil
   end
+
+  def date
+    self.datetime ? self.datetime.to_date : nil
+  end
 end
