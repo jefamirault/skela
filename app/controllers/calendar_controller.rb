@@ -7,7 +7,7 @@ class CalendarController < ApplicationController
     @groups = {
       today:     stuff.select {|i| i.date == Date.today},
       this_week: stuff.select {|i| i.date > Date.today && i.date < Date.today + 1.week},
-      next_week: stuff.select {|i| i.date > (Date.today + 1.week) && i.date < (Date.today + 2.weeks)}
+      next_week: stuff.select {|i| i.date >= (Date.today + 1.week) && i.date < (Date.today + 2.weeks)}
     }
   end
 end
