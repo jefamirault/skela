@@ -6,7 +6,7 @@ root = exports ? this
 
 $(document).on 'click', '.cruddy_resource .compact', ->
   collapse $('.full')
-  table = $(this).closest('.cruddy_table').attr 'id'
+  table = $(this).parent().data('type') + 's'
   id = $(this).closest('.cruddy_resource').data 'resource-id'
 
   $.ajax
