@@ -12,7 +12,7 @@
         - klass << ' selected' if controller_name == 'courses' && course == @course
         %a{ href: explore_course_path(course.id), class: klass, data: { remote: true, swap_title: course.title, fade_content: 'true' }}
           .left= md_icon 'class'
-          .course_title= course.title.present? ? course.title : 'New Course'
+          %span.course_title{ data: { field: 'title' }}= course.title.present? ? course.title : 'New Course'
     %li
       %a{ href: calendar_path, class: "button nav_link#{controller_name == 'calendar' ? ' selected' : ''}", data: { remote: true, swap_title: 'Calendar', fade_content: 'true' }}
         .left= md_icon 'date_range'
