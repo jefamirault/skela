@@ -6,8 +6,16 @@
 .cruddy_resource
   display: flex
   position: relative
-  margin: 0 auto
   text-align: left
+
+  background: white
+  margin: 0 5%
+
+  transition: all .3s ease-in-out
+
+  &.selected
+    margin: 11px 0
+
 
   .compact
     flex: 1
@@ -18,7 +26,6 @@
     border-top: solid #ddd 1px
     height: 30px
     line-height: 30px
-    margin: 0 5%
     font-size: 98%
 
     transition: width .3s ease-in-out
@@ -31,8 +38,6 @@
     flex: 1
     background: white
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4)
-    margin: 11px auto
-    width: 650px
     border-top: solid #ddd 1px
 
     transition: width .3s ease-in-out
@@ -154,7 +159,6 @@
   padding: 1px 0 1px
   box-shadow: 0 0 9px rgba(0,0,0,.5)
 
-  flex: 1
   margin: 0 15%
 
   position: relative

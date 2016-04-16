@@ -21,6 +21,7 @@ $(document).on 'click', '.cruddy_resource .collapse', ->
   collapse $(this).closest '.full'
 
 collapse = (full) ->
+  full.closest('.cruddy_resource').removeClass 'selected'
   full.slideUp()
   timeout 250, ->
     full.closest('.cruddy_resource').find('.compact').show()
