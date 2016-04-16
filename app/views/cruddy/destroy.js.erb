@@ -1,5 +1,7 @@
-var resource = find_crud(<%= @resource.id %>);
-resource.remove();
+timeout(300, function(){
+  var resource = find_crud(<%= @resource.id %>);
+  resource.remove();
 
-var deleteMe = locate('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
-deleteMe.remove();
+  var deleteMe = locate('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
+  deleteMe.remove();
+});

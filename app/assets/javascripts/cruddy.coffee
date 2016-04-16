@@ -20,7 +20,7 @@ $(document).on 'click', '.cruddy_resource .compact a', (event) ->
 $(document).on 'click', '.cruddy_resource .collapse', ->
   collapse $(this).closest '.full'
 
-collapse = (full) ->
+root.collapse = (full) ->
   full.closest('.cruddy_resource').removeClass 'selected'
   full.slideUp()
   timeout 250, ->
@@ -28,11 +28,7 @@ collapse = (full) ->
     full.remove()
 
 $(document).on 'click', '[data-collapse]', ->
-  full = $('.cruddy_table').find('.full')
-  full.slideUp('fast')
-  timeout 250, ->
-    full.closest('.cruddy_resource').find('.compact').show()
-    full.remove()
+  collapse $(this).closest('.full')
 
 root.find_crud = (type, id) ->
   possible = locate(type, id)
