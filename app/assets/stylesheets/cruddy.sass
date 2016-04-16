@@ -1,55 +1,42 @@
 .cruddy_table
   position: relative
   margin: 0
-  width: 650px
-
-  @media only screen and (min-width: 1080px)
-    width: 830px
-  @media only screen and (min-width: 1300px)
-    width: 1060px
+  flex: 1
 
 .cruddy_resource
+  display: flex
   position: relative
-  margin: 0px auto 0
+  margin: 0 auto
   text-align: left
 
   .compact
+    flex: 1
     background: white
     cursor: pointer
     padding: 10px 20px
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4)
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4)
     border-top: solid #ddd 1px
     height: 30px
     line-height: 30px
-    margin: auto
+    margin: 0 5%
     font-size: 98%
 
-    transition: width .3s ease
-    width: 560px
-
-    @media only screen and (min-width: 1080px)
-      width: 740px
-    @media only screen and (min-width: 1310px)
-      width: 970px
+    transition: width .3s ease-in-out
 
     i
       font-size: 26px
       padding: 3px 0 0 4px
 
   .full
+    flex: 1
     background: white
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4)
     margin: 11px auto
     width: 650px
     border-top: solid #ddd 1px
 
-    transition: width .3s ease
+    transition: width .3s ease-in-out
 
-
-    @media only screen and (min-width: 1080px)
-      width: 830px
-    @media only screen and (min-width: 1310px)
-      width: 1060px
 
   .subject_container
     padding: 20px 20px 22px
@@ -119,7 +106,6 @@
 
   &:hover i
     transform: scale(1.1)
-    //box-shadow: 0 0 5px rgba(0,0,0,.5)
 
 .v_middle
   position: relative
@@ -168,8 +154,8 @@
   padding: 1px 0 1px
   box-shadow: 0 0 9px rgba(0,0,0,.5)
 
-  width: 500px
-  margin: 0 auto
+  flex: 1
+  margin: 0 15%
 
   position: relative
   top: 0
@@ -179,11 +165,6 @@
   &.hidden
     top: -64px
 
-
-  @media only screen and (min-width: 1080px)
-    width: 592px
-  @media only screen and (min-width: 1310px)
-    width: 792px
 
 h4
   color: rgba(0,0,0,.33)

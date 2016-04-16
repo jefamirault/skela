@@ -9,5 +9,55 @@
     line-height: 30px
     white-space: nowrap
     overflow: hidden
+
+
+#sidebar
+  vertical-align: top
+  padding: 6px
+  margin-top: 6px
+  margin-left: 10px
+  width: 45px
+  float: left
+  display: inline-block
+
+  transition: all .3s ease-in-out
+
   .course
-    padding-left: 20px
+    padding-left: 10px
+
+  .course_title
+    display: none
+
+  @media only screen and (min-width: 896px)
+    width: 225px
+    .course_title
+      display: inline-block
+    .course
+      padding-left: 30px
+
+  ul
+    margin: 0
+
+  li
+    display: block
+
+  .button
+    display: block
+    border-radius: 2px
+    color: rgba(0,0,0,.59)
+    font-size: 90%
+    height: 30px
+    line-height: 30px
+    white-space: nowrap
+    text-overflow: hidden
+
+    &:hover
+      text-decoration: none
+      background: rgba(0,0,0,.03)
+
+    &.selected
+      background: rgba(0,0,0,.052)
+
+    i.material-icons
+      margin-top: 2px
+      margin-right: 18px

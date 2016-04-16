@@ -51,11 +51,15 @@ input.disabled
   background-color: #f4f4f4
 
 #container
-  display: inline-block
+  display: flex
   clear: both
   width: 100%
   white-space: nowrap
   overflow: hidden
+
+
+#content
+  display: flex
 
 h1
   margin: 0 0 .5em
@@ -65,66 +69,21 @@ h1
   text-align: center
 
 
-#sidebar
-  vertical-align: top
-  padding: 6px
-  margin-top: 6px
-  margin-left: 10px
-  width: 45px
-  float: left
-  display: inline-block
-
-  transition: width .3s ease
-
-  .course_title
-    display: none
-
-  @media only screen and (min-width: 896px)
-    width: 225px
-    .course_title
-      display: inline-block
-
-  ul
-    margin: 0
-
-  li
-    display: block
-
-  .button
-    display: block
-    border-radius: 2px
-    color: rgba(0,0,0,.59)
-    font-size: 90%
-    height: 30px
-    line-height: 30px
-    white-space: nowrap
-    text-overflow: hidden
-
-    &:hover
-      text-decoration: none
-      background: rgba(0,0,0,.03)
-
-    &.selected
-      background: rgba(0,0,0,.052)
-
-    i.material-icons
-      margin-top: 2px
-      margin-right: 18px
-
 #main
   vertical-align: top
-  display: inline-block
+  flex: 1
+  display: flex
+  flex-direction: column
   min-width: 600px
 
-  margin-left: 10px
-  margin-right: 100px
+  margin: 0 30px 0 10px
 
   padding: 0 10px
 
 
-  @media only screen and (min-width: 1080px)
-    width: 830px
-  @media only screen and (min-width: 1310px)
+  //@media only screen and (min-width: 1080px)
+  //  width: 830px
+  //@media only screen and (min-width: 1310px)
     width: 1060px
 
 
