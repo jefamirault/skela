@@ -20,7 +20,9 @@ body
   width: 100%
   margin: 0
   background: #f2f2f2
-
+  display: flex
+  flex-direction: column
+  
   transition: background 1s ease
 
 html
@@ -53,10 +55,10 @@ input.disabled
 #container
   display: flex
   clear: both
+  height: 100%
   width: 100%
   white-space: nowrap
-  overflow: hidden
-
+  overflow: scroll
 
 #content
   display: flex
