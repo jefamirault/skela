@@ -35,7 +35,7 @@ module CruddyHelper
   end
 
   def new_cruddy_resource(resource, hidden = false)
-    content_tag :li, class: 'cruddy_resource', data: { resource_id: resource.id } do
+    content_tag :li, class: 'cruddy_resource', data: { resource_id: resource.id, type: resource.class.to_s.underscore } do
       views = content_tag :div, class: 'compact', style: 'display:none;' do
         render partial: 'compact', locals: { resource: resource }
       end

@@ -3,8 +3,7 @@
     %h2= params[:controller].titleize
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
-  = cruddy_table row: 'compact', enlarged: 'full', collection: @resources
-
+  = cruddier_table @resources
   %br
   .center
     .new_crud_button

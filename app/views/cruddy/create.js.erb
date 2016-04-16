@@ -1,6 +1,6 @@
 if ($('#courses')) {
   $('#<%= @resource.class.to_s.underscore.pluralize %>').prepend('<%= j new_cruddy_resource @resource, true %>');
-  var thing = find_crud(<%= @resource.id %>).find('.full');
+  var thing = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>).find('.full');
   thing.slideDown();
   thing.find('input:not([type="hidden"]):eq(0)').focus();
 } else {
@@ -8,5 +8,4 @@ if ($('#courses')) {
     $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
 
   replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
-
 }

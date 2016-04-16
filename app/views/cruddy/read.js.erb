@@ -1,4 +1,4 @@
-var crud = locate('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
+var crud = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
 crud.find('.compact').hide();
 crud.append('<div class="full" style="display:none;"><%= j render partial: 'full', locals: { resource: @resource  } %></div>')
 crud.find('.full').slideDown('fast');

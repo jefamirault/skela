@@ -33,8 +33,9 @@ $(document).on 'click', '[data-collapse]', ->
     full.closest('.cruddy_resource').find('.compact').show()
     full.remove()
 
-root.find_crud = (id) ->
-  $(".cruddy_resource[data-resource-id=#{id}]");
+root.find_crud = (type, id) ->
+  possible = locate(type, id)
+  crud = possible.filter((x) -> $(possible[x]).hasClass('cruddy_resource'))
 
 $(document).on 'click', '#new_crud', ->
   $(this).removeClass 'look_at_me'
