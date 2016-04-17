@@ -21,3 +21,7 @@
       %a{ href: search_path, class: "button nav_link#{controller_name == 'search' ? ' selected' : ''}", data: { remote: true, swap_title: 'Search', fade_content: 'true' }}
         .left= md_icon 'search'
         .course_title= 'Search'
+    %li
+      %a{ href: 'https://rupeeonrails.wordpress.com/', class: 'button nav_link', data: { remote: false }}
+        .left= md_icon 'help'
+        .course_title= 'About'
