@@ -4,7 +4,7 @@
     %ul#primary_nav
       = render partial: 'layouts/primary_nav'
 
-    .flex
-    = my_profile_nav do
-      - present current_user do |user|
-        = user.username_and_avatar
+      .flex
+      = my_profile_nav do
+        - present current_user do |user|
+          = user.username_and_avatar

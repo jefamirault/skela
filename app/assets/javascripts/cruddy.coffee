@@ -34,8 +34,10 @@ root.find_crud = (type, id) ->
   possible = locate(type, id)
   crud = possible.filter((x) -> $(possible[x]).hasClass('cruddy_resource'))
 
-$(document).on 'click', '#new_crud', ->
+$(document).on 'click', '.new_crud', ->
   $(this).removeClass 'look_at_me'
+$(document).on 'click', '.new_crud', ->
+  collapse $('.full')
 
 root.locate = (type, id) ->
   $("[data-type=#{type}][data-resource-id=#{id}]");
