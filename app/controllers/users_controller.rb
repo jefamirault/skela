@@ -63,27 +63,6 @@ class UsersController < CruddyController
     end
   end
 
-  def edit
-    @user = User.find params[:id]
-    set_users
-
-    render 'cards/edit'
-  end
-
-  def destroy
-    @user = User.find params[:id]
-
-    if current_user == @user || superuser?
-      @user.destroy
-    else
-      flash[:alert] = 'Only an admin can do that.'
-    end
-
-    @users = User.all
-    @resources = @users
-    render 'cards/index'
-  end
-
   def admin_new
     @user = User.new
     respond_to do |format|
