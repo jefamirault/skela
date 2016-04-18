@@ -6,8 +6,6 @@ if ($('#courses')) {
   thing.slideDown();
   thing.find('input:not([type="hidden"]):eq(0)').focus();
 } else {
-  if ($('#page_title').html != '<%= current_course %>')
-    $('#primary_nav').html('<%= j render 'layouts/primary_nav' %>');
 
   replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
 }

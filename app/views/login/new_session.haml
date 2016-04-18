@@ -5,7 +5,7 @@
 .content{class: request.format == 'html' ? '' : 'invisible'}
   #curtain
     #center_form_box
-      = form_tag create_session_path, remote: true do |f|
+      = form_tag create_session_path, remote: false do |f|
         .center_form_field
           = text_field_tag :username, nil, placeholder: 'Username'
         .center_form_field
@@ -15,7 +15,7 @@
           = submit_tag 'Log in', id: 'login_button'
       %br
       %br
-      = link_to 'I don\'t have an account', signup_path, class: 'center_form_link', data: { swap_title: 'Create an Account', fade_content: true, remote: true }
+      = link_to 'I don\'t have an account', signup_path, class: 'center_form_link', data: { remote: true, swap_title: 'Create an Account', fade_content: true, remote: true }
 
   :javascript
     $('#username').focus();

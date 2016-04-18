@@ -1,5 +1,5 @@
 window.setTimeout(function(){
-  $('.content').replaceWith('<%= j render partial: 'new_session' %>');
+  $('.content').replaceWith('<%= j render template: 'login/new_session.haml' %>');
 }, 310);
 window.setTimeout(function(){
   decloak('.content');

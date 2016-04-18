@@ -1,5 +1,5 @@
 window.setTimeout(function(){
-  $('.content').replaceWith('<%= j render partial: 'signup' %>');
+  $('.content').replaceWith('<%= j render template: 'login/signup.haml' %>');
 }, 310);
 window.setTimeout(function(){
   decloak('.content');

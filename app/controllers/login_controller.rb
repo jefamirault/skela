@@ -24,10 +24,7 @@ class LoginController < ApplicationController
     session[:user_id] = nil
     session[:course] = nil
     @courses = Course.where(user_id: nil)
-    respond_to do |format|
-      format.js
-      format.html { redirect_to welcome_path }
-    end
+    redirect_to login_new_session_path
   end
 
   def signup
