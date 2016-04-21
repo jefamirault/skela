@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_courses
-    @courses = logged_in? ? current_user.courses : []
+    @courses = current_user.courses
   end
 
   def current_course
@@ -42,8 +42,10 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user ||= User.where(id: session[:user_id]).first
     else
-      nil
+      @current_user = User.guest
+      session[:user_id] = @current_user.id
     end
+    @current_user
   end
   helper_method :current_user
 

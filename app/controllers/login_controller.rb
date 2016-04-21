@@ -1,9 +1,7 @@
 class LoginController < ApplicationController
 
   def new_session
-    if logged_in?
-      redirect_to welcome_path
-    end
+
   end
 
   def create_session

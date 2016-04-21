@@ -25,6 +25,6 @@ job_type :rake,    "cd :path && :environment_variable=:environment bundle exec r
 
 set :output, { error: 'error.log', standard: 'cron.log' }
 
-every 1.minute do
+every 30.minutes do
   rake 'remove_inactive_guest_users'
 end

@@ -66,7 +66,6 @@ Rails.application.routes.draw do
 
   root 'courses#index'
 
-  get 'welcome' => 'welcome#index', as: :welcome
 
   get 'not_allowed' => 'users#not_allowed', as: :not_allowed
 

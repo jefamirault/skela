@@ -11,11 +11,6 @@ module ApplicationHelper
     link_to 'Cloak Container', '', id: 'cloak_container'
   end
 
-  def header_left(title = nil)
-    logo = title || site_logo
-    link_to logo, welcome_path, id: 'header_left', remote: true
-  end
-
   def site_logo(options = {})
     path = 'skela_logo'
 
