@@ -20,6 +20,7 @@ class LoginController < ApplicationController
       session[:course] = user.courses.first.id if user.courses.present?
       redirect_to courses_path
     else
+      flash[:error] = 'Invalid username/password'
       redirect_to login_path
     end
   end

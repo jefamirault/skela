@@ -9,8 +9,10 @@
       = text_field_tag :username, nil, placeholder: 'Username', autofocus: true
       = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
       .errors
-        = flash[:alert]
+        - if flash[:error]
+          = flash[:error]
       = submit_tag 'Log in', id: 'login_button'
+
 
   %br
   -#= link_to 'Proceed as Guest', login_path, class: 'button center', data: { swap_title: 'Authenticate', fade_content: true, remote: false }
