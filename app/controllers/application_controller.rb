@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :redirect_if_not_logged_in
   before_filter :set_courses
 
   private
@@ -42,10 +43,10 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user ||= User.where(id: session[:user_id]).first
     else
-      @current_user = User.guest
-      session[:user_id] = @current_user.id
+      # @current_user = User.guest
+      # session[:user_id] = @current_user.id
+      nil
     end
-    @current_user
   end
   helper_method :current_user
 
@@ -62,5 +63,11 @@ class ApplicationController < ActionController::Base
   end
   def authorize_superuser
     redirect_to not_allowed_path, alert: 'Only an admin can do that' unless superuser?
+  end
+
+  def redirect_if_not_logged_in
+    unless logged_in?
+      redirect_to login_path
+    end
   end
 end

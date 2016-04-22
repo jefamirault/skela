@@ -1,5 +1,8 @@
 class LoginController < ApplicationController
 
+  skip_before_filter :redirect_if_not_logged_in
+  skip_before_filter :set_courses
+
   def new_session
 
   end
@@ -28,4 +31,9 @@ class LoginController < ApplicationController
   def signup
     @user = User.new
   end
+
+  def create_guest_account
+
+  end
+
 end

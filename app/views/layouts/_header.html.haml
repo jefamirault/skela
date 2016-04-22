@@ -1,11 +1,12 @@
 #header
   = site_logo
-  %nav
-    %ul#primary_nav
-      - %w(Assignments Exams Readings Resources).each do |tracker|
-        %li= category_toggle tracker
+  - if logged_in?
+    %nav
+      %ul#primary_nav
+        - %w(Assignments Exams Readings Resources).each do |tracker|
+          %li= category_toggle tracker
 
-      .flex
-      = my_profile_nav do
-        - present current_user do |user|
-          = user.username_and_avatar
+        .flex
+        = my_profile_nav do
+          - present current_user do |user|
+            = user.username_and_avatar

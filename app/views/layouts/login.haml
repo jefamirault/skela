@@ -1,6 +1,6 @@
 !!! 5
 %html
-  %head 
+  %head
     %title Skela - Courses
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -13,8 +13,6 @@
     = render partial: 'layouts/header'
 
     #container
-      #sidebar
-        = render partial: 'layouts/sidebar'
 
       #main
         = yield

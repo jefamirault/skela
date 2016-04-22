@@ -14,14 +14,16 @@ module ApplicationHelper
   def site_logo(options = {})
     path = 'skela_logo'
 
-    unless options.empty?
+    if options[:color]
       path << '_'
       path << options[:color]
     end
 
     path << '.svg'
 
-    image_tag(path, id: 'site_logo')
+    klass = options[:background] ? 'background' : ''
+
+    image_tag(path, id: 'site_logo', class: klass)
   end
 
   def logged_in_text
