@@ -5,14 +5,21 @@
       .avatar_box{ style: "width:#{size}px;height:#{size}px;background:#aaa;border-radius:50%;"}
         = avatar @user, size
     %br
-    = form_for @user, remote: true do |f|
+    = form_for @user, remote: false do |f|
       = f.text_field :username, autofocus: true, placeholder: 'Username'
       = f.password_field :password, autocomplete: 'off', placeholder: 'Password'
       = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm password'
+      .errors
+        - unless @user.valid? || @user.username.nil? && @user.password_digest.nil?
+          %dl
+            - @user.errors.messages.each do |field, errors|
+              %dt= field
+              - errors.each do |error|
+                %dd= error
       = f.submit 'Sign up'
   %br
   -#= link_to 'Proceed as Guest', login_path, class: 'button center', data: { swap_title: 'Authenticate', fade_content: true, remote: false }
   -#%br
   -#%br
   -#%br
-  = link_to 'I already have an account', login_path, class: 'center', data: { swap_title: 'Authenticate', fade_content: true, remote: false }
+  = link_to 'I already have an account', login_path

@@ -8,6 +8,8 @@
     = form_tag create_session_path, remote: false do |f|
       = text_field_tag :username, nil, placeholder: 'Username', autofocus: true
       = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
+      .errors
+        = flash[:alert]
       = submit_tag 'Log in', id: 'login_button'
 
   %br
@@ -15,4 +17,4 @@
   -#%br
   -#%br
   -#%br
-  = link_to 'I don\'t have an account', signup_path, class: 'center', data: { remote: false, swap_title: 'Create an Account', fade_content: true }
+  = link_to 'I don\'t have an account', signup_path

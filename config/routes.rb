@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   get 'login', to: 'login#new_session', as: 'login'
 
-  get 'signup', to: 'login#signup', as: 'signup'
+  get 'signup', to: 'users#signup', as: 'signup'
   get 'login/new_session'
   post 'create_session', to: 'login#create_session', as: 'create_session'
   delete 'logout', to: 'login#destroy_session', as: 'logout'

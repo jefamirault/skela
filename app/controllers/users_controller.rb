@@ -1,6 +1,8 @@
 class UsersController < CruddyController
 
-  before_filter :authenticate, except: [:admin_new, :edit, :new, :create, :my_profile]
+  skip_before_filter :redirect_if_not_logged_in, only: [:create, :signup]
+  skip_before_filter :set_courses, only: [:create, :signup]
+  # before_filter :authenticate, except: [:admin_new, :edit, :new, :create, :my_profile]
   before_filter :authorize_superuser, only: [:admin_create]
 
   def index
@@ -47,19 +49,23 @@ class UsersController < CruddyController
     end
   end
 
-  def create
-    if User.find_by_username params[:user][:username]
-      # flash[:alert] = 'That username is taken'
-    else
-      @user = User.new(user_params)
-      if @user.valid?
-        @user.save
-        session[:user_id] = @user.id
-      end
-    end
+  def signup
+    @user = if params[:user]
+              User.new user_params
+            else
+              User.new
+            end
+    render layout: 'login'
+  end
 
-    respond_to do |format|
-      format.js
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to courses_path
+    else
+      redirect_to signup_path(user: user_params)
     end
   end
 

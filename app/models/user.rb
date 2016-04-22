@@ -1,11 +1,7 @@
 class User < ActiveRecord::Base
-  has_secure_password validations: false
-  validates_presence_of :password, on: :create,
-                        unless: Proc.new { |a| a.is_guest }
-  validates_presence_of :username,
-                        unless: Proc.new { |a| a.is_guest }
-  validates_uniqueness_of :username,
-                        unless: Proc.new { |a| a.is_guest }
+  has_secure_password
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
   has_many :courses
   has_many :assignments, through: :courses

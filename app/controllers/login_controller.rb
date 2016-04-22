@@ -2,6 +2,7 @@ class LoginController < ApplicationController
 
   skip_before_filter :redirect_if_not_logged_in
   skip_before_filter :set_courses
+  before_filter :redirect_if_already_logged_in, except: :destroy_session
 
   def new_session
 
@@ -18,6 +19,8 @@ class LoginController < ApplicationController
       session[:user_id] = user.id
       session[:course] = user.courses.first.id if user.courses.present?
       redirect_to courses_path
+    else
+      redirect_to login_path
     end
   end
 
@@ -28,12 +31,16 @@ class LoginController < ApplicationController
     redirect_to login_new_session_path
   end
 
-  def signup
-    @user = User.new
-  end
-
   def create_guest_account
 
+  end
+
+  private
+
+  def redirect_if_already_logged_in
+    if logged_in?
+      redirect_to my_profile_path
+    end
   end
 
 end

@@ -4,13 +4,11 @@
 
 .content{class: request.format == 'html' ? '' : 'invisible'}
 
-  -#.center_formf
   = render 'form'
 
   - if @user.is_guest?
     %br
     %br
-    -#%h3.center Log in to save your data!
     %dl.left_half
       #login_button.center.trigger_reveal New to Skela?
       .to_be_revealed
