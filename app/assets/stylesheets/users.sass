@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+=outline($color)
+  border: solid 1px $color
+
 #user_form
   display: inline-block
   margin: 0 2em
@@ -66,3 +69,46 @@ dl
   &:focus
     background: white
     border-color: #427fed
+
+#password_form
+
+  width: 300px
+  margin: 32px auto 32px
+  border-radius: 3px
+
+
+  input
+    display: block
+    font-size: 1.25em
+    line-height: 2.4em
+    +outline(#ddd)
+    padding: 0 12px
+    width: 274px
+    margin-bottom: 6px
+    transition: background .3s ease-in-out
+
+  input:hover
+    outline: none
+    +outline(#bbb)
+
+  input:focus
+    outline: none
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298) inset
+    +outline(#42a4f5)
+
+
+  input[type=submit]
+    font-weight: bold
+    width: 300px
+    color: white
+    background-color: #1876d2
+    border: none
+    border-radius: 2px
+    transition: background .3s ease
+    &:hover
+      background-color: #42a4f5
+      cursor: pointer
+
+    &[disabled]
+      background-color: #1876d2
+      cursor: default

@@ -9,14 +9,6 @@
 -#        %li= link_to 'Change Face', change_avatar_face_path, remote: true, method: :post
 -#        %li= link_to 'Change Head', change_avatar_head_path, remote: true, method: :post
 -#        %li= link_to 'Change Color', change_avatar_color_path, remote: true, method: :post
--#
--#  %dt Username
--#  %dd= ajax_string 'username', @user
--#
--#
--#  - if superuser?
--#    %dt Admin
--#    %dd= ajax_boolean 'admin', @user
 
 - size = 175
 .center
@@ -24,3 +16,11 @@
     = avatar @user, size
 %h3
   .center.center_form_field= string_field 'username', @user, id: 'big_username_field'
+
+#password_form
+
+  = form_for @user, url: update_password_user_path(@user), method: :post, remote: true do |f|
+    = f.password_field :password, placeholder: 'Current Password'
+    = f.password_field :new_password, placeholder: 'New Password'
+    = f.password_field :password_confirmation, placeholder: 'Confirmation'
+    = f.submit 'Update Password'

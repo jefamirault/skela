@@ -102,10 +102,9 @@ class UsersController < CruddyController
     @user.save
   end
 
-  def not_allowed
-    respond_to do |format|
-      format.js
-    end
+  def update_password
+    @user = User.find params[:id]
+    @user.update_password user_params
   end
 
   def autocomplete
@@ -126,7 +125,7 @@ class UsersController < CruddyController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :avatar, :favorite_color)
+    params.require(:user).permit(:username, :password, :password_confirmation, :new_password, :avatar, :favorite_color)
   end
 
 end

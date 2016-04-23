@@ -123,7 +123,7 @@ module ApplicationHelper
     else
       user.avatar ? user.avatar.path : Avatar.default
     end
-    content_tag :div, style: 'display:inline-block;vertical-align:top;padding-top:5px;' do
+    content_tag :div, style: 'display:inline-block;vertical-align:top;' do
       image_tag(avatar_path, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
     end
   end

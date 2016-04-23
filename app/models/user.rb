@@ -59,6 +59,23 @@ class User < ActiveRecord::Base
     user.destroy
   end
 
+  def update_password(options)
+    if self.authenticate(options[:password])
+      if !options[:new_password].nil?
+        if options[:new_password] == options[:password_confirmation]
+          self.password = options[:new_password]
+          self.save
+        else
+          'Passwords do not match'
+        end
+      else
+        'Password cannot be blank'
+      end
+    else
+      'Incorrect Password'
+    end
+  end
+
   private
 
   def update_last_active

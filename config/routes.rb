@@ -52,7 +52,11 @@ Rails.application.routes.draw do
 
 
   get 'users/autocomplete', to: 'users#autocomplete', as: 'autocomplete_users'
-  resources :users
+  resources :users do
+    member do
+      post 'update_password'
+    end
+  end
   post 'change_avatar_face', to: 'avatars#change_face'
   post 'change_avatar_head', to: 'avatars#change_head'
   post 'change_avatar_color', to: 'avatars#change_color'
