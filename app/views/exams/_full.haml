@@ -2,9 +2,9 @@
   = ajax_subject 'title', @resource
 
 
-= edit_fields @resource, description: :text,
-                         datetime: :datetime,
-                         location: :string
+= edit_fields @resource, datetime: :datetime,
+                         location: :string,
+                         description: :text
 
 = render partial: 'resources/add_resource'
 
