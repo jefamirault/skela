@@ -28,3 +28,8 @@ $(document).on 'click', '#delete_user', ->
 
 cloak = (selector) ->
   $(selector).addClass('invisible')
+
+$(document).on 'click', '#change_password', ->
+  $('#password_form').toggleClass 'hidden'
+  $('#user_password').focus()
+
