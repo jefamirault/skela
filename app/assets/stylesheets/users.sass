@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import colors
+
 =outline($color)
   border: solid 1px $color
 
@@ -42,7 +44,7 @@ dl
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset
       
       &:focus
-        border-color: #427fed
+        border-color: $one
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.298039) inset
 
 
@@ -68,7 +70,7 @@ dl
     border: solid 1px #ddd
   &:focus
     background: white
-    border-color: #427fed
+    border-color: $one
 
 #password_form
 
