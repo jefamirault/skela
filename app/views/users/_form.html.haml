@@ -18,11 +18,12 @@
   .center.center_form_field= string_field 'username', @user, id: 'big_username_field'
 
 .space_around
-
   #password_form_container
-    %a#change_password Change Password
+    %a#change_password
+      = md_icon 'settings'
+      .flex Change Password
 
-    #password_form.hidden
+    #password_form.hidden.invisible
       = form_for @user, url: update_password_user_path(@user), method: :post, remote: true do |f|
         = f.password_field :password, placeholder: 'Current Password'
         = f.password_field :new_password, placeholder: 'New Password'
@@ -30,5 +31,5 @@
         = f.submit 'Update Password'
 
   = link_to logout_path, id: 'logout_button', data: { method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
-    .icon= md_icon 'exit_to_app'
+    = md_icon 'exit_to_app'
     .flex Logout

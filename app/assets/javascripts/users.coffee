@@ -31,5 +31,6 @@ cloak = (selector) ->
 
 $(document).on 'click', '#change_password', ->
   $('#password_form').toggleClass 'hidden'
+  timeout 10, ->
+    toggleCloak '#password_form'
   $('#user_password').focus()
-
