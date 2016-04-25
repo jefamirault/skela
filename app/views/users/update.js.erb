@@ -6,4 +6,4 @@
 $('span.user_<%= @user.id %>_username').html('<%= @user.username %>');
 $('span.user_0_username').html('<%= @user.username %>');
 
-replaceContentAndDecloak('<%= j render partial: 'users/my_profile' %>');
+replaceContentAndDecloak('<%= j render template: 'users/my_profile.haml' %>');

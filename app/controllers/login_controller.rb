@@ -2,10 +2,10 @@ class LoginController < ApplicationController
 
   skip_before_filter :redirect_if_not_logged_in
   skip_before_filter :set_courses
-  before_filter :redirect_if_already_logged_in, except: :destroy_session
+  before_filter :redirect_if_already_logged_in, except: [:destroy_session, :new_session]
 
   def new_session
-
+    session[:user_id] = nil
   end
 
   def create_session

@@ -34,3 +34,9 @@ $(document).on 'click', '#change_password', ->
   timeout 10, ->
     toggleCloak '#password_form'
   $('#user_password').focus()
+
+$(document).on 'click', '#create_account', ->
+  $('#create_account_form').toggleClass 'hidden'
+  timeout 10, ->
+    toggleCloak '#create_account_form'
+  $('#user_username').focus()

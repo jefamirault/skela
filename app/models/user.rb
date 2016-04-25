@@ -47,9 +47,9 @@ class User < ActiveRecord::Base
   end
 
   def self.guest
-    user = User.create
-    user.username = "Guest_#{user.id}"
-    user.save
+    user = User.new
+    user.username = 'Guest'
+    user.save validate: false
     user
   end
 

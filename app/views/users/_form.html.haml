@@ -15,21 +15,38 @@
   .avatar_box{ style: "width:#{size}px;height:#{size}px;background:#aaa;border-radius:50%;"}
     = avatar @user, size
 %h3
-  .center.center_form_field= string_field 'username', @user, id: 'big_username_field'
+  .center.center_form_field.disabled= string_field 'username', @user, id: 'big_username_field', disabled: @user.is_guest?
 
 .space_around
-  #password_form_container
-    %a#change_password
-      = md_icon 'settings'
-      .flex Change Password
+  - if @user.is_guest?
+    #create_account_container
+      %a#create_account.button
+        = md_icon 'account_circle'
+        .flex Create an Account
 
-    #password_form.hidden.invisible
-      = form_for @user, url: update_password_user_path(@user), method: :post, remote: true do |f|
-        = f.password_field :password, placeholder: 'Current Password'
-        = f.password_field :new_password, placeholder: 'New Password'
-        = f.password_field :password_confirmation, placeholder: 'Confirmation'
-        = f.submit 'Update Password'
+      #create_account_form.hidden.invisible
+        = form_for @user, remote: true do |f|
+          = f.text_field :username, autofocus: true, placeholder: 'Username', value: ''
+          = f.password_field :password, placeholder: 'Password'
+          = f.password_field :password_confirmation, placeholder: 'Password Confirmation'
+          = f.submit 'Create Account'
 
-  = link_to logout_path, id: 'logout_button', data: { method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
-    = md_icon 'exit_to_app'
-    .flex Logout
+      %br
+      = link_to 'I already have an account', login_path
+
+  - else
+    #edit_password_container
+      %a#change_password
+        = md_icon 'settings'
+        .flex Change Password
+
+      #password_form.hidden.invisible
+        = form_for @user, url: update_password_user_path(@user), method: :post, remote: true do |f|
+          = f.password_field :password, placeholder: 'Current Password'
+          = f.password_field :new_password, placeholder: 'New Password'
+          = f.password_field :password_confirmation, placeholder: 'Confirmation'
+          = f.submit 'Update Password'
+
+    = link_to logout_path, id: 'logout_button', data: { method: :delete, fade_content: true, swap_title: 'Authenticate'}, class: 'user_link link_2' do
+      = md_icon 'exit_to_app'
+      .flex Logout

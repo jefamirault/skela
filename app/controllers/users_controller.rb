@@ -1,7 +1,7 @@
 class UsersController < CruddyController
 
-  skip_before_filter :redirect_if_not_logged_in, only: [:create, :signup]
-  skip_before_filter :set_courses, only: [:create, :signup]
+  skip_before_filter :redirect_if_not_logged_in, only: [:create, :signup, :create_guest_account]
+  skip_before_filter :set_courses, only: [:create, :signup, :create_guest_account]
   # before_filter :authenticate, except: [:admin_new, :edit, :new, :create, :my_profile]
   before_filter :authorize_superuser, only: [:admin_create]
 
@@ -106,6 +106,13 @@ class UsersController < CruddyController
     @user = User.find params[:id]
     @user.update_password user_params
   end
+
+  def create_guest_account
+    @user = User.guest
+    session[:user_id] = @user.id
+    redirect_to courses_path
+  end
+
 
   def autocomplete
     query = User.ransack(username_cont: params[:data]).result

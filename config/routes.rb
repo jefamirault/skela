@@ -51,8 +51,10 @@ Rails.application.routes.draw do
 
 
 
+  post 'create_guest_account', to: 'users#create_guest_account', as: 'create_guest_account'
   get 'users/autocomplete', to: 'users#autocomplete', as: 'autocomplete_users'
   resources :users do
+
     member do
       post 'update_password'
     end

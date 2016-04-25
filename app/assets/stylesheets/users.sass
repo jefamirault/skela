@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import colors
+@import buttons
 
 =outline($color)
   border: solid 1px $color
@@ -73,7 +74,6 @@ dl
     border-color: $one
 
 #password_form
-
   width: 300px
   margin: 32px auto 32px
   border-radius: 3px
@@ -116,7 +116,7 @@ dl
       cursor: default
 
 
-#password_form_container
+#edit_password_container
   width: 300px
 
 
@@ -124,3 +124,19 @@ dl
   transition: all .24s ease-in-out
   &.hidden
     display: none
+
+
+#change_password
+  @extend .button
+  width: 190px
+  margin: auto
+
+
+#create_account_container
+  width: 300px
+
+#create_account
+  @extend #change_password
+
+#create_account_form
+  @extend #password_form
