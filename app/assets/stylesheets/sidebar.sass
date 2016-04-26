@@ -72,6 +72,16 @@
     &.selected
       background: rgba(0,0,0,.052)
 
-    i.material-icons
-      margin-top: 2px
-      margin-right: 18px
+  i
+    margin-top: 2px
+    margin-right: 18px
+
+  .reveal_on_hover
+    display: none
+    i
+      margin-right: 0
+
+  .external
+    &:hover
+      .reveal_on_hover
+        display: inline
