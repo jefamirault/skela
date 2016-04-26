@@ -28,6 +28,8 @@
 
 #header
   display: flex
+  flex-shrink: 0
+  height: 64px
   align-items: center
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
   +white-text(.96)
@@ -35,9 +37,6 @@
   padding: 0 23px
   position: relative
   z-index: 9
-
-
-
 
   #site_logo
     padding: 0 32px 0 24px
@@ -68,7 +67,7 @@ a.nav_link, a.category_toggle
   display: inline-block
   font-size: 110%
   padding: 0 1em
-  line-height: 69px
+  line-height: 64px
   +white-text(.91)
   transition: all 0.15s ease-out
   cursor: pointer

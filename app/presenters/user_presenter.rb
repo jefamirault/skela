@@ -15,7 +15,7 @@ class UserPresenter
   end
 
   def avatar
-    size = 72
+    size = 67
     path = (@user.nil? ? Avatar.default : (@user.avatar ? @user.avatar.path : Avatar.default))
     tag('img', src: "/assets/#{path}", class: 'avatar', style: "width:#{size}px;height:#{size}px;")
   end
