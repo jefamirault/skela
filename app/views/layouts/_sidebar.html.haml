@@ -11,8 +11,7 @@
         - klass = 'nav_link course'
         - klass << ' selected' if controller_name == 'courses' && course == @course
         %a{ href: explore_course_path(course.id), class: klass, data: { remote: true, swap_title: course.title, fade_content: 'true' }}
-          -#.left= md_icon 'class'
-          %i.letter_icon.left{ data: { initial: 'title' }}= course.title[0]
+          %i.letter_icon.left{ data: { initial: 'title' }}= course.title[0] if course.title
 
           %span.course_title{ data: { field: 'title' }}= course.title.present? ? course.title : 'New Course'
     %li
