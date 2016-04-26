@@ -3,3 +3,4 @@ crud.find('.compact').html('<%= j render 'compact', resource: @resource %>');
 
 var other = locate('<%= @resource.class.to_s.underscore %>',<%= @resource.id %>);
 other.find('span[data-field="title"]').html('<%= @resource.title %>');
+other.find('i[data-initial="title"]').html('<%= @resource.title[0] %>');
