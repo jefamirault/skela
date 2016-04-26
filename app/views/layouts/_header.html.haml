@@ -1,7 +1,7 @@
 #header
   = site_logo
-  - if logged_in?
-    %nav
+  %nav
+    - if logged_in?
       %ul#primary_nav
         - %w(Assignments Exams Readings Resources).each do |tracker|
           %li= category_toggle tracker
