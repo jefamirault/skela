@@ -5,9 +5,10 @@ class CalendarController < ApplicationController
     end.reduce :+
 
     @groups = {
-      today:     stuff.select {|i| i.date == Date.today},
-      this_week: stuff.select {|i| i.date > Date.today && i.date < Date.today + 1.week},
-      next_week: stuff.select {|i| i.date >= (Date.today + 1.week) && i.date < (Date.today + 2.weeks)}
+      past_7_days: stuff.select {|i| i.date > 7.days.ago && i.date < Date.today },
+      today:       stuff.select {|i| i.date == Date.today},
+      this_week:   stuff.select {|i| i.date > Date.today && i.date < Date.today + 1.week},
+      next_week:   stuff.select {|i| i.date >= (Date.today + 1.week) && i.date < (Date.today + 2.weeks)}
     }
   end
 end

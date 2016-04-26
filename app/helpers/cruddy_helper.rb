@@ -1,13 +1,17 @@
 module CruddyHelper
   def cruddier_table(collection, options = {})
     content_tag :ul, class: 'cruddy_table', id: options[:id] do
-      collection.map do |crud|
-        content_tag :li, class: 'cruddy_resource', data: { resource_id: crud.id, type: crud.class.to_s.underscore } do
+      if collection.present?
+        collection.map do |crud|
+          content_tag :li, class: 'cruddy_resource', data: { resource_id: crud.id, type: crud.class.to_s.underscore } do
           content_tag :div, class: 'compact' do
-            render partial: 'cruddy/compact', locals: { crud: crud, type: crud.class.to_s.underscore.pluralize }
+          render partial: 'cruddy/compact', locals: { crud: crud, type: crud.class.to_s.underscore.pluralize }
           end
-        end
-      end.reduce :+
+          end
+        end.reduce :+
+      else
+        # content_tag :span, 'No records match this criteria', class: 'half_gray'
+      end
     end
   end
 
