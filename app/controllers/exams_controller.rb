@@ -16,7 +16,7 @@ class ExamsController < CruddyController
   end
 
   def exam_params
-    params.require(:exam).permit(:title, :description, :datetime, :location)
+    params.require(:exam).permit(:title, :datetime, :location, :notes)
   end
 
 end
