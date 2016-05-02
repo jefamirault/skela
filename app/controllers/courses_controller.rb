@@ -35,7 +35,7 @@ class CoursesController < CruddyController
   end
 
   def course_params
-    params.require(:course).permit(:title, :instructor, :course_number, :location, :schedule)
+    params.require(:course).permit(:title, :instructor, :instructor_email, :course_number, :location, :schedule)
   end
 
 end
