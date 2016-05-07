@@ -22,9 +22,8 @@ class ResourcesController < CruddyController
 
   def update
     @resource.update crud_params
-    redirect_to explore_course_path(@resource.course)
+    redirect_to explore_course_path(@resource.course) unless request.xhr?
   end
-
 
   def autocomplete
     query = Resource.ransack(description_cont: params[:data], course_id_eq: current_course.id).result
@@ -50,7 +49,7 @@ class ResourcesController < CruddyController
   end
 
   def resource_params
-    params.require(:resource).permit(:description, :url, :file)
+    params.require(:resource).permit(:title, :url, :file)
   end
 
 end
