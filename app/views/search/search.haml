@@ -18,15 +18,15 @@
         .field
           %input#due_date_search{ type: 'search' }
 
-      .row
-        %label{ for: 'created_at_search' } Created at:
-        .field
-          %input#created_at_search{ type: 'search' }
-
-      .row
-        %label{ for: 'modified_search' } Modified:
-        .field
-          %input#modified_search{ type: 'search' }
+      -#.row
+      -#  %label{ for: 'created_at_search' } Created at:
+      -#  .field
+      -#    %input#created_at_search{ type: 'search' }
+      -#
+      -#.row
+      -#  %label{ for: 'modified_search' } Modified:
+      -#  .field
+      -#    %input#modified_search{ type: 'search' }
 
       .row
         %label{ for: 'title_search' } Title:
@@ -41,7 +41,14 @@
       %input.button{ type: 'submit', value: 'Advanced Search' }
 
 
-  = render template: 'shared/by_category.haml', locals: { allow_create: false }
+  -#= render template: 'shared/by_category.haml', locals: { allow_create: false }
+  #by_date
+    - @groups.each_pair do |title, group|
+      .category{ id: "#{title}_container" }
+        .row{ style: 'align-items: flex-end;'}
+          %h4= title.to_s.titleize
+        = cruddier_table group
+
 
   %br
 
