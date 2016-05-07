@@ -11,7 +11,4 @@ class Assignment < ActiveRecord::Base
     nil
   end
 
-  def date
-    self.due_date
-  end
 end

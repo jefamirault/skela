@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507214811) do
+ActiveRecord::Schema.define(version: 20160507231716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160507214811) do
     t.integer "course_id"
     t.string  "title"
     t.text    "notes"
-    t.date    "due_date"
+    t.date    "date"
   end
 
   create_table "avatars", force: :cascade do |t|
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 20160507214811) do
     t.integer  "course_id"
     t.string   "title"
     t.text     "notes"
-    t.datetime "datetime"
+    t.datetime "date"
     t.string   "location"
   end
 
   create_table "readings", force: :cascade do |t|
     t.text    "title"
-    t.date    "due_date"
+    t.date    "date"
     t.integer "course_id"
     t.string  "topic"
     t.text    "notes"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160507214811) do
     t.string  "content_type"
     t.binary  "file_contents"
     t.integer "course_id"
+    t.text    "notes"
   end
 
   create_table "users", force: :cascade do |t|

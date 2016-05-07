@@ -12,7 +12,4 @@ class Exam < ActiveRecord::Base
     nil
   end
 
-  def date
-    self.datetime ? self.datetime.to_date : nil
-  end
 end
