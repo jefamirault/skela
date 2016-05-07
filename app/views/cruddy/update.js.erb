@@ -1,6 +1,6 @@
-var crud = find_crud('<%= @resource.class.to_s.underscore %>',<%= @resource.id %>);
+var crud = locate('<%= @resource.class.to_s.underscore %>',<%= @resource.id %>);
 crud.find('.compact').html('<%= j render 'compact', resource: @resource %>');
 
-var other = locate('<%= @resource.class.to_s.underscore %>',<%= @resource.id %>);
-other.find('span[data-field="title"]').html('<%= @resource.title %>');
-other.find('i[data-initial="title"]').html('<%= @resource.title[0] %>');
+crud.find('span[data-field="title"]').html('<%= @resource.title %>');
+crud.find('i[data-initial="title"]').html('<%= @resource.title[0] %>');
+crud.find('.nav_link').attr('data-swap-title', '<%= @resource.title %>');
