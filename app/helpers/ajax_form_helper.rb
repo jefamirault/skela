@@ -105,7 +105,7 @@ module AjaxFormHelper
         dt = content_tag(:dt, field.to_s.titleize)
         dd = content_tag :dd do
           edit_field = send("ajax_#{type.to_s}", field, object)
-          if object.send(field).nil? || object.send(field).empty?
+          if object.send(field).nil? || !object.send(field).present?
             content_tag :a, data: { add_field: true } do
               "Add #{field.to_s.titleize}".html_safe +
                   content_tag(:template, edit_field, class: 'edit')

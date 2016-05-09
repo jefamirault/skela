@@ -1,20 +1,10 @@
 .subject_container
   = ajax_subject 'title', @resource
 
-%dl
-  %dt Instructor
-  %dd
-    - if @resource.instructor.empty?
-      %a{ data: { add_field: true }}
-        Add Instructor
-        %template.edit
-          = ajax_string :instructor, @resource
-    - else
-      = ajax_string :instructor, @resource
-
-= optional_fields @resource, instructor_email: :string,
-                         location: :string,
-                         schedule: :string
+= optional_fields @resource, instructor:       :string,
+                             instructor_email: :string,
+                             location:         :string,
+                             schedule:         :string
 
 %dl
   %dt Activate
