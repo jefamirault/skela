@@ -2,7 +2,8 @@
   = ajax_subject 'title', @resource
 
 
-= edit_fields @resource, date: :datetime,
+= edit_fields @resource, date:     :date,
+                         time:     :time,
                          location: :string,
                          notes:    :text
 

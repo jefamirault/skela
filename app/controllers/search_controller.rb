@@ -8,22 +8,26 @@ class SearchController < ApplicationController
         notes_cont:        params[:notes]
     }
 
-    assignments = Assignment.ransack(@q.merge(title_or_notes_cont: ftext )).result
-    exams       = Exam.ransack(@q.merge(title_or_notes_cont: ftext )).result
-    readings    = Reading.ransack(@q.merge(topic_or_notes_cont: ftext )).result
-    resources   = Resource.ransack(@q.merge(title_cont: ftext )).result
 
-    @groups = {
-        assignments: assignments,
-        exams:       exams,
-        readings:    readings,
-        resources:   resources
+    fields = {
+        assignment: { ftext: :title_or_notes },
+        exam:       { ftext: :title_or_notes },
+        reading:    { ftext: :title_or_notes },
+        resource:   { ftext: :title_or_url }
     }
+
+    queries = fields.map do |type, fields|
+      { type => @q.merge("#{fields[:ftext]}_cont" => ftext) }
+    end.reduce :merge
+
+    @groups = queries.map do |type, query|
+      model = type.to_s.titleize.constantize
+      { type.to_s.pluralize.to_sym => model.ransack(query).result }
+    end.reduce :merge
 
     if params[:focus]
       @groups = { params[:focus].to_sym => @groups[params[:focus].to_sym] }
     end
-    
     if params[:date].present?
       @groups.delete :resources
     end

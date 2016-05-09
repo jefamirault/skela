@@ -1,4 +1,5 @@
 .crud_title
   = resource.title
 .right
-  = resource.date ? resource.date.strftime('%a %-m/%-d @%l:%M') : nil
+  = resource.date ? resource.date.strftime('%a %-m/%-d') : nil
+  = resource.date ? resource.time.strftime('@%-l:%M') : nil
