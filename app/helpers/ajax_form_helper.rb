@@ -98,4 +98,24 @@ module AjaxFormHelper
       end.reduce :+
     end
   end
+
+  def optional_fields(object, fields = {})
+    content_tag :dl do
+      fields.map do |field, type|
+        dt = content_tag(:dt, field.to_s.titleize)
+        dd = content_tag :dd do
+          edit_field = send("ajax_#{type.to_s}", field, object)
+          if object.send(field).nil? || object.send(field).empty?
+            content_tag :a, data: { add_field: true } do
+              "Add #{field.to_s.titleize}".html_safe +
+                  content_tag(:template, edit_field, class: 'edit')
+            end
+          else
+            edit_field
+          end
+        end
+        dt + dd
+      end.reduce :+
+    end
+  end
 end
