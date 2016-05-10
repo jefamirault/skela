@@ -78,3 +78,6 @@ $(document).on 'click', '#sidebar a', ->
 $(document).on 'click', '#logged_in_user', ->
   $('#sidebar a').removeClass 'selected'
   $(this).addClass 'selected'
+
+$(document).on 'click', '#toggle_sidebar', ->
+  $('#sidebar').toggleClass('minimized')

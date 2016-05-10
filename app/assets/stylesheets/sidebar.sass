@@ -1,14 +1,4 @@
 #sidebar
-  a
-    display: block
-    padding: 10px
-    border-radius: 2px
-    color: rgba(0, 0, 0, 0.59)
-    font-size: 90%
-    height: 30px
-    line-height: 30px
-    white-space: nowrap
-    overflow: hidden
 
 
 #sidebar
@@ -31,6 +21,15 @@
 
   .course_title
     display: none
+
+  &.minimized
+    width: 55px
+
+    .course_title
+      display: none
+    .course
+      padding-left: 10px
+
 
   @media only screen and (min-width: 896px)
     width: 245px
@@ -56,6 +55,7 @@
     display: block
 
   a
+    padding: 10px
     display: block
     border-radius: 2px
     color: rgba(0,0,0,.59)
