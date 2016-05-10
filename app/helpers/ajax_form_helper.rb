@@ -90,6 +90,24 @@ module AjaxFormHelper
     end
   end
 
+  def edit_field(object, field, type)
+    send("ajax_#{type.to_s}", field, object)
+  end
+
+  def add_field(object, field, type)
+    content_tag :a, data: { add_field: true } do
+      "Add #{field.to_s.titleize}".html_safe +
+          content_tag(:template, edit_field(object, field, type), class: 'edit')
+    end
+  end
+
+  def read_field(object, field, type)
+    content_tag :span, class: 'read' do
+      object.send(field).to_s.html_safe +
+          content_tag(:template, edit_field(object, field, type), class: 'edit')
+    end
+  end
+
   def edit_fields(object, fields = {})
     content_tag :dl do
       fields.map do |field, type|
@@ -104,14 +122,10 @@ module AjaxFormHelper
       fields.map do |field, type|
         dt = content_tag(:dt, field.to_s.titleize)
         dd = content_tag :dd do
-          edit_field = send("ajax_#{type.to_s}", field, object)
           if object.send(field).nil? || !object.send(field).present?
-            content_tag :a, data: { add_field: true } do
-              "Add #{field.to_s.titleize}".html_safe +
-                  content_tag(:template, edit_field, class: 'edit')
-            end
+            add_field object, field, type
           else
-            edit_field
+            read_field object, field, type
           end
         end
         dt + dd

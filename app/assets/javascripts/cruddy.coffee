@@ -42,10 +42,11 @@ $(document).on 'click', '.new_crud', ->
 root.locate = (type, id) ->
   $("[data-type=#{type}][data-resource-id=#{id}]");
 
-$(document).on 'click', 'a[data-add-field]', ->
+$(document).on 'click', 'a[data-add-field], span.read', ->
   container = $(this).parent()
   form = $(this).find('template.edit')
   $(this).replaceWith(form.html())
-  container.find('input:not([type=hidden]):first').focus()
-
-
+  if (container.find('textarea').size() > 0)
+    container.find('textarea:first').focus()
+  else
+    container.find('input:not([type=hidden]):first').focus()
