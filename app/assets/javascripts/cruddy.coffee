@@ -59,7 +59,11 @@ $(document).on 'click', 'a[data-add-field], span.read', ->
 
 $(document).on 'click', '.new_crud_link', ->
   table = $(this).closest('.category').find '.cruddy_table'
-  form = $(this).find('template.new')
-  table.prepend form.html()
+  if table.find('.new_crud_form').size() == 0
+    form = $(this).find('template.new')
+    table.prepend form.html()
 
   table.find('.new_crud_form .focus_target').focus()
+
+$(document).on 'click', '.cruddy_resource.new', ->
+  
