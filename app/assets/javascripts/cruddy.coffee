@@ -8,11 +8,11 @@ $(document).on 'click', '.cruddy_resource .compact', ->
   collapse $('.full')
   table = $(this).parent().data('type') + 's'
   id = $(this).closest('.cruddy_resource').data 'resource-id'
-
-  $.ajax
-    url: "/#{table}/#{id}"
-    dataType: 'script'
-  false
+  if (id != undefined)
+    $.ajax
+      url: "/#{table}/#{id}"
+      dataType: 'script'
+    false
 
 $(document).on 'click', '.cruddy_resource .compact a', (event) ->
   event.stopPropagation()
@@ -42,6 +42,12 @@ $(document).on 'click', '.new_crud', ->
 root.locate = (type, id) ->
   $("[data-type=#{type}][data-resource-id=#{id}]");
 
+focus_field = (container) ->
+  if (container.find('textarea').size() > 0)
+    container.find('textarea:first').focus()
+  else
+    container.find('input:not([type=hidden]):first').focus()
+
 $(document).on 'click', 'a[data-add-field], span.read', ->
   container = $(this).parent()
   form = $(this).find('template.edit')
@@ -50,3 +56,10 @@ $(document).on 'click', 'a[data-add-field], span.read', ->
     container.find('textarea:first').focus()
   else
     container.find('input:not([type=hidden]):first').focus()
+
+$(document).on 'click', '.new_crud_link', ->
+  table = $(this).closest('.category').find '.cruddy_table'
+  form = $(this).find('template.new')
+  table.prepend form.html()
+
+  table.find('.new_crud_form .focus_target').focus()

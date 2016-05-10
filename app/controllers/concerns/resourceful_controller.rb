@@ -5,7 +5,7 @@ module ResourcefulController
     def add_resource
       @resourceful = resourceful.find params[:id]
       input = params[resourceful_name.to_sym][:new_resource]
-      @resource = Resource.where(description: input).first
+      @resource = Resource.where(title: input).first
       if @resource.nil?
         def input.looks_like_a_url?
           self[0..6] == 'http://'

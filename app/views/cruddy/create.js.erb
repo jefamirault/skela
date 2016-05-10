@@ -1,11 +1,8 @@
-if ($('#courses')) {
-  $('#<%= @resource.class.to_s.underscore.pluralize %>').prepend('<%= j new_cruddy_resource @resource, true %>');
-  var crud = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
-  crud.addClass('selected');
-  var thing = crud.find('.full');
-  thing.slideDown();
-  thing.find('input:not([type="hidden"]):eq(0)').focus();
-} else {
-
-  replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
-}
+var table = $('#<%= @resource.class.to_s.underscore.pluralize %>');
+table.find('.cruddy_resource.new').remove();
+table.prepend('<%= j new_cruddy_resource @resource, true %>');
+var crud = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
+crud.addClass('selected');
+var thing = crud.find('.full');
+thing.slideDown();
+thing.find('input:not([type="hidden"]):eq(0)').focus();

@@ -3,27 +3,51 @@
     .row{ style: 'align-items: flex-end;'}
       %h4 Assignments
       - if allow_create
-        .new_crud_button{ style: 'display:inline;'}
-          = link_to md_icon('add_circle', false), new_assignment_path, remote: true, class: 'new_crud'
+        %a.new_crud.new_crud_link
+          = md_icon('add_circle', false)
+          %template.new
+            %li.cruddy_resource.new.selected
+              .compact
+                = form_for Assignment.new, remote: true, html: { class: 'new_crud_form' } do |f|
+                  = f.text_field 'title', placeholder: 'New Assignment', class: 'focus_target'
+
     = cruddier_table @assignments, id: 'assignments'
+
   #exams_container.category
     .row{ style: 'align-items: flex-end;'}
       %h4 Exams
       - if allow_create
-        .new_crud_button
-          = link_to md_icon('add_circle', false), new_exam_path, remote: true, class: 'new_crud'
+        %a.new_crud.new_crud_link
+          = md_icon('add_circle', false)
+          %template.new
+            %li.cruddy_resource.new.selected
+              .compact
+                = form_for Exam.new, remote: true, html: { class: 'new_crud_form' } do |f|
+                  = f.text_field 'title', placeholder: 'New Exam', class: 'focus_target'
     = cruddier_table @exams, id: 'exams'
+
   #readings_container.category
     .row{ style: 'align-items: flex-end;'}
       %h4 Readings
       - if allow_create
-        .new_crud_button
-          = link_to md_icon('add_circle', false), new_reading_path, remote: true, class: 'new_crud'
+        %a.new_crud.new_crud_link
+          = md_icon('add_circle', false)
+          %template.new
+            %li.cruddy_resource.new.selected
+              .compact
+                = form_for Reading.new, remote: true, html: { class: 'new_crud_form' } do |f|
+                  = f.text_field 'title', placeholder: 'New Reading', class: 'focus_target'
     = cruddier_table @readings, id: 'readings'
+
   #resources_container.category
     .row{ style: 'align-items: flex-end;'}
       %h4 Resources
       - if allow_create
-        .new_crud_button
-          = link_to md_icon('add_circle', false), new_resource_path, remote: true, class: 'new_crud'
+        %a.new_crud.new_crud_link
+          = md_icon('add_circle', false)
+          %template.new
+            %li.cruddy_resource.new.selected
+              .compact
+                = form_for Resource.new, remote: true, html: { class: 'new_crud_form' } do |f|
+                  = f.text_field 'title', placeholder: 'New Resource', class: 'focus_target'
     = cruddier_table @resources, id: 'resources'

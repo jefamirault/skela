@@ -1,8 +1,8 @@
 class CruddyController < ApplicationController
 
   before_filter :set_resource
-  before_filter :set_resources, only: [:index, :new]
-  before_filter :create_resource, only: :new
+  before_filter :set_resources, only: [:index, :new, :create]
+  before_filter :create_resource, only: [:new, :create]
 
 
   def index
@@ -10,6 +10,11 @@ class CruddyController < ApplicationController
   end
 
   def new
+    render 'cruddy/new'
+  end
+
+  def create
+    @resource.update crud_params
     render 'cruddy/create'
   end
 

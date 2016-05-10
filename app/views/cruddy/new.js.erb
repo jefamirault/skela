@@ -1,12 +1,11 @@
 if ($('#courses')) {
   $('#<%= @resource.class.to_s.underscore.pluralize %>').prepend('<%= j new_cruddy_resource @resource, true %>');
-  var thing = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>).find('.full');
+  var crud = find_crud('<%= @resource.class.to_s.underscore %>', <%= @resource.id %>);
+  crud.addClass('selected');
+  var thing = crud.find('.full');
   thing.slideDown();
   thing.find('input:not([type="hidden"]):eq(0)').focus();
-  thing.closest('.cruddy_resource').addClass('selected');
 } else {
+
   replaceContentAndDecloak('<%= j render file: 'cruddy/create.haml' %>');
 }
-
-$('#header').replaceWith('<%= j render 'layouts/header' %>');
-$('#sidebar').html('<%= j render 'layouts/sidebar' %>');

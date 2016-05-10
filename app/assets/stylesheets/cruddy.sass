@@ -99,21 +99,18 @@
 .huge
   font-size: 300%
 
-.new_crud_button
+.new_crud
   margin: 6px
   opacity: .6
   transition: opacity .21s ease-in-out
-
-  &:hover
-    opacity: .9
-
-.new_crud
   i
     transition: all .2s ease
     border-radius: 50%
+  &:hover
+    opacity: .9
+    i
+      transform: scale(1.1)
 
-  &:hover i
-    transform: scale(1.1)
 
 .v_middle
   position: relative
@@ -184,3 +181,15 @@ a[data-add-field], span.read
 a[data-add-field]
   opacity: .7
   color: #777
+
+.new_crud_link
+  cursor: pointer
+
+.new_crud_form
+  input[type=text]
+    font-weight: bold
+    font-size: 106%
+    border: none
+    outline: none
+    padding: 0
+    width: 100%
