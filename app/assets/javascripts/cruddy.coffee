@@ -66,4 +66,32 @@ $(document).on 'click', '.new_crud_link', ->
   table.find('.new_crud_form .focus_target').focus()
 
 $(document).on 'click', '.cruddy_resource.new', ->
-  
+
+root.scrollToView = (element) ->
+  current = $(element).offset().top
+  bottom = $('html').height() - element.height() - 15
+  toGo = if current < 73
+    73 - current
+  else if current > bottom
+    bottom - current
+  else 0
+  scrollUp(toGo)
+
+root.scrollTo = (position) ->
+  $('#main').animate({
+    scrollTop: position
+  })
+
+root.crudOffset = ->
+  $('.full').offset()
+
+root.currentScroll = ->
+  0 - ($($('#main').children()[0]).offset().top - $('#header').height())
+
+root.scroll = (distance) -> scrollDown(distance)
+
+root.scrollDown = (distance) ->
+  scrollTo(currentScroll() + distance)
+
+root.scrollUp = (distance) ->
+  scrollTo(currentScroll() - distance)
