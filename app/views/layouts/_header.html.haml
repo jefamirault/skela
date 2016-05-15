@@ -1,13 +1,10 @@
 #header
   #toggle_sidebar= md_icon 'menu'
   = site_logo
-  %nav
-    - if logged_in?
-      %ul#primary_nav
-        - %w(Assignments Exams Readings Resources).each do |tracker|
-          %li= category_link tracker
+  - if logged_in?
+    - %w(Assignments Exams Readings Resources).each do |tracker|
+      = category_link tracker
 
-        .flex
-        = my_profile_nav do
-          - present current_user do |user|
-            = user.username_and_avatar
+    .flex.spacer
+    = my_profile_nav do
+      = present(current_user).username_and_avatar

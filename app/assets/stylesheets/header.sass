@@ -29,7 +29,8 @@
 #header
   display: flex
   flex-shrink: 0
-  height: 64px
+  flex-wrap: wrap
+  justify-content: space-around
   align-items: center
   box-shadow: 0 2px 4px rgba(0,0,0,.29)
   +white-text(.96)
@@ -39,7 +40,7 @@
   z-index: 9
 
   #site_logo
-    padding: 0 32px 0 24px
+    padding: 0 12px 0 12px
 
 
   nav
@@ -53,6 +54,11 @@
     margin: 0
     flex: 1
 
+
+  .spacer
+    display: none
+    @media only screen and (min-width: 896px)
+      display: flex
 
 #site_logo
   width: 150px
@@ -88,6 +94,7 @@ a.nav_link, a.category_toggle
   opacity: .9
   cursor: pointer
   margin-top: 4px
+  display: none
 
   i
     border-radius: 50%
@@ -95,3 +102,7 @@ a.nav_link, a.category_toggle
     padding: 4px
   &:active i
     background: rgba(255,255,255,.24)
+
+  @media only screen and (min-width: 896px)
+    display: block
+
