@@ -16,7 +16,7 @@ class ReadingsController < CruddyController
   end
 
   def reading_params
-    params.require(:reading).permit(:title, :due_date, :notes )
+    params.require(:reading).permit(:title, :date, :notes)
   end
 
 end

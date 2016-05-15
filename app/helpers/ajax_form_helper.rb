@@ -103,7 +103,7 @@ module AjaxFormHelper
 
   def read_field(object, field, type)
     content_tag :span, class: 'read' do
-      object.send(field).to_s.html_safe +
+      present(object).send(field).html_safe +
           content_tag(:template, edit_field(object, field, type), class: 'edit')
     end
   end

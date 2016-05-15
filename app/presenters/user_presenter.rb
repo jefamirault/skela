@@ -2,10 +2,8 @@ class UserPresenter
   include ActionView::Helpers
   include ActionView::Context
 
-
-  def initialize(user = nil, template = nil)
+  def initialize(user = nil)
     @user = user
-    @template = template
   end
 
   def username
