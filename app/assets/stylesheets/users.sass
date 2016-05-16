@@ -73,6 +73,8 @@ dl
     background: white
     border-color: $one
 
+
+
 #password_form
   width: 300px
   margin: 32px auto 32px
@@ -117,8 +119,6 @@ dl
 
 
 #edit_password_container
-  width: 300px
-
 
 #password_form
   transition: all .24s ease-in-out
@@ -127,16 +127,46 @@ dl
 
 
 #change_password
-  @extend .button
-  width: 190px
-  margin: auto
+  cursor: pointer
+  &:hover i
+    color: $one
 
+#logout_button
+  @extend #change_password
 
 #create_account_container
   width: 300px
 
 #create_account
-  @extend #change_password
+  @extend .button
+  width: 190px
+  margin: auto
 
 #create_account_form
   @extend #password_form
+
+#my_profile_card
+  display: inline-block
+  background: white
+  box-shadow: 0 2px 8px rgba(0,0,0,.5)
+  border-radius: 2px
+  padding: 12px 0 0
+
+  i
+    color: gray
+    font-size: 175%
+    padding: 8px
+    margin: 4px
+
+#username_field
+  font-size: 1.35em
+  font-weight: bold
+  width: 240px
+  border: none
+  padding: 12px 0
+  margin: 24px 0
+  text-align: center
+  outline: none
+
+  &:hover, &:focus
+    background: rgba(0,0,0,.1)
