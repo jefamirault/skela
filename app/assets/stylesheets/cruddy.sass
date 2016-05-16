@@ -181,7 +181,7 @@ h4
 
 a[data-add-field], span.read
   cursor: pointer
-  line-height: 27px
+
 a[data-add-field]
   opacity: .7
   color: #777
@@ -197,3 +197,43 @@ a[data-add-field]
     outline: none
     padding: 0
     width: 100%
+
+ul.optional_fields
+  display: flex
+  flex-direction: column
+  padding: 0 20px
+
+  li
+    flex: 1
+    display: flex
+    align-items: flex-start
+    padding: 0 0 18px
+
+  label
+    flex-shrink: 0
+    font-weight: bold
+    margin-right: 18px
+    width: 96px
+    display: inline-block
+    text-align: right
+
+  form
+    display: inline-block
+    margin-right: 24px
+    flex: 1
+
+  label, .add, .edit, .read
+    line-height: 36px
+
+  .read, .add
+    display: inline-block
+    padding: 0 0 0 7px
+
+  input:not([type=checkbox])
+    width: 169px
+    height: 18px
+    font-family: Helvetica, arial, sans-serif
+
+  textarea
+    font-family: Helvetica, arial, sans-serif
+    padding: 5px 7px
