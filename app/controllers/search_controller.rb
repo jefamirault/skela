@@ -26,8 +26,12 @@ class SearchController < ApplicationController
     end.reduce :merge
 
     if params[:focus]
-      @groups = { params[:focus].to_sym => @groups[params[:focus].to_sym] }
+      focus = params[:focus].map do |group, included|
+        { group.to_sym => @groups[group.to_sym] }
+      end.reduce :merge
+      @groups = focus
     end
+
     if params[:date].present?
       @groups.delete :resources
     end

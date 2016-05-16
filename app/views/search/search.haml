@@ -10,9 +10,16 @@
       .field
         %span(style='pointer-events:none;')= md_icon 'search'
         %input#full_text_search{ type: 'search', name: 'ftext', value: params[:ftext] }
-      %a#advanced_search_toggle Advanced Search
+      %a#advanced_search_toggle Adv. Search
 
     #advanced_search.hidden
+      .row
+        %label(style='flex-shrink: 0;') Only:
+        %ul
+          - %w(assignments exams readings resources).each do |group|
+            %li
+              = check_box_tag "[focus][#{group}]", 1, params[:focus][group.to_sym]
+              %label{ for: "_focus_#{group}"}= group.titleize
       .row
         %label{ for: 'due_date_search' } Due date:
         .field

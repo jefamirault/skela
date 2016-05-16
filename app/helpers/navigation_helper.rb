@@ -18,5 +18,5 @@ end
 # send("#{title.pluralize.underscore}_path")
 
 def category_link(title)
-  content_tag :a, title, href: search_path(focus: title.underscore), class: 'category_toggle', data: { toggle: "#{title.underscore}_container" }
+  content_tag :a, title, href: search_path(focus: { title.underscore => true }), class: 'category_toggle', data: { toggle: "#{title.underscore}_container" }
 end

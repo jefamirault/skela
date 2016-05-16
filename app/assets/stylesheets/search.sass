@@ -23,10 +23,13 @@
     border: 1px solid #d9d9d9
     border-top-color: #c0c0c0
 
-    &:focus
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3)
-      border-color: $two
-      outline: none
+    &[type=text], &[type=search]
+      width: 0
+
+    &[type=checkbox]
+      display: inline-block
+      flex-shrink: 0
+      flex: none
 
     &[type=submit]
       width: 100%
@@ -41,6 +44,21 @@
       color: rgba(255, 255, 255, .99)
       text-decoration: none
       cursor: pointer
+
+    &:focus
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3)
+      border-color: $two
+      outline: none
+
+
+  ul
+    flex: 1
+    display: flex
+    justify-content: space-around
+    flex-wrap: wrap
+
+  li
+    display: inline-block
 
   i
     position: absolute
@@ -65,3 +83,5 @@ input#full_text_search
 #advanced_search
   &.hidden
     display: none
+
+
