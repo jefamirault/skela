@@ -106,7 +106,7 @@ module ApplicationHelper
     if nav
       data.merge! ({fade_content: true, swap_title: title})
     end
-    link_to trash_icon_right, path, data: data, class: "destroy_#{klass}"
+    link_to trash_icon_right, path, data: data, class: "destroy_crud destroy_#{klass}"
   end
 
   def md_icon(icon, huge = false)

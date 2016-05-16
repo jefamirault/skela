@@ -18,7 +18,7 @@
         %ul
           - %w(assignments exams readings resources).each do |group|
             %li
-              = check_box_tag "[focus][#{group}]", 1, params[:focus][group.to_sym]
+              = check_box_tag "[focus][#{group}]", 1, params[:focus] && params[:focus][group.to_sym]
               %label{ for: "_focus_#{group}"}= group.titleize
       .row
         %label{ for: 'due_date_search' } Due date:
