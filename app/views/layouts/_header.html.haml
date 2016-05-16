@@ -1,5 +1,6 @@
 #header
-  #toggle_sidebar= md_icon 'menu'
+  - if logged_in?
+    #toggle_sidebar= md_icon 'menu'
   = site_logo
   - if logged_in?
     - %w(Assignments Exams Readings Resources).each do |tracker|
