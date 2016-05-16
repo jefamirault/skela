@@ -28,6 +28,7 @@ class CruddyController < ApplicationController
 
   def update
     @resource.update crud_params
+    @updated_fields = crud_params.map { |field, value| field }
     render 'cruddy/update'
   end
 

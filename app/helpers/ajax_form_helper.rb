@@ -118,18 +118,22 @@ module AjaxFormHelper
     end
   end
 
+  def optional_field(object, field, type)
+    content_tag :li, id: "#{object.class.to_s.underscore}_#{field}_add_edit_read" do
+      label = content_tag(:label, field.to_s.titleize + ':', for: "#{object.class.to_s.underscore}_#{object.id}_#{field}")
+      field = if object.send(field).nil? || !object.send(field).present?
+                add_field object, field, type
+              else
+                read_field object, field, type
+              end
+      label + field
+    end
+  end
+
   def optional_fields(object, fields = {})
     content_tag :ul, class: 'optional_fields' do
       fields.map do |field, type|
-        content_tag :li do
-          label = content_tag(:label, field.to_s.titleize + ':', for: "#{object.class.to_s.underscore}_#{object.id}_#{field}")
-          field = if object.send(field).nil? || !object.send(field).present?
-              add_field object, field, type
-            else
-              read_field object, field, type
-          end
-          label + field
-        end
+        optional_field object, field, type
       end.reduce :+
     end
   end

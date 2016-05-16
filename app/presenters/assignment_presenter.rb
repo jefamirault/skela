@@ -6,6 +6,10 @@ class AssignmentPresenter
     @assignment = assignment
   end
 
+  def title
+    @assignment.title
+  end
+
   def date
     @assignment.date ? @assignment.date.strftime('%a %-m/%-d') : nil
   end

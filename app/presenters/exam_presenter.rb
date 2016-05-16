@@ -6,6 +6,10 @@ class ExamPresenter
     @exam = exam
   end
 
+  def title
+    @exam.title
+  end
+
   def date
     @exam.date ? @exam.date.strftime('%a %-m/%-d') : nil
   end

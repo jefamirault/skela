@@ -6,6 +6,10 @@ class ResourcePresenter
     @resource = resource
   end
 
+  def title
+    @resource.title
+  end
+
   def url
     @resource.url
   end
