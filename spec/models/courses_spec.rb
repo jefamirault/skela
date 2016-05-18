@@ -48,15 +48,15 @@ RSpec.describe 'Courses' do
       expect(@reading.resources).to include r2
     end
 
-    it 'should set description' do
-      @reading.description = 'Chapter 7: Test Driven Development'
-      expect(@reading.description).to eq 'Chapter 7: Test Driven Development'
+    it 'should set notes' do
+      @reading.notes = 'Chapter 7: Test Driven Development'
+      expect(@reading.notes).to eq 'Chapter 7: Test Driven Development'
     end
 
-    it 'should set due date' do
-      due = Date.today + 1.week
-      @reading.due_date = due
-      expect(@reading.due_date).to eq due
+    it 'should set date' do
+      date = Date.today + 1.week
+      @reading.date = date
+      expect(@reading.date).to eq date
     end
   end
 
@@ -85,15 +85,15 @@ RSpec.describe 'Courses' do
       expect(@assignment.resources).to include r2
     end
 
-    it 'should set description' do
-      @assignment.description = 'Chapter 7: Test Driven Development'
-      expect(@assignment.description).to eq 'Chapter 7: Test Driven Development'
+    it 'should set notes' do
+      @assignment.notes = 'Chapter 7: Test Driven Development'
+      expect(@assignment.notes).to eq 'Chapter 7: Test Driven Development'
     end
 
-    it 'should set due date' do
-      due = Date.today + 1.week
-      @assignment.due_date = due
-      expect(@assignment.due_date).to eq due
+    it 'should set date' do
+      date = Date.today + 1.week
+      @assignment.date = date
+      expect(@assignment.date).to eq date
     end
   end
 
@@ -122,20 +122,24 @@ RSpec.describe 'Courses' do
       expect(@exam.resources).to include r2
     end
 
-    it 'should set topic' do
-      @exam.topic = 'The Data Link Layer'
-      expect(@exam.topic).to eq 'The Data Link Layer'
+    it 'should set title' do
+      @exam.title = 'The Data Link Layer'
+      expect(@exam.title).to eq 'The Data Link Layer'
     end
 
-    it 'should set description' do
-      @exam.description = 'Chapter 7: Test Driven Development'
-      expect(@exam.description).to eq 'Chapter 7: Test Driven Development'
+    it 'should set notes' do
+      @exam.notes = 'Chapter 7: Test Driven Development'
+      expect(@exam.notes).to eq 'Chapter 7: Test Driven Development'
     end
 
     it 'should set date & time' do
-      due = Time.now + 1.week
-      @exam.datetime = due
-      expect(@exam.datetime).to eq due
+      date = Date.today + 1.week
+      @exam.date = date
+      expect(@exam.date).to eq date
+
+      time = Time.now + 1.hour
+      @exam.time = time
+      expect(@exam.time).to eq time
     end
   end
 
