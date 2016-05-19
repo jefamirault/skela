@@ -11,5 +11,5 @@
   %dd= link_to 'View Course', explore_course_path(@resource.id), class: 'nav_link', style: 'color: #1976d2;', data: { remote: true, fade_content: 'true', swap_title: @course.title }
 
 %footer
-  = collapse_button
   = destroy_link @resource, false
+  = collapse_button
