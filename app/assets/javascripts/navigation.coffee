@@ -65,11 +65,6 @@ $(document).on 'click', '#sidebar .button', ->
   $('#sidebar .button').removeClass 'selected'
   $(this).addClass 'selected'
 
-$(document).on 'click', '.category_toggle', ->
-  $(this).toggleClass 'selected'
-  target = $(this).data 'toggle'
-  $("##{target}").toggleClass 'hidden'
-
 $(document).on 'click', '#sidebar a', ->
   $('#sidebar a').removeClass 'selected'
   $('#logged_in_user').removeClass 'selected'
