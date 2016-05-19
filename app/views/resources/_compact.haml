@@ -1,12 +1,12 @@
 .crud_title
-  = resource.title
+  = crud.title
 .right
-  - if resource.url.present?
-    = link_to md_icon('open_in_new'), resource.url, target: 'blank'
+  - if crud.url.present?
+    = link_to md_icon('open_in_new'), crud.url, target: 'blank'
   - else
     %span.gray= md_icon 'open_in_new'
 
-  - if resource.filename.present?
-    = link_to md_icon('file_download'), resource_path(resource)
+  - if crud.filename.present?
+    = link_to md_icon('file_download'), resource_path(crud)
   - else
     %span.gray= md_icon 'file_download'

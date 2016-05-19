@@ -22,7 +22,7 @@ module CruddyHelper
         options[:resources].map do |resource|
           content_tag :li, class: 'cruddy_resource', data: { resource_id: resource.id } do
             content_tag :div, class: 'compact' do
-              render partial: options[:compact] || 'compact', locals: { resource: resource }
+              render partial: options[:compact] || 'compact', locals: { crud: resource }
             end
           end
         end.reduce :+
@@ -41,10 +41,10 @@ module CruddyHelper
   def new_cruddy_resource(resource, hidden = false)
     content_tag :li, class: 'cruddy_resource', data: { resource_id: resource.id, type: resource.class.to_s.underscore } do
       views = content_tag :div, class: 'compact', style: 'display:none;' do
-        render partial: 'compact', locals: { resource: resource }
+        render partial: 'compact', locals: { crud: resource }
       end
       views += content_tag :div, class: 'full', style: hidden ? 'display:none;' : '' do
-        render partial: 'full', locals: { resource: resource }
+        render partial: 'full', locals: { crud: resource }
       end
       views
     end

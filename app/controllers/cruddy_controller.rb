@@ -1,6 +1,6 @@
 class CruddyController < ApplicationController
 
-  before_filter :set_resource
+  before_filter :set_resource, except: [:new, :create]
   before_filter :set_resources, only: [:index, :new, :create]
   before_filter :create_resource, only: [:new, :create]
 
