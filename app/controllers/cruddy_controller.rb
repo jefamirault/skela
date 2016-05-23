@@ -41,9 +41,9 @@ class CruddyController < ApplicationController
   private
 
   def model
-    eval params[:controller].singularize.titleize.gsub(' ','')
+    params[:controller].singularize.titleize.constantize
   end
-
+  
   def model_formatted
     "@#{model}".downcase
   end
