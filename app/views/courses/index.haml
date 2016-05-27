@@ -7,7 +7,7 @@
   %br
   .center
     .new_crud_button
-      = link_to md_icon('add_circle', true), send("new_#{params[:controller].singularize}_path"), remote: true, class: 'new_crud look_at_me'
+      = link_to md_icon('add_circle', true), send("new_#{params[:controller].singularize}_path"), remote: true, id: 'new_course_button', class: 'new_crud look_at_me'
 
   - if @resources.empty?
     #get_started

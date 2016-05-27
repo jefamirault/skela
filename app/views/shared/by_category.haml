@@ -10,7 +10,6 @@
               .compact
                 = form_for Assignment.new, remote: true, html: { class: 'new_crud_form' } do |f|
                   = f.text_field 'title', placeholder: 'New Assignment', class: 'focus_target'
-
     = cruddier_table @assignments, id: 'assignments'
 
   #exams_container.category
