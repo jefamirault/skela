@@ -1,5 +1,5 @@
 shared_context 'session' do
-  def create_guest_with_course(course_title)
+  def create_guest_with_course(course_title = 'Sample Course')
     log_in_as_guest
     click_link 'new_course_button'
     find("input.ajax_field.subject").set course_title
