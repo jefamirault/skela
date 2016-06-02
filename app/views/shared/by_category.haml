@@ -38,11 +38,11 @@
                   = f.text_field 'title', placeholder: 'New Reading', class: 'focus_target'
     = cruddier_table @readings, id: 'readings'
 
-  #resources_container.category{ id: "new_resource_link" }
+  #resources_container.category
     .row{ style: 'align-items: flex-end;'}
       %h4 Resources
       - if allow_create
-        %a.new_crud.new_crud_link
+        %a.new_crud.new_crud_link{ id: "new_resource_link" }
           = md_icon('add_circle', false)
           %template.new
             %li.cruddy_resource.new.selected
