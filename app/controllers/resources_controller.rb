@@ -22,7 +22,12 @@ class ResourcesController < CruddyController
 
   def update
     @resource.update crud_params
-    redirect_to explore_course_path(@resource.course) unless request.xhr?
+    @updated_fields = crud_params.map { |field, value| field }
+    if request.xhr?
+      render 'cruddy/update'
+    else
+      redirect_to explore_course_path(@resource.course)
+    end
   end
 
   def autocomplete

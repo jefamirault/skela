@@ -1,12 +1,12 @@
 var crud = locate('<%= @resource.class.to_s.underscore %>',<%= @resource.id %>);
-crud.find('.compact').html('<%= j render 'compact', crud: @resource %>');
 
+crud.find('.compact').html('<%= j render 'compact', crud: @resource %>');
 crud.find('span[data-field="title"]').html('<%= @resource.title %>');
 crud.find('i[data-initial="title"]').html('<%= @resource.title[0] %>');
-crud.find('.nav_link').attr('data-swap-title', '<%= @resource.title %>');
 
+crud.find('.nav_link').attr('data-swap-title', '<%= @resource.title %>');
 <% if @updated_fields && @updated_fields.size == 1 %>
-  var field = $('#<%= "#{@resource.class.to_s.underscore}_#{@updated_fields[0]}_add_edit_read" %>');
-  <% type = @resource.column_for_attribute(@updated_fields[0]).type.to_s %>
-  field.replaceWith('<%= j optional_field(@resource, @updated_fields[0], type) %>');
+var field = $('#<%= "#{@resource.class.to_s.underscore}_#{@updated_fields[0]}_add_edit_read" %>');
+<% type = @resource.column_for_attribute(@updated_fields[0]).type.to_s %>
+field.replaceWith('<%= j optional_field(@resource, @updated_fields[0], type) %>');
 <% end %>
