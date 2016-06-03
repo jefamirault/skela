@@ -1,7 +1,7 @@
-$(function(){
-  jQuery("#inventory_item_id").autocomplete({
-    source: function (request, response) {
-      jQuery.get("/items/autocomplete", {
+function registerAutocomplete(selector, controller) {
+  $(selector).autocomplete({
+    source: function(request, response) {
+      $.get("/" + controller + "/autocomplete", {
         data: request.term,
         dataType: "json"
       }, function (data) {
@@ -10,32 +10,8 @@ $(function(){
     },
     autoFocus: true
   });
-});
+}
 
-$(function(){
-  jQuery("#issue_task_id").autocomplete({
-    source: function (request, response) {
-      jQuery.get("/tasks/autocomplete", {
-        data: request.term,
-        dataType: "json"
-      }, function (data) {
-        response(data);
-      });
-    },
-    autoFocus: true
-  });
-});
-
-$(document).on('keydown', '[data-autocomplete="resources"]', function(){
-  $(this).autocomplete({
-    source: function (request, response) {
-      $.get('/resources/autocomplete', {
-        data: request.term,
-        dataType: 'json'
-      }, function (data) {
-        response(data);
-      });
-    },
-    autoFocus: true
-  })
+$(document).on('keydown', '[data-autocomplete]', function(){
+  registerAutocomplete(this, $(this).data('autocomplete'));
 });
