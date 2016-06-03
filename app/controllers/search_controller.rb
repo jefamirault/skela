@@ -9,15 +9,15 @@ class SearchController < ApplicationController
     }
 
 
-    fields = {
+    predicates_fields = {
         assignment: { ftext: :title_or_notes },
         exam:       { ftext: :title_or_notes },
         reading:    { ftext: :title_or_notes },
         resource:   { ftext: :title_or_url }
     }
 
-    queries = fields.map do |type, fields|
-      { type => @q.merge("#{fields[:ftext]}_cont" => ftext) }
+    queries = predicates_fields.map do |predicate, fields|
+      { predicate => @q.merge("#{fields[:ftext]}_cont" => ftext) }
     end.reduce :merge
 
     @groups = queries.map do |type, query|
