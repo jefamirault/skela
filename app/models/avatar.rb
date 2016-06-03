@@ -19,14 +19,7 @@ class Avatar < ActiveRecord::Base
   end
 
   def face=(new_face)
-    type = new_face.class
-    if type == String
-      write_attribute :face, FACES.index(new_face)
-    elsif type == Fixnum
-      write_attribute :face, new_face
-    else
-      raise "cannot set avatar face using type: #{type}"
-    end
+    set_by_string_or_index :face, new_face
   end
   def face
     face_index ? FACES[face_index] : nil
@@ -36,14 +29,7 @@ class Avatar < ActiveRecord::Base
   end
 
   def head=(new_head)
-    type = new_head.class
-    if type == String
-      write_attribute :head, HEADS.index(new_head)
-    elsif type == Fixnum
-      write_attribute :head, new_head
-    else
-      raise "cannot set avatar face using type: #{type}"
-    end
+    set_by_string_or_index :head, new_head
   end
   def head
     head_index ? HEADS[head_index] : nil
@@ -53,14 +39,7 @@ class Avatar < ActiveRecord::Base
   end
 
   def color=(new_color)
-    type = new_color.class
-    if type == String
-      write_attribute :color, COLORS.index(new_color)
-    elsif type == Fixnum
-      write_attribute :color, new_color
-    else
-      raise "cannot set avatar face using type: #{type}"
-    end
+    set_by_string_or_index :color, new_color
   end
   def color
     color_index ? COLORS[color_index] : nil
@@ -82,5 +61,18 @@ class Avatar < ActiveRecord::Base
   def increment_color
     self.color = (color_index + 1) % COLORS.size
     save
+  end
+
+  private
+
+  def set_by_string_or_index(field, value)
+    type = value.class
+    if type == String
+      write_attribute field, send(field.to_s.upcase).index(value)
+    elsif type == Fixnum
+      write_attribute field, value
+    else
+      raise "cannot set avatar #{field} using type: #{type}"
+    end
   end
 end
