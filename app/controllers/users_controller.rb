@@ -14,38 +14,9 @@ class UsersController < CruddyController
 
   def update
     @user = User.find params[:id]
-    if params[:user] && params[:user].include?(:admin)
-      if superuser?
-        @user.admin = params[:user][:admin]
-      else
-        flash[:alert] = 'Get the fuck out of here.'
-        session[:user_id] = nil
-        return
-      end
-      params[:user].delete :admin
-    end
-    unless superuser?
-      if @user != current_user
-        flash[:alert] = 'You cannot edit someone else\'s profile.'
-        return
-      end
-    end
-    if params[:user] && params[:user].any?
-      if @user.update(user_params)
-        flash[:notice] = 'User updated successfully!'
-      else
-        flash[:alert] = 'Something happened'
-      end
-    else
-      if @user.save
-        flash[:notice] = 'User updated successfully!'
-      else
-        flash[:alert] = 'Something happened'
-      end
-    end
 
-    respond_to do |format|
-      format.js
+    if @user == current_user && params[:user] && params[:user].any?
+      @user.update(user_params)
     end
   end
 
