@@ -16,25 +16,6 @@
 //= require jquery-ui/autocomplete
 //= require_tree .
 
-
-$(document).on('click', '#trigger_flash_notice', function(event) {
-    $('.flash.notice').toggleClass('hidden');
-    event.preventDefault();
-});
-$(document).on('click', '#trigger_flash_alert', function(event) {
-    $('.flash.alert').toggleClass('hidden');
-    event.preventDefault();
-});
-$(document).on('click', '#cloak_container', function(event) {
-    toggleCloak('#container');
-    event.preventDefault();
-});
-
-$(document).on('click', '#hide_stuff', function(event) {
-    $('#user_form').toggleClass('hidden');
-    event.preventDefault();
-});
-
 function hide(selector) {
     jQuery(selector).addClass('hidden');
 }
