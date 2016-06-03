@@ -80,7 +80,7 @@ class CruddyController < ApplicationController
   end
 
   def crud_params
-    eval "#{model.to_s.singularize.underscore}_params"
+    send "#{model.to_s.singularize.underscore}_params"
   end
 
 end
