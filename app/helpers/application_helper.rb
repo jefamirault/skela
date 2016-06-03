@@ -26,13 +26,6 @@ module ApplicationHelper
     image_tag(path, id: 'site_logo', class: klass)
   end
 
-  def logged_in_text
-    user = UserPresenter.new current_user
-    my_profile_nav do
-
-    end
-  end
-
   def present(object, klass = nil)
     klass ||= "#{object.class.to_s}Presenter".constantize
     presenter = klass.new(object)
