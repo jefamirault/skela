@@ -119,10 +119,10 @@ module ApplicationHelper
 
   def avatar(user = nil, size = 50)
     avatar_path = if user.nil?
-      Avatar.default
-    else
-      user.avatar ? user.avatar.path : Avatar.default
-    end
+                    Avatar.default
+                  else
+                    user.avatar ? user.avatar.path : Avatar.default
+                  end
     content_tag :div, style: 'display:inline-block;vertical-align:top;' do
       image_tag(avatar_path, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
     end
