@@ -11,10 +11,10 @@ module ResourcefulController
           self[0..6] == 'http://'
         end
         @resource = if input.looks_like_a_url?
-          Resource.create url: input, title: input[7..-1], course: current_course
-        else
-          Resource.create title: input, course: current_course
-        end
+                      Resource.create url: input, title: input[7..-1], course: current_course
+                    else
+                      Resource.create title: input, course: current_course
+                    end
       end
       @resourceful.resources << @resource
       render 'resources/add_resource'

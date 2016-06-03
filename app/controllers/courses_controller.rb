@@ -28,10 +28,10 @@ class CoursesController < CruddyController
 
   def set_resources
     @resources = @courses = if logged_in?
-                 current_user.courses
-               else
-                 []
-               end
+                              current_user.courses
+                            else
+                              []
+                            end
   end
 
   def course_params
