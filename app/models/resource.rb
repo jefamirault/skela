@@ -4,23 +4,8 @@ class Resource < ActiveRecord::Base
   has_many :resourcefuls, through: :resource_inclusions
 
   validate :file_size
-  # validate :sound_file_extensions
-
-
-  def initialize(params = {})
-    params ||= {}
-    @file = params.delete(:file)
-    super
-    if @file
-      self.filename = sanitize_filename(@file.original_filename)
-      self.content_type = @file.content_type
-      self.file_contents = @file.read
-      save
-    end
-  end
 
   def update(params = {})
-    params ||= {}
     @file = params.delete(:file)
     super
     if @file
@@ -53,10 +38,4 @@ class Resource < ActiveRecord::Base
       errors.add(:file, "File size cannot be over #{MAX_MEGABYTES} megabytes.")
     end
   end
-
-  # def sound_file_extensions
-  #   if @file &&  @file.content_type.split('/').first != 'audio'
-  #     errors.add(:file, 'Must be an audio file.')
-  #   end
-  # end
 end
