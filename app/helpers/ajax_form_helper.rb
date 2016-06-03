@@ -18,13 +18,6 @@ module AjaxFormHelper
           f.text_area field, class: 'ajax_field', id: id
         when 'boolean'
           (f.label field) + (f.check_box field, class: 'ajax_field')
-        when 'datetime'
-          value = if resource.send(field)
-                    resource.send(field).in_time_zone('Eastern Time (US & Canada)').strftime('%FT%R')
-                  else
-                    nil
-                  end
-          f.datetime_local_field field, class: 'ajax_field', value: value
         when 'time'
           f.time_field field, class: 'ajax_field', id: id
         when 'date'
