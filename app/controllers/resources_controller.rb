@@ -22,7 +22,7 @@ class ResourcesController < CruddyController
 
   def update
     @resource.update crud_params
-    @updated_fields = crud_params.map { |field, value| field }
+    @updated_fields = crud_params.map { |field, _| field }
     if request.xhr?
       render 'cruddy/update'
     else
