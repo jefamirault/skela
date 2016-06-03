@@ -1,6 +1,5 @@
 .subject_container
-  = ajax_subject 'title', @resource
-
+  = edit_field @resource, 'title', 'subject'
 
 = optional_fields @resource, url: :string
 

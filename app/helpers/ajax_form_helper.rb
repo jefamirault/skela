@@ -1,53 +1,9 @@
 module AjaxFormHelper
-  def ajax_string(field, resource = @resource)
-    ajax_form 'string', resource, field
-  end
-
-  def ajax_subject(field, resource = @resource, focus_target = false)
-    ajax_form 'subject', resource, field
-  end
-
-  def ajax_notes(field, resource = @resource)
-    ajax_form 'notes', resource, field
-  end
-
-  def ajax_text(field, resource = @resource)
-    ajax_form 'text', resource, field
-  end
-
-  def ajax_number(field, resource = @resource)
-    ajax_form 'number', resource, field
-  end
-
-  def ajax_price(field, resource = @resource)
-    ajax_form 'price', resource, field
-  end
-
-  def ajax_user_select(field, resource = @resource)
-    ajax_form 'user_select', resource, field
-  end
-
-  def ajax_boolean(field, resource = @resource)
-    ajax_form 'boolean', resource, field
-  end
-
-  def ajax_datetime(field, resource = @resource, value = nil)
-    ajax_form 'datetime', resource, field, value
-  end
-
-  def ajax_date(field, resource = @resource, value = nil)
-    ajax_form 'date', resource, field, value
-  end
-
-  def ajax_time(field, resource = @resource)
-    ajax_form 'time', resource, field
-  end
-
-  def ajax_form(type, resource, field, value = nil)
+  def ajax_form(type, resource, field)
     klass = type
     id = "#{resource.class.to_s.underscore}_#{resource.id}_#{field}"
     form_for resource, html: { id: "edit_issue_#{field}", class: klass}, remote: true do |f|
-      case type
+      case type.to_s
         when 'user_select'
           user_select f, field, resource
         when 'number'
@@ -92,7 +48,7 @@ module AjaxFormHelper
   end
 
   def edit_field(object, field, type)
-    send("ajax_#{type}", field, object)
+    ajax_form type, object, field
   end
 
   def add_field(object, field, type)
@@ -106,15 +62,6 @@ module AjaxFormHelper
     content_tag :span, class: 'read' do
       present(object).send(field).html_safe +
           content_tag(:template, edit_field(object, field, type), class: 'edit')
-    end
-  end
-
-  def edit_fields(object, fields = {})
-    content_tag :dl do
-      fields.map do |field, type|
-        content_tag(:dt, field.to_s.titleize) +
-            content_tag(:dd, send("ajax_#{type}", field, object))
-      end.reduce :+
     end
   end
 
