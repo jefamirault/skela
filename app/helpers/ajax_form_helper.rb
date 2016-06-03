@@ -16,7 +16,7 @@ module AjaxFormHelper
        'text_area'
       else
        "#{field}_field"
-     end
+    end
   end
 
   def user_select(form_builder, field, resource)

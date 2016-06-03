@@ -7,8 +7,8 @@ feature 'Courses', js: true do
     scenario 'create with Title' do
       log_in_as_guest
       click_link 'new_course_button'
-      find("input.ajax_field.subject").set 'Sample Course'
-      page.evaluate_script("$('input.ajax_field.subject').blur()")
+      find(".subject_container .ajax_field").set 'Sample Course'
+      page.evaluate_script("$('.subject_container input.ajax_field').blur()")
       expect(page).to have_content('Sample Course')
     end
   end

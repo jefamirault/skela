@@ -2,8 +2,8 @@ shared_context 'session' do
   def create_guest_with_course(course_title = 'Sample Course')
     log_in_as_guest
     click_link 'new_course_button'
-    find("input.ajax_field.subject").set course_title
-    page.evaluate_script("$('input.ajax_field.subject').blur()")
+    find(".subject_container input.ajax_field").set course_title
+    page.evaluate_script("$('.subject_container input.ajax_field').blur()")
     expect(page).to have_content(course_title)
   end
 
