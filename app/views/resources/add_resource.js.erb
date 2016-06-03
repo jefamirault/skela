@@ -1,3 +1,4 @@
-$('.associated_resources').append('<li><%= j render partial: 'resources/card', locals: { resource: @resource, resourceful: @resourceful } %></li>');
+$('.associate_resource_container.new').replaceWith('<%= j render partial: 'resources/card', locals: { resource: @resource, resourceful: @resourceful } %>');
+$('.associated_resources').append('<%= j render partial: 'resources/new_associate_resource', locals: { resourceful: @resourceful } %>');
 $('#<%= @resourceful.class.to_s.underscore %>_new_resource').val('');
 $('.add_associated_resource').focus();

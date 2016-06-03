@@ -1,0 +1,7 @@
+%li.associate_resource_container.new
+  .associate_resource
+    %label.letter_box{ for: 'new_resource' }
+      = md_icon 'add'
+    - resourceful ||= @resource
+    = form_for resourceful, url: send("add_resource_#{controller_name.singularize}_path", resourceful), method: :post, remote: true do |f|
+      = f.text_field 'new_resource', data: { autocomplete: 'resources' }, id: 'new_resource', class: 'add_associated_resource', placeholder: 'Add a Resource'

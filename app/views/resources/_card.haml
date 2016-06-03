@@ -1,2 +1,6 @@
-= link_to resource.title, resources_path, class: 'resource', data: { resource_id: resource.id }
-= link_to md_icon('delete'), send("remove_resource_#{resourceful.class.to_s.underscore}_path", resourceful, resource_id: resource.id), class: 'remove', data: { method: :post, remote: true, remove_parent_li: true }
+%li.associate_resource_container
+  = link_to search_path(ftext: resource.title), class: 'associate_resource resource', data: { resource_id: resource.id } do
+    .letter_box
+      %i.letter_icon= resource.title[0]
+    %span= resource.title
+  = link_to md_icon('clear'), send("remove_resource_#{resourceful.class.to_s.underscore}_path", resourceful, resource_id: resource.id), class: 'remove', data: { method: :post, remote: true, remove_parent_li: true }

@@ -1,12 +1,7 @@
-%dl
-  %dt Resources
-  %dd
-    %ul.associated_resources
-      - @resource.resources.each do |resource|
-        %li
-          = render partial: 'resources/card', locals: { resource: resource, resourceful: @resource }
+%h4 Resources
+%ul.associated_resources
+  - @resourceful ||= @resource
+  - @resourceful.resources.each do |resource|
+    = render partial: 'resources/card', locals: { resource: resource, resourceful: @resourceful }
 
-    .center
-      = form_for @resource, url: send("add_resource_#{controller_name.singularize}_path", @resource), method: :post, remote: true do |f|
-        = f.text_field 'new_resource', data: { autocomplete: 'resources' }, class: 'add_associated_resource'
-        = f.submit 'Add Resource'
+  = render 'resources/new_associate_resource', locals: { resourceful: @resourceful }

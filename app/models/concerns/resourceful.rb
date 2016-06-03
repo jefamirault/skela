@@ -5,6 +5,7 @@ module Resourceful
     has_many :resource_inclusions, as: :resourceful
     has_many :resources, through: :resource_inclusions
     validates_presence_of :title
+    attr_accessor :new_resource
   end
 
 
