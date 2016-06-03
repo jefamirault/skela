@@ -1,29 +1,22 @@
 module AjaxFormHelper
   def ajax_form(type, resource, field)
+    type = type_for_field(type)
     klass = type
     id = "#{resource.class.to_s.underscore}_#{resource.id}_#{field}"
-    form_for resource, html: { id: "edit_issue_#{field}", class: klass}, remote: true do |f|
-      case type.to_s
-        when 'user_select'
-          user_select f, field, resource
-        when 'number'
-          f.number_field field, class: 'ajax_field', id: id
-        when 'string'
-          f.text_field field, class: 'ajax_field', id: id
-        when 'notes'
-          f.text_area field, class: 'ajax_field notes', placeholder: 'Notes', id: id
-        when 'subject'
-          f.text_field field, class: 'ajax_field subject', placeholder: "New #{resource.class}", id: id
-        when 'text'
-          f.text_area field, class: 'ajax_field', id: id
-        when 'boolean'
-          (f.label field) + (f.check_box field, class: 'ajax_field')
-        when 'time'
-          f.time_field field, class: 'ajax_field', id: id
-        when 'date'
-          f.date_field field, class: 'ajax_field', id: id
-      end
+    form_for resource, html: { id: "edit_issue_#{field}", class: klass }, remote: true do |f|
+      f.send(type, field, class: "ajax_field #{type}", id: id)
     end
+  end
+
+  def type_for_field(field)
+    case field.to_s
+      when 'string', 'subject'
+       'text_field'
+      when 'notes', 'text'
+       'text_area'
+      else
+       "#{field}_field"
+     end
   end
 
   def user_select(form_builder, field, resource)
