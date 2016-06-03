@@ -19,10 +19,6 @@ module AjaxFormHelper
     end
   end
 
-  def user_select(form_builder, field, resource)
-    form_builder.select field, options_for_select(User.all.map { |user| [user.username, user.id.to_s]}, resource.send(field)), { include_blank: true }, { class: 'ajax_field' }
-  end
-
   def updated_field_at(field, object, options = {})
     klass = 'updated_at'
     klass << ' invisible' if options[:cloaked]
