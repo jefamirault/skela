@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def present(object, klass = nil)
-    klass ||= "#{object.class.to_s}Presenter".constantize
+    klass ||= "#{object.class}Presenter".constantize
     presenter = klass.new(object)
     yield presenter if block_given?
     presenter
@@ -80,8 +80,8 @@ module ApplicationHelper
   end
 
   def get_next_weekday(weekday)
-    weekday = "#{weekday.to_s}?".to_sym
-    (Date.today..Date.today + 1.week).select{ |day| day.send weekday }.first
+    weekday = "#{weekday}?".to_sym
+    (Date.today..Date.today + 1.week).find { |day| day.send weekday }
   end
 
   def publish_link(record)
@@ -97,7 +97,7 @@ module ApplicationHelper
     path = send(klass + '_path', record)
     data = { method: :delete, remote: true, collapse: true }
     if nav
-      data.merge! ({fade_content: true, swap_title: title})
+      data.merge! fade_content: true, swap_title: title
     end
     link_to trash_icon_right, path, data: data, class: "destroy_crud destroy_#{klass}"
   end
