@@ -1,14 +1,14 @@
 root = exports ? this
 
 $(document).on 'click', '.nav_link', ->
-  window.history.pushState( {} , '', $(this).attr('href') );
+  window.history.pushState( {} , '', $(this).attr('href') )
 
 navigate = (selector, push_state = true) ->
   $('#header').find('.nav_link').removeClass 'selected'
   $(selector).addClass 'selected'
   cloak '#content'
   if push_state
-    window.history.pushState( {} , '', $(selector).attr('href') );
+    window.history.pushState( {} , '', $(selector).attr('href') )
 
   changeTheme = ->
     $('body').attr 'class', $(selector).data('theme')

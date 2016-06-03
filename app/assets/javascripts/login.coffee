@@ -23,9 +23,9 @@ root.login_success = (notice, content, user_nav) ->
   $('#center_form_box').find('input').attr 'disabled', true
   setTimeout hide_content, 500
   reveal_content = ->
-    new_content(content);
+    new_content(content)
   setTimeout reveal_content, 1000
-  flashNotice(notice);
+  flashNotice(notice)
 
 new_content = (content) ->
   $('.content').html content

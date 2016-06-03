@@ -40,7 +40,7 @@ $(document).on 'click', '.new_crud', ->
   collapse $('.full')
 
 root.locate = (type, id) ->
-  $("[data-type=#{type}][data-resource-id=#{id}]");
+  $("[data-type=#{type}][data-resource-id=#{id}]")
 
 focus_field = (container) ->
   if (container.find('textarea').size() > 0)

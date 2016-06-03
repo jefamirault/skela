@@ -12,7 +12,7 @@ $(document).on 'click', '#user_select a.new_user', ->
   cloak '#user_form'
 
 $(document).on 'click', '#delete_user', ->
-  user_id = $(this).data('user-id');
+  user_id = $(this).data('user-id')
   selector = 'tr[data-user-id=' + user_id + ']'
 
   cloak_row = ->
@@ -23,7 +23,7 @@ $(document).on 'click', '#delete_user', ->
     cloak selector
   window.setTimeout hide_row, 450
 
-  window.history.replaceState( {} , '', '/users' );
+  window.history.replaceState( {} , '', '/users' )
 
 
 cloak = (selector) ->
