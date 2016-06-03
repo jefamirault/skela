@@ -57,7 +57,7 @@ module AjaxFormHelper
         when 'notes'
           f.text_area field, class: 'ajax_field notes', placeholder: 'Notes', id: id
         when 'subject'
-          f.text_field field, class: 'ajax_field subject', placeholder: "New #{resource.class.to_s}", id: id
+          f.text_field field, class: 'ajax_field subject', placeholder: "New #{resource.class}", id: id
         when 'text'
           f.text_area field, class: 'ajax_field', id: id
         when 'boolean'
@@ -92,7 +92,7 @@ module AjaxFormHelper
   end
 
   def edit_field(object, field, type)
-    send("ajax_#{type.to_s}", field, object)
+    send("ajax_#{type}", field, object)
   end
 
   def add_field(object, field, type)
@@ -113,7 +113,7 @@ module AjaxFormHelper
     content_tag :dl do
       fields.map do |field, type|
         content_tag(:dt, field.to_s.titleize) +
-            content_tag(:dd, send("ajax_#{type.to_s}", field, object))
+            content_tag(:dd, send("ajax_#{type}", field, object))
       end.reduce :+
     end
   end
