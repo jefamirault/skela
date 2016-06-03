@@ -2,8 +2,6 @@ class UsersController < CruddyController
 
   skip_before_filter :redirect_if_not_logged_in, only: [:create, :signup, :create_guest_account]
   skip_before_filter :set_courses, only: [:create, :signup, :create_guest_account]
-  # before_filter :authenticate, except: [:admin_new, :edit, :new, :create, :my_profile]
-  before_filter :authorize_superuser, only: [:admin_create]
 
   def index
     @users = superuser? ? User.all : [current_user]
@@ -37,24 +35,6 @@ class UsersController < CruddyController
       redirect_to courses_path
     else
       redirect_to signup_path(user: user_params)
-    end
-  end
-
-  def admin_new
-    @user = User.new
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def admin_create
-    if @user = User.create(user_params)
-      flash[:notice] = 'User created successfully!'
-    else
-      flash[:alert] = 'No good'
-    end
-    respond_to do |format|
-      format.js
     end
   end
 

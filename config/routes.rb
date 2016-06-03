@@ -63,8 +63,6 @@ Rails.application.routes.draw do
   post 'change_avatar_head', to: 'avatars#change_head'
   post 'change_avatar_color', to: 'avatars#change_color'
 
-  get 'admin_new_user', to: 'users#admin_new', as: 'admin_new_user'
-  post 'admin_create_user', to: 'users#admin_create', as: 'admin_create_user'
   get 'my_profile', to: 'users#my_profile', as: 'my_profile'
 
 
