@@ -10,9 +10,7 @@
     = favicon_link_tag 'icon.png'
 
   %body
-    = render partial: 'layouts/header'
 
-    #container
-
-      #main
-        = yield
+    #container#login
+      = render partial: 'layouts/flexy_header'
+      = yield

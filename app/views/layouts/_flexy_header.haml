@@ -1,8 +1,8 @@
-#header{ class: ''}
-  - if logged_in?
+#flexy_header
+  -#- if logged_in?
     #toggle_sidebar= md_icon 'menu'
   = site_logo
-  - if logged_in?
+  -#- if logged_in?
     - %w(Assignments Exams Readings Resources).each do |tracker|
       = category_link tracker
 

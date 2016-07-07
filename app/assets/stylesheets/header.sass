@@ -26,7 +26,7 @@
   padding: 0 20px
   white-space: nowrap
 
-#header
+#header, #flexy_header
   display: flex
   flex-shrink: 0
   flex-wrap: wrap
@@ -56,10 +56,19 @@
     @media only screen and (min-width: 896px)
       display: flex
 
-#site_logo
-  width: 150px
-  height: 51px
-  padding: 7px 12px
+#header #site_logo
+  width: 181px
+  height: 60px
+
+#flexy_header #site_logo
+  width: 33vh
+  height: 11vh
+  @media screen and (max-height: 200px) and (-webkit-max-device-pixel-ratio: 1)
+    width: 66px
+    height: 22px
+  @media screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+    width: 130px
+    height: 43px
 
   &.background
     background: black

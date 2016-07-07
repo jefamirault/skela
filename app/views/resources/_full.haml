@@ -11,7 +11,7 @@
         = @resource.filename
         = link_to 'Download', resource_path(@resource)
         (
-        = link_to 'X', remove_file_resource_path(@resource.id), method: :delete
+        = link_to 'X', remove_file_resource_path(@resource.id), method: :delete, remote: true
         )
       - else
         = form_for @resource, remote: true, authenticity_token: true do |f|

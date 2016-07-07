@@ -6,6 +6,7 @@ class LoginController < ApplicationController
 
   def new_session
     session[:user_id] = nil
+    render layout: 'login'
   end
 
   def create_session

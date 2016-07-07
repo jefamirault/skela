@@ -17,7 +17,7 @@ class ResourcesController < CruddyController
   def remove_file
     @resource = Resource.find params[:id]
     @resource.remove_file
-    redirect_to explore_course_path(@resource.course)
+
   end
 
   def update

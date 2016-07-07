@@ -110,15 +110,15 @@ module ApplicationHelper
 
   end
 
-  def avatar(user = nil, size = 50)
+  def avatar(user = nil, size = nil)
     avatar_path = if user.nil?
                     Avatar.default
                   else
                     user.avatar ? user.avatar.path : Avatar.default
                   end
-    content_tag :div, style: 'display:inline-block;vertical-align:top;' do
-      image_tag(avatar_path, class: 'avatar', style: "width:#{size}px;height:#{size}px;")
-    end
+
+    fixed_size = size ? "width:#{size}px;height:#{size}px;" : ''
+    image_tag(avatar_path, class: 'avatar', style: "background: gray; border-radius:50%;#{fixed_size}")
   end
 
   def login_link

@@ -10,9 +10,122 @@
 #curtain
   overflow-x: hidden
 
-#login_container
-  width: 300px
-  margin: 32px auto 32px
+#login
+  height: 100%
+  display: flex
+  flex-direction: column
+  min-height: 200px
+  @media only screen and (-webkit-min-device-pixel-ratio: 2)
+    min-height: 400px
+
+  #header
+    flex: 1
+
+  #login_container_outer
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 6
+
+  #login_container_inner
+    width: 100%
+    justify-content: center
+    align-items: center
+    flex: 1
+    display: flex
+    flex-direction: column
+
+    @media only screen and (-webkit-device-pixel-ratio: 1)
+      max-width: 480px
+      max-height: 500px
+      @media only screen and (max-height: 400px)
+        flex-direction: row
+        flex: 4
+        min-width: 720px
+    @media only screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+      flex: 4
+      flex-direction: row
+
+    #skul
+      flex: 3
+      display: flex
+      align-items: center
+      justify-content: center
+      img
+        width: 35vh
+        height: 35vh
+        @media screen and (min-height: 700px) and (-webkit-max-device-pixel-ratio: 1)
+          width: 243px
+          height: 243px
+      @media only screen and (max-height: 400px)
+        flex: 1
+        img
+          width: 50vh
+          height: 50vh
+      @media screen and (max-height: 200px) and (-webkit-max-device-pixel-ratio: 1)
+        img
+          width: 100px
+          height: 100px
+
+      @media screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+        flex: 1
+        img
+          width: 25vw
+          height: 25vw
+          margin: 0 10px
+
+
+    #login_form
+      flex: 1
+    form
+      margin: 0 10px
+      width: 100%
+      flex: 3
+      align-items: center
+      display: flex
+      flex-direction: column
+
+      input
+        width: 99%
+        font-size: 4vh
+
+        text-align: center
+        flex: 1
+
+      @media screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+        height: 95%
+        input
+          font-size: 3.5vw
+      @media screen and (max-height: 400px) and (-webkit-max-device-pixel-ratio: 1)
+        height: 95%
+        input
+          font-size: 6.5vh
+      @media screen and (max-height: 200px) and (-webkit-max-device-pixel-ratio: 1)
+        input
+          font-size: 13px
+
+  #options
+    flex: 1
+    display: flex
+    a
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 4vh
+      flex: 1
+
+      @media screen and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)
+        font-size: 3vh
+      @media screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+        font-size: 20px
+      @media screen and (min-height: 700px) and (-webkit-max-device-pixel-ratio: 1)
+        font-size: 28px
+      @media screen and (max-height: 400px) and (-webkit-max-device-pixel-ratio: 1)
+        font-size: 16px
+
+#login_container_inner
+  align-items: center
   border-radius: 3px
 
   form
@@ -21,10 +134,7 @@
   input
     display: block
     font-size: 1.25em
-    line-height: 2.4em
     +outline(#ddd)
-    padding: 0 12px
-    width: 274px
     margin-bottom: 6px
     transition: background .3s ease-in-out
 
@@ -39,7 +149,6 @@
 
   input[type=submit]
     font-weight: bold
-    width: 300px
     color: white
     background-color: $one
     border: none

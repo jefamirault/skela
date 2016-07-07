@@ -1,22 +1,17 @@
-.content
-  #login_container
-    - size = 150
-    .center
-      .avatar_box{ style: "width:#{size}px;height:#{size}px;background:#aaa;border-radius:50%;"}
-        = avatar @user, size
-    %br
+#login_container_outer
+  #login_container_inner
+    #skul
+      = avatar @user
+
+
     = form_tag create_session_path, remote: false do |f|
-      = text_field_tag :username, nil, placeholder: 'Username', autofocus: true
+      = text_field_tag :username, nil, placeholder: 'Username', autofocus: true, autocomplete: 'off'
       = password_field_tag :password, nil, autocomplete: 'off', placeholder: 'Password'
       .errors
         - if flash[:error]
           = flash[:error]
       = submit_tag 'Log in', id: 'login_button'
 
-
-  %br
-  = link_to 'Proceed as Guest', create_guest_account_path, class: 'button inline', data: { swap_title: 'Authenticate', fade_content: true, method: :post }
-  %br
-  %br
-  %br
-  = link_to 'Create an Account', signup_path
+#options
+  = link_to 'Proceed as Guest', create_guest_account_path, class: 'inline', data: { swap_title: 'Authenticate', fade_content: true, method: :post }
+  = link_to 'New to Skela?', signup_path
